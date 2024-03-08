@@ -5,10 +5,10 @@
 /config
 /logs
 /plugins
-airflow.cfg
-airflow.db
-docker-compose.yaml
-standalone_admin_password.txt
+*.cfg
+*.db
+*.yaml
+*.txt
 webserver_config.py
 *.ipynb
-*.sql
+# *.sql
