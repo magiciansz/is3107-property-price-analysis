@@ -1,0 +1,14 @@
+.env
+/.venv
+/Data
+/dags
+/config
+/logs
+/plugins
+airflow.cfg
+airflow.db
+docker-compose.yaml
+standalone_admin_password.txt
+webserver_config.py
+*.ipynb
+*.sql
