@@ -8,6 +8,7 @@ class DataParser:
     def __init__(self):
         pass
 
+    ### Amenities Data Transformation Functions
     def parse_kml(self, filename) -> pd.DataFrame:
         """For hawkercenters, supermarkets, kindergartens, gyms, park facilities, Retailpharmacylocations
         These have <Point> child of <Placemark> element.
@@ -85,7 +86,7 @@ class DataParser:
 
         return df
     
-
+    ### HDB Data Transformation Functions
     def parse_hdb(self, file_path):
         """parse hdb resale data
 
@@ -119,7 +120,6 @@ class DataParser:
         # print(hdb_df.info())
 
         return hdb_df
-    
 
     def _convert_format(self, remaining_lease):
         """helper function to convert lease format
@@ -138,6 +138,112 @@ class DataParser:
             months = '00M'
         return years + months
 
+    ### URA Data Transformation Functions
+    # Import URA dataset from json format to dataframe
+    def json_to_df(file_path):
+        data = open(file_path, 'r')
+        try:
+            json_data = json.load(data)['Result']
+        except KeyError:
+            json_data = json.load(data)
+        df = pd.DataFrame(json_data)
+        return df
+        
+    # Flatten "Transaction" column from URA dataset
+    def unnest(df, col):
+        col_flat = pd.DataFrame([[i, x] 
+                           for i, y in df[col].items() 
+                               for x in y], columns=['Property_index', col])
+        col_flat = col_flat.set_index('Property_index')[col]
+        col_flat_df = pd.DataFrame(list(col_flat), index = col_flat.index)
+        df = df.drop(columns=[col])
+        df = df.merge(col_flat_df, left_index=True, right_index=True)
+        df = df.reset_index().rename(columns={'index':'property_id'})
+        df.insert(0, 'project_id', df['property_id'].copy())
+        # df = df.reset_index().rename(columns={'index':'transaction_id'})
+        return df
+
+    # Extract lease_year and lease_duration from "tenure" column in URA dataset
+    def extract_lease_year_and_duration(df, target_col):
+        df_result = df.copy()
+        
+        # Extract lease_duration
+        pattern = r'(\d+) yrs'
+        # df_result['lease_duration'] = df_result[target_col].apply(lambda x: re.search(pattern, x).group(1) if re.search(pattern, x) else 9999).astype(int)
+        df_result['lease_duration'] = df_result[target_col].apply(lambda x: re.search(pattern, x).group(1) if re.search(pattern, x) else "")
+        df_result['lease_duration'] = df_result['lease_duration'].apply(lambda x: int(x) if x.isdigit() else pd.NA)
+        
+        # Extract lease_year
+        pattern = r'from (\d+)'
+        # df_result['lease_year'] = df_result[target_col].apply(lambda x: re.search(pattern, x).group(1) if re.search(pattern, x) else -1).astype(int)
+        df_result['lease_year'] = df_result[target_col].apply(lambda x: re.search(pattern, x).group(1) if re.search(pattern, x) else "")
+        df_result['lease_year'] = df_result['lease_year'].apply(lambda x: int(x) if x.isdigit() else pd.NA)
+        return df_result
+
+    # Extract floor_range_start and floor_range_end from "floorRange" column in URA dataset
+    def extract_floor_range(df, target_col):
+        def split_floor_range(value):
+            value = value[target_col]
+            # value = df[target_col]
+            floor_range = value.split('-')
+            try:
+                floor_range_start = int(floor_range[0])
+                floor_range_end = int(floor_range[1])
+            except:
+                floor_range_start = pd.NA
+                floor_range_end = pd.NA
+            return [floor_range_start, floor_range_end]
+    
+        def split_list(lst):
+            return pd.Series(lst, index=['floor_range_start', 'floor_range_end'])
+    
+        df_result = df.copy()
+        floor_range_list = df_result.apply(split_floor_range, axis=1)
+        floor_range_df = floor_range_list.apply(split_list)
+        df_result = pd.concat([df_result, floor_range_df], axis = 1)
+        return df_result
+
+    # Extract transaction_month and transaction_year function from "contractDate" column in URA dataset
+    def extract_transaction_month_and_year(df, target_col):
+        df_result = df.copy()
+        df_result['transaction_month'] = df_result[target_col].str.slice(0, 2).astype(int)
+        df_result['transaction_year'] = 2000 + df_result[target_col].str.slice(-2).astype(int)
+        return df_result
+
+    # Rename columns in URA dataset for combination
+    def rename_to_common_columns(df):
+        common_cols_dict = {
+            # URA_col_name: common_col_name
+            "area": "floor_area",
+            "district": "disctric_id",
+            "typeOfSale": "type_of_sale"
+        }
+        return df.rename(columns = common_cols_dict)
+
+    # Save URA dataset from dataframe to json format
+    def save_ura_dataset(df, file_path):
+        df_dict = df.to_dict('records')
+        json_data = json.dumps({'Result': df_dict})
+        with open(file_path, 'w') as file:
+            file.write(json_data)
+        print("Save success: {file_path}".format(file_path=file_path))
+
+    # URA Data transformation pipeline
+    def URA_data_transformation_pipeliene(folder, file_name_list, file_type):
+        for file_name in file_name_list:
+            file_path = "{folder}/{file_name}.{file_type}".format(folder=folder, file_name=file_name, file_type=file_type)
+            private_properties_df = json_to_df(file_path)
+            # private_properties_df_final = remove_properties_without_latlong(file_name, private_properties_df, 'lat', 'long')
+            private_properties_df_final = unnest(private_properties_df, "transaction")
+            private_properties_df_final = private_properties_df_final.drop(columns=["nettPrice"])
+            private_properties_df_final = extract_lease_year_and_duration(private_properties_df_final, 'tenure')
+            private_properties_df_final = extract_floor_range(private_properties_df_final, 'floorRange')
+            private_properties_df_final = extract_transaction_month_and_year(private_properties_df_final, 'contractDate')
+            private_properties_df_final = rename_to_common_columns(private_properties_df_final)
+        
+            new_file_name = '{file_name}_new'.format(file_name=file_name)
+            new_file_path = "{folder}/{new_file_name}.{file_type}".format(folder=folder, new_file_name=new_file_name, file_type=file_type)
+            save_ura_dataset(private_properties_df_final, new_file_path)
 
 if __name__ == "__main__":
     kml = DataParser()
@@ -147,8 +253,23 @@ if __name__ == "__main__":
     # mrtline = kml.parse_kml('MasterPlan2003MRTLine.kml')
     # parking = kml.parse_kml('URAParkingLotKML.kml')
     # hdb = kml.parse_hdb('ResaleflatpricesbasedonregistrationdatefromJan2017onwards.csv')
+
+    # Execute URA data transformation pipeline
+    URA_folder = './URA Data [Final]'
+    URA_file_name_list = ['privatepropertypricesbatch1added', 'privatepropertypricesbatch2added',
+                      'privatepropertypricesbatch3added', 'privatepropertypricesbatch4added']
+    URA_file_type = 'json'
+    URA_combined_df = URA_data_transformation_pipeliene(URA_folder, URA_file_name_list, URA_file_type)
+
+    # Execute HDB data transformation pipeline
     hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
+    # Todo: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
+    HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
+    HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
     print(hdb.head())
     print(hdb.info())
-    
 
+    # Todo: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
+    #*URA Dataset need to be first (eg: index 0-100), then HDB Dataset (eg: index 101-200), because URA.property_id comes from 'unflatten' function
+
+    # Todo: Split the Combined Dataset into Property Table and Transaction Table with their relevant columns
