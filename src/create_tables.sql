@@ -3,7 +3,8 @@ CREATE DATABASE IF NOT EXISTS PropertyPrice;
 USE PropertyPrice;
 
 CREATE TABLE `District` (
-    `district_id` int AUTO_INCREMENT NOT NULL ,
+    -- shld not be auto_increment, pre-defined
+    `district_id` int NOT NULL ,
     `district_name` char NOT NULL ,
     `coordinates` char ,
     PRIMARY KEY (
@@ -12,7 +13,8 @@ CREATE TABLE `District` (
 );
 
 CREATE TABLE `Project` (
-    `project_id` int AUTO_INCREMENT NOT NULL ,
+    -- shld not be auto_increment, pre-defined
+    `project_id` int NOT NULL ,
     `district_id` int  NOT NULL ,
     `project_name` char  NOT NULL ,
     `long` float,
@@ -24,7 +26,8 @@ CREATE TABLE `Project` (
 );
 
 CREATE TABLE `Property` (
-    `property_id` int AUTO_INCREMENT NOT NULL ,
+    -- shld not be auto_increment, pre-defined
+    `property_id` int NOT NULL ,
     `project_id` int  NOT NULL ,
     `property_type` int  NOT NULL ,
     `street` varchar(256),

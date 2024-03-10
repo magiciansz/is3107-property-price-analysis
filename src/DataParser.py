@@ -235,6 +235,7 @@ class DataParser:
             floor_range_start = floor_range_start.str.replace('B', '-')
             floor_range_end = floor_range_end.str.replace('B', '-')
             return floor_range_start, floor_range_end
+        
         df_result = df.copy()
         floor_range = df_result[target_col].str.split('-')
         try:
@@ -265,7 +266,7 @@ class DataParser:
         df_result = df.copy()
         df_result = df_result.replace({target_col: {'1': 'New sale', '2': 'Sub sale', '3': 'Resale'}})
         return df_result
-
+      
     # Save URA dataset from dataframe to json format
     def _save_ura_dataset(self, df, file_path):
         df_dict = df.to_dict('records')
@@ -297,7 +298,7 @@ class DataParser:
                     data = json.load(data)
                 private_properties_df_final.extend(data)
         private_properties_df_final = pd.DataFrame(private_properties_df_final)
-        
+
         # private_properties_df_final = remove_properties_without_latlong(file_name, private_properties_df, 'lat', 'long')
         private_properties_df_final = self._unnest(private_properties_df_final, "transaction")
         private_properties_df_final = private_properties_df_final.drop(columns=["nettPrice"])
@@ -305,7 +306,7 @@ class DataParser:
         private_properties_df_final = self._extract_floor_range(private_properties_df_final, 'floorRange')
         private_properties_df_final = self._extract_transaction_month_and_year(private_properties_df_final, 'contractDate')
         private_properties_df_final = self._convert_type_of_sale(private_properties_df_final, 'typeOfSale')
-        
+
         # naming and type of data according to db definition
         common_cols_dict = {
             # URA_col_name: common_col_name
@@ -348,7 +349,9 @@ if __name__ == "__main__":
     # hdb = kml.parse_hdb('ResaleflatpricesbasedonregistrationdatefromJan2017onwards.csv')
 
     # Execute URA data transformation pipeline
+
     URA_folder = './URA Data [Final]'
+
     URA_file_name_list = ['privatepropertypricesbatch1added', 
                           'privatepropertypricesbatch2added',
                       'privatepropertypricesbatch3added', 'privatepropertypricesbatch4added'
@@ -358,15 +361,15 @@ if __name__ == "__main__":
     print(URA_combined_df.head())
     print(URA_combined_df.info())
 
-# Execute HDB data transformation pipeline
-# hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
-# TODO: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
-# HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
-# HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
-# print(hdb.head())
-# print(hdb.info())
+    # Execute HDB data transformation pipeline
+    # hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
+    # TODO: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
+    # HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
+    # HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
+    # print(hdb.head())
+    # print(hdb.info())
 
-# TODO: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
-#*URA Dataset need to be first (eg: index 0-100), then HDB Dataset (eg: index 101-200), because URA.property_id comes from 'unflatten' function
+    # TODO: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
+    #*URA Dataset need to be first (eg: index 0-100), then HDB Dataset (eg: index 101-200), because URA.property_id comes from 'unflatten' function
 
-# TODO: Split the Combined Dataset into Property Table and Transaction Table with their relevant columns
+    # TODO: Split the Combined Dataset into Property Table and Transaction Table with their relevant columns
