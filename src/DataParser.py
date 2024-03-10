@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import os
 import numpy as np
+import json
+import re
 
 
 class DataParser:
@@ -87,7 +89,7 @@ class DataParser:
         return df
     
     ### HDB Data Transformation Functions
-    def parse_hdb(self, file_path):
+    def parse_hdb(self, file_path) -> pd.DataFrame:
         """parse hdb resale data
 
         Args:
@@ -97,6 +99,9 @@ class DataParser:
             dataframe: cleaned data with specified columns in db
         """
         hdb_df = pd.read_csv(file_path).drop("Unnamed: 0", axis=1, errors='ignore')
+
+        hdb_df.insert(1, 'lease_duration', 99)
+        hdb_df.insert(1, 'type_of_sale', 'HDB Resale')
         try:
             hdb_df.insert(0, "transaction_year", None)
         except:
@@ -104,21 +109,40 @@ class DataParser:
         year_month_col = hdb_df["month"].str.split("-")
         hdb_df["transaction_year"] = year_month_col.str[0].astype(np.int64)
         hdb_df["month"] = year_month_col.str[1].astype(np.int64)
-        hdb_df.rename(columns={'month':'transaction_month'}, inplace=True)
+        # hdb_df.rename(columns={'month':'transaction_month'}, inplace=True)
 
         storey_cols = hdb_df["storey_range"].str.split(" ")
         hdb_df["floor_range_start"] = storey_cols.str[0].astype(np.int64)
         hdb_df["floor_range_end"] = storey_cols.str[2].astype(np.int64)
         hdb_df = hdb_df.drop('storey_range', axis=1)
-
         hdb_df['remaining_lease'] = hdb_df['remaining_lease'].apply(lambda x: self._convert_format(x))
-        hdb_df.insert(0, 'lease_duration', 99)
 
-
-        hdb_df.columns = ['lease_duration', 'transaction_year', 'transaction_month', 'town_hdb_def', 'property_type', 'block', 'street', 'floor_area', 'flat_model', 'lease_year', 'remaining_lease', 'resale_price', 'address', 'lat', 'long', 'planning_area', 'floor_range_start', 'floor_range_end'] 
-        # print(hdb_df.head())
-        # print(hdb_df.info())
-
+        # standardise column names
+        hdb_df.columns = ['transaction_year', 'transaction_month', 'type_of_sale', 'lease_duration', 'town_hdb', 'property_type', 'block', 'street', 'floor_area', 'flat_model', 'lease_start_year', 'remaining_lease', 'resale_price', 'address', 'lat', 'long', 'planning_area', 'floor_range_start', 'floor_range_end'] 
+        
+        # define property_id from duplicated property-specific info
+        hdb_df['property_id'] = hdb_df.groupby([
+                                        # 'transaction_year',
+                                        # 'transaction_month',
+                                        'type_of_sale',
+                                        'lease_duration',
+                                        'town_hdb',
+                                        'property_type',
+                                        'block',
+                                        'street',
+                                        'floor_area',
+                                        'flat_model',
+                                        'lease_start_year',
+                                        # 'remaining_lease',
+                                        # 'resale_price',
+                                        'address',
+                                        'lat',
+                                        'long',
+                                        'planning_area',
+                                        'floor_range_start',
+                                        'floor_range_end'], 
+                                        sort=False).ngroup()
+        
         return hdb_df
 
     def _convert_format(self, remaining_lease):
@@ -138,19 +162,19 @@ class DataParser:
             months = '00M'
         return years + months
 
-    ### URA Data Transformation Functions
-    # Import URA dataset from json format to dataframe
-    def json_to_df(file_path):
-        data = open(file_path, 'r')
-        try:
-            json_data = json.load(data)['Result']
-        except KeyError:
-            json_data = json.load(data)
-        df = pd.DataFrame(json_data)
-        return df
-        
+
+    ### URA Data Transformation Functions        
     # Flatten "Transaction" column from URA dataset
-    def unnest(df, col):
+    def _unnest(self, df, col) -> pd.DataFrame:
+        """flattern `transaction`, define project_id and property_id
+
+        Args:
+            df (DataFrame): combined URA data batches
+            col (_type_): `Transaction`
+
+        Returns:
+            DataFrame: check project_id and property_id definition
+        """
         col_flat = pd.DataFrame([[i, x] 
                            for i, y in df[col].items() 
                                for x in y], columns=['Property_index', col])
@@ -158,15 +182,36 @@ class DataParser:
         col_flat_df = pd.DataFrame(list(col_flat), index = col_flat.index)
         df = df.drop(columns=[col])
         df = df.merge(col_flat_df, left_index=True, right_index=True)
-        df = df.reset_index().rename(columns={'index':'property_id'})
-        df.insert(0, 'project_id', df['property_id'].copy())
-        # df = df.reset_index().rename(columns={'index':'transaction_id'})
+        df['project_id'] = df.groupby(['project']).ngroup()
+        
+        df['property_id'] = df.groupby(['street',
+                                        'x',
+                                        #  'project',
+                                        'y',
+                                        #  'marketSegment',
+                                        'lat',
+                                        'long',
+                                        'planning_area',
+                                        'area',
+                                        'floorRange',
+                                        'noOfUnits',
+                                        #  'contractDate',
+                                        #  'typeOfSale',
+                                        #  'price',
+                                        'propertyType',
+                                        'district',
+                                        'typeOfArea',
+                                        'tenure',
+                                        #  'nettPrice',
+                                        #  'project_id'
+                                        ]
+                                        ).ngroup()
         return df
 
     # Extract lease_year and lease_duration from "tenure" column in URA dataset
-    def extract_lease_year_and_duration(df, target_col):
+    def _extract_lease_year_and_duration(self, df, target_col):
         df_result = df.copy()
-        
+
         # Extract lease_duration
         pattern = r'(\d+) yrs'
         # df_result['lease_duration'] = df_result[target_col].apply(lambda x: re.search(pattern, x).group(1) if re.search(pattern, x) else 9999).astype(int)
@@ -178,50 +223,40 @@ class DataParser:
         # df_result['lease_year'] = df_result[target_col].apply(lambda x: re.search(pattern, x).group(1) if re.search(pattern, x) else -1).astype(int)
         df_result['lease_year'] = df_result[target_col].apply(lambda x: re.search(pattern, x).group(1) if re.search(pattern, x) else "")
         df_result['lease_year'] = df_result['lease_year'].apply(lambda x: int(x) if x.isdigit() else pd.NA)
+
+        # TODO for discussion set lease_year and lease_duration for 'Freehold' tenure
+        # df_result[df_result['lease_duration'].isna()]['tenure'].unique()
+
         return df_result
 
     # Extract floor_range_start and floor_range_end from "floorRange" column in URA dataset
-    def extract_floor_range(df, target_col):
-        def split_floor_range(value):
-            value = value[target_col]
-            # value = df[target_col]
-            floor_range = value.split('-')
-            try:
-                floor_range_start = int(floor_range[0])
-                floor_range_end = int(floor_range[1])
-            except:
-                floor_range_start = pd.NA
-                floor_range_end = pd.NA
-            return [floor_range_start, floor_range_end]
-    
-        def split_list(lst):
-            return pd.Series(lst, index=['floor_range_start', 'floor_range_end'])
-    
+    def _extract_floor_range(self, df, target_col):
         df_result = df.copy()
-        floor_range_list = df_result.apply(split_floor_range, axis=1)
-        floor_range_df = floor_range_list.apply(split_list)
-        df_result = pd.concat([df_result, floor_range_df], axis = 1)
+        floor_range = df_result[target_col].str.split('-')
+        try:
+            floor_range_start = floor_range.str[0]
+            floor_range_end = floor_range.str[1]
+        except:
+            floor_range_start = pd.NA
+            floor_range_end = pd.NA
+        df_result['floor_range_start'] = floor_range_start
+        df_result['floor_range_end'] = floor_range_end
+        
+        # TODO for discussion: "floorRange": "B1-B5" -> NAN
+        df_result['floor_range_start'] = pd.to_numeric(df_result['floor_range_start'], errors='coerce').astype('Int64')
+        df_result['floor_range_end'] = pd.to_numeric(df_result['floor_range_end'], errors='coerce').astype('Int64')
+
         return df_result
 
     # Extract transaction_month and transaction_year function from "contractDate" column in URA dataset
-    def extract_transaction_month_and_year(df, target_col):
+    def _extract_transaction_month_and_year(self, df, target_col):
         df_result = df.copy()
         df_result['transaction_month'] = df_result[target_col].str.slice(0, 2).astype(int)
         df_result['transaction_year'] = 2000 + df_result[target_col].str.slice(-2).astype(int)
         return df_result
 
-    # Rename columns in URA dataset for combination
-    def rename_to_common_columns(df):
-        common_cols_dict = {
-            # URA_col_name: common_col_name
-            "area": "floor_area",
-            "district": "disctric_id",
-            "typeOfSale": "type_of_sale"
-        }
-        return df.rename(columns = common_cols_dict)
-
     # Save URA dataset from dataframe to json format
-    def save_ura_dataset(df, file_path):
+    def _save_ura_dataset(self, df, file_path):
         df_dict = df.to_dict('records')
         json_data = json.dumps({'Result': df_dict})
         with open(file_path, 'w') as file:
@@ -229,21 +264,67 @@ class DataParser:
         print("Save success: {file_path}".format(file_path=file_path))
 
     # URA Data transformation pipeline
-    def URA_data_transformation_pipeliene(folder, file_name_list, file_type):
+    def URA_data_transformation_pipeline(self, folder, file_name_list, file_type):
+        """URA data transformation steps
+
+        Args:
+            folder (string path): folder to read data from 
+            file_name_list (list): data files in input folder
+            file_type (filetype): URA json files
+
+        Returns:
+            DataFrame: URA dataframe based on the db definition
+        """
+        private_properties_df_final = []
         for file_name in file_name_list:
             file_path = "{folder}/{file_name}.{file_type}".format(folder=folder, file_name=file_name, file_type=file_type)
-            private_properties_df = json_to_df(file_path)
-            # private_properties_df_final = remove_properties_without_latlong(file_name, private_properties_df, 'lat', 'long')
-            private_properties_df_final = unnest(private_properties_df, "transaction")
-            private_properties_df_final = private_properties_df_final.drop(columns=["nettPrice"])
-            private_properties_df_final = extract_lease_year_and_duration(private_properties_df_final, 'tenure')
-            private_properties_df_final = extract_floor_range(private_properties_df_final, 'floorRange')
-            private_properties_df_final = extract_transaction_month_and_year(private_properties_df_final, 'contractDate')
-            private_properties_df_final = rename_to_common_columns(private_properties_df_final)
+            with open(file_path, 'r') as file:
+                # Load JSON data from the file
+                try:
+                    data = json.load(file)['Result']
+                except KeyError:
+                    data = json.load(data)
+                private_properties_df_final.extend(data)
+        private_properties_df_final = pd.DataFrame(private_properties_df_final)
         
-            new_file_name = '{file_name}_new'.format(file_name=file_name)
-            new_file_path = "{folder}/{new_file_name}.{file_type}".format(folder=folder, new_file_name=new_file_name, file_type=file_type)
-            save_ura_dataset(private_properties_df_final, new_file_path)
+        # private_properties_df_final = remove_properties_without_latlong(file_name, private_properties_df, 'lat', 'long')
+        private_properties_df_final = self._unnest(private_properties_df_final, "transaction")
+        private_properties_df_final = private_properties_df_final.drop(columns=["nettPrice"])
+        private_properties_df_final = self._extract_lease_year_and_duration(private_properties_df_final, 'tenure')
+        private_properties_df_final = self._extract_floor_range(private_properties_df_final, 'floorRange')
+        private_properties_df_final = self._extract_transaction_month_and_year(private_properties_df_final, 'contractDate')
+
+        # naming and type of data according to db definition
+        common_cols_dict = {
+            # URA_col_name: common_col_name
+            "area": "floor_area",
+            "district": "district_id",
+            "typeOfSale": "type_of_sale",
+            "typeOfArea": "property_type",
+            "project": "project_name",    
+        }
+        private_properties_df_final = private_properties_df_final.rename(columns = common_cols_dict)
+
+        dtype_dict = {'x': 'float', 
+              'y': 'float', 
+              'lat': 'float', 
+              'long': 'float',
+              'floor_area': 'float', 
+              'noOfUnits': 'int', 
+              'price': 'float', 
+              'district_id': 'int', 
+              'lease_year': 'Int32', 
+              'lease_duration': 'Int32'
+              }
+        # Change data types for each column
+        private_properties_df_final = private_properties_df_final.astype(dtype_dict)
+    
+        new_file_name = '{file_name}_new'.format(file_name=file_name)
+        new_file_path = "{folder}/{new_file_name}.{file_type}".format(folder=folder, new_file_name=new_file_name, file_type=file_type)
+        # self._save_ura_dataset(private_properties_df_final, new_file_path)
+        private_properties_df_final.to_csv(new_file_path, index=False)
+
+        return private_properties_df_final
 
 if __name__ == "__main__":
     kml = DataParser()
@@ -255,21 +336,26 @@ if __name__ == "__main__":
     # hdb = kml.parse_hdb('ResaleflatpricesbasedonregistrationdatefromJan2017onwards.csv')
 
     # Execute URA data transformation pipeline
-    URA_folder = './URA Data [Final]'
-    URA_file_name_list = ['privatepropertypricesbatch1added', 'privatepropertypricesbatch2added',
-                      'privatepropertypricesbatch3added', 'privatepropertypricesbatch4added']
+    URA_folder = './Data'
+    URA_file_name_list = ['privatepropertypricesbatch1added', 
+                          'privatepropertypricesbatch2added',
+                      'privatepropertypricesbatch3added', 'privatepropertypricesbatch4added'
+                          ]
     URA_file_type = 'json'
-    URA_combined_df = URA_data_transformation_pipeliene(URA_folder, URA_file_name_list, URA_file_type)
+    URA_combined_df = kml.URA_data_transformation_pipeline(URA_folder, URA_file_name_list, URA_file_type)
+    print(URA_combined_df.head())
+    print(URA_combined_df.info())
+
 
     # Execute HDB data transformation pipeline
-    hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
-    # Todo: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
-    HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
-    HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
-    print(hdb.head())
-    print(hdb.info())
+    # hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
+    # TODO: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
+    # HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
+    # HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
+    # print(hdb.head())
+    # print(hdb.info())
 
-    # Todo: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
+    # TODO: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
     #*URA Dataset need to be first (eg: index 0-100), then HDB Dataset (eg: index 101-200), because URA.property_id comes from 'unflatten' function
 
-    # Todo: Split the Combined Dataset into Property Table and Transaction Table with their relevant columns
+    # TODO: Split the Combined Dataset into Property Table and Transaction Table with their relevant columns
