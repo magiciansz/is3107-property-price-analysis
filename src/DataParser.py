@@ -231,11 +231,17 @@ class DataParser:
 
     # Extract floor_range_start and floor_range_end from "floorRange" column in URA dataset
     def _extract_floor_range(self, df, target_col):
+        def convert_basement_to_negative(floor_range_start, floor_range_end):
+            floor_range_start = floor_range_start.str.replace('B', '-')
+            floor_range_end = floor_range_end.str.replace('B', '-')
+            return floor_range_start, floor_range_end
+        
         df_result = df.copy()
         floor_range = df_result[target_col].str.split('-')
         try:
             floor_range_start = floor_range.str[0]
             floor_range_end = floor_range.str[1]
+            floor_range_start, floor_range_end = convert_basement_to_negative(floor_range_start, floor_range_end)
         except:
             floor_range_start = pd.NA
             floor_range_end = pd.NA
@@ -255,6 +261,12 @@ class DataParser:
         df_result['transaction_year'] = 2000 + df_result[target_col].str.slice(-2).astype(int)
         return df_result
 
+    # Replace values for typeOfSale column in URA dataset
+    def _convert_type_of_sale(self, df, target_col):
+        df_result = df.copy()
+        df_result = df_result.replace({target_col: {'1': 'New sale', '2': 'Sub sale', '3': 'Resale'}})
+        return df_result
+      
     # Save URA dataset from dataframe to json format
     def _save_ura_dataset(self, df, file_path):
         df_dict = df.to_dict('records')
@@ -286,13 +298,14 @@ class DataParser:
                     data = json.load(data)
                 private_properties_df_final.extend(data)
         private_properties_df_final = pd.DataFrame(private_properties_df_final)
-        
+
         # private_properties_df_final = remove_properties_without_latlong(file_name, private_properties_df, 'lat', 'long')
         private_properties_df_final = self._unnest(private_properties_df_final, "transaction")
         private_properties_df_final = private_properties_df_final.drop(columns=["nettPrice"])
         private_properties_df_final = self._extract_lease_year_and_duration(private_properties_df_final, 'tenure')
         private_properties_df_final = self._extract_floor_range(private_properties_df_final, 'floorRange')
         private_properties_df_final = self._extract_transaction_month_and_year(private_properties_df_final, 'contractDate')
+        private_properties_df_final = self._convert_type_of_sale(private_properties_df_final, 'typeOfSale')
 
         # naming and type of data according to db definition
         common_cols_dict = {
@@ -319,7 +332,7 @@ class DataParser:
         # Change data types for each column
         private_properties_df_final = private_properties_df_final.astype(dtype_dict)
     
-        new_file_name = '{file_name}_new'.format(file_name=file_name)
+        new_file_name = 'URA_dataset_combined_new'
         new_file_path = "{folder}/{new_file_name}.{file_type}".format(folder=folder, new_file_name=new_file_name, file_type=file_type)
         # self._save_ura_dataset(private_properties_df_final, new_file_path)
         private_properties_df_final.to_csv(new_file_path, index=False)
@@ -336,7 +349,9 @@ if __name__ == "__main__":
     # hdb = kml.parse_hdb('ResaleflatpricesbasedonregistrationdatefromJan2017onwards.csv')
 
     # Execute URA data transformation pipeline
-    URA_folder = './Data'
+
+    URA_folder = './URA Data [Final]'
+
     URA_file_name_list = ['privatepropertypricesbatch1added', 
                           'privatepropertypricesbatch2added',
                       'privatepropertypricesbatch3added', 'privatepropertypricesbatch4added'
@@ -345,7 +360,6 @@ if __name__ == "__main__":
     URA_combined_df = kml.URA_data_transformation_pipeline(URA_folder, URA_file_name_list, URA_file_type)
     print(URA_combined_df.head())
     print(URA_combined_df.info())
-
 
     # Execute HDB data transformation pipeline
     # hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
