@@ -69,10 +69,17 @@ def get_planning_area_name_from_lat_long(lat, long, ONEMAP_TOKEN):
       return json_data[0]['pln_area_n']
     
 # this function takes in a URA dataset, and assigns the lat and long based on the helper function above.
-def assign_long_lat_to_dataset(dataset, ONEMAP_TOKEN):
+def assign_long_lat_to_private_property_dataset(dataset, ONEMAP_TOKEN):
   for property in dataset:
     if 'x' in property and 'y' in property:
       property['lat'], property['long'] = coordinates_to_lat_long(property['x'], property['y'], ONEMAP_TOKEN)
+    return dataset
+
+def assign_planning_area_to_private_property_dataset(dataset, ONEMAP_TOKEN):
+  for property in dataset:
+    if 'lat' in property and 'long' in property:
+      property['planning_area'] = get_planning_area_name_from_lat_long(property['lat'], property['long'], ONEMAP_TOKEN)
+    return dataset
 
 
 #this function takes in a search string (assumes previously concatenated by user),

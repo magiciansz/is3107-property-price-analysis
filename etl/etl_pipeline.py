@@ -7,7 +7,7 @@ import requests
 #import pandas for data wrangling
 import pandas as pd
 
-from etl_helper import one_map_authorise, assign_long_lat_to_dataset, get_planning_area_name_from_lat_long
+from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset
 
 ################################### KEYS #######################################
 # fill in following. Running API calls to get access tokens through VS Code / Collab always results in errors, use Postman
@@ -48,11 +48,14 @@ def property_prices_etl():
                 private_property_datasets.append(json.load(f)['Result'])
         # add long, lat and planning area into dictionaries for private properties
         for count, dataset in enumerate(private_property_datasets):
-            dataset = assign_long_lat_to_dataset(dataset, onemap_token)
-            print(dataset)
-            dataset['planning_area'] = dataset.apply(lambda x: get_planning_area_name_from_lat_long(x['lat'], x['long'], onemap_token))
+            dataset = assign_long_lat_to_private_property_dataset(dataset, onemap_token)
+            dataset = assign_planning_area_to_private_property_dataset(dataset, onemap_token)
             with open(private_property_dataset_edited_paths[count], 'w') as file:
                   file.write(dataset)
+    def massage():
+        pass
+    def load():
+        pass
     onemap_token =  authorise()   
     private_property_dataset_paths, hdb_resale_dataset_path = extract()
     transform(private_property_dataset_paths, hdb_resale_dataset_path, onemap_token)
