@@ -51,9 +51,15 @@ def property_prices_etl():
             dataset = assign_long_lat_to_private_property_dataset(dataset, onemap_token)
             dataset = assign_planning_area_to_private_property_dataset(dataset, onemap_token)
             with open(private_property_dataset_edited_paths[count], 'w') as file:
-                  file.write(dataset)
-    def massage():
-        pass
+                  file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
+
+        # open hdb resale dataset
+                  
+        # add long, lat and planning area into hdb resale CSV
+                  
+        # massage private properties dataset
+                  
+        # massage hdb resale dataset
     def load():
         pass
     onemap_token =  authorise()   
