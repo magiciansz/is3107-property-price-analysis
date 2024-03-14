@@ -7,7 +7,7 @@ import requests
 #import pandas for data wrangling
 import pandas as pd
 
-from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset
+from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area
 
 ################################### KEYS #######################################
 # fill in following. Running API calls to get access tokens through VS Code / Collab always results in errors, use Postman
@@ -54,9 +54,17 @@ def property_prices_etl():
                   file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
 
         # open hdb resale dataset
-                  
+        with open(path, 'r') as f:
+            hdb_dataset = pd.read_csv(hdb_resale_dataset_path)
+        
+        #filter for relevant date
+        hdb_dataset = hdb_dataset[hdb_dataset['month'] >= '2019-02']
+        hdb_dataset = hdb_dataset[hdb_dataset['month'] <= '2024-01']
+
         # add long, lat and planning area into hdb resale CSV
-                  
+        hdb = assign_long_lat_to_hdb_dataset(hdb_dataset)
+        hdb = assign_planning_area(hdb)          
+        
         # massage private properties dataset
                   
         # massage hdb resale dataset
