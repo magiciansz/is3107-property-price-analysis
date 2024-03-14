@@ -7,7 +7,7 @@ import requests
 #import pandas for data wrangling
 import pandas as pd
 
-from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area
+from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset
 
 ################################### KEYS #######################################
 # fill in following. Running API calls to get access tokens through VS Code / Collab always results in errors, use Postman
