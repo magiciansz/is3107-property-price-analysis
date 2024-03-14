@@ -75,16 +75,16 @@ def assign_long_lat_to_private_property_dataset(dataset, ONEMAP_TOKEN):
       property['lat'], property['long'] = coordinates_to_lat_long(property['x'], property['y'], ONEMAP_TOKEN)
     return dataset
 
+#this function takes in a URA dataset, and assigns the planning area based on the helper function above
 def assign_planning_area_to_private_property_dataset(dataset, ONEMAP_TOKEN):
   for property in dataset:
     if 'lat' in property and 'long' in property:
       property['planning_area'] = get_planning_area_name_from_lat_long(property['lat'], property['long'], ONEMAP_TOKEN)
     return dataset
 
-
 #this function takes in a search string (assumes previously concatenated by user),
 ##returns two strings: lat and long values of the property respectively
-def addr_to_lat_long (search_term):
+def addr_to_lat_long(search_term):
   data = {
     "searchVal": search_term,
     "returnGeom": "Y",
@@ -103,3 +103,14 @@ def addr_to_lat_long (search_term):
     return ("NA", "NA")
   else:
     return lat, long
+
+# this function takes in a HDB dataset, and assigns the lat and long of first search result based on concatenated address, block and street name columns
+def assign_long_lat_to_hdb_dataset(dataset):
+  for property in dataset:
+    search_term = property["address"] = property["block"] + " " + property["street_name"]
+    property['lat'], property['long'] = addr_to_lat_long(search_term)
+    return dataset
+
+#this function takes in a URA OR HDB dataset, and assigns the planning area based on the helper function above
+def assign_planning_area(dataset, ONEMAP_TOKEN):
+  return assign_planning_area_to_private_property_dataset(dataset, ONEMAP_TOKEN)
