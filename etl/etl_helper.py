@@ -100,17 +100,18 @@ def addr_to_lat_long(search_term):
     long = json_data["results"][0]["LONGITUDE"]
   #if json processing fails (for reasons such as empty json response due to invalid address) return "NA" for lat and long
   except:
-    return ("NA", "NA")
+    return "NA", "NA"
   else:
     return lat, long
 
 # this function takes in a HDB dataset, and assigns the lat and long of first search result based on concatenated address, block and street name columns
 def assign_long_lat_to_hdb_dataset(dataset):
-  for property in dataset:
-    search_term = property["address"] = property["block"] + " " + property["street_name"]
-    property['lat'], property['long'] = addr_to_lat_long(search_term)
-    return dataset
+  dataset['full_address'] = dataset["block"] + " " + dataset["street_name"]
+  dataset[['lat', 'long']] = dataset[['full_address']].apply(addr_to_lat_long, axis=1, result_type='expand')
+  dataset= dataset.drop('full_address', axis=1)
+  return dataset
 
-#this function takes in a URA OR HDB dataset, and assigns the planning area based on the helper function above
-def assign_planning_area(dataset, ONEMAP_TOKEN):
-  return assign_planning_area_to_private_property_dataset(dataset, ONEMAP_TOKEN)
+#this function takes in a HDB dataset, and assigns the planning area based on the helper function above
+def assign_planning_area_to_hdb_dataset(dataset, ONEMAP_TOKEN):
+  dataset['planning_area'] = dataset.apply(lambda x: get_planning_area_name_from_lat_long(x.lat, x.long, ONEMAP_TOKEN), axis=1)
+  return dataset

@@ -54,16 +54,26 @@ def property_prices_etl():
                   file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
 
         # open hdb resale dataset
-        with open(path, 'r') as f:
+        with open(hdb_resale_dataset_path, 'r') as f:
             hdb_dataset = pd.read_csv(hdb_resale_dataset_path)
-        
-        #filter for relevant date
-        hdb_dataset = hdb_dataset[hdb_dataset['month'] >= '2019-02']
-        hdb_dataset = hdb_dataset[hdb_dataset['month'] <= '2024-01']
 
-        # add long, lat and planning area into hdb resale CSV
-        hdb = assign_long_lat_to_hdb_dataset(hdb_dataset)
-        hdb = assign_planning_area(hdb)          
+            #filter for relevant date
+            hdb_dataset = hdb_dataset[hdb_dataset['month'] >= '2019-02']
+            hdb_dataset = hdb_dataset[hdb_dataset['month'] <= '2024-01']
+
+            #add lat, long to HDB data
+            hdb = assign_long_lat_to_hdb_dataset(hdb_dataset)
+
+            #reassign index column
+            hdb = hdb.set_index(hdb["Unnamed: 0"], drop=True)
+            hdb.index.name = None
+            hdb = hdb.drop("Unnamed: 0", axis=1)
+
+            # add planning area into hdb resale CSV
+            hdb = assign_planning_area_to_hdb_dataset(hdb, onemap_token)
+
+            #output to csv         
+            hdb.to_csv('hdb_with_planning_area.csv')         
         
         # massage private properties dataset
                   
