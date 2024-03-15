@@ -1,5 +1,7 @@
 import json
 import requests
+import pandas as pd
+
 
 #this function takes in your OneMap API username, password
 #returns access token string
@@ -124,7 +126,6 @@ def extract_hdb_ura_columns_to_db(hdb_filepath, ura_filepath):
   
   # columns to feed to db
   hdb_cols_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'resale_price']
-  # TODO for discussion: def of project_id for hdb?
   hdb_cols_property = ['property_id', 'property_type', 'street', 'lease_start_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
   ura_col_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'price']
   ura_col_property = ['property_id', 'project_id', 'property_type', 'street', 'lease_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']

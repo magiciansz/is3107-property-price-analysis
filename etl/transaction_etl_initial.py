@@ -49,6 +49,29 @@ def property_prices_etl():
         return onemap_token
     
     @task
+    def initialize_db():
+        # TODO
+        # run create tables (maybe GCP)
+        pass
+    
+    @task
+    def extract_hdb():
+        # TODO maybe use API here & define filenames outside
+        # can be run tgt with other extracts
+        private_property_dataset_paths = ['privatepropertypricesbatch1(1).json', 'privatepropertypricesbatch2(1).json', 'privatepropertypricesbatch3(1).json', 'privatepropertypricesbatch4(1).json']
+        hdb_resale_dataset_path = HDB_PATH
+        return private_property_dataset_paths, hdb_resale_dataset_path
+    
+    @task
+    def extract_ura():
+        pass
+
+    @task
+    def extract_amenities():
+        # getting from api
+        pass
+
+    @task
     def extract():
         # TODO maybe use API here & define filenames outside
         private_property_dataset_paths = ['privatepropertypricesbatch1(1).json', 'privatepropertypricesbatch2(1).json', 'privatepropertypricesbatch3(1).json', 'privatepropertypricesbatch4(1).json']
@@ -108,13 +131,28 @@ def property_prices_etl():
         return URA_path_to_save, hdb_path_to_save
     
     @task
-    def load(URA_path_to_save, hdb_path_to_save):
+    def load_district():
+        # should be the first table to populate data
+        district_path = ""
+        return district_path
+    
+    @task
+    def load_amenities(district_path):
+        # should be after district table, can be run concurrently with load_transactions
+        pass
+
+
+    @task
+    def load_transactions(district_path, URA_path_to_save, hdb_path_to_save):
+        # TODO
+        # for tables project, property and transaction, can be run concurrently with load_amenities
+
         pass
 
 
     onemap_token =  authorise()
-    private_property_dataset_paths, hdb_resale_dataset_path = extract()
-    transform(private_property_dataset_paths, hdb_resale_dataset_path, onemap_token)
+    # private_property_dataset_paths, hdb_resale_dataset_path = extract()
+    # transform(private_property_dataset_paths, hdb_resale_dataset_path, onemap_token)
 
 # end define DAG
 
