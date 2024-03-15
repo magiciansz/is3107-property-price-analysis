@@ -118,7 +118,7 @@ class DataParser:
         hdb_df['remaining_lease'] = hdb_df['remaining_lease'].apply(lambda x: self._convert_format(x))
 
         # standardise column names
-        hdb_df.columns = ['transaction_year', 'transaction_month', 'type_of_sale', 'lease_duration', 'town_hdb', 'property_type', 'block', 'street', 'floor_area', 'flat_model', 'lease_start_year', 'remaining_lease', 'resale_price', 'address', 'lat', 'long', 'planning_area', 'floor_range_start', 'floor_range_end'] 
+        hdb_df.columns = ['transaction_year', 'transaction_month', 'type_of_sale', 'lease_duration', 'town_hdb', 'property_type', 'block', 'street', 'floor_area', 'flat_model', 'lease_start_year', 'remaining_lease', 'resale_price', 'address', 'lat', 'long', 'district_name', 'floor_range_start', 'floor_range_end'] 
         
         # define property_id from duplicated property-specific info
         hdb_df['property_id'] = hdb_df.groupby([
@@ -138,11 +138,12 @@ class DataParser:
                                         'address',
                                         'lat',
                                         'long',
-                                        'planning_area',
+                                        'district_name',
                                         'floor_range_start',
                                         'floor_range_end'], 
                                         sort=False).ngroup()
         
+        hdb_df.rename(columns={'address': 'project_name'}, inplace=True)
         return hdb_df
 
     def _convert_format(self, remaining_lease):
@@ -182,7 +183,9 @@ class DataParser:
         col_flat_df = pd.DataFrame(list(col_flat), index = col_flat.index)
         df = df.drop(columns=[col])
         df = df.merge(col_flat_df, left_index=True, right_index=True)
-        df['project_id'] = df.groupby(['project']).ngroup()
+        # autoincrement
+        # df['project_id'] = df.groupby(['project']).ngroup()
+        df.rename(columns={'planning_area': 'district_name'}, inplace=True)
         
         df['property_id'] = df.groupby(['street',
                                         'x',
@@ -191,7 +194,7 @@ class DataParser:
                                         #  'marketSegment',
                                         'lat',
                                         'long',
-                                        'planning_area',
+                                        'district_name',
                                         'area',
                                         'floorRange',
                                         'noOfUnits',
@@ -248,7 +251,6 @@ class DataParser:
         df_result['floor_range_start'] = floor_range_start
         df_result['floor_range_end'] = floor_range_end
         
-        # TODO for discussion: "floorRange": "B1-B5" -> NAN
         df_result['floor_range_start'] = pd.to_numeric(df_result['floor_range_start'], errors='coerce').astype('Int64')
         df_result['floor_range_end'] = pd.to_numeric(df_result['floor_range_end'], errors='coerce').astype('Int64')
 
@@ -367,13 +369,5 @@ if __name__ == "__main__":
     # Execute HDB data transformation pipeline
     hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
     hdb.to_csv('./Data/hdb_clean.csv')
-    # TODO: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
-    # HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
-    # HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
     # print(hdb.head())
     print(hdb.info())
-
-    # TODO: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
-    #*URA Dataset need to be first (eg: index 0-100), then HDB Dataset (eg: index 101-200), because URA.property_id comes from 'unflatten' function
-
-    # TODO: Split the Combined Dataset into Property Table and Transaction Table with their relevant columns

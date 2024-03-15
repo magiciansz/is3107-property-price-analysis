@@ -118,16 +118,28 @@ def assign_planning_area_to_hdb_dataset(dataset, ONEMAP_TOKEN):
   dataset['planning_area'] = dataset.apply(lambda x: get_planning_area_name_from_lat_long(x.lat, x.long, ONEMAP_TOKEN), axis=1)
   return dataset
 
+  
+def _get_projects_helper(df, district_mapping):
+  # TODO district_mapping is expected to be a df extracted from onemap api containing cols district_name and district_id
+  project_cols = ['project_name', 'district_name', 'long', 'lat']
+  df.drop_duplicates(subset = ['project_name'], inplace=True)
+  df = df.reset_index()[project_cols]
+  df = pd.merge(df, district_mapping, how='left', on=['district_name']).drop(columns=['district_name'])  
+  return df
+
 def extract_hdb_ura_columns_to_db(hdb_filepath, ura_filepath):
   # TODO
   # cleaned datasets
   hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
   ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
-  
-  # columns to feed to db
-  hdb_cols_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'resale_price']
-  hdb_cols_property = ['property_id', 'property_type', 'street', 'lease_start_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
-  ura_col_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'price']
-  ura_col_property = ['property_id', 'project_id', 'property_type', 'street', 'lease_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
 
-  pass
+  # prepare data for Project table
+  project_df = pd.concat([_get_projects_helper(ura), _get_projects_helper(hdb)])
+
+  # # columns to feed to db
+  # hdb_cols_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'resale_price']
+  # hdb_cols_property = ['property_id', 'property_type', 'street', 'lease_start_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
+  # ura_col_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'price']
+  # ura_col_property = ['property_id', 'project_id', 'property_type', 'street', 'lease_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
+
+  return project_df

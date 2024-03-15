@@ -7,9 +7,13 @@ import requests
 #import pandas for data wrangling
 import pandas as pd
 
-from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset
+from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, extract_hdb_ura_columns_to_db
 import sys
 from ..src.DataParser import DataParser
+from .src.UpdateDB import UpdateDB
+dbupdate = UpdateDB()
+kml = DataParser()
+
 import os
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
@@ -123,7 +127,6 @@ def property_prices_etl():
             URA_combined_df.to_csv(URA_path_to_save, index = False)
             
         # massage hdb resale dataset
-            kml = DataParser()
             hdb = kml.parse_hdb("hdb_with_planning_area.csv")    
             hdb_path_to_save = "{DATA_FOLDER}/hdb_clean.csv"
             hdb.to_csv(hdb_path_to_save, index=False)
@@ -131,9 +134,10 @@ def property_prices_etl():
         return URA_path_to_save, hdb_path_to_save
     
     @task
-    def load_district():
+    def load_district(district_path):
         # should be the first table to populate data
-        district_path = ""
+        district = pd.read_csv(district_path, index = False)
+        dbupdate.update_district_table(district)
         return district_path
     
     @task
@@ -146,6 +150,9 @@ def property_prices_etl():
     def load_transactions(district_path, URA_path_to_save, hdb_path_to_save):
         # TODO
         # for tables project, property and transaction, can be run concurrently with load_amenities
+
+        project_df = extract_hdb_ura_columns_to_db(hdb_path_to_save, URA_path_to_save)
+        dbupdate.update_project_table(project_df)
 
         pass
 

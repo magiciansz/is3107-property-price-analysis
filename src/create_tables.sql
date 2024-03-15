@@ -13,8 +13,7 @@ CREATE TABLE `District` (
 );
 
 CREATE TABLE `Project` (
-    -- shld not be auto_increment, pre-defined
-    `project_id` int NOT NULL ,
+    `project_id` int AUTO_INCREMENT NOT NULL ,
     `district_id` int  NOT NULL ,
     `project_name` char  NOT NULL ,
     `long` float,
@@ -22,15 +21,18 @@ CREATE TABLE `Project` (
     PRIMARY KEY (
         `project_id`
     ),
+    UNIQUE KEY (project_name),
+    -- if lat and long gotten from new python ver is diff, then update, does not require unique
     CONSTRAINT `fk_Project_district_id` FOREIGN KEY(`district_id`) REFERENCES `District` (`district_id`)
 );
 
 CREATE TABLE `Property` (
-    -- shld not be auto_increment, pre-defined
+    -- AUTO_INCREMENT?
     `property_id` int NOT NULL ,
     `project_id` int  NOT NULL ,
     `property_type` int  NOT NULL ,
     `street` varchar(256),
+    -- TODO discussion street: a broader definition than long / lat / district_id in Project?
     `lease_year` smallint,
     `lease_duration` smallint,
     `floor_range_start` tinyint,
