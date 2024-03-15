@@ -350,24 +350,28 @@ if __name__ == "__main__":
 
     # Execute URA data transformation pipeline
 
-    URA_folder = './URA Data [Final]'
+    # URA_folder = './URA Data [Final]'
+    URA_folder = './Data'
 
     URA_file_name_list = ['privatepropertypricesbatch1added', 
                           'privatepropertypricesbatch2added',
-                      'privatepropertypricesbatch3added', 'privatepropertypricesbatch4added'
+                          'privatepropertypricesbatch3added', 
+                          'privatepropertypricesbatch4added'
                           ]
     URA_file_type = 'json'
     URA_combined_df = kml.URA_data_transformation_pipeline(URA_folder, URA_file_name_list, URA_file_type)
-    print(URA_combined_df.head())
+    URA_combined_df.to_csv('./Data/URA_combined_df.csv')
+    # print(URA_combined_df.head())
     print(URA_combined_df.info())
 
     # Execute HDB data transformation pipeline
-    # hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
+    hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
+    hdb.to_csv('./Data/hdb_clean.csv')
     # TODO: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
     # HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
     # HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
     # print(hdb.head())
-    # print(hdb.info())
+    print(hdb.info())
 
     # TODO: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
     #*URA Dataset need to be first (eg: index 0-100), then HDB Dataset (eg: index 101-200), because URA.property_id comes from 'unflatten' function

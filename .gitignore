@@ -3,6 +3,7 @@
 /Data
 /dags
 /config
+/airflow_docker
 /logs
 /plugins
 *.cfg
@@ -12,3 +13,4 @@
 webserver_config.py
 *.ipynb
 # *.sql
+*.pid

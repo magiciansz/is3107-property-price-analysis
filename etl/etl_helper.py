@@ -115,3 +115,18 @@ def assign_long_lat_to_hdb_dataset(dataset):
 def assign_planning_area_to_hdb_dataset(dataset, ONEMAP_TOKEN):
   dataset['planning_area'] = dataset.apply(lambda x: get_planning_area_name_from_lat_long(x.lat, x.long, ONEMAP_TOKEN), axis=1)
   return dataset
+
+def extract_hdb_ura_columns_to_db(hdb_filepath, ura_filepath):
+  # TODO
+  # cleaned datasets
+  hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+  ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+  
+  # columns to feed to db
+  hdb_cols_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'resale_price']
+  # TODO for discussion: def of project_id for hdb?
+  hdb_cols_property = ['property_id', 'property_type', 'street', 'lease_start_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
+  ura_col_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'price']
+  ura_col_property = ['property_id', 'project_id', 'property_type', 'street', 'lease_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
+
+  pass
