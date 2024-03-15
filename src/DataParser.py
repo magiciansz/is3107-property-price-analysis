@@ -118,7 +118,7 @@ class DataParser:
         hdb_df['remaining_lease'] = hdb_df['remaining_lease'].apply(lambda x: self._convert_format(x))
 
         # standardise column names
-        hdb_df.columns = ['transaction_year', 'transaction_month', 'type_of_sale', 'lease_duration', 'town_hdb', 'property_type', 'block', 'street', 'floor_area', 'flat_model', 'lease_start_year', 'remaining_lease', 'resale_price', 'address', 'lat', 'long', 'district_name', 'floor_range_start', 'floor_range_end'] 
+        hdb_df.columns = ['transaction_year', 'transaction_month', 'type_of_sale', 'lease_duration', 'town_hdb', 'property_type', 'block', 'street', 'floor_area', 'flat_model', 'lease_year', 'remaining_lease', 'price', 'address', 'lat', 'long', 'district_name', 'floor_range_start', 'floor_range_end'] 
         
         # define property_id from duplicated property-specific info
         hdb_df['property_id'] = hdb_df.groupby([
@@ -132,7 +132,7 @@ class DataParser:
                                         'street',
                                         'floor_area',
                                         'flat_model',
-                                        'lease_start_year',
+                                        'lease_year',
                                         # 'remaining_lease',
                                         # 'resale_price',
                                         'address',

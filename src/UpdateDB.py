@@ -94,3 +94,6 @@ class UpdateDB:
             self.conn.execute(query_insert_property, row[property_cols])
 
         pass
+
+    def update_transaction_table(self, transaction_df):
+        pass

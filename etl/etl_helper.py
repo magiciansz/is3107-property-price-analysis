@@ -1,6 +1,8 @@
 import json
 import requests
 import pandas as pd
+from RetrieveDB import RetrieveDB
+getdb = RetrieveDB()
 
 
 #this function takes in your OneMap API username, password
@@ -121,14 +123,31 @@ def assign_planning_area_to_hdb_dataset(dataset, ONEMAP_TOKEN):
   
 def _get_projects_helper(df, district_mapping):
   # TODO district_mapping is expected to be a df extracted from onemap api containing cols district_name and district_id
+  # NOT NULL columns
+  df.dropna(subset=['district_name', 'project_name'], inplace=True)
   project_cols = ['project_name', 'district_name', 'long', 'lat']
   df.drop_duplicates(subset = ['project_name'], inplace=True)
   df = df.reset_index()[project_cols]
   df = pd.merge(df, district_mapping, how='left', on=['district_name']).drop(columns=['district_name'])  
   return df
 
-def extract_hdb_ura_columns_to_db(hdb_filepath, ura_filepath):
-  # TODO
+def _get_property_helper(df):
+  property_cols = ['project_id', 'property_type', 'street', 'lease_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
+  df['project_id'] = df['project_name'].apply(getdb.get_project_id)
+  df = df[property_cols]
+  return df
+
+def _get_transaction_helper(df):
+  tx_cols = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'price']
+  id_values = []
+  for row in df.itertuples():
+    val = getdb.get_property_id(row.project_id, row.property_type, row.street, row.lease_year, row.lease_duration, row.floor_range_start, row.floor_range_end, row.floor_area)
+    id_values.append(val)
+  df['property_id'] = id_values
+  df = df[tx_cols]
+  return df
+
+def load_hdb_ura_to_project(hdb_filepath, ura_filepath):
   # cleaned datasets
   hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
   ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
@@ -136,10 +155,16 @@ def extract_hdb_ura_columns_to_db(hdb_filepath, ura_filepath):
   # prepare data for Project table
   project_df = pd.concat([_get_projects_helper(ura), _get_projects_helper(hdb)])
 
-  # # columns to feed to db
-  # hdb_cols_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'resale_price']
-  # hdb_cols_property = ['property_id', 'property_type', 'street', 'lease_start_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
-  # ura_col_tx = ['property_id', 'transaction_year', 'transaction_month', 'type_of_sale', 'price']
-  # ura_col_property = ['property_id', 'project_id', 'property_type', 'street', 'lease_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
-
   return project_df
+
+def load_hdb_ura_to_property(hdb_filepath, ura_filepath):
+  hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+  ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+  property_df = pd.concat([_get_property_helper(ura), _get_property_helper(hdb)])
+  return property_df
+
+def load_hdb_ura_to_transaction(hdb_filepath, ura_filepath):
+  hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+  ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+  transaction_df = pd.concat([_get_transaction_helper(ura), _get_transaction_helper(hdb)])
+  return transaction_df

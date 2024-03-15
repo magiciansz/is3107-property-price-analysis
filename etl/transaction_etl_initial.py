@@ -7,7 +7,7 @@ import requests
 #import pandas for data wrangling
 import pandas as pd
 
-from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, extract_hdb_ura_columns_to_db
+from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
 import sys
 from ..src.DataParser import DataParser
 from .src.UpdateDB import UpdateDB
@@ -57,23 +57,7 @@ def property_prices_etl():
         # TODO
         # run create tables (maybe GCP)
         pass
-    
-    @task
-    def extract_hdb():
-        # TODO maybe use API here & define filenames outside
-        # can be run tgt with other extracts
-        private_property_dataset_paths = ['privatepropertypricesbatch1(1).json', 'privatepropertypricesbatch2(1).json', 'privatepropertypricesbatch3(1).json', 'privatepropertypricesbatch4(1).json']
-        hdb_resale_dataset_path = HDB_PATH
-        return private_property_dataset_paths, hdb_resale_dataset_path
-    
-    @task
-    def extract_ura():
-        pass
 
-    @task
-    def extract_amenities():
-        # getting from api
-        pass
 
     @task
     def extract():
@@ -151,8 +135,14 @@ def property_prices_etl():
         # TODO
         # for tables project, property and transaction, can be run concurrently with load_amenities
 
-        project_df = extract_hdb_ura_columns_to_db(hdb_path_to_save, URA_path_to_save)
+        project_df = load_hdb_ura_to_project(hdb_path_to_save, URA_path_to_save)
         dbupdate.update_project_table(project_df)
+
+        property_df = load_hdb_ura_to_property(hdb_path_to_save, URA_path_to_save)
+        # 
+        
+        transaction_df = load_hdb_ura_to_transaction(hdb_path_to_save, URA_path_to_save)
+        dbupdate.update_transaction_table(transaction_df)
 
         pass
 

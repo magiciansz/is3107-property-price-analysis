@@ -1,6 +1,8 @@
 .env
 /.venv
-/Data
+/Data/*
+!/Data/URA_combined_df.csv
+!/Data/hdb_clean.csv
 /dags
 /config
 /airflow_docker

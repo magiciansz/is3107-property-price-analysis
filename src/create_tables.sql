@@ -3,9 +3,9 @@ CREATE DATABASE IF NOT EXISTS PropertyPrice;
 USE PropertyPrice;
 
 CREATE TABLE `District` (
-    -- shld not be auto_increment, pre-defined
     `district_id` int NOT NULL ,
-    `district_name` char NOT NULL ,
+    `district_name` varchar(50) NOT NULL ,
+    -- update coordinate datatype when district data is avail
     `coordinates` char ,
     PRIMARY KEY (
         `district_id`
@@ -15,7 +15,7 @@ CREATE TABLE `District` (
 CREATE TABLE `Project` (
     `project_id` int AUTO_INCREMENT NOT NULL ,
     `district_id` int  NOT NULL ,
-    `project_name` char  NOT NULL ,
+    `project_name` varchar(100) NOT NULL ,
     `long` float,
     `lat` float,
     PRIMARY KEY (
@@ -28,10 +28,10 @@ CREATE TABLE `Project` (
 
 CREATE TABLE `Property` (
     -- AUTO_INCREMENT?
-    `property_id` int NOT NULL ,
+    `property_id` int AUTO_INCREMENT NOT NULL ,
     `project_id` int  NOT NULL ,
-    `property_type` int  NOT NULL ,
-    `street` varchar(256),
+    `property_type` varchar(25),
+    `street` varchar(100),
     -- TODO discussion street: a broader definition than long / lat / district_id in Project?
     `lease_year` smallint,
     `lease_duration` smallint,
@@ -41,6 +41,7 @@ CREATE TABLE `Property` (
     PRIMARY KEY (
         `property_id`
     ),
+    UNIQUE KEY (project_id, property_type, street, lease_year, lease_duration, floor_range_start, floor_range_end, floor_area),
     CONSTRAINT `fk_Property_project_id` FOREIGN KEY(`project_id`) REFERENCES `Project` (`project_id`)
 );
 
@@ -49,8 +50,9 @@ CREATE TABLE `Transaction` (
     `property_id` int  NOT NULL ,
     `transaction_year` smallint  NOT NULL ,
     `transaction_month` tinyint  NOT NULL ,
-    `type_of_sale` tinyint  NOT NULL ,
-    `price` int  NOT NULL ,
+    `type_of_sale` varchar(15)  NOT NULL ,
+    -- can discuss the efficiency issue of storing varchar vs char
+    `price` float  NOT NULL ,
     PRIMARY KEY (
         `transaction_id`
     ),
