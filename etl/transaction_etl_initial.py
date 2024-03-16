@@ -7,7 +7,7 @@ import requests
 #import pandas for data wrangling
 import pandas as pd
 
-from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
+from etl_helper import one_map_authorise, ura_authorise, extract_private_property_data, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
 import sys
 from ..src.DataParser import DataParser
 from ..src.UpdateDB import UpdateDB
@@ -20,18 +20,20 @@ import os
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
 
-# define global variables
+
+
+################################### KEYS #######################################
+# save username and password to .env and run
+ONEMAP_USERNAME = os.environ['ONEMAP_USERNAME']
+ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
+URA_ACCESS_KEY = os.environ['URA_ACCESS_KEY']
+URA_BATCHES = [1, 2, 3, 4]
+URA_EXTRACT_PATH = 'privatepropertyprices'
+URA_ADDED_FIELDS_PATH = 'privatepropertypricesadded'
 DATA_FOLDER = "../Data"
 HDB_DATA = 'ResaleflatpricesbasedonregistrationdatefromJan2017onwards.csv'
 HDB_PATH = DATA_FOLDER / HDB_DATA
 URA_FILETYPE = 'json'
-
-################################### KEYS #######################################
-# fill in following. Running API calls to get access tokens through VS Code / Collab always results in errors, use Postman
-# save username and password to .env and run
-# GET https://www.ura.gov.sg/uraDataService/insertNewToken.action -H "AccessKey: accesskey"
-ONEMAP_USERNAME = os.environ['ONEMAP_USERNAME']
-ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
 # end define variables
 
 
@@ -48,11 +50,11 @@ default_args = {
 
 @dag(dag_id='is3107_project_etl', default_args=default_args, schedule=None, catchup=False, tags=['final_project'])
 def property_prices_etl():
-    onemap_token = ''
     @task
     def authorise():
-        onemap_token = one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
-        return onemap_token
+        onemap_access_token = one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
+        ura_access_token = ura_authorise(URA_ACCESS_KEY)
+        return onemap_access_token, ura_access_token
     
     @task
     def create_tables_db(create_tables_sql):
@@ -68,26 +70,30 @@ def property_prices_etl():
 
 
     @task
-    def extract():
+    def extract(ura_access_token):
         # TODO maybe use API here & define filenames outside
-        private_property_dataset_paths = ['privatepropertypricesbatch1(1).json', 'privatepropertypricesbatch2(1).json', 'privatepropertypricesbatch3(1).json', 'privatepropertypricesbatch4(1).json']
+        private_property_prices_data = {'Status': 'Success', 'Result': []}
+        for batch in URA_BATCHES:
+                data = extract_private_property_data(batch, URA_ACCESS_KEY, ura_access_token)
+                for entry in data['Result']:
+                        private_property_prices_data['Result'].append(entry)
+                
+        private_property_prices_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '.json'
+        with open(private_property_prices_dataset_path, 'w') as f:
+                json.dump(private_property_prices_data, f)
         hdb_resale_dataset_path = HDB_PATH
-        return private_property_dataset_paths, hdb_resale_dataset_path
+        return private_property_prices_dataset_path, hdb_resale_dataset_path
     
-    def transform(private_property_dataset_paths, hdb_resale_dataset_path):
-        private_property_dataset_edited_paths = ['privatepropertypricesbatch1edited.json', 'privatepropertypricesbatch2edited.json'
-                                                 , 'privatepropertypricesbatch3edited.json', 'privatepropertypricesbatch4edited.json']
-        private_property_datasets = []
+    def transform(private_property_prices_dataset_path, hdb_resale_dataset_path, onemap_access_token):
         # open private property files, convert them into dictionaries from JSON
-        for path in private_property_dataset_paths:
-            with open(path, 'r') as f:
-                private_property_datasets.append(json.load(f)['Result'])
-        # add long, lat and planning area into dictionaries for private properties
-        for count, dataset in enumerate(private_property_datasets):
-            dataset = assign_long_lat_to_private_property_dataset(dataset, onemap_token)
-            dataset = assign_planning_area_to_private_property_dataset(dataset, onemap_token)
-            with open(private_property_dataset_edited_paths[count], 'w') as file:
-                  file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
+        private_property_prices_dataset_final_path = DATA_FOLDER + '/' + URA_ADDED_FIELDS_PATH + '.json'
+        with open(private_property_prices_dataset_path, 'r') as f:
+                dataset = json.load(f)['Result']
+                dataset = assign_long_lat_to_private_property_dataset(dataset, onemap_access_token)
+                dataset = assign_planning_area_to_private_property_dataset(dataset, onemap_access_token)
+                
+                with open(private_property_prices_dataset_final_path, 'w') as file:
+                        file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
 
         # open hdb resale dataset
         with open(hdb_resale_dataset_path, 'r') as f:
@@ -106,7 +112,7 @@ def property_prices_etl():
             hdb = hdb.drop("Unnamed: 0", axis=1)
 
             # add planning area into hdb resale CSV
-            hdb = assign_planning_area_to_hdb_dataset(hdb, onemap_token)
+            hdb = assign_planning_area_to_hdb_dataset(hdb, onemap_access_token)
 
             #output to csv         
             hdb.to_csv('hdb_with_planning_area.csv')         
@@ -114,7 +120,7 @@ def property_prices_etl():
             
         # massage private properties dataset
             # TODO check w another team on private_property_dataset_edited_paths
-            URA_combined_df = kml.URA_data_transformation_pipeline(DATA_FOLDER, private_property_dataset_edited_paths, URA_FILETYPE)
+            URA_combined_df = kml.URA_data_transformation_pipeline(DATA_FOLDER, URA_ADDED_FIELDS_PATH, URA_FILETYPE)
             URA_path_to_save = "{DATA_FOLDER}/URA_combined_df.csv"
             URA_combined_df.to_csv(URA_path_to_save, index = False)
             
@@ -155,7 +161,7 @@ def property_prices_etl():
         pass
 
 
-    onemap_token =  authorise()
+    onemap_access_token, ura_access_token =  authorise()
     # private_property_dataset_paths, hdb_resale_dataset_path = extract()
     # transform(private_property_dataset_paths, hdb_resale_dataset_path, onemap_token)
 

@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 from RetrieveDB import RetrieveDB
 getdb = RetrieveDB()
+import time
 
 
 #this function takes in your OneMap API username, password
@@ -21,13 +22,26 @@ def one_map_authorise(username, password):
 
   return json_data['access_token']
 
+def ura_authorise(ura_access_key):
+  auth_url = 'https://www.ura.gov.sg/uraDataService/insertNewToken.action'
+  headers = {'AccessKey': ura_access_key, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
+  response = requests.post(auth_url, headers=headers)
+  return response.json()['Result']
+
+
+def extract_private_property_data(batch_no, ura_access_key, ura_access_token):
+    url = 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=PMI_Resi_Transaction'
+    headers = {'AccessKey': ura_access_key, 'Token': ura_access_token, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
+    params = {'batch': batch_no}
+    data = requests.get(url, headers=headers, params=params)
+    return data.json()
 
 # this function takes in two values, x and y coordinates.
 # it returns two strings: the latitude and longitude corresponding to these x and y coordinates
 def coordinates_to_lat_long(x, y, ONEMAP_TOKEN):
     location = x + ',' + y
     url = 'https://www.onemap.gov.sg/api/public/revgeocodexy'
-    headers = {"Authorization": ONEMAP_TOKEN}
+    headers = {"Authorization": ONEMAP_TOKEN, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
     params = {
         'location': location,
         'buffer': 40,
@@ -38,12 +52,15 @@ def coordinates_to_lat_long(x, y, ONEMAP_TOKEN):
     try:
       response = requests.get(url, params=params, headers=headers)
       response = response.json()['GeocodeInfo']
-
-      lat, long = response[0]['LATITUDE'], response[0]['LONGITUDE']
     except:
       return ("NA", "NA")
     else:
-      return lat, long
+      try:
+        lat, long = response[0]['LATITUDE'], response[0]['LONGITUDE']
+      except:
+        return ("NA", "NA")
+      else:
+        return lat, long
     
 
 #this function takes in two values: lat and long
@@ -74,17 +91,43 @@ def get_planning_area_name_from_lat_long(lat, long, ONEMAP_TOKEN):
     
 # this function takes in a URA dataset, and assigns the lat and long based on the helper function above.
 def assign_long_lat_to_private_property_dataset(dataset, ONEMAP_TOKEN):
-  for property in dataset:
+  function_start = time.time()
+  coordinates_mapping = {}
+  total_entries = len(dataset)
+  for count, property in enumerate(dataset):
+    start = time.time()
+    print('progress: ' + str(count) + '/' + str(total_entries) + ' for lat-long conversion')
     if 'x' in property and 'y' in property:
-      property['lat'], property['long'] = coordinates_to_lat_long(property['x'], property['y'], ONEMAP_TOKEN)
-    return dataset
+      x, y = property['x'], property['y']
+      if (x, y) not in coordinates_mapping:
+          coordinates_mapping[(x, y)] = coordinates_to_lat_long(x, y, ONEMAP_TOKEN)
+      property['lat'], property['long'] = coordinates_mapping[(x, y)]
+    else:
+      property['lat'], property['long'] = "NA", "NA"
+    end = time.time()
+    print(property['lat'], property['long'])
+    print('time taken for ' + str(count) + '/' + str(total_entries) + ' for lat-long conversion is ' + str(end - start))
+  function_end = time.time()
+  print('time taken for whole function is ' + str(function_end - function_start))
+  return dataset
 
-#this function takes in a URA dataset, and assigns the planning area based on the helper function above
 def assign_planning_area_to_private_property_dataset(dataset, ONEMAP_TOKEN):
-  for property in dataset:
-    if 'lat' in property and 'long' in property:
-      property['planning_area'] = get_planning_area_name_from_lat_long(property['lat'], property['long'], ONEMAP_TOKEN)
-    return dataset
+  function_start = time.time()
+  coordinates_to_district_mapping = {}
+  total_entries = len(dataset)
+  for count, property in enumerate(dataset):
+    start = time.time()
+    print('progress: ' + str(count) + '/' + str(total_entries) + ' for planning area')
+    lat, long = property['lat'], property['long']
+    if (lat, long) not in coordinates_to_district_mapping:
+      coordinates_to_district_mapping[(lat, long)] = get_planning_area_name_from_lat_long(property['lat'], property['long'], ONEMAP_TOKEN)
+    property['planning_area'] = coordinates_to_district_mapping[(lat, long)]
+    end = time.time()
+    print(property['planning_area'])
+    print('time taken for ' + str(count) + '/' + str(total_entries) + ' for planning area is ' + str(end - start))
+  function_end = time.time()
+  print('time taken for whole function is ' + str(function_end - function_start))
+  return dataset
 
 #this function takes in a search string (assumes previously concatenated by user),
 ##returns two strings: lat and long values of the property respectively

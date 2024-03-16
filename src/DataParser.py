@@ -384,27 +384,26 @@ class DataParser:
         print("Save success: {file_path}".format(file_path=file_path))
 
     # URA Data transformation pipeline
-    def URA_data_transformation_pipeline(self, folder, file_name_list, file_type):
+    def URA_data_transformation_pipeline(self, folder, file_name, file_type):
         """URA data transformation steps
 
         Args:
             folder (string path): folder to read data from 
-            file_name_list (list): data files in input folder
+            file_name (string): data file in input folder
             file_type (filetype): URA json files
 
         Returns:
             DataFrame: URA dataframe based on the db definition
         """
         private_properties_df_final = []
-        for file_name in file_name_list:
-            file_path = "{folder}/{file_name}.{file_type}".format(folder=folder, file_name=file_name, file_type=file_type)
-            with open(file_path, 'r') as file:
-                # Load JSON data from the file
-                try:
-                    data = json.load(file)['Result']
-                except KeyError:
-                    data = json.load(data)
-                private_properties_df_final.extend(data)
+        file_path = "{folder}/{file_name}.{file_type}".format(folder=folder, file_name=file_name, file_type=file_type)
+        with open(file_path, 'r') as file:
+            # Load JSON data from the file
+            try:
+                data = json.load(file)['Result']
+            except KeyError:
+                data = json.load(data)
+            private_properties_df_final.extend(data)            
         private_properties_df_final = pd.DataFrame(private_properties_df_final)
         
         # private_properties_df_final = remove_properties_without_latlong(file_name, private_properties_df, 'lat', 'long')
@@ -460,13 +459,10 @@ if __name__ == "__main__":
     # URA_folder = './URA Data [Final]'
     URA_folder = './Data'
 
-    URA_file_name_list = ['privatepropertypricesbatch1added', 
-                          'privatepropertypricesbatch2added',
-                          'privatepropertypricesbatch3added', 
-                          'privatepropertypricesbatch4added'
-                          ]
+    URA_file_name = 'privatepropertypricesadded', 
+                         
     URA_file_type = 'json'
-    URA_combined_df = kml.URA_data_transformation_pipeline(URA_folder, URA_file_name_list, URA_file_type)
+    URA_combined_df = kml.URA_data_transformation_pipeline(URA_folder, URA_file_name, URA_file_type)
     URA_combined_df.to_csv('./Data/URA_combined_df.csv')
     # print(URA_combined_df.head())
     print(URA_combined_df.info())
