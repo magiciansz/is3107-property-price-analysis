@@ -1,26 +1,52 @@
 import pandas as pd
 import numpy as np
 import os
-import mysql.connector
-from mysql.connector import errorcode
 import sqlalchemy
 import pymysql
 
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
 
+user = os.environ['LOCAL_USER']
+password=os.environ['LOCAL_PW']
+host= os.environ['LOCAL_HOST']
+port = os.environ['LOCAL_PORT']
+database=os.environ['LOCAL_DB']
+
+CREATE_TABLES_SQL_PATH = 'src/create_tables_clean.sql'
+
 class UpdateDB:
-    def __init__(self) -> None:
-        self.conn = pymysql.connect(user = os.environ['LOCAL_USER'],
-                               password=os.environ['LOCAL_PW'],
-                               host= os.environ['LOCAL_HOSTNAME'],
-                               database=os.environ['LOCAL_DB'])
-        self.pool = pymysql.create_engine(
-            "mysql+pymysql://",
-            creator = self.conn,
-        )
-        self.pool.connect()
-        
+    def __init__(self):
+        def get_connection():
+            # connect local db for testing
+            return sqlalchemy.create_engine(
+                url="mysql+pymysql://{0}:{1}@{2}:{3}/{4}".format(
+                    user, password, host, port, database
+                )
+            )
+            # return sqlalchemy.create_engine('mysql+pymysql://{user}:{password}@localhost/{database}')
+        try:
+            # GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
+            self.conn = get_connection().connect()
+            print(
+                f"Connection to the {host} for user {user} created successfully with {self.conn}.")
+        except Exception as ex:
+            print("Connection could not be made due to the following error: \n", ex)
+            
+    
+    def create_tables(self, create_tables_sql_path):
+        """Create tables in db
+
+        Args:
+            create_tables_sql (sql file): table creation scripts
+        """
+        with open(create_tables_sql_path, 'r') as create_tables_sql:
+            queries = create_tables_sql.read().split(";")
+            # print(queries)
+            for query in queries:
+                if query.strip():
+                    self.conn.execute(query)
+
     def update_district_table(self, district_df):
         return
     
@@ -97,3 +123,24 @@ class UpdateDB:
 
     def update_transaction_table(self, transaction_df):
         pass
+
+
+
+
+
+
+
+# TESTING ##########
+if __name__ == '__main__':
+    test = UpdateDB()
+    # create_table_sql = """
+    #     CREATE TABLE `District` (
+    #         `district_id` int NOT NULL ,
+    #         `district_name` varchar(50) NOT NULL ,
+    #         `coordinates` char ,
+    #         PRIMARY KEY (
+    #             `district_id`
+    #         )
+    #     );
+    #   """
+    test.create_tables(CREATE_TABLES_SQL_PATH)

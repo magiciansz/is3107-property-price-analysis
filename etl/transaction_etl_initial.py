@@ -10,7 +10,9 @@ import pandas as pd
 from etl_helper import one_map_authorise, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
 import sys
 from ..src.DataParser import DataParser
-from .src.UpdateDB import UpdateDB
+from ..src.UpdateDB import UpdateDB
+CREATE_TABLES_SQL_PATH = 'src/create_tables_clean.sql'
+
 dbupdate = UpdateDB()
 kml = DataParser()
 
@@ -53,9 +55,15 @@ def property_prices_etl():
         return onemap_token
     
     @task
-    def initialize_db():
-        # TODO
-        # run create tables (maybe GCP)
+    def create_tables_db(create_tables_sql):
+        """create tables in db
+
+        Args:
+            create_tables_sql (create tables sql path): CREATE_TABLES_SQL_PATH
+        """
+        dbupdate.create_tables(create_tables_sql)
+
+        # next step: create tables GCP
         pass
 
 
