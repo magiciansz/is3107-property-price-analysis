@@ -1,9 +1,11 @@
 from bs4 import BeautifulSoup
 import pandas as pd
+pd.options.mode.chained_assignment = None # Cancel false positive warnings
 import os
 import numpy as np
 import json
 import re
+import math
 
 
 class DataParser:
@@ -87,6 +89,111 @@ class DataParser:
             print(df.head())
 
         return df
+        
+    def _extract_data(self):
+        hawkers = self.parse_kml('HawkerCentresKML.kml')
+        pharmacies = self.parse_kml('RetailpharmacylocationsKML.kml')
+        # mrt_stations = kml.parse_kml('MasterPlan2003MRTLine.kml')
+        gyms = self.parse_kml('GymsSGKML.kml')
+        kindergartens = self.parse_kml('Kindergartens.kml')
+        carparks = self.parse_kml('URAParkingLotKML.kml')
+        parks = self.parse_kml('ParkFacilitiesKML.kml')
+        mrt_stations = pd.read_csv('mrt_lrt_data.csv')
+    
+        combined_dict = {
+            'Hawker': hawkers,
+            'Pharmacy': pharmacies,
+            'Gym': gyms,
+            'Kindergarten': kindergartens,
+            'Mrt Station': mrt_stations,
+            'Carpark': carparks,
+            'Park': parks
+        }
+        return combined_dict
+    
+    def _rename_lat_long_cols(self, data_dict):
+        data_dict['Mrt Station'] = data_dict['Mrt Station'].rename(columns={'lat':'Latitude', 'lng': 'Longitude'})
+        for key, df in data_dict.items():
+            df.rename(columns={"Latitude": "lat", "Longitude": "long"}, inplace=True)
+        return data_dict
+    
+    def _add_amenity_type(self, data_dict):
+        for amenity_name, amenity_df in data_dict.items():
+            print("Amenity type added: {amenity_name}".format(amenity_name = amenity_name))
+            data_dict[amenity_name]['Amenity_type'] = amenity_name
+        return data_dict
+    
+    def _add_mid_pt(self, amenity_dict):
+        def calculate_mid_pt(df, coords_col):
+            def get_avg(lst):
+                return sum(lst) / len(lst)
+                
+            coords_srs = df[coords_col]
+            avg_lat_list = []
+            avg_long_list = []
+            avg_alt_list = []
+            counter = 0
+            for coords_str in coords_srs:
+                try:
+                    coord_list = re.split(',| ', coords_str)
+                    coord_list = [float(value) for value in coord_list]
+                    lat_list = coord_list[1::3]
+                    long_list = coord_list[0::3]
+                    alt_list = coord_list[2::3]
+            
+                    avg_lat_list.append(get_avg(lat_list))
+                    avg_long_list.append(get_avg(long_list))
+                    avg_alt_list.append(get_avg(alt_list))
+                    counter += 1
+                except:
+                    avg_lat_list.append(pd.NA)
+                    avg_long_list.append(pd.NA)
+                    avg_alt_list.append(pd.NA)
+            df['Latitude'] = avg_lat_list
+            df['Longitude'] = avg_long_list
+            df['Altitude'] = avg_alt_list
+            df = df.drop(columns=coords_col)
+            return df
+            
+        for amenity_name, amenity_df in amenity_dict.items():
+            try:
+                amenity_dict[amenity_name] = calculate_mid_pt(amenity_df, 'coordinates')
+                print("Midpoint success: {amenity_name}".format(amenity_name = amenity_name))
+            except Exception as e:
+                continue
+        return amenity_dict
+    
+    def _save_individual_df(self, data_dict, folder_path):
+        for name, df in data_dict.items():
+            file_path = "{folder_path}/{name}.csv".format(folder_path=folder_path, name=name)
+            df.to_csv(file_path, index=False)
+        print("Data saved in {file_path}".format(file_path=file_path))
+    
+    def _combine_dict_to_df(self, combined_dict, common_cols):
+        df_list = []
+        common_cols = ["Amenity_type", "lat", "long"] # "Latitude", "Longitude"
+        for key, df in combined_dict.items():
+            df_common_cols = df[common_cols]
+            df_list.append(df_common_cols)
+            combined_df = pd.concat(df_list, ignore_index=True)
+        # combined_df = combined_df.reset_index().rename(columns={'index':'Amenity_id'})
+        return combined_df
+    
+    def amenity_data_transformation_pipeline(self, out_folder_path):
+        amenity_dict = self._extract_data()
+        amenity_dict = self._add_amenity_type(amenity_dict)
+        amenity_dict = self._add_mid_pt(amenity_dict)
+        amenity_dict = self._rename_lat_long_cols(amenity_dict)
+    
+        # Save individual transformed amenities
+        self._save_individual_df(amenity_dict, out_folder_path)
+    
+        # Combine all amenities into one dataframe and save
+        common_cols = ["Amenity_type", "lat", "long"]
+        combined_df = self._combine_dict_to_df(amenity_dict, common_cols)
+        file_path = "{folder_path}/Combined_amenities.csv".format(folder_path=out_folder_path)
+        combined_df.to_csv(file_path)
+        return combined_df
     
     ### HDB Data Transformation Functions
     def parse_hdb(self, file_path) -> pd.DataFrame:
@@ -235,7 +342,6 @@ class DataParser:
             floor_range_start = floor_range_start.str.replace('B', '-')
             floor_range_end = floor_range_end.str.replace('B', '-')
             return floor_range_start, floor_range_end
-        
         df_result = df.copy()
         floor_range = df_result[target_col].str.split('-')
         try:
@@ -266,7 +372,7 @@ class DataParser:
         df_result = df.copy()
         df_result = df_result.replace({target_col: {'1': 'New sale', '2': 'Sub sale', '3': 'Resale'}})
         return df_result
-      
+
     # Save URA dataset from dataframe to json format
     def _save_ura_dataset(self, df, file_path):
         df_dict = df.to_dict('records')
@@ -298,7 +404,7 @@ class DataParser:
                     data = json.load(data)
                 private_properties_df_final.extend(data)
         private_properties_df_final = pd.DataFrame(private_properties_df_final)
-
+        
         # private_properties_df_final = remove_properties_without_latlong(file_name, private_properties_df, 'lat', 'long')
         private_properties_df_final = self._unnest(private_properties_df_final, "transaction")
         private_properties_df_final = private_properties_df_final.drop(columns=["nettPrice"])
@@ -306,7 +412,7 @@ class DataParser:
         private_properties_df_final = self._extract_floor_range(private_properties_df_final, 'floorRange')
         private_properties_df_final = self._extract_transaction_month_and_year(private_properties_df_final, 'contractDate')
         private_properties_df_final = self._convert_type_of_sale(private_properties_df_final, 'typeOfSale')
-
+        
         # naming and type of data according to db definition
         common_cols_dict = {
             # URA_col_name: common_col_name
@@ -341,16 +447,16 @@ class DataParser:
 
 if __name__ == "__main__":
     kml = DataParser()
-    ## Testing ##
-    # hawker = kml.parse_kml('HawkerCentresKML.kml')
-    # pharm = kml.parse_kml('RetailpharmacylocationsKML.kml')
-    # mrtline = kml.parse_kml('MasterPlan2003MRTLine.kml')
-    # parking = kml.parse_kml('URAParkingLotKML.kml')
-    # hdb = kml.parse_hdb('ResaleflatpricesbasedonregistrationdatefromJan2017onwards.csv')
+    # Execute Amenity data transformation pipeline
+    
+    # amenity_out_folder_path = './Amenity Data [Final]'
+    amenity_out_folder_path = './Data'
+    amenity_combined_df = kml.amenity_data_transformation_pipeline(amenity_out_folder_path)
 
     # Execute URA data transformation pipeline
 
-    URA_folder = './URA Data [Final]'
+    # URA_folder = './URA Data [Final]'
+    URA_folder = './Data'
 
     URA_file_name_list = ['privatepropertypricesbatch1added', 
                           'privatepropertypricesbatch2added',
@@ -361,15 +467,15 @@ if __name__ == "__main__":
     print(URA_combined_df.head())
     print(URA_combined_df.info())
 
-    # Execute HDB data transformation pipeline
-    # hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
-    # TODO: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
-    # HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
-    # HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
-    # print(hdb.head())
-    # print(hdb.info())
+# Execute HDB data transformation pipeline
+# hdb = kml.parse_hdb('./Data/hdb_resale_full.csv')
+# TODO: Add HDB.property_id and project_id, number is taken from last number of URA_combined.property_id and project_id
+# HDB_property_id_start = URA_combined_df['property_id'].iloc[-1] + 1
+# HDB_project_id_start = URA_combined_df['project_id'].iloc[-1] + 1
+# print(hdb.head())
+# print(hdb.info())
 
-    # TODO: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
-    #*URA Dataset need to be first (eg: index 0-100), then HDB Dataset (eg: index 101-200), because URA.property_id comes from 'unflatten' function
+# TODO: Combine HDB and URA dataset via combined columns (also add property_id and project_id to HDB, starting number is after URA's proeprty_id and project_id)
+#*URA Dataset need to be first (eg: index 0-100), then HDB Dataset (eg: index 101-200), because URA.property_id comes from 'unflatten' function
 
-    # TODO: Split the Combined Dataset into Property Table and Transaction Table with their relevant columns
+# TODO: Split the Combined Dataset into Property Table and Transaction Table with their relevant columns
