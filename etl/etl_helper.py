@@ -1,4 +1,5 @@
 import json
+import datetime
 import requests
 import pandas as pd
 from RetrieveDB import RetrieveDB
@@ -163,6 +164,18 @@ def assign_planning_area_to_hdb_dataset(dataset, ONEMAP_TOKEN):
   dataset['planning_area'] = dataset.apply(lambda x: get_planning_area_name_from_lat_long(x.lat, x.long, ONEMAP_TOKEN), axis=1)
   return dataset
 
+# this function takes in a URA dataset, and removes records that are not relevant to the current update pipeline.
+
+def filter_current_month_dataset(dataset):
+  current_date = datetime.now()
+  formatted_date = current_date.strftime("%m%y")
+  filtered_dataset = []
+  for project in dataset:
+    valid_transactions = list(filter(lambda x: x['contractDate'] == formatted_date, project['transaction']))
+    if valid_transactions:
+      project['transaction'] = valid_transactions
+      filtered_dataset.append(project)
+  return filtered_dataset
   
 def _get_projects_helper(df, district_mapping):
   # TODO district_mapping is expected to be a df extracted from onemap api containing cols district_name and district_id
