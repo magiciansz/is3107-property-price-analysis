@@ -6,8 +6,10 @@ import json
 import requests
 #import pandas for data wrangling
 import pandas as pd
+#import time to track when is point of initilization (for hdb dataset) in order to pull 2019-02 to current year-month
+import time
 
-from etl_helper import one_map_authorise, ura_authorise, extract_private_property_data, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
+from etl_helper import one_map_authorise, ura_authorise, extract_private_property_data, get_list_of_year_months, extract_hdb_data, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
 import sys
 from ..src.DataParser import DataParser
 from ..src.UpdateDB import UpdateDB
@@ -31,9 +33,9 @@ URA_BATCHES = [1, 2, 3, 4]
 URA_EXTRACT_PATH = 'privatepropertyprices'
 URA_ADDED_FIELDS_PATH = 'privatepropertypricesadded'
 DATA_FOLDER = "../Data"
-HDB_DATA = 'ResaleflatpricesbasedonregistrationdatefromJan2017onwards.csv'
-HDB_PATH = DATA_FOLDER / HDB_DATA
+HDB_EXTRACT_PATH = 'hdbprices'
 URA_FILETYPE = 'json'
+START_YEAR_MONTH_HDB = '2019-02'
 # end define variables
 
 
@@ -70,7 +72,7 @@ def property_prices_etl():
 
 
     @task
-    def extract(ura_access_token):
+    def extract_ura(ura_access_token):
         # TODO maybe use API here & define filenames outside
         private_property_prices_data = {'Status': 'Success', 'Result': []}
         for batch in URA_BATCHES:
@@ -81,8 +83,21 @@ def property_prices_etl():
         private_property_prices_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '.json'
         with open(private_property_prices_dataset_path, 'w') as f:
                 json.dump(private_property_prices_data, f)
-        hdb_resale_dataset_path = HDB_PATH
-        return private_property_prices_dataset_path, hdb_resale_dataset_path
+        
+        return private_property_prices_dataset_path
+    
+    def extract_hdb():
+        today = time.strftime("%Y-%m")
+        list_of_year_months_to_date = get_list_of_year_months(START_YEAR_MONTH_HDB, today)
+        #initilize dict to store results
+        hdb_api = []
+        #get hdb data for all months using API (initialization)
+        list_of_year_months_to_date = get_list_of_year_months('2019-02', '2019-02')
+        for m in list_of_year_months_to_date:
+            hdb_api.extend(extract_hdb_data(m))
+        hdb_prices_dataset_path = DATA_FOLDER + '/' + HDB_EXTRACT_PATH + '.json'
+        with open(hdb_prices_dataset_path, 'w') as f:
+                json.dump(hdb_api, f)
     
     def transform(private_property_prices_dataset_path, hdb_resale_dataset_path, onemap_access_token):
         # open private property files, convert them into dictionaries from JSON
