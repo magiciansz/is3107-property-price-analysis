@@ -106,7 +106,7 @@ def property_prices_etl():
                 json.dump(hdb_api, f)
          
     @task
-    def transform(private_property_prices_dataset_path, hdb_resale_dataset_path, onemap_access_token):
+    def transform_ura(private_property_prices_dataset_path, onemap_access_token):
         # open private property files, convert them into dictionaries from JSON
         private_property_prices_dataset_final_path = DATA_FOLDER + '/' + URA_ADDED_FIELDS_PATH + '.json'
         with open(private_property_prices_dataset_path, 'r') as f:
@@ -118,42 +118,32 @@ def property_prices_etl():
                 with open(private_property_prices_dataset_final_path, 'w') as file:
                         file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
 
-        # open hdb resale dataset
-        with open(hdb_resale_dataset_path, 'r') as f:
-            hdb_dataset = pd.read_csv(hdb_resale_dataset_path)
-
-            #filter for relevant date
-            hdb_dataset = hdb_dataset[hdb_dataset['month'] >= '2019-02']
-            hdb_dataset = hdb_dataset[hdb_dataset['month'] <= '2024-01']
-
-            #add lat, long to HDB data
-            hdb = assign_long_lat_to_hdb_dataset(hdb_dataset)
-
-            #reassign index column
-            hdb = hdb.set_index(hdb["Unnamed: 0"], drop=True)
-            hdb.index.name = None
-            hdb = hdb.drop("Unnamed: 0", axis=1)
-
-            # add planning area into hdb resale CSV
-            hdb = assign_planning_area_to_hdb_dataset(hdb, onemap_access_token)
-
-            #output to csv         
-            hdb.to_csv('hdb_with_planning_area.csv')         
-        #TODO: Add transformation steps for adding lat, long then planning area for amenities datasets
-            
         # massage private properties dataset
-            # TODO check w another team on private_property_dataset_edited_paths
-            URA_combined_df = kml.URA_data_transformation_pipeline(DATA_FOLDER, URA_ADDED_FIELDS_PATH, URA_FILETYPE)
-            URA_path_to_save = "{DATA_FOLDER}/URA_combined_df.csv"
-            URA_combined_df.to_csv(URA_path_to_save, index = False)
+        # TODO check w another team on private_property_dataset_edited_paths
+        URA_combined_df = kml.URA_data_transformation_pipeline(DATA_FOLDER, URA_ADDED_FIELDS_PATH, URA_FILETYPE)
+        URA_path_to_save = "{DATA_FOLDER}/URA_combined_df.csv"
+        URA_combined_df.to_csv(URA_path_to_save, index = False)
             
-        # massage hdb resale dataset
-            hdb = kml.parse_hdb("hdb_with_planning_area.csv")    
-            hdb_path_to_save = "{DATA_FOLDER}/hdb_clean.csv"
-            hdb.to_csv(hdb_path_to_save, index=False)
         
-        return URA_path_to_save, hdb_path_to_save
+        return URA_path_to_save
     
+    @task
+    def transform_hdb(hdb_prices_dataset_path, onemap_access_token):
+        hdb_prices_dataset_final_path = DATA_FOLDER + '/' + HDB_ADDED_FIELDS_PATH + '.json'
+        with open(hdb_prices_dataset_path, 'r') as f:
+            dataset = json.load(f)
+            dataset = assign_long_lat_to_hdb_dataset(dataset)
+            dataset = assign_planning_area_to_hdb_dataset(dataset, onemap_access_token)
+            
+            with open(hdb_prices_dataset_final_path, 'w') as file:
+                file.write(json.dumps(dataset))
+        # massage hdb resale dataset
+        hdb = kml.parse_hdb("hdb_with_planning_area.csv")    
+        hdb_path_to_save = "{DATA_FOLDER}/hdb_clean.csv"
+        hdb.to_csv(hdb_path_to_save, index=False)
+        return hdb_path_to_save
+        
+   
     @task
     def load_district(district_path):
         # should be the first table to populate data
