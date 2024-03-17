@@ -155,7 +155,7 @@ def assign_planning_area_to_private_property_dataset(dataset, ONEMAP_TOKEN):
 
 #this function takes in a search string (assumes previously concatenated by user),
 ##returns two strings: lat and long values of the property respectively
-def addr_to_lat_long(search_term):
+def address_to_lat_long(search_term):
   data = {
     "searchVal": search_term,
     "returnGeom": "Y",
