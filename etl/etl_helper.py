@@ -31,6 +31,20 @@ def ura_authorise(ura_access_key):
   return response.json()['Result']
 
 ###EXTRACT RELATED FUNCTIONS
+#this function takes in one OPTIONAL argument: year, the specified year (as a STRING) to get planning area polygons, if not supplied, gives latest master plan year
+#returns a list of dicts, each dict contain pln area name and geojson string
+def extract_planning_area_polygon(ONEMAP_TOKEN, year=""):
+  url = "https://www.onemap.gov.sg/api/public/popapi/getAllPlanningarea"
+  headers = {
+          "Authorization": ONEMAP_TOKEN
+          }
+  params = {
+          "year": year
+          }
+  response = requests.request("GET", url, headers=headers, params=params)
+  json_data = json.loads(response.text)
+  return json_data['SearchResults']
+
 def extract_private_property_data(batch_no, ura_access_key, ura_access_token):
   url = 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=PMI_Resi_Transaction'
   headers = {'AccessKey': ura_access_key, 'Token': ura_access_token, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}

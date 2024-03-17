@@ -9,7 +9,7 @@ import pandas as pd
 #import time to track when is point of initilization (for hdb dataset) in order to pull 2019-02 to current year-month
 import time
 
-from etl_helper import one_map_authorise, ura_authorise, extract_private_property_data, get_list_of_year_months, extract_hdb_data, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
+from etl_helper import one_map_authorise, ura_authorise, extract_private_property_data, extract_planning_area_polygon, get_list_of_year_months, extract_hdb_data, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
 import sys
 from ..src.DataParser import DataParser
 from ..src.UpdateDB import UpdateDB
@@ -75,7 +75,10 @@ def property_prices_etl():
         # next step: create tables GCP
         pass
 
-
+    @task
+    def extract_planning_area(onemap_access_token):
+        return extract_planning_area_polygon(onemap_access_token, "2024")
+           
     @task
     def extract_ura(ura_access_token):
         # TODO maybe use API here & define filenames outside
