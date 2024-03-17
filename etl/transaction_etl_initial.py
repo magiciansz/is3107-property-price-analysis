@@ -115,8 +115,7 @@ def property_prices_etl():
             hdb = assign_planning_area_to_hdb_dataset(hdb, onemap_access_token)
 
             #output to csv         
-            hdb.to_csv('hdb_with_planning_area.csv')         
-        #TODO: Add transformation steps for adding lat, long then planning area for amenities datasets
+            hdb.to_csv('hdb_with_planning_area.csv')
             
         # massage private properties dataset
             # TODO check w another team on private_property_dataset_edited_paths
