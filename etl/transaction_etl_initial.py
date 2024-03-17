@@ -110,15 +110,14 @@ def property_prices_etl():
         # open private property files, convert them into dictionaries from JSON
         private_property_prices_dataset_final_path = DATA_FOLDER + '/' + URA_ADDED_FIELDS_PATH + '.json'
         with open(private_property_prices_dataset_path, 'r') as f:
-                dataset = json.load(f)['Result']
-                dataset = assign_long_lat_to_private_property_dataset(dataset, onemap_access_token)
-                dataset = assign_planning_area_to_private_property_dataset(dataset, onemap_access_token)
-                
-                with open(private_property_prices_dataset_final_path, 'w') as file:
-                        file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
+            dataset = json.load(f)['Result']
+            dataset = assign_long_lat_to_private_property_dataset(dataset, onemap_access_token)
+            dataset = assign_planning_area_to_private_property_dataset(dataset, onemap_access_token)
+            
+            with open(private_property_prices_dataset_final_path, 'w') as file:
+                    file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
 
-        # massage private properties dataset
-        # TODO check w another team on private_property_dataset_edited_paths
+        # massage hdb dataset
         URA_combined_df = kml.URA_data_transformation_pipeline(DATA_FOLDER, URA_ADDED_FIELDS_PATH, URA_FILETYPE)
         URA_path_to_save = "{DATA_FOLDER}/URA_combined_df.csv"
         URA_combined_df.to_csv(URA_path_to_save, index = False)
@@ -129,12 +128,12 @@ def property_prices_etl():
     def transform_hdb(hdb_prices_dataset_path, onemap_access_token):
         hdb_prices_dataset_final_path = DATA_FOLDER + '/' + HDB_ADDED_FIELDS_PATH + '.json'
         with open(hdb_prices_dataset_path, 'r') as f:
-                dataset = json.load(f)
-                dataset = assign_long_lat_to_hdb_dataset(dataset)
-                dataset = assign_planning_area_to_hdb_dataset(dataset, onemap_access_token)
-                
-                with open(hdb_prices_dataset_final_path, 'w') as file:
-                        file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
+            dataset = json.load(f)
+            dataset = assign_long_lat_to_hdb_dataset(dataset)
+            dataset = assign_planning_area_to_hdb_dataset(dataset, onemap_access_token)
+            
+            with open(hdb_prices_dataset_final_path, 'w') as file:
+                    file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
         # massage hdb resale dataset
         hdb = kml.parse_hdb("hdb_with_planning_area.csv")    
         hdb_path_to_save = "{DATA_FOLDER}/hdb_clean.csv"
