@@ -10,6 +10,7 @@ import time
 #this function takes in your OneMap API username, password
 #returns access token string
 
+###AUTHORIZATION FUNCTIONS
 def one_map_authorise(username, password):
   auth_url = "https://www.onemap.gov.sg/api/auth/post/getToken"
 
@@ -29,7 +30,7 @@ def ura_authorise(ura_access_key):
   response = requests.post(auth_url, headers=headers)
   return response.json()['Result']
 
-
+###EXTRACT RELATED FUNCTIONS
 def extract_private_property_data(batch_no, ura_access_key, ura_access_token):
   url = 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=PMI_Resi_Transaction'
   headers = {'AccessKey': ura_access_key, 'Token': ura_access_token, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
@@ -37,6 +38,29 @@ def extract_private_property_data(batch_no, ura_access_key, ura_access_token):
   data = requests.get(url, headers=headers, params=params)
   return data.json()
 
+#this function takes in two string, start date and end date, in format of %Y-%m
+#returns a list of months inbetween the two dates (inclusive)
+def get_list_of_year_months(start_year_month, end_year_month):
+  return pd.date_range(start_year_month,end_year_month, freq='MS').strftime("%Y-%m").tolist()
+
+#this function takes in a string representing the year-month of interest to be extracted from HDB dataset
+#returns a list of dictionaries, each dictionary is one row of data
+def extract_hdb_data(year_month):
+  data = {
+  "filters": '{"month":"' + year_month + '"}',
+  "limit": "10000",
+  }
+  search_url = 'https://data.gov.sg/api/action/datastore_search?resource_id=d_8b84c4ee58e3cfc0ece0d773c8ca6abc'
+
+  response = requests.request("GET", search_url, params=data)
+  #TODO: Check if number of results is at limit (suggests that there may be trruncated values)
+  #for now assume each month's data will NOT exceed 10K.
+
+  #attempt to process API response and assign lat and long values
+  json_data = json.loads(response.text)
+  return json_data['result']['records']
+
+###TRANSFORM RELATED FUNCTIONS
 # this function takes in two values, x and y coordinates.
 # it returns two strings: the latitude and longitude corresponding to these x and y coordinates
 def coordinates_to_lat_long(x, y, ONEMAP_TOKEN):
@@ -62,10 +86,9 @@ def coordinates_to_lat_long(x, y, ONEMAP_TOKEN):
       return ("NA", "NA")
     else:
       return lat, long
-    
-
+ 
 #this function takes in two values: lat and long
-##returns two strings: lat and long values of the property respectively
+##returns one string: planning area name
 def get_planning_area_name_from_lat_long(lat, long, ONEMAP_TOKEN):
   if (lat=="NA" or long=="NA"):
     return "NA"
@@ -154,16 +177,43 @@ def addr_to_lat_long(search_term):
 
 # this function takes in a HDB dataset, and assigns the lat and long of first search result based on concatenated address, block and street name columns
 def assign_long_lat_to_hdb_dataset(dataset):
-  dataset['full_address'] = dataset["block"] + " " + dataset["street_name"]
-  dataset[['lat', 'long']] = dataset[['full_address']].apply(addr_to_lat_long, axis=1, result_type='expand')
-  dataset= dataset.drop('full_address', axis=1)
+  function_start = time.time()
+  address_mapping= {}
+  total_entries = len(dataset)
+  for count, property in enumerate(dataset):
+    start = time.time()
+    print('progress: ' + str(count) + '/' + str(total_entries) + ' for lat-long conversion')
+    address = property["block"] + " " + property["street_name"]
+    if address not in address_mapping:
+      address_mapping[address] = address_to_lat_long(address)
+    property['lat'], property['long'] = address_mapping[address]
+    end = time.time()
+    print(property['lat'], property['long'])
+    print('time taken for ' + str(count) + '/' + str(total_entries) + ' for lat-long conversion is ' + str(end - start))
+  function_end = time.time()
+  print('time taken for whole function is ' + str(function_end - function_start))
   return dataset
 
 #this function takes in a HDB dataset, and assigns the planning area based on the helper function above
 def assign_planning_area_to_hdb_dataset(dataset, ONEMAP_TOKEN):
-  dataset['planning_area'] = dataset.apply(lambda x: get_planning_area_name_from_lat_long(x.lat, x.long, ONEMAP_TOKEN), axis=1)
+  function_start = time.time()
+  coordinates_to_district_mapping = {}
+  total_entries = len(dataset)
+  for count, property in enumerate(dataset):
+    start = time.time()
+    print('progress: ' + str(count) + '/' + str(total_entries) + ' for planning area')
+    lat, long = property['lat'], property['long']
+    if (lat, long) not in coordinates_to_district_mapping:
+      coordinates_to_district_mapping[(lat, long)] = get_planning_area_name_from_lat_long(property['lat'], property['long'], ONEMAP_TOKEN)
+    property['planning_area'] = coordinates_to_district_mapping[(lat, long)]
+    end = time.time()
+    print(property['planning_area'])
+    print('time taken for ' + str(count) + '/' + str(total_entries) + ' for planning area is ' + str(end - start))
+  function_end = time.time()
+  print('time taken for whole function is ' + str(function_end - function_start))
   return dataset
 
+###LOAD RELATED FUNCTIONS
 # this function takes in a URA dataset, and removes records that are not relevant to the current update pipeline.
 
 def filter_current_month_dataset(dataset):
