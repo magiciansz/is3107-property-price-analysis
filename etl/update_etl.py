@@ -6,8 +6,10 @@ import json
 import requests
 #import pandas for data wrangling
 import pandas as pd
+#import time to track when is point of update (for hdb dataset) in order to pull year-month of interest
+import time
 
-from etl_helper import one_map_authorise, filter_current_month_dataset, ura_authorise, extract_private_property_data, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
+from etl_helper import one_map_authorise, filter_current_month_dataset, ura_authorise, get_list_of_year_months, extract_hdb_data, extract_private_property_data, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
 import sys
 from ..src.DataParser import DataParser
 from ..src.UpdateDB import UpdateDB
@@ -24,17 +26,23 @@ _ = load_dotenv(find_dotenv())
 # fill in following. Running API calls to get access tokens through VS Code / Collab always results in errors, use Postman
 
 # GET https://www.ura.gov.sg/uraDataService/insertNewToken.action -H "AccessKey: accesskey"
+##access keys
 ONEMAP_USERNAME = os.environ['ONEMAP_USERNAME']
 ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
 URA_ACCESS_KEY = os.environ['URA_ACCESS_KEY']
+#common vars
+DATA_FOLDER = "../Data"
+#ura vars
 URA_BATCHES = [1, 2, 3, 4]
 URA_EXTRACT_PATH = 'privatepropertypricesupdate'
 URA_ADDED_FIELDS_PATH = 'privatepropertypricesupdateadded'
-DATA_FOLDER = "../Data"
-HDB_DATA = 'ResaleflatpricesbasedonregistrationdatefromJan2017onwards.csv'
-# HDB_PATH = DATA_FOLDER / HDB_DATA
-HDB_PATH = DATA_FOLDER + '/' + HDB_DATA
 URA_FILETYPE = 'json'
+
+#hdb vars
+HDB_EXTRACT_PATH = 'hdbprices'
+HDB_ADDED_FIELDS_PATH = 'hdbpricesadded'
+QUERY_YEAR_MONTH_HDB = '2019-02'
+
 
 default_args = {
     "owner": "airflow",
@@ -69,7 +77,7 @@ def property_prices_etl():
 
 
     @task
-    def extract(ura_access_token):
+    def extract_ura(ura_access_token):
         # TODO maybe use API here & define filenames outside
         private_property_prices_data = {'Status': 'Success', 'Result': []}
         for batch in URA_BATCHES:
@@ -80,9 +88,24 @@ def property_prices_etl():
         private_property_prices_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '.json'
         with open(private_property_prices_dataset_path, 'w') as f:
                 json.dump(private_property_prices_data, f)
-        hdb_resale_dataset_path = HDB_PATH
-        return private_property_prices_dataset_path, hdb_resale_dataset_path
+        
+        return private_property_prices_dataset_path
     
+    @task
+    def extract_hdb():
+        yesterday_calc = datetime.today() - timedelta(days=1)
+        yesterday = yesterday_calc.strftime("%Y-%m")
+        list_of_year_months_to_date = get_list_of_year_months(yesterday, yesterday)
+        #initilize dict to store results
+        hdb_api = []
+        #get hdb data for all months using API (initialization)
+        for m in list_of_year_months_to_date:
+            hdb_api.extend(extract_hdb_data(m))
+        hdb_prices_dataset_path = DATA_FOLDER + '/' + HDB_EXTRACT_PATH + '.json'
+        with open(hdb_prices_dataset_path, 'w') as f:
+                json.dump(hdb_api, f)
+         
+    @task
     def transform(private_property_prices_dataset_path, hdb_resale_dataset_path, onemap_access_token):
         # open private property files, convert them into dictionaries from JSON
         private_property_prices_dataset_final_path = DATA_FOLDER + '/' + URA_ADDED_FIELDS_PATH + '.json'

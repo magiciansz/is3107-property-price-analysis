@@ -26,7 +26,7 @@ _ = load_dotenv(find_dotenv())
 
 ################################### KEYS #######################################
 # save username and password to .env and run
-##Access keys
+##access keys
 ONEMAP_USERNAME = os.environ['ONEMAP_USERNAME']
 ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
 URA_ACCESS_KEY = os.environ['URA_ACCESS_KEY']
@@ -98,7 +98,6 @@ def property_prices_etl():
         #initilize dict to store results
         hdb_api = []
         #get hdb data for all months using API (initialization)
-        list_of_year_months_to_date = get_list_of_year_months('2019-02', '2019-02')
         for m in list_of_year_months_to_date:
             hdb_api.extend(extract_hdb_data(m))
         hdb_prices_dataset_path = DATA_FOLDER + '/' + HDB_EXTRACT_PATH + '.json'
@@ -133,7 +132,7 @@ def property_prices_etl():
             dataset = assign_planning_area_to_hdb_dataset(dataset, onemap_access_token)
             
             with open(hdb_prices_dataset_final_path, 'w') as file:
-                    file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
+                file.write(json.dumps(dataset))
         # massage hdb resale dataset
         hdb = kml.parse_hdb("hdb_with_planning_area.csv")    
         hdb_path_to_save = "{DATA_FOLDER}/hdb_clean.csv"
