@@ -31,37 +31,37 @@ def ura_authorise(ura_access_key):
 
 
 def extract_private_property_data(batch_no, ura_access_key, ura_access_token):
-    url = 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=PMI_Resi_Transaction'
-    headers = {'AccessKey': ura_access_key, 'Token': ura_access_token, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
-    params = {'batch': batch_no}
-    data = requests.get(url, headers=headers, params=params)
-    return data.json()
+  url = 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=PMI_Resi_Transaction'
+  headers = {'AccessKey': ura_access_key, 'Token': ura_access_token, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
+  params = {'batch': batch_no}
+  data = requests.get(url, headers=headers, params=params)
+  return data.json()
 
 # this function takes in two values, x and y coordinates.
 # it returns two strings: the latitude and longitude corresponding to these x and y coordinates
 def coordinates_to_lat_long(x, y, ONEMAP_TOKEN):
-    location = x + ',' + y
-    url = 'https://www.onemap.gov.sg/api/public/revgeocodexy'
-    headers = {"Authorization": ONEMAP_TOKEN, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
-    params = {
-        'location': location,
-        'buffer': 40,
-        'addressType': 'All',
-        'otherFeatures': 'N'
-    }
-    
+  location = x + ',' + y
+  url = 'https://www.onemap.gov.sg/api/public/revgeocodexy'
+  headers = {"Authorization": ONEMAP_TOKEN, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
+  params = {
+      'location': location,
+      'buffer': 40,
+      'addressType': 'All',
+      'otherFeatures': 'N'
+  }
+  
+  try:
+    response = requests.get(url, params=params, headers=headers)
+    response = response.json()['GeocodeInfo']
+  except:
+    return ("NA", "NA")
+  else:
     try:
-      response = requests.get(url, params=params, headers=headers)
-      response = response.json()['GeocodeInfo']
+      lat, long = response[0]['LATITUDE'], response[0]['LONGITUDE']
     except:
       return ("NA", "NA")
     else:
-      try:
-        lat, long = response[0]['LATITUDE'], response[0]['LONGITUDE']
-      except:
-        return ("NA", "NA")
-      else:
-        return lat, long
+      return lat, long
     
 
 #this function takes in two values: lat and long
