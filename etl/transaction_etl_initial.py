@@ -38,8 +38,8 @@ URA_EXTRACT_PATH = 'privatepropertyprices'
 URA_ADDED_FIELDS_PATH = 'privatepropertypricesadded'
 URA_FILETYPE = 'json'
 #hdb vars
-HDB_EXTRACT_PATH = 'hdbprices'
-HDB_ADDED_FIELDS_PATH = 'hdbpricesadded'
+HDB_EXTRACT_PATH = 'hdb_prices'
+HDB_ADDED_FIELDS_PATH = 'hdb_prices_added'
 START_YEAR_MONTH_HDB = '2019-02'
 # end define variables
 
