@@ -32,6 +32,8 @@ ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
 URA_ACCESS_KEY = os.environ['URA_ACCESS_KEY']
 #common vars
 DATA_FOLDER = "../Data"
+CURRENT_DATE = datetime.now()
+FORMATTED_CURR_DATE = CURRENT_DATE.strftime("%Y-%m")
 #ura vars
 URA_BATCHES = [1, 2, 3, 4]
 URA_EXTRACT_PATH = 'ura_prices_update'
@@ -40,8 +42,8 @@ URA_FILETYPE = 'json'
 
 #hdb vars
 QUERY_YEAR_MONTH_HDB = '2019-02'
-HDB_EXTRACT_PATH = 'hdb_prices_update' '_' + QUERY_YEAR_MONTH_HDB
-HDB_ADDED_FIELDS_PATH = 'hdb_prices_update_added'+ '_' + QUERY_YEAR_MONTH_HDB
+HDB_EXTRACT_PATH = 'hdb_prices_update'
+HDB_ADDED_FIELDS_PATH = 'hdb_prices_update_added'
 
 
 
@@ -86,9 +88,8 @@ def property_prices_etl():
                 for entry in data['Result']:
                         ura_prices_data['Result'].append(entry)
                 
-        current_date = datetime.now()
-        formatted_date = current_date.strftime("%m%y")
-        ura_prices_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '_' + formatted_date + '.json'
+        
+        ura_prices_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '_' + FORMATTED_CURR_DATE + '.json'
         with open(ura_prices_dataset_path, 'w') as f:
                 json.dump(ura_prices_data, f)
         
@@ -114,9 +115,7 @@ def property_prices_etl():
     @task
     def transform_ura(ura_prices_dataset_path, onemap_access_token):
         # open private property files, convert them into dictionaries from JSON
-        current_date = datetime.now()
-        formatted_date = current_date.strftime("%m%y")
-        ura_prices_dataset_final_path = DATA_FOLDER + '/' + URA_ADDED_FIELDS_PATH + '_' + formatted_date + '.json'
+        ura_prices_dataset_final_path = DATA_FOLDER + '/' + URA_ADDED_FIELDS_PATH + '_' + FORMATTED_CURR_DATE + '.json'
         with open(ura_prices_dataset_path, 'r') as f:
                 dataset = json.load(f)['Result']
                 dataset = filter_current_month_dataset(dataset)
@@ -137,7 +136,7 @@ def property_prices_etl():
     
     @task
     def transform_hdb(hdb_prices_dataset_path, onemap_access_token):
-        hdb_prices_dataset_final_path = DATA_FOLDER + '/' + HDB_ADDED_FIELDS_PATH + '.json'
+        hdb_prices_dataset_final_path = DATA_FOLDER + '/' + HDB_ADDED_FIELDS_PATH + '_' + FORMATTED_CURR_DATE + '.json'
         with open(hdb_prices_dataset_path, 'r') as f:
             dataset = json.load(f)
             dataset = assign_long_lat_to_hdb_dataset(dataset)
