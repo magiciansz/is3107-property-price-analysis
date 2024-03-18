@@ -45,7 +45,7 @@ def extract_planning_area_polygon(ONEMAP_TOKEN, year=""):
   json_data = json.loads(response.text)
   return json_data['SearchResults']
 
-def extract_private_property_data(batch_no, ura_access_key, ura_access_token):
+def extract_ura_data(batch_no, ura_access_key, ura_access_token):
   url = 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=PMI_Resi_Transaction'
   headers = {'AccessKey': ura_access_key, 'Token': ura_access_token, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
   params = {'batch': batch_no}
@@ -128,7 +128,7 @@ def get_planning_area_name_from_lat_long(lat, long, ONEMAP_TOKEN):
       return json_data[0]['pln_area_n']
     
 # this function takes in a URA dataset, and assigns the lat and long based on the helper function above.
-def assign_long_lat_to_private_property_dataset(dataset, ONEMAP_TOKEN):
+def assign_long_lat_to_ura_dataset(dataset, ONEMAP_TOKEN):
   function_start = time.time()
   coordinates_mapping = {}
   total_entries = len(dataset)
@@ -149,7 +149,7 @@ def assign_long_lat_to_private_property_dataset(dataset, ONEMAP_TOKEN):
   print('time taken for whole function is ' + str(function_end - function_start))
   return dataset
 
-def assign_planning_area_to_private_property_dataset(dataset, ONEMAP_TOKEN):
+def assign_planning_area_to_ura_dataset(dataset, ONEMAP_TOKEN):
   function_start = time.time()
   coordinates_to_district_mapping = {}
   total_entries = len(dataset)

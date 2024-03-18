@@ -395,7 +395,7 @@ class DataParser:
         Returns:
             DataFrame: URA dataframe based on the db definition
         """
-        private_properties_df_final = []
+        ura_df_final = []
         file_path = "{folder}/{file_name}.{file_type}".format(folder=folder, file_name=file_name, file_type=file_type)
         with open(file_path, 'r') as file:
             # Load JSON data from the file
@@ -403,16 +403,16 @@ class DataParser:
                 data = json.load(file)['Result']
             except KeyError:
                 data = json.load(data)
-            private_properties_df_final.extend(data)            
-        private_properties_df_final = pd.DataFrame(private_properties_df_final)
+            ura_df_final.extend(data)            
+        ura_df_final = pd.DataFrame(ura_df_final)
         
-        # private_properties_df_final = remove_properties_without_latlong(file_name, private_properties_df, 'lat', 'long')
-        private_properties_df_final = self._unnest(private_properties_df_final, "transaction")
-        private_properties_df_final = private_properties_df_final.drop(columns=["nettPrice"])
-        private_properties_df_final = self._extract_lease_year_and_duration(private_properties_df_final, 'tenure')
-        private_properties_df_final = self._extract_floor_range(private_properties_df_final, 'floorRange')
-        private_properties_df_final = self._extract_transaction_month_and_year(private_properties_df_final, 'contractDate')
-        private_properties_df_final = self._convert_type_of_sale(private_properties_df_final, 'typeOfSale')
+        # ura_df_final = remove_properties_without_latlong(file_name, ura_df, 'lat', 'long')
+        ura_df_final = self._unnest(ura_df_final, "transaction")
+        ura_df_final = ura_df_final.drop(columns=["nettPrice"])
+        ura_df_final = self._extract_lease_year_and_duration(ura_df_final, 'tenure')
+        ura_df_final = self._extract_floor_range(ura_df_final, 'floorRange')
+        ura_df_final = self._extract_transaction_month_and_year(ura_df_final, 'contractDate')
+        ura_df_final = self._convert_type_of_sale(ura_df_final, 'typeOfSale')
         
         # naming and type of data according to db definition
         common_cols_dict = {
@@ -423,7 +423,7 @@ class DataParser:
             "typeOfArea": "property_type",
             "project": "project_name",    
         }
-        private_properties_df_final = private_properties_df_final.rename(columns = common_cols_dict)
+        ura_df_final = ura_df_final.rename(columns = common_cols_dict)
 
         dtype_dict = {'x': 'float', 
               'y': 'float', 
@@ -437,14 +437,14 @@ class DataParser:
               'lease_duration': 'Int32'
               }
         # Change data types for each column
-        private_properties_df_final = private_properties_df_final.astype(dtype_dict)
+        ura_df_final = ura_df_final.astype(dtype_dict)
     
         new_file_name = 'URA_dataset_combined_new'
         new_file_path = "{folder}/{new_file_name}.{file_type}".format(folder=folder, new_file_name=new_file_name, file_type=file_type)
-        # self._save_ura_dataset(private_properties_df_final, new_file_path)
-        private_properties_df_final.to_csv(new_file_path, index=False)
+        # self._save_ura_dataset(ura_df_final, new_file_path)
+        ura_df_final.to_csv(new_file_path, index=False)
 
-        return private_properties_df_final
+        return ura_df_final
 
 if __name__ == "__main__":
     kml = DataParser()

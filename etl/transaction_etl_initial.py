@@ -9,7 +9,7 @@ import pandas as pd
 #import time to track when is point of initilization (for hdb dataset) in order to pull 2019-02 to current year-month
 import time
 
-from etl_helper import one_map_authorise, ura_authorise, extract_private_property_data, extract_planning_area_polygon, get_list_of_year_months, extract_hdb_data, assign_long_lat_to_private_property_dataset, assign_planning_area_to_private_property_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
+from etl_helper import one_map_authorise, ura_authorise, extract_ura_data, extract_planning_area_polygon, get_list_of_year_months, extract_hdb_data, assign_long_lat_to_ura_dataset, assign_planning_area_to_ura_dataset, assign_long_lat_to_hdb_dataset, assign_planning_area_to_hdb_dataset, load_hdb_ura_to_project, load_hdb_ura_to_property, load_hdb_ura_to_transaction
 import sys
 from ..src.DataParser import DataParser
 from ..src.UpdateDB import UpdateDB
@@ -34,8 +34,8 @@ URA_ACCESS_KEY = os.environ['URA_ACCESS_KEY']
 DATA_FOLDER = "../Data"
 #URA vars
 URA_BATCHES = [1, 2, 3, 4]
-URA_EXTRACT_PATH = 'privatepropertyprices'
-URA_ADDED_FIELDS_PATH = 'privatepropertypricesadded'
+URA_EXTRACT_PATH = 'ura_prices_initial'
+URA_ADDED_FIELDS_PATH = 'ura_prices_initial_added'
 URA_FILETYPE = 'json'
 #hdb vars
 HDB_EXTRACT_PATH = 'hdbprices'
@@ -82,17 +82,17 @@ def property_prices_etl():
     @task
     def extract_ura(ura_access_token):
         # TODO maybe use API here & define filenames outside
-        private_property_prices_data = {'Status': 'Success', 'Result': []}
+        ura_prices_data = {'Result': []}
         for batch in URA_BATCHES:
-                data = extract_private_property_data(batch, URA_ACCESS_KEY, ura_access_token)
+                data = extract_ura_data(batch, URA_ACCESS_KEY, ura_access_token)
                 for entry in data['Result']:
-                        private_property_prices_data['Result'].append(entry)
+                        ura_prices_data['Result'].append(entry)
                 
-        private_property_prices_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '.json'
-        with open(private_property_prices_dataset_path, 'w') as f:
-                json.dump(private_property_prices_data, f)
+        ura_prices_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '.json'
+        with open(ura_prices_dataset_path, 'w') as f:
+                json.dump(ura_prices_data, f)
         
-        return private_property_prices_dataset_path
+        return ura_prices_dataset_path
     
     @task
     def extract_hdb():
@@ -108,16 +108,16 @@ def property_prices_etl():
                 json.dump(hdb_api, f)
     
     @task
-    def transform_ura(private_property_prices_dataset_path, onemap_access_token):
+    def transform_ura(ura_prices_dataset_path, onemap_access_token):
         # open private property files, convert them into dictionaries from JSON
-        private_property_prices_dataset_final_path = DATA_FOLDER + '/' + URA_ADDED_FIELDS_PATH + '.json'
-        with open(private_property_prices_dataset_path, 'r') as f:
+        ura_prices_dataset_final_path = DATA_FOLDER + '/' + URA_ADDED_FIELDS_PATH + '.json'
+        with open(ura_prices_dataset_path, 'r') as f:
             dataset = json.load(f)['Result']
-            dataset = assign_long_lat_to_private_property_dataset(dataset, onemap_access_token)
-            dataset = assign_planning_area_to_private_property_dataset(dataset, onemap_access_token)
+            dataset = assign_long_lat_to_ura_dataset(dataset, onemap_access_token)
+            dataset = assign_planning_area_to_ura_dataset(dataset, onemap_access_token)
             
-            with open(private_property_prices_dataset_final_path, 'w') as file:
-                    file.write(json.dumps({'Status': 'Success', 'Result': dataset}))
+            with open(ura_prices_dataset_final_path, 'w') as file:
+                    file.write(json.dumps({'Result': dataset}))
 
         # massage hdb dataset
         URA_combined_df = kml.URA_data_transformation_pipeline(DATA_FOLDER, URA_ADDED_FIELDS_PATH, URA_FILETYPE)
@@ -174,8 +174,8 @@ def property_prices_etl():
 
 
     onemap_access_token, ura_access_token =  authorise()
-    # private_property_dataset_paths, hdb_resale_dataset_path = extract()
-    # transform(private_property_dataset_paths, hdb_resale_dataset_path, onemap_token)
+    # ura_dataset_paths, hdb_resale_dataset_path = extract()
+    # transform(ura_dataset_paths, hdb_resale_dataset_path, onemap_token)
 
 # end define DAG
 
