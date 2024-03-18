@@ -38,8 +38,8 @@ URA_EXTRACT_PATH = 'ura_prices_initial'
 URA_ADDED_FIELDS_PATH = 'ura_prices_initial_added'
 URA_FILETYPE = 'json'
 #hdb vars
-HDB_EXTRACT_PATH = 'hdbprices'
-HDB_ADDED_FIELDS_PATH = 'hdbpricesadded'
+HDB_EXTRACT_PATH = 'hdb_prices'
+HDB_ADDED_FIELDS_PATH = 'hdb_prices_added'
 START_YEAR_MONTH_HDB = '2019-02'
 # end define variables
 
@@ -104,8 +104,11 @@ def property_prices_etl():
         for m in list_of_year_months_to_date:
             hdb_api.extend(extract_hdb_data(m))
         hdb_prices_dataset_path = DATA_FOLDER + '/' + HDB_EXTRACT_PATH + '.json'
+        hdb_prices_data = {}
+        hdb_prices_data['Result'] = hdb_api
         with open(hdb_prices_dataset_path, 'w') as f:
-                json.dump(hdb_api, f)
+                json.dump(hdb_prices_data, f)
+        return hdb_prices_dataset_path
     
     @task
     def transform_ura(ura_prices_dataset_path, onemap_access_token):
