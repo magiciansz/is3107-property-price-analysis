@@ -106,6 +106,7 @@ def property_prices_etl():
         hdb_prices_dataset_path = DATA_FOLDER + '/' + HDB_EXTRACT_PATH + '.json'
         with open(hdb_prices_dataset_path, 'w') as f:
                 json.dump(hdb_api, f)
+        return hdb_prices_dataset_path
     
     @task
     def transform_ura(private_property_prices_dataset_path, onemap_access_token):
