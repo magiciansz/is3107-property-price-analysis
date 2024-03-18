@@ -104,8 +104,10 @@ def property_prices_etl():
         for m in list_of_year_months_to_date:
             hdb_api.extend(extract_hdb_data(m))
         hdb_prices_dataset_path = DATA_FOLDER + '/' + HDB_EXTRACT_PATH + '.json'
+        hdb_prices_data = {}
+        hdb_prices_data['Result'] = hdb_api
         with open(hdb_prices_dataset_path, 'w') as f:
-                json.dump(hdb_api, f)
+                json.dump(hdb_prices_data, f)
         return hdb_prices_dataset_path
     
     @task

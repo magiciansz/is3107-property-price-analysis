@@ -39,9 +39,10 @@ URA_ADDED_FIELDS_PATH = 'privatepropertypricesupdateadded'
 URA_FILETYPE = 'json'
 
 #hdb vars
-HDB_EXTRACT_PATH = 'hdb_prices'
-HDB_ADDED_FIELDS_PATH = 'hdb_prices_added'
 QUERY_YEAR_MONTH_HDB = '2019-02'
+HDB_EXTRACT_PATH = 'hdb_prices_update' '_' + QUERY_YEAR_MONTH_HDB
+HDB_ADDED_FIELDS_PATH = 'hdb_prices_update_added'+ '_' + QUERY_YEAR_MONTH_HDB
+
 
 
 default_args = {
@@ -101,9 +102,12 @@ def property_prices_etl():
         #get hdb data for all months using API (initialization)
         for m in list_of_year_months_to_date:
             hdb_api.extend(extract_hdb_data(m))
+        hdb_prices_data = {}
+        hdb_prices_data['Result'] = hdb_api
         hdb_prices_dataset_path = DATA_FOLDER + '/' + HDB_EXTRACT_PATH + '.json'
         with open(hdb_prices_dataset_path, 'w') as f:
-                json.dump(hdb_api, f)
+                json.dump(hdb_prices_data, f)
+        return hdb_prices_dataset_path
          
     @task
     def transform_ura(private_property_prices_dataset_path, onemap_access_token):
