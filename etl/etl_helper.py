@@ -115,17 +115,22 @@ def get_planning_area_name_from_lat_long(lat, long, ONEMAP_TOKEN):
           }
 
   response = requests.request("GET", planning_query_url, params = params, headers=headers)
-  try:
-    json_data = json.loads(response.text)
-  except:
-    return "NA"
-  else:
-    try: 
-      json_data[0]['pln_area_n']
-    except KeyError:
-      return "NA"
+  #try up to 3 times if API call fails
+  for i in range(3):
+    try:
+      json_data = json.loads(response.text)
+    except:
+      if i <=1:
+        continue
+      else:
+        return "NA"
     else:
-      return json_data[0]['pln_area_n']
+      try: 
+        json_data[0]['pln_area_n']
+      except KeyError:
+        return "NA"
+      else:
+        return json_data[0]['pln_area_n']
     
 # this function takes in a URA dataset, and assigns the lat and long based on the helper function above.
 def assign_long_lat_to_ura_dataset(dataset, ONEMAP_TOKEN):
@@ -179,15 +184,20 @@ def address_to_lat_long(search_term):
 
   response = requests.request("GET", search_url, params=data)
   #attempt to process API response and assign lat and long values
-  try:
-    json_data = json.loads(response.text)
-    lat = json_data["results"][0]["LATITUDE"]
-    long = json_data["results"][0]["LONGITUDE"]
-  #if json processing fails (for reasons such as empty json response due to invalid address) return "NA" for lat and long
-  except:
-    return "NA", "NA"
-  else:
-    return lat, long
+  #try up to 3 times if API call fails
+  for i in range(3):
+    try:
+      json_data = json.loads(response.text)
+      lat = json_data["results"][0]["LATITUDE"]
+      long = json_data["results"][0]["LONGITUDE"]
+    # if json processing fails (for reasons such as empty json response due to invalid address) return "NA" for lat and long
+    except:
+      if i <=1:
+        continue
+      else:
+        return "NA", "NA"
+    else:
+      return lat, long
 
 # this function takes in a HDB dataset, and assigns the lat and long of first search result based on concatenated address, block and street name columns
 def assign_long_lat_to_hdb_dataset(dataset):
