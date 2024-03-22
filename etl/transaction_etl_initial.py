@@ -140,8 +140,8 @@ def property_prices_etl():
             with open(hdb_prices_dataset_final_path, 'w') as file:
                 file.write(json.dumps(dataset))
         # massage hdb resale dataset
-        hdb = kml.parse_hdb("hdb_with_planning_area.csv")    
-        hdb_path_to_save = "{DATA_FOLDER}/hdb_clean.csv"
+        hdb = kml.parse_hdb(hdb_prices_dataset_final_path)    
+        hdb_path_to_save = "{DATA_FOLDER}/hdb_combined_df.csv"
         hdb.to_csv(hdb_path_to_save, index=False)
         return hdb_path_to_save
          
