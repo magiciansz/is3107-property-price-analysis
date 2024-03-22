@@ -34,6 +34,7 @@ URA_ACCESS_KEY = os.environ['URA_ACCESS_KEY']
 DATA_FOLDER = "../Data"
 #districts vars
 DISTRICTS_EXTRACT_PATH = 'districts_initial'
+DISTRICTS_ADDED_FIELDS_PATH = 'districts_initial_added'
 #URA vars
 URA_BATCHES = [1, 2, 3, 4]
 URA_EXTRACT_PATH = 'ura_prices_initial'
@@ -78,8 +79,8 @@ def property_prices_etl():
         pass
 
     @task
-    def extract_planning_area(onemap_access_token):
-        districts_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '.json'
+    def extract_districts(onemap_access_token):
+        districts_dataset_path = DATA_FOLDER + '/' + DISTRICTS_EXTRACT_PATH + '.json'
         with open(districts_dataset_path, 'w') as f:
             json.dump({'results': extract_planning_area_polygon()}, f)
         return districts_dataset_path
@@ -115,9 +116,14 @@ def property_prices_etl():
                 json.dump(hdb_prices_data, f)
         return hdb_prices_dataset_path
     @task
-    def transform_planning_area(planning_area_dataset_path):
-        pass
-         
+    def transform_districts(districts_dataset_path):
+        x = pd.read_json(districts_dataset_path)
+        x['pln_area_n'] = x['results'].apply(lambda x: x['pln_area_n'])
+        x['coord_list'] = x['results'].apply(lambda x: eval(x['geojson'])['coordinates'][0][0])
+        x = x.drop("results", axis=1)
+        districts_dataset_final_path = DATA_FOLDER + '/' + DISTRICTS_ADDED_FIELDS_PATH + '.json'
+        with open(districts_dataset_final_path, 'w') as file:
+            file.write(json.dumps(x))
          
     @task
     def transform_ura(ura_prices_dataset_path, onemap_access_token):
