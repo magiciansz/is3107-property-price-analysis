@@ -7,11 +7,11 @@ import pymysql
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
 
-user = os.environ['LOCAL_USER']
-password=os.environ['LOCAL_PW']
-host= os.environ['LOCAL_HOST']
-port = os.environ['LOCAL_PORT']
-database=os.environ['LOCAL_DB']
+user = os.environ['MYSQL_USERNAME']
+password=os.environ['MYSQL_PASSWORD']
+host= os.environ['MYSQL_HOST']
+port = os.environ['MYSQL_PORT']
+database=os.environ['MYSQL_DATABASE_NAME']
 
 class RetrieveDB:
     def __init__(self) -> None:
