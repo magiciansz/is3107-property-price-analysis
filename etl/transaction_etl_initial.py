@@ -109,7 +109,11 @@ def property_prices_etl():
         with open(hdb_prices_dataset_path, 'w') as f:
                 json.dump(hdb_prices_data, f)
         return hdb_prices_dataset_path
-    
+    @task
+    def transform_planning_area(planning_area_dataset_path):
+        pass
+         
+         
     @task
     def transform_ura(ura_prices_dataset_path, onemap_access_token):
         # open private property files, convert them into dictionaries from JSON
