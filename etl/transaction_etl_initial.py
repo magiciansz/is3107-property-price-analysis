@@ -32,6 +32,8 @@ ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
 URA_ACCESS_KEY = os.environ['URA_ACCESS_KEY']
 #common vars
 DATA_FOLDER = "../Data"
+#districts vars
+DISTRICTS_EXTRACT_PATH = 'districts_initial'
 #URA vars
 URA_BATCHES = [1, 2, 3, 4]
 URA_EXTRACT_PATH = 'ura_prices_initial'
@@ -77,7 +79,10 @@ def property_prices_etl():
 
     @task
     def extract_planning_area(onemap_access_token):
-        return extract_planning_area_polygon(onemap_access_token, "2024")
+        districts_dataset_path = DATA_FOLDER + '/' + URA_EXTRACT_PATH + '.json'
+        with open(districts_dataset_path, 'w') as f:
+            json.dump({'results': extract_planning_area_polygon()}, f)
+        return districts_dataset_path
            
     @task
     def extract_ura(ura_access_token):
