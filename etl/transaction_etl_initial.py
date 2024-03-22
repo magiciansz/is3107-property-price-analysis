@@ -154,7 +154,7 @@ def property_prices_etl():
             dataset = assign_planning_area_to_hdb_dataset(dataset, onemap_access_token)
             
             with open(hdb_prices_dataset_final_path, 'w') as file:
-                file.write(json.dumps(dataset))
+                file.write(json.dumps({'Result': dataset}))
         # massage hdb resale dataset
         hdb = kml.parse_hdb(hdb_prices_dataset_final_path)    
         hdb_path_to_save = "{DATA_FOLDER}/hdb_combined_df.csv"
