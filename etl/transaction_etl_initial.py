@@ -121,9 +121,10 @@ def property_prices_etl():
         x['pln_area_n'] = x['results'].apply(lambda x: x['pln_area_n'])
         x['coord_list'] = x['results'].apply(lambda x: eval(x['geojson'])['coordinates'][0][0])
         x = x.drop("results", axis=1)
+        x_dict = x.to_dict()
         districts_dataset_final_path = DATA_FOLDER + '/' + DISTRICTS_ADDED_FIELDS_PATH + '.json'
         with open(districts_dataset_final_path, 'w') as file:
-            file.write(json.dumps(x))
+            file.write(json.dumps({'Result': x_dict}))
          
     @task
     def transform_ura(ura_prices_dataset_path, onemap_access_token):
