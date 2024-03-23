@@ -386,7 +386,7 @@ class DataParser:
             # URA_col_name: common_col_name
             "area": "floor_area",
             "typeOfSale": "type_of_sale",
-            "typeOfArea": "property_type",
+            "propertyType": "property_type",
             "project": "project_name",
             "street": "address"
         }
