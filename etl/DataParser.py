@@ -7,6 +7,16 @@ import json
 import re
 import math
 
+# For updating data
+from etl_helper import one_map_authorise, get_planning_area_name_from_lat_long
+import requests
+pd.options.mode.chained_assignment = None # Cancel false positive warnings
+from pathlib import Path
+import kaggle
+import json
+from json import JSONDecodeError
+import shutil
+
 
 class DataParser:
     def __init__(self):
@@ -58,11 +68,6 @@ class DataParser:
                     print('check kml schema')
 
             df = pd.DataFrame(data_dict).T.reset_index().rename(columns={'index': filename.split(".")[0]})
-
-            # testing
-            # print(df.head())
-            # print(df['coordinates'].apply(len).nunique())
-
         print("Retrieve success: {filename}".format(filename = filename))
         return df
 
@@ -89,7 +94,7 @@ class DataParser:
             print(df.head())
 
         return df
-        
+
     def _extract_data(self):
         hawkers = self.parse_kml('HawkerCentresKML.kml')
         pharmacies = self.parse_kml('RetailpharmacylocationsKML.kml')
@@ -194,7 +199,123 @@ class DataParser:
         file_path = "{folder_path}/Combined_amenities.csv".format(folder_path=out_folder_path)
         combined_df.to_csv(file_path)
         return combined_df
+
+    ### UPDATE Amenity Database
+    def download_amenity_files(self):
+        def replace_and_download(amenity_file_name, amenity_file_type, amenity_url, output_folder):
+            amenity_file_path = os.path.join(output_folder, amenity_file_name)
+            archive_amenity_file_path = amenity_file_path.split('.')[-2] + "_old." + amenity_file_type
+            if Path(amenity_file_path).exists():
+                archive_amenity_file_path = amenity_file_path.split('.')[-2] + "_old." + amenity_file_type
+                print(f"Current Data set to old - {archive_amenity_file_path}")
+                os.replace(amenity_file_path, archive_amenity_file_path)
+            if amenity_file_type == 'csv':
+                print(f"DOWNLOADING FILE - {amenity_file_path}")
+                kaggle.api.dataset_download_file(amenity_url, amenity_file_name, path = output_folder)
+            elif amenity_file_type == 'kml':
+                # wget.download(url, out=amenity_file_path)
+                print(f"DOWNLOADING FILE (SIMULATE) - {amenity_file_path}")
+                shutil.copy2(archive_amenity_file_path, amenity_file_path) # SIMULATE DOWNLOAD
+            return None
+        url_dict = {
+            'Mrt Station': {'file_name': 'mrt_lrt_data.csv',
+                                 'url': 'yxlee245/singapore-train-station-coordinates'},
+            'Gym': {'file_name': 'GymsSGKML.kml',
+                   'url': ''},
+            'Hawker': {'file_name': 'HawkerCentresKML.kml',
+                       'url': ''}
+        }
+        for amenity_name, file_details in url_dict.items():
+            amenity_file_name = file_details['file_name']
+            amenity_url = file_details['url']
+            amenity_file_type = amenity_file_name.split('.')[-1]
+            # amenity_url = "{amenity_url}?{aws_access_key}".format(amenity_url=amenity_url, aws_access_key=aws_access_key)
+            output_folder = os.path.join(os.getcwd(), "Data")
+            replace_and_download(amenity_file_name, amenity_file_type, amenity_url, output_folder)
+        return url_dict
     
+    def _get_differences(self, df1, df2):
+        df1_outer = df1.merge(df2,indicator = True, how='left').loc[lambda x : x['_merge']!='both'].drop(columns=['_merge'])
+        df2_outer = df2.merge(df1,indicator = True, how='left').loc[lambda x : x['_merge']!='both'].drop(columns=['_merge'])
+        return df1_outer, df2_outer
+        
+    def remove_old_entries_pipeline(self, amenity_combined_df, old_entries_dict):
+        for amenity_name, df_old_outer in old_entries_dict.items():
+            if not df_old_outer.empty:
+                amenity_combined_df = pd.merge(amenity_combined_df, df_old_outer, indicator=True, how='outer').query('_merge=="left_only"').drop('_merge', axis=1)
+            else:
+                print(f"No entries to be removed for {amenity_name}")
+        print("Old amenities removed success!")
+        return amenity_combined_df
+    
+    def _transform_new_entries(self, amenity_dict, out_folder_path, onemap_access_token):
+        amenity_dict = self._rename_lat_long_cols(amenity_dict)
+        for amenity_name, amenity_df in amenity_dict.items():
+            amenity_dict[amenity_name]["planning_area"] = amenity_df.apply(lambda x: get_planning_area_name_from_lat_long(x.lat, x.long, onemap_access_token), axis=1)
+        amenity_dict = self._add_amenity_type(amenity_dict)
+        amenity_dict = self._add_mid_pt(amenity_dict)
+        amenity_dict = self._rename_lat_long_cols(amenity_dict)
+        # Combine all amenities into one dataframe and save
+        common_cols = ["Amenity_type", "lat", "long"]
+        combined_df = self._combine_dict_to_df(amenity_dict, common_cols)
+        file_path = "{folder_path}/Combined_amenities_to_add.csv".format(folder_path=out_folder_path)
+        combined_df.to_csv(file_path, index = False)
+        return file_path
+    
+    def add_new_entries(self, amenity_name, amenity_combined_df, df_to_add):
+        amenity_combined_df[amenity_name] = pd.concat([amenity_combined_df, df_to_add])
+        return amenity_combined_df
+    
+    def _store_remove_entries(self, target_path, target_file, remove_amenity_dict):
+        for amenity_name, amenity_df in remove_amenity_dict.items():
+            remove_amenity_dict[amenity_name] = amenity_df.to_json()
+        with open(os.path.join(target_path, target_file), 'w') as f:
+            json.dump(remove_amenity_dict, f)
+        return os.path.join(target_path, target_file)
+    
+    def load_nested_json_to_df(self, remove_entries_json_path):
+        def recurse_json(d):
+            try:
+                if isinstance(d, dict):
+                    loaded_d = d
+                else:
+                    loaded_d = json.loads(d)
+                for k, v in loaded_d.items():
+                    loaded_d[k] = recurse_json(v)
+            except (JSONDecodeError, TypeError):
+                return d
+            return loaded_d
+        with open(remove_entries_json_path) as f:
+            old_entries_dict = json.load(f)
+        for amenity_name, amenity_df in old_entries_dict.items():
+            old_entries_dict[amenity_name] = pd.DataFrame(recurse_json(amenity_df))
+        return old_entries_dict
+    
+    def transform_amenity_files_pipeline(self, url_dict, onemap_access_token):
+        def get_data(file_path, amenity_file_type):
+            if amenity_file_type == "csv":
+                return pd.read_csv(file_path)
+            elif amenity_file_type == "kml":
+                return DataParser().parse_kml(file_path).iloc[:, 1:]
+        new_amenity_dict = {}
+        remove_amenity_dict = {}
+        output_folder = os.path.join(os.getcwd(), "Data")
+        for amenity_name, amenity_details in url_dict.items():
+            amenity_file_name, amenity_url = amenity_details['file_name'], amenity_details['url']
+            amenity_file_type = amenity_file_name.split('.')[-1]
+            amenity_file_path = os.path.join(output_folder, amenity_file_name)
+            archive_amenity_file_path = amenity_file_path.split('.')[-2] + "_old." + amenity_file_type
+            
+            amenity_df, amenity_df_old = get_data(amenity_file_path, amenity_file_type), get_data(archive_amenity_file_path, amenity_file_type)
+            df_to_add, df_to_remove = self._get_differences(amenity_df, amenity_df_old)
+            new_amenity_dict[amenity_name] = df_to_add
+            remove_amenity_dict[amenity_name] = df_to_remove
+    
+        new_combined_df_path = self._transform_new_entries(new_amenity_dict, output_folder, onemap_access_token)
+            
+        remove_entries_json_path = self._store_remove_entries(output_folder, "amenities_to_remove.json", remove_amenity_dict)
+        return new_combined_df_path, remove_entries_json_path
+
     ### HDB Data Transformation Functions
     def parse_hdb(self, file_path) -> pd.DataFrame:
         
