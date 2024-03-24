@@ -316,6 +316,5 @@ class EtlHelper:
       transaction_df = pd.concat([self._get_transaction_helper(ura), self._get_transaction_helper(hdb)]).reset_index(drop=True)
       # replace pd.NA with None for inserting into SQL
       transaction_df = transaction_df.replace({np.nan: None})
-      last_transaction_id = dbretrieve.get_last_transaction_id()
-      transaction_df['property_id'] = last_transaction_id + transaction_df.index
+      transaction_df['property_id'] = dbretrieve.get_next_transaction_id() + transaction_df.index
       return transaction_df
