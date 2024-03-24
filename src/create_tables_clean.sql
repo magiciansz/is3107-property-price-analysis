@@ -55,12 +55,11 @@ CREATE TABLE IF NOT EXISTS `Amenity` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `district_id` int  NOT NULL ,
     `amenity_type` varchar(100)  NOT NULL ,
-    `long` float,
-    `lat` float,
+    `long` DOUBLE,
+    `lat` DOUBLE,
     PRIMARY KEY (
         `id`
     ),
+    UNIQUE KEY (`amenity_type`, `long`, lat),
     CONSTRAINT `fk_Amenities_district_id` FOREIGN KEY(`district_id`) REFERENCES `District` (`id`)
 );
-
-

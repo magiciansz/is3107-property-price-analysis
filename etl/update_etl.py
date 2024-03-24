@@ -132,6 +132,11 @@ def property_prices_update_etl():
         dbupdate.load_transaction_table(transaction_df)
         return transaction_df
     
+    def load_amenities(amenities_combined_df_path):
+        amenities_df = etl_helper.load_amenities_df(amenities_combined_df_path)
+        dbupdate.load_amenity_table(amenities_df)
+        return
+    
 
     onemap_access_token, ura_access_token =  authorise()
     hdb_prices_dataset_path, ura_prices_dataset_path = extract_hdb(), extract_ura(ura_access_token)
@@ -139,6 +144,8 @@ def property_prices_update_etl():
     load_projects(hdb_combined_df_path, ura_combined_df_path)
     load_properties(hdb_combined_df_path, ura_combined_df_path)
     load_transactions(hdb_combined_df_path, ura_combined_df_path)
+    # edit with filepath from transform + extract
+    load_amenities('../Data/combined_amenities.csv')
 
 # end define DAG
 

@@ -89,4 +89,9 @@ class UpdateDB:
 
         self.conn.execute(table.insert(), listToWrite)
 
+    def load_amenity_table(self, amenity_df):
+        listToWrite = amenity_df.to_dict(orient='records')
+        metadata = sqlalchemy.schema.MetaData(bind=self.engine)
+        table = sqlalchemy.Table('Amenity', metadata, autoload=True)
 
+        self.conn.execute(table.insert(append_string='ON DUPLICATE KEY UPDATE district_id = VALUES(district_id)'), listToWrite)

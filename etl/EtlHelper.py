@@ -318,3 +318,13 @@ class EtlHelper:
       transaction_df = transaction_df.replace({np.nan: None})
       transaction_df['property_id'] = dbretrieve.get_next_transaction_id() + transaction_df.index
       return transaction_df
+    
+    def load_amenities_df(self, amenities_filepath):
+      dbretrieve = RetrieveDB()
+      amenities_df = pd.read_csv(amenities_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      amenities_df.drop_duplicates(subset = ['district_name', 'lat', 'long', 'amenity_type'], inplace=True)
+      district_name_to_id_mapping = dbretrieve.get_district_name_to_id_mapping()
+      amenities_df['district_id'] = amenities_df['district_name'].map(district_name_to_id_mapping)
+      # drop column used to map district ID
+      amenities_df = amenities_df.drop('district_name', axis=1)
+      return amenities_df

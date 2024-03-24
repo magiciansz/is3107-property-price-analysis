@@ -187,9 +187,10 @@ def property_prices_initial_etl():
         return transaction_df
     
     @task
-    def load_amenities(district_path):
-        # should be after district table, can be run concurrently with load_transactions
-        pass
+    def load_amenities(amenities_combined_df_path):
+        amenities_df = etl_helper.load_amenities_df(amenities_combined_df_path)
+        dbupdate.load_amenity_table(amenities_df)
+        return
 
     # from scratch
     onemap_access_token, ura_access_token =  authorise()
@@ -203,6 +204,8 @@ def property_prices_initial_etl():
     load_projects(hdb_combined_df_path, ura_combined_df_path)
     load_properties(hdb_combined_df_path, ura_combined_df_path)
     load_transactions(hdb_combined_df_path, ura_combined_df_path)
+    # edit with filepath from transform + extract
+    load_amenities('../Data/combined_amenities.csv')
 
 # end define DAG
 
