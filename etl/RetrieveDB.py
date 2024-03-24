@@ -63,4 +63,4 @@ class RetrieveDB:
         id = results.fetchone()[0]
         if not id:
             return 1
-        return (id + 1)
+        return id + 1
