@@ -59,7 +59,7 @@ default_args = {
 }
 
 @dag(dag_id='is3107_project_etl', default_args=default_args, schedule=None, catchup=False, tags=['final_project'])
-def property_prices_etl():
+def property_prices_initial_etl():
     @task
     def authorise():
         onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
@@ -132,17 +132,17 @@ def property_prices_etl():
     @task
     def transform_ura(ura_prices_dataset_path, onemap_access_token):
         # open private property files, convert them into dictionaries from JSON
-        # ura_prices_dataset_final_path = "{DATA_FOLDER}/ura_prices_added.json".format(DATA_FOLDER = DATA_FOLDER)
-        # with open(ura_prices_dataset_path, 'r') as f:
-        #     dataset = json.load(f)['Result']
-        #     dataset = assign_long_lat_to_ura_dataset(dataset, onemap_access_token)
-        #     dataset = assign_planning_area_to_ura_dataset(dataset, onemap_access_token)
+        ura_prices_dataset_final_path = "{DATA_FOLDER}/ura_prices_added.json".format(DATA_FOLDER = DATA_FOLDER)
+        with open(ura_prices_dataset_path, 'r') as f:
+            dataset = json.load(f)['Result']
+            dataset = etl_helper.assign_long_lat_to_ura_dataset(dataset, onemap_access_token)
+            dataset = etl_helper.assign_planning_area_to_ura_dataset(dataset, onemap_access_token)
             
-        #     with open(ura_prices_dataset_final_path, 'w') as file:
-        #             file.write(json.dumps({'Result': dataset}))
+            with open(ura_prices_dataset_final_path, 'w') as file:
+                    file.write(json.dumps({'Result': dataset}))
 
         # massage hdb dataset
-        ura_combined_df = kml.URA_data_transformation_pipeline(ura_prices_dataset_path)
+        ura_combined_df = kml.URA_data_transformation_pipeline(ura_prices_dataset_final_path)
         ura_combined_df_path = "{DATA_FOLDER}/URA_combined_df.csv".format(DATA_FOLDER = DATA_FOLDER)
         ura_combined_df.to_csv(ura_combined_df_path, index = False)
             
@@ -150,16 +150,16 @@ def property_prices_etl():
     
     @task
     def transform_hdb(hdb_prices_dataset_path, onemap_access_token):
-        # hdb_prices_dataset_final_path = "{DATA_FOLDER}/hdb_prices_added.json".format(DATA_FOLDER = DATA_FOLDER)
-        # with open(hdb_prices_dataset_path, 'r') as f:
-        #     dataset = json.load(f)
-        #     dataset = assign_long_lat_to_hdb_dataset(dataset)
-        #     dataset = assign_planning_area_to_hdb_dataset(dataset, onemap_access_token)
+        hdb_prices_dataset_final_path = "{DATA_FOLDER}/hdb_prices_added.json".format(DATA_FOLDER = DATA_FOLDER)
+        with open(hdb_prices_dataset_path, 'r') as f:
+            dataset = json.load(f)['Result']
+            dataset = etl_helper.assign_long_lat_to_hdb_dataset(dataset)
+            dataset = etl_helper.assign_planning_area_to_hdb_dataset(dataset, onemap_access_token)
             
-        #     with open(hdb_prices_dataset_final_path, 'w') as file:
-        #         file.write(json.dumps(dataset))
+            with open(hdb_prices_dataset_final_path, 'w') as file:
+                file.write(json.dumps(dataset))
         # massage hdb resale dataset
-        hdb_combined_df = kml.parse_hdb(hdb_prices_dataset_path)  
+        hdb_combined_df = kml.parse_hdb(hdb_prices_dataset_final_path)  
         hdb_combined_df_path = "{DATA_FOLDER}/hdb_combined_df.csv".format(DATA_FOLDER = DATA_FOLDER)
         hdb_combined_df.to_csv(hdb_combined_df_path, index=False)
         return hdb_combined_df_path
@@ -192,21 +192,18 @@ def property_prices_etl():
         pass
 
     # from scratch
-    # onemap_access_token, ura_access_token =  authorise()
-    # hdb_prices_extract_path, ura_prices_extract_path = extract_hdb(), extract_ura(ura_access_token)
-    # hdb_prices_dataset_path, ura_prices_dataset_path = transform_hdb(hdb_prices_extract_path, onemap_access_token), transform_ura(ura_prices_extract_path, onemap_access_token)
-    
-    # from up to post addition of long / lat / planning area
-    hdb_prices_dataset_path, ura_prices_dataset_path = transform_hdb('../Data/hdb_prices_added.json'), transform_ura('../Data/ura_prices_added.json')
+    onemap_access_token, ura_access_token =  authorise()
+    hdb_prices_dataset_path, ura_prices_dataset_path = extract_hdb(), extract_ura(ura_access_token)
+    hdb_combined_df_path, ura_combined_df_path = transform_hdb(hdb_prices_dataset_path, onemap_access_token), transform_ura(ura_prices_dataset_path, onemap_access_token)
 
     # create tables + load
     create_tables_db(CREATE_TABLES_SQL_PATH)
     
     load_districts('../Data/districts_final.json')
-    load_projects(hdb_prices_dataset_path, ura_prices_dataset_path)
-    load_properties(hdb_prices_dataset_path, ura_prices_dataset_path)
-    load_transactions(hdb_prices_dataset_path, ura_prices_dataset_path)
+    load_projects(hdb_combined_df_path, ura_combined_df_path)
+    load_properties(hdb_combined_df_path, ura_combined_df_path)
+    load_transactions(hdb_combined_df_path, ura_combined_df_path)
 
 # end define DAG
 
-property_prices_etl = property_prices_etl()
+property_prices_initial_etl = property_prices_initial_etl()

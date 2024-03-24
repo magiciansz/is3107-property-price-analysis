@@ -51,10 +51,10 @@ CREATE TABLE IF NOT EXISTS `Transaction` (
 	CONSTRAINT `fk_Transaction_property_id`  FOREIGN KEY(`property_id`) REFERENCES `Property` (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Amenities` (
+CREATE TABLE IF NOT EXISTS `Amenity` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `district_id` int  NOT NULL ,
-    `amenity_type` tinyint  NOT NULL ,
+    `amenity_type` varchar(100)  NOT NULL ,
     `long` float,
     `lat` float,
     PRIMARY KEY (
