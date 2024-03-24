@@ -54,7 +54,7 @@ class RetrieveDB:
             project_details_to_id_mapping[(project_name, address, long, lat)] = id
         return project_details_to_id_mapping
     
-    def get_last_transaction_id(self):
+    def get_next_transaction_id(self):
         query = sqlalchemy.text("""
                                 SELECT max(id)
                                 FROM Transaction
@@ -63,4 +63,4 @@ class RetrieveDB:
         id = results.fetchone()[0]
         if not id:
             return 1
-        return id
+        return (id + 1)
