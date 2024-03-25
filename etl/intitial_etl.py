@@ -60,11 +60,21 @@ default_args = {
 
 @dag(dag_id='is3107_project_etl', default_args=default_args, schedule=None, catchup=False, tags=['final_project'])
 def property_prices_initial_etl():
+    # @task
+    # def authorise():
+    #     onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
+    #     ura_access_token = etl_helper.ura_authorise(URA_ACCESS_KEY)
+    #     return [onemap_access_token, ura_access_token]
+
     @task
-    def authorise():
-        onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
-        ura_access_token = etl_helper.ura_authorise(URA_ACCESS_KEY)
-        return onemap_access_token, ura_access_token
+    def authorise_onemap():
+         onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
+         return onemap_access_token
+
+    @task
+    def authorise_ura():
+         ura_access_token = etl_helper.ura_authorise(URA_ACCESS_KEY)
+         return ura_access_token
     
     @task
     def create_tables_db(create_tables_sql):
@@ -193,7 +203,7 @@ def property_prices_initial_etl():
         return
 
     # from scratch
-    onemap_access_token, ura_access_token =  authorise()
+    onemap_access_token, ura_access_token = authorise_onemap(), authorise_ura()
     hdb_prices_dataset_path, ura_prices_dataset_path = extract_hdb(), extract_ura(ura_access_token)
     hdb_combined_df_path, ura_combined_df_path = transform_hdb(hdb_prices_dataset_path, onemap_access_token), transform_ura(ura_prices_dataset_path, onemap_access_token)
 

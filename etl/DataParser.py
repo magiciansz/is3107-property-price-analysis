@@ -8,7 +8,8 @@ import re
 import math
 
 # For updating data
-from etl_helper import one_map_authorise, get_planning_area_name_from_lat_long
+from EtlHelper import EtlHelper
+etl_helper = EtlHelper()
 import requests
 pd.options.mode.chained_assignment = None # Cancel false positive warnings
 from pathlib import Path
@@ -251,7 +252,7 @@ class DataParser:
     def _transform_new_entries(self, amenity_dict, out_folder_path, onemap_access_token):
         amenity_dict = self._rename_lat_long_cols(amenity_dict)
         for amenity_name, amenity_df in amenity_dict.items():
-            amenity_dict[amenity_name]["planning_area"] = amenity_df.apply(lambda x: get_planning_area_name_from_lat_long(x.lat, x.long, onemap_access_token), axis=1)
+            amenity_dict[amenity_name]["planning_area"] = amenity_df.apply(lambda x: etl_helper.get_planning_area_name_from_lat_long(x.lat, x.long, onemap_access_token), axis=1)
         amenity_dict = self._add_amenity_type(amenity_dict)
         amenity_dict = self._add_mid_pt(amenity_dict)
         amenity_dict = self._rename_lat_long_cols(amenity_dict)
