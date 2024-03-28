@@ -84,9 +84,7 @@ def property_prices_initial_etl():
             create_tables_sql (create tables sql path): CREATE_TABLES_SQL_PATH
         """
         dbupdate.create_tables(create_tables_sql)
-
-        # next step: create tables GCP
-        pass
+        return
 
     @task
     def extract_planning_area(onemap_access_token):
