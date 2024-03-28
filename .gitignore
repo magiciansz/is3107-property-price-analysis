@@ -12,5 +12,5 @@
 *.db
 *.yaml
 webserver_config.py
-*.ipynb
+# *.ipynb
 *.pid
