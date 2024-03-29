@@ -20,8 +20,8 @@ CREATE_TABLES_SQL_PATH = '../src/create_tables_clean.sql'
 dbupdate = UpdateDB()
 dbretrieve = RetrieveDB()
 etl_helper = EtlHelper()
-
 kml = DataParser()
+
 import os
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
@@ -56,12 +56,22 @@ default_args = {
 
 @dag(dag_id='is3107_project_etl', default_args=default_args, schedule=None, catchup=False, tags=['final_project'])
 def property_prices_update_etl():
-    @task
-    def authorise():
-        onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
-        ura_access_token = etl_helper.ura_authorise(URA_ACCESS_KEY)
-        return onemap_access_token, ura_access_token
+    # @task
+    # def authorise():
+    #     onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
+    #     ura_access_token = etl_helper.ura_authorise(URA_ACCESS_KEY)
+    #     return onemap_access_token, ura_access_token
 
+    @task
+    def authorise_onemap():
+         onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
+         return onemap_access_token
+
+    @task
+    def authorise_ura():
+         ura_access_token = etl_helper.ura_authorise(URA_ACCESS_KEY)
+         return ura_access_token
+    
     @task
     def extract_ura(ura_access_token):
         current_month_year = time.strftime("%m%y")
@@ -90,7 +100,6 @@ def property_prices_update_etl():
 
     @task
     def extract_amenity():
-        kml = DataParser()
         amenity_url_dict = kml.download_amenity_files(output_folder = DATA_FOLDER, first_time = False)
         print("Task 1 Complete!\n")
         return amenity_url_dict
@@ -129,12 +138,7 @@ def property_prices_update_etl():
         return hdb_combined_df_path
 
     @task
-    def transform_amenity(amenity_url_dict):
-        etl_helper = EtlHelper()
-        kml = DataParser()
-        ONEMAP_USERNAME = os.environ['ONEMAP_USERNAME']
-        ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
-        onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
+    def transform_amenity(amenity_url_dict, onemap_access_token):
         new_combined_df_path = kml.transform_amenity_files_pipeline(DATA_FOLDER, amenity_url_dict, onemap_access_token)
         print("Task 2 Complete!\n")
         return new_combined_df_path
@@ -181,17 +185,18 @@ def property_prices_update_etl():
         dbupdate.load_amenity_table(amenities_df)
         return
     
-
-    onemap_access_token, ura_access_token =  authorise()
+    # Execution pipeline
+    onemap_access_token, ura_access_token = authorise_onemap(), authorise_ura()
+    
     hdb_prices_dataset_path, ura_prices_dataset_path = extract_hdb(), extract_ura(ura_access_token)
     hdb_combined_df_path, ura_combined_df_path = transform_hdb(hdb_prices_dataset_path, onemap_access_token), transform_ura(ura_prices_dataset_path, onemap_access_token)
+    amenity_url_dict = extract_amenity()
+    new_combined_df_path = transform_amenity(amenity_url_dict, onemap_access_token)
+    combined_amenities_df_path = combine_new_amenity_data(new_combined_df_path)
+    
     load_projects(hdb_combined_df_path, ura_combined_df_path)
     load_properties(hdb_combined_df_path, ura_combined_df_path)
     load_transactions(hdb_combined_df_path, ura_combined_df_path)
-
-    amenity_url_dict = extract_amenity()
-    new_combined_df_path = transform_amenity(amenity_url_dict)
-    combined_amenities_df_path = combine_new_amenity_data(new_combined_df_path)
     load_amenities(combined_amenities_df_path)
 
 # end define DAG

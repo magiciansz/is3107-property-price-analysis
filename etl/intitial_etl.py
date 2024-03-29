@@ -135,7 +135,6 @@ def property_prices_initial_etl():
 
     @task
     def extract_amenity():
-        kml = DataParser()
         amenity_url_dict = kml.download_amenity_files(output_folder = DATA_FOLDER, first_time = True)
         print("Task 1 Complete!\n")
         return amenity_url_dict
@@ -186,16 +185,9 @@ def property_prices_initial_etl():
         hdb_combined_df.to_csv(hdb_combined_df_path, index=False)
         return hdb_combined_df_path
 
-    @task(task_id='transform_amenity_data')
-    def transform_amenity(amenity_url_dict):
-        etl_helper = EtlHelper()
-        kml = DataParser()
-        ONEMAP_USERNAME = os.environ['ONEMAP_USERNAME']
-        ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
-        onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
-        
+    @task
+    def transform_amenity(amenity_url_dict, onemap_access_token):
         amenity_src_folder_path = DATA_FOLDER
-        # amenity_src_folder_path = os.path.join(os.getcwd(), 'Data')
         amenity_out_folder_path = amenity_src_folder_path
 
         combined_amenities_file_path = kml.amenity_data_transformation_pipeline(amenity_url_dict, amenity_src_folder_path, amenity_out_folder_path, onemap_access_token)
@@ -229,12 +221,13 @@ def property_prices_initial_etl():
         dbupdate.load_amenity_table(amenities_df)
         return
 
-    # from scratch
+    # Execution pipeline
     onemap_access_token, ura_access_token = authorise_onemap(), authorise_ura()
+    
     hdb_prices_dataset_path, ura_prices_dataset_path = extract_hdb(), extract_ura(ura_access_token)
     hdb_combined_df_path, ura_combined_df_path = transform_hdb(hdb_prices_dataset_path, onemap_access_token), transform_ura(ura_prices_dataset_path, onemap_access_token)
     amenity_url_dict = extract_amenity()
-    combined_amenities_df_path = transform_amenity(amenity_url_dict)
+    combined_amenities_df_path = transform_amenity(amenity_url_dict, onemap_access_token)
 
     # create tables + load
     create_tables_db(CREATE_TABLES_SQL_PATH)
