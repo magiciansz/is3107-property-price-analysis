@@ -1,6 +1,7 @@
 .env
 /.venv
-/Data/*
+/Data/*.csv
+/Data
 !/Data/URA_combined_df.csv
 !/Data/hdb_clean.csv
 /dags
@@ -11,8 +12,9 @@
 *.cfg
 *.db
 *.yaml
-*.txt
 webserver_config.py
 *.ipynb
-# *.sql
 *.pid
+*.txt
+*.json
+*.docx
