@@ -190,8 +190,8 @@ class DataParser:
         amenity_dict = self._rename_amenity_name_cols(amenity_dict)
         amenity_dict = self._get_district_name(amenity_dict, onemap_access_token)
     
-        # Save individual transformed amenities
-        self._save_individual_df(amenity_dict, out_folder_path)
+        # Save individual transformed amenities (optional)
+        # self._save_individual_df(amenity_dict, out_folder_path)
     
         # Combine all amenities into one dataframe and save
         common_cols = ["amenity_name", "amenity_type", "lat", "long", "district_name"]
@@ -201,7 +201,7 @@ class DataParser:
         return combined_amenities_file_path
 
     ### UPDATE Amenity Database
-    def download_amenity_files(self, first_time = True):
+    def download_amenity_files(self, output_folder, first_time = True):
         def download_only(amenity_file_name, amenity_file_type, amenity_url, output_folder):
             amenity_file_path = os.path.join(output_folder, amenity_file_name)
             if amenity_file_type == 'csv':
@@ -248,7 +248,6 @@ class DataParser:
             amenity_file_name = file_details['file_name']
             amenity_url = file_details['url']
             amenity_file_type = amenity_file_name.split('.')[-1]
-            output_folder = os.path.join(os.getcwd(), "Data")
             if first_time == True:
                 download_only(amenity_file_name, amenity_file_type, amenity_url, output_folder)
             else:
@@ -311,10 +310,9 @@ class DataParser:
             old_entries_dict[amenity_name] = pd.DataFrame(recurse_json(amenity_df))
         return old_entries_dict
     
-    def transform_amenity_files_pipeline(self, url_dict, onemap_access_token):
+    def transform_amenity_files_pipeline(self, output_folder, url_dict, onemap_access_token):
         new_amenity_dict = {}
         remove_amenity_dict = {}
-        output_folder = os.path.join(os.getcwd(), "Data")
         for amenity_name, amenity_details in url_dict.items():
             amenity_file_name, amenity_url = amenity_details['file_name'], amenity_details['url']
             amenity_file_type = amenity_file_name.split('.')[-1]
