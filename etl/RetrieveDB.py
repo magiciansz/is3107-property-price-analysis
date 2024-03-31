@@ -116,11 +116,11 @@ class RetrieveDB:
             return 1
         return id + 1
     
-    def get_records_for_ml(self):
+    def get_merged_transactions(self):
         query = sqlalchemy.text(f"""
             SELECT proj.district_id, proj.long, proj.lat, 
                     tx.transaction_year, tx.transaction_month, tx.type_of_sale, tx.price,
-                    prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end, prop.floor_area
+                    prop.property_type, prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end, prop.floor_area
             FROM Project proj
             LEFT JOIN Property prop ON proj.id = prop.project_id
             LEFT JOIN Transaction tx ON prop.id = tx.property_id
@@ -129,6 +129,21 @@ class RetrieveDB:
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
     
+    def get_amenities(self):
+        query = sqlalchemy.text(f"""
+            SELECT *
+            FROM Amenity
+        """)
+        df = pd.read_sql(query, self.conn)
+        return df.to_dict('records')
+
+    def get_districts(self):
+        query = sqlalchemy.text(f"""
+            SELECT *
+            FROM District
+        """)
+        df = pd.read_sql(query, self.conn)
+        return df.to_dict('records')
 
     def get_amenity_of_type_for_ml(self, amenity_type):
         query = sqlalchemy.text(f"""

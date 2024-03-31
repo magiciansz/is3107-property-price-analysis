@@ -18,3 +18,5 @@ webserver_config.py
 *.txt
 *.json
 *.docx
+/Data/*.kml
+/Data/*.csv

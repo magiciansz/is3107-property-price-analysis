@@ -20,10 +20,12 @@ class EtlHelper:
               "password": password
               }
 
-      response = requests.request("POST", auth_url, json=payload)
-      json_data = json.loads(response.text)
+      # response = requests.request("POST", auth_url, json=payload)
+      headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
+      response = requests.post(auth_url, headers=headers, json=payload)
+      # json_data = json.loads(response.text)
 
-      return json_data['access_token']
+      return response.json()['access_token']
 
     def ura_authorise(self, ura_access_key):
       auth_url = 'https://www.ura.gov.sg/uraDataService/insertNewToken.action'
@@ -272,7 +274,7 @@ class EtlHelper:
     
     def load_district_df(self, district_filepath):
       with open(district_filepath, 'r') as file:
-         district_dict = json.load(file)
+         district_dict = json.load(file)['Result']
       district_dict['coord_list'] = {key: str(val) for key, val in district_dict['coord_list'].items()}
       district_df = pd.DataFrame(district_dict).rename(columns={"pln_area_n": "district_name", "coord_list": "coordinates"})
       return district_df
@@ -322,7 +324,7 @@ class EtlHelper:
     def load_amenities_df(self, amenities_filepath):
       dbretrieve = RetrieveDB()
       amenities_df = pd.read_csv(amenities_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
-      amenities_df.drop_duplicates(subset = ['district_name', 'lat', 'long', 'amenity_type'], inplace=True)
+      amenities_df.drop_duplicates(subset = ['lat', 'long', 'amenity_type', 'amenity_name'], inplace=True)
       district_name_to_id_mapping = dbretrieve.get_district_name_to_id_mapping()
       amenities_df['district_id'] = amenities_df['district_name'].map(district_name_to_id_mapping)
       # drop column used to map district ID
