@@ -179,13 +179,16 @@ class DataParser:
                 df_common_cols = df[common_cols]
                 df_list.append(df_common_cols)
                 combined_df = pd.concat(df_list, ignore_index=True)
-        # combined_df = combined_df.reset_index().rename(columns={'index':'Amenity_id'})
         return combined_df
 
     def _remove_na_rows(self, df, target_cols):
-        df_null = df.isnull()
-        for col in target_cols:
-            df = df[df_null[col] == False]
+        if not df.empty:
+            for col in target_cols:
+                if col == "district_name":
+                    df = df[df[col] != "NA"]
+                else:
+                    df_null = df.isnull()
+                    df = df[df_null[col] == False]
         return df
     
     def amenity_data_transformation_pipeline(self, url_dict, amenity_src_folder_path, out_folder_path, onemap_access_token):
@@ -201,8 +204,20 @@ class DataParser:
         # Combine all amenities into one dataframe and save
         common_cols = ["amenity_name", "amenity_type", "lat", "long", "district_name"]
         combined_df = self._combine_dict_to_df(amenity_dict, common_cols)
-        combined_df = self._remove_na_rows(combined_df, ["lat", "long", "district_name"])
+        print(f"Outside func before: {combined_df.shape[0]}")
+        combined_df = self._remove_na_rows(combined_df)
+        print(f"Outside func after na_func: {combined_df.shape[0]}")
+        # null_idx = combined_df[(combined_df['district_name'].isnull()) | (combined_df['lat'].isnull()) | (combined_df['long'].isnull())].index.tolist()
+        # combined_df = combined_df.drop(null_idx).reset_index(drop = True)
+        # print(f"Outside func after func 2: {combined_df.shape[0]}")
         combined_amenities_file_path = "{folder_path}/Combined_amenities.csv".format(folder_path=out_folder_path)
+        # print(combined_amenities_file_path)
+        # combined_df.to_csv(combined_amenities_file_path, index = False)
+        # combined_df = pd.read_csv(combined_amenities_file_path)
+        # print(f"Outside func before func 3 (going to resave): {combined_df.shape[0]}")
+        # null_idx = combined_df[(combined_df['district_name'].isnull()) | (combined_df['lat'].isnull()) | (combined_df['long'].isnull())].index.tolist()
+        # combined_df = combined_df.drop(null_idx).reset_index(drop = True)
+        # print(f"Outside func after func 3 (going to resave): {combined_df.shape[0]}")
         combined_df.to_csv(combined_amenities_file_path, index = False)
         return combined_amenities_file_path
 
@@ -219,9 +234,8 @@ class DataParser:
             
         def replace_and_download(amenity_file_name, amenity_file_type, amenity_url, output_folder):
             amenity_file_path = os.path.join(output_folder, amenity_file_name)
-            archive_amenity_file_path = amenity_file_path.split('.')[-2] + "_old." + amenity_file_type
+            archive_amenity_file_path = "..{sub_path}_old.{amenity_file_type}".format(sub_path = amenity_file_path.split('.')[-2], amenity_file_type = amenity_file_type)
             if Path(amenity_file_path).exists():
-                archive_amenity_file_path = amenity_file_path.split('.')[-2] + "_old." + amenity_file_type
                 print(f"Current Data set to old - {archive_amenity_file_path}")
                 os.replace(amenity_file_path, archive_amenity_file_path)
             if amenity_file_type == 'csv':
@@ -283,7 +297,7 @@ class DataParser:
         # Combine all amenities into one dataframe and save
         common_cols = ["amenity_name", "amenity_type", "lat", "long", "district_name"]
         combined_df = self._combine_dict_to_df(amenity_dict, common_cols)
-        combined_df = self._remove_na_rows(combined_df, ["lat", "long", "district_name"])
+        combined_df = self._remove_na_rows(combined_df)
         file_path = "{folder_path}/Combined_amenities_to_add.csv".format(folder_path=out_folder_path)
         combined_df.to_csv(file_path, index = False)
         return file_path
@@ -324,7 +338,7 @@ class DataParser:
             amenity_file_name, amenity_url = amenity_details['file_name'], amenity_details['url']
             amenity_file_type = amenity_file_name.split('.')[-1]
             amenity_file_path = os.path.join(output_folder, amenity_file_name)
-            archive_amenity_file_path = amenity_file_path.split('.')[-2] + "_old." + amenity_file_type
+            archive_amenity_file_path = "..{sub_path}_old.{amenity_file_type}".format(sub_path = amenity_file_path.split('.')[-2], amenity_file_type = amenity_file_type)
             
             amenity_df, amenity_df_old = self._get_data(amenity_name, amenity_file_path, amenity_file_type), self._get_data(amenity_name, archive_amenity_file_path, amenity_file_type)
             df_to_add, df_to_remove = self._get_differences(amenity_df, amenity_df_old)

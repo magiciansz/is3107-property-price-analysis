@@ -23,11 +23,11 @@ from UpdateDB import UpdateDB
 from RetrieveDB import RetrieveDB
 CREATE_TABLES_SQL_PATH = '../src/create_tables_clean.sql'
 
-dbupdate = UpdateDB()
+dbupdate = UpdateDB(db_connect_type="IAM")
 dbretrieve = RetrieveDB()
 etl_helper = EtlHelper()
-
 kml = DataParser()
+
 import os
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
@@ -186,12 +186,12 @@ def property_prices_initial_etl():
         return hdb_combined_df_path
 
     @task
-    def transform_amenity(amenity_url_dict, onemap_access_token):
+    def transform_amenity(amenity_url_dict, onemap_access_token):        
         amenity_src_folder_path = DATA_FOLDER
         amenity_out_folder_path = amenity_src_folder_path
 
         combined_amenities_file_path = kml.amenity_data_transformation_pipeline(amenity_url_dict, amenity_src_folder_path, amenity_out_folder_path, onemap_access_token)
-        print("Task 2 Complete!\n")
+        print(combined_amenities_file_path)
         return combined_amenities_file_path
          
     @task
@@ -221,7 +221,7 @@ def property_prices_initial_etl():
         dbupdate.load_amenity_table(amenities_df)
         return
 
-    # Execution pipeline
+    # Execution Pipeline
     onemap_access_token, ura_access_token = authorise_onemap(), authorise_ura()
     
     hdb_prices_dataset_path, ura_prices_dataset_path = extract_hdb(), extract_ura(ura_access_token)

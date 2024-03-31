@@ -17,11 +17,11 @@ from UpdateDB import UpdateDB
 from RetrieveDB import RetrieveDB
 CREATE_TABLES_SQL_PATH = '../src/create_tables_clean.sql'
 
-dbupdate = UpdateDB()
+dbupdate = UpdateDB(db_connect_type="IAM")
 dbretrieve = RetrieveDB()
 etl_helper = EtlHelper()
-kml = DataParser()
 
+kml = DataParser()
 import os
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
@@ -71,7 +71,7 @@ def property_prices_update_etl():
     def authorise_ura():
          ura_access_token = etl_helper.ura_authorise(URA_ACCESS_KEY)
          return ura_access_token
-    
+        
     @task
     def extract_ura(ura_access_token):
         current_month_year = time.strftime("%m%y")
@@ -145,7 +145,7 @@ def property_prices_update_etl():
 
     @task
     def combine_new_amenity_data(new_combined_df_path):
-        combined_amenities_file_path = '{DATA_FOLDER}/Combined_amenities.csv'.format(DATA_FOLDER = DATA_FOLDER))
+        combined_amenities_file_path = '{DATA_FOLDER}/Combined_amenities.csv'.format(DATA_FOLDER = DATA_FOLDER)
         amenity_combined_df = pd.read_csv(combined_amenities_file_path) #.drop(columns=["Unnamed: 0"])
     
         try:
@@ -153,7 +153,7 @@ def property_prices_update_etl():
             if not new_combined_df.empty:
                 amenity_combined_df = pd.concat([amenity_combined_df, new_combined_df])
                 amenity_combined_df.to_csv(combined_amenities_file_path, index = False)
-                print(f"{amenity_combined_df.shape[0]} New amenities added to: {combined_amenities_file_path}")
+                print(f"{new_combined_df.shape[0]} New amenities added to: {combined_amenities_file_path}")
             else:
                 print("No new amenities detected.")
         except pd.errors.EmptyDataError:
