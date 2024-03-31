@@ -204,20 +204,8 @@ class DataParser:
         # Combine all amenities into one dataframe and save
         common_cols = ["amenity_name", "amenity_type", "lat", "long", "district_name"]
         combined_df = self._combine_dict_to_df(amenity_dict, common_cols)
-        print(f"Outside func before: {combined_df.shape[0]}")
         combined_df = self._remove_na_rows(combined_df, ["lat", "long", "district_name"])
-        print(f"Outside func after na_func: {combined_df.shape[0]}")
-        # null_idx = combined_df[(combined_df['district_name'].isnull()) | (combined_df['lat'].isnull()) | (combined_df['long'].isnull())].index.tolist()
-        # combined_df = combined_df.drop(null_idx).reset_index(drop = True)
-        # print(f"Outside func after func 2: {combined_df.shape[0]}")
         combined_amenities_file_path = "{folder_path}/Combined_amenities.csv".format(folder_path=out_folder_path)
-        # print(combined_amenities_file_path)
-        # combined_df.to_csv(combined_amenities_file_path, index = False)
-        # combined_df = pd.read_csv(combined_amenities_file_path)
-        # print(f"Outside func before func 3 (going to resave): {combined_df.shape[0]}")
-        # null_idx = combined_df[(combined_df['district_name'].isnull()) | (combined_df['lat'].isnull()) | (combined_df['long'].isnull())].index.tolist()
-        # combined_df = combined_df.drop(null_idx).reset_index(drop = True)
-        # print(f"Outside func after func 3 (going to resave): {combined_df.shape[0]}")
         combined_df.to_csv(combined_amenities_file_path, index = False)
         return combined_amenities_file_path
 
