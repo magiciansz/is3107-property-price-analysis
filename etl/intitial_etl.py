@@ -21,7 +21,6 @@ import sys
 from DataParser import DataParser
 from UpdateDB import UpdateDB
 from RetrieveDB import RetrieveDB
-CREATE_TABLES_SQL_PATH = '../src/create_tables_clean.sql'
 
 dbupdate = UpdateDB()
 dbretrieve = RetrieveDB()
@@ -42,7 +41,8 @@ ONEMAP_USERNAME = os.environ['ONEMAP_USERNAME']
 ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
 URA_ACCESS_KEY = os.environ['URA_ACCESS_KEY']
 #common vars
-DATA_FOLDER = "../Data"
+DATA_FOLDER = os.environ['DATA_FOLDER']
+CREATE_TABLES_SQL_PATH = os.environ['CREATE_TABLES_SQL_PATH']
 #districts vars
 DISTRICTS_EXTRACT_PATH = 'districts_initial'
 DISTRICTS_ADDED_FIELDS_PATH = 'districts_initial_added'

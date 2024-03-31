@@ -95,9 +95,8 @@ class DataParser:
     def _extract_data(self, url_dict, data_folder):
         combined_dict = {}
         kml = DataParser()
-        src_folder = os.path.join(os.getcwd(), 'Data')
         for amenity_name, amenity_details in url_dict.items():
-            amenity_file_path = os.path.join(src_folder, amenity_details['file_name'])
+            amenity_file_path = os.path.join(data_folder, amenity_details['file_name'])
             amenity_file_type = amenity_details['file_name'].split('.')[-1]
             combined_dict[amenity_name] = self._get_data(amenity_name, amenity_file_path, amenity_file_type)
         return combined_dict
@@ -196,6 +195,8 @@ class DataParser:
         # Combine all amenities into one dataframe and save
         common_cols = ["amenity_name", "amenity_type", "lat", "long", "district_name"]
         combined_df = self._combine_dict_to_df(amenity_dict, common_cols)
+        # TODO: remove
+        combined_df = combined_df.head(10)
         combined_amenities_file_path = "{folder_path}/Combined_amenities.csv".format(folder_path=out_folder_path)
         combined_df.to_csv(combined_amenities_file_path, index = False)
         return combined_amenities_file_path
