@@ -2,12 +2,18 @@ from airflow.decorators import dag, task
 from datetime import datetime, timedelta
 #import json to process API responses
 import json
+from json import JSONDecodeError
 #import requests to handle API calls
 import requests
+#import kaggle to handle kaggle API calls
+import kaggle
 #import pandas for data wrangling
 import pandas as pd
 #import time to track when is point of initilization (for hdb dataset) in order to pull 2019-02 to current year-month
 import time
+#import tqdm to check progress of function execution
+from tqdm import tqdm
+tqdm.pandas()
 
 from EtlHelper import EtlHelper
 import sys
@@ -84,9 +90,7 @@ def property_prices_initial_etl():
             create_tables_sql (create tables sql path): CREATE_TABLES_SQL_PATH
         """
         dbupdate.create_tables(create_tables_sql)
-
-        # next step: create tables GCP
-        pass
+        return
 
     @task
     def extract_planning_area(onemap_access_token):
@@ -128,6 +132,14 @@ def property_prices_initial_etl():
         with open(hdb_prices_dataset_path, 'w') as f:
                 json.dump(hdb_prices_data, f)
         return hdb_prices_dataset_path
+
+    @task
+    def extract_amenity():
+        kml = DataParser()
+        amenity_url_dict = kml.download_amenity_files(output_folder = DATA_FOLDER, first_time = True)
+        print("Task 1 Complete!\n")
+        return amenity_url_dict
+        
     @task
     def transform_districts(districts_dataset_path):
         x = pd.read_json(districts_dataset_path)
@@ -173,7 +185,22 @@ def property_prices_initial_etl():
         hdb_combined_df_path = "{DATA_FOLDER}/hdb_combined_df.csv".format(DATA_FOLDER = DATA_FOLDER)
         hdb_combined_df.to_csv(hdb_combined_df_path, index=False)
         return hdb_combined_df_path
-         
+
+    @task(task_id='transform_amenity_data')
+    def transform_amenity(amenity_url_dict):
+        etl_helper = EtlHelper()
+        kml = DataParser()
+        ONEMAP_USERNAME = os.environ['ONEMAP_USERNAME']
+        ONEMAP_PASSWORD = os.environ['ONEMAP_PASSWORD']
+        onemap_access_token = etl_helper.one_map_authorise(ONEMAP_USERNAME, ONEMAP_PASSWORD)
+        
+        amenity_src_folder_path = DATA_FOLDER
+        # amenity_src_folder_path = os.path.join(os.getcwd(), 'Data')
+        amenity_out_folder_path = amenity_src_folder_path
+
+        combined_amenities_file_path = kml.amenity_data_transformation_pipeline(amenity_url_dict, amenity_src_folder_path, amenity_out_folder_path, onemap_access_token)
+        print("Task 2 Complete!\n")
+        return combined_amenities_file_path
          
     @task
     def load_districts(district_path):
@@ -206,6 +233,8 @@ def property_prices_initial_etl():
     onemap_access_token, ura_access_token = authorise_onemap(), authorise_ura()
     hdb_prices_dataset_path, ura_prices_dataset_path = extract_hdb(), extract_ura(ura_access_token)
     hdb_combined_df_path, ura_combined_df_path = transform_hdb(hdb_prices_dataset_path, onemap_access_token), transform_ura(ura_prices_dataset_path, onemap_access_token)
+    amenity_url_dict = extract_amenity()
+    combined_amenities_df_path = transform_amenity(amenity_url_dict)
 
     # create tables + load
     create_tables_db(CREATE_TABLES_SQL_PATH)
@@ -214,8 +243,7 @@ def property_prices_initial_etl():
     load_projects(hdb_combined_df_path, ura_combined_df_path)
     load_properties(hdb_combined_df_path, ura_combined_df_path)
     load_transactions(hdb_combined_df_path, ura_combined_df_path)
-    # edit with filepath from transform + extract
-    load_amenities('../Data/combined_amenities.csv')
+    load_amenities(combined_amenities_df_path)
 
 # end define DAG
 

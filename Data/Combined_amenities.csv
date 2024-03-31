@@ -1,0 +1,2808 @@
+amenity_name,amenity_type,lat,long,district_name
+Jurong East,MRT,1.333207,103.742308,JURONG EAST
+Bukit Batok,MRT,1.349069,103.749596,BUKIT BATOK
+Bukit Gombak,MRT,1.359043,103.751863,BUKIT BATOK
+Choa Chu Kang,MRT,1.385417,103.744316,CHOA CHU KANG
+Yew Tee,MRT,1.397383,103.747523,CHOA CHU KANG
+Kranji,MRT,1.425302,103.762049,SUNGEI KADUT
+Marsiling,MRT,1.432579,103.77415,WOODLANDS
+Woodlands,MRT,1.436984,103.786406,WOODLANDS
+Admiralty,MRT,1.436984,103.786406,WOODLANDS
+Sembawang,MRT,1.449133,103.82006,SEMBAWANG
+Yishun,MRT,1.429666,103.835044,YISHUN
+Khatib,MRT,1.417423,103.832995,YISHUN
+Yio Chu Kang,MRT,1.381765,103.844923,ANG MO KIO
+Ang Mo Kio,MRT,1.370025,103.849588,ANG MO KIO
+Bishan,MRT,1.35092,103.848206,BISHAN
+Braddell,MRT,1.34055,103.847098,TOA PAYOH
+Toa Payoh,MRT,1.332405,103.847436,TOA PAYOH
+Novena,MRT,1.320089,103.843405,NOVENA
+Newton,MRT,1.31383,103.838021,NEWTON
+Orchard,MRT,1.304041,103.831792,ORCHARD
+Somerset,MRT,1.300508,103.838428,ORCHARD
+Dhoby Ghaut,MRT,1.299169,103.845799,MUSEUM
+City Hall,MRT,1.293119,103.852089,DOWNTOWN CORE
+Raffles Place,MRT,1.284001,103.85155,DOWNTOWN CORE
+Marina Bay,MRT,1.276481,103.854598,DOWNTOWN CORE
+Marina South Pier,MRT,1.271422,103.863581,STRAITS VIEW
+Tuas Link,MRT,1.340371,103.636866,TUAS
+Tuas West Road,MRT,1.330075,103.639636,TUAS
+Tuas Crescent,MRT,1.321091,103.649075,TUAS
+Gul Circle,MRT,1.319809,103.66083,PIONEER
+Joo Koon,MRT,1.327826,103.678318,PIONEER
+Pioneer,MRT,1.337645,103.69742,JURONG WEST
+Boon Lay,MRT,1.33862,103.705817,JURONG WEST
+Lakeside,MRT,1.344264,103.720797,JURONG WEST
+Chinese Garden,MRT,1.342436,103.732582,JURONG EAST
+Clementi,MRT,1.314925,103.765341,CLEMENTI
+Dover,MRT,1.311414,103.778596,QUEENSTOWN
+Buona Vista,MRT,1.307337,103.790046,QUEENSTOWN
+Commonwealth,MRT,1.302439,103.798326,QUEENSTOWN
+Queenstown,MRT,1.294867,103.805902,QUEENSTOWN
+Redhill,MRT,1.289674,103.816787,BUKIT MERAH
+Tiong Bahru,MRT,1.286555,103.826956,BUKIT MERAH
+Outram Park,MRT,1.280319,103.839459,OUTRAM
+Tanjong Pagar,MRT,1.276385,103.846771,DOWNTOWN CORE
+Bugis,MRT,1.300747,103.855873,DOWNTOWN CORE
+Lavender,MRT,1.307577,103.863155,KALLANG
+Kallang,MRT,1.311532,103.871372,KALLANG
+Aljunied,MRT,1.316474,103.882762,GEYLANG
+Paya Lebar,MRT,1.318214,103.893133,GEYLANG
+Eunos,MRT,1.319809,103.902888,GEYLANG
+Kembangan,MRT,1.320998,103.913433,BEDOK
+Bedok,MRT,1.324043,103.930205,BEDOK
+Tanah Merah,MRT,1.327309,103.946479,BEDOK
+Simei,MRT,1.343237,103.953343,TAMPINES
+Tampines,MRT,1.354467,103.943325,TAMPINES
+Pasir Ris,MRT,1.373234,103.949343,PASIR RIS
+Expo,MRT,1.334479,103.961459,TAMPINES
+Changi Airport,MRT,1.357622,103.988487,CHANGI
+HarbourFront,MRT,1.265453,103.820514,BUKIT MERAH
+Chinatown,MRT,1.284566,103.843626,OUTRAM
+Clarke Quay,MRT,1.288949,103.847521,SINGAPORE RIVER
+Little India,MRT,1.306691,103.849396,ROCHOR
+Farrer Park,MRT,1.312679,103.854872,KALLANG
+Boon Keng,MRT,1.320091,103.861655,KALLANG
+Potong Pasir,MRT,1.331316,103.868779,TOA PAYOH
+Woodleigh,MRT,1.339202,103.870727,TOA PAYOH
+Serangoon,MRT,1.349862,103.873635,SERANGOON
+Kovan,MRT,1.360207,103.885163,HOUGANG
+Hougang,MRT,1.371406,103.892533,HOUGANG
+Buangkok,MRT,1.382991,103.893347,SENGKANG
+Sengkang,MRT,1.391682,103.895475,SENGKANG
+Punggol,MRT,1.405191,103.902367,PUNGGOL
+Bras Basah,MRT,1.296978,103.850715,MUSEUM
+Esplanade,MRT,1.293995,103.855396,DOWNTOWN CORE
+Promenade,MRT,1.294063,103.860156,DOWNTOWN CORE
+Nicoll Highway,MRT,1.300292,103.863449,DOWNTOWN CORE
+Stadium,MRT,1.302847,103.875417,KALLANG
+Mountbatten,MRT,1.306106,103.883175,GEYLANG
+Dakota,MRT,1.308474,103.888825,GEYLANG
+MacPherson,MRT,1.326769,103.889901,GEYLANG
+Tai Seng,MRT,1.33594,103.887706,TOA PAYOH
+Bartley,MRT,1.342923,103.87966,SERANGOON
+Lorong Chuan,MRT,1.35153,103.864957,SERANGOON
+Marymount,MRT,1.349089,103.839116,BISHAN
+Caldecott,MRT,1.337649,103.839627,TOA PAYOH
+Botanic Gardens,MRT,1.322387,103.814905,TANGLIN
+Farrer Road,MRT,1.317606,103.807711,BUKIT TIMAH
+Holland Village,MRT,1.311189,103.796119,BUKIT TIMAH
+one-north,MRT,1.299854,103.787584,QUEENSTOWN
+Kent Ridge,MRT,1.293629,103.784441,QUEENSTOWN
+Haw Par Villa,MRT,1.283149,103.781991,QUEENSTOWN
+Pasir Panjang,MRT,1.276111,103.791893,QUEENSTOWN
+Labrador Park,MRT,1.27218,103.802557,BUKIT MERAH
+Telok Blangah,MRT,1.270769,103.809878,BUKIT MERAH
+Bayfront,MRT,1.281371,103.858998,DOWNTOWN CORE
+Bukit Panjang,MRT,1.37834,103.762452,BUKIT PANJANG
+Cashew,MRT,1.369997,103.764569,BUKIT PANJANG
+Hillview,MRT,1.363185,103.767371,BUKIT BATOK
+Beauty World,MRT,1.341607,103.775682,BUKIT TIMAH
+King Albert Park,MRT,1.335721,103.783203,BUKIT TIMAH
+Sixth Avenue,MRT,1.331221,103.79718,BUKIT TIMAH
+Tan Kah Kee,MRT,1.325826,103.807959,BUKIT TIMAH
+Stevens,MRT,1.320012,103.825964,TANGLIN
+Rochor,MRT,1.303601,103.852581,ROCHOR
+Downtown,MRT,1.27949,103.852802,DOWNTOWN CORE
+Telok Ayer,MRT,1.282285,103.848584,DOWNTOWN CORE
+Fort Canning,MRT,1.291631,103.844621,SINGAPORE RIVER
+Bencoolen,MRT,1.298477,103.849984,ROCHOR
+Jalan Besar,MRT,1.305551,103.855443,ROCHOR
+Bendemeer,MRT,1.313674,103.863098,KALLANG
+Geylang Bahru,MRT,1.321479,103.871457,KALLANG
+Mattar,MRT,1.326878,103.883304,GEYLANG
+Ubi,MRT,1.330008,103.898911,GEYLANG
+Kaki Bukit,MRT,1.335076,103.909057,BEDOK
+Bedok North,MRT,1.335268,103.918054,BEDOK
+Bedok Reservoir,MRT,1.336595,103.93307,BEDOK
+Tampines West,MRT,1.345583,103.938244,TAMPINES
+Tampines East,MRT,1.35631,103.955471,TAMPINES
+Upper Changi,MRT,1.342218,103.961505,TAMPINES
+South View,LRT,1.380299,103.745286,CHOA CHU KANG
+Keat Hong,LRT,1.378604,103.749058,CHOA CHU KANG
+Teck Whye,LRT,1.376738,103.753665,CHOA CHU KANG
+Phoenix,LRT,1.378798,103.758021,CHOA CHU KANG
+Senja,LRT,1.382852,103.762312,BUKIT PANJANG
+Jelapang,LRT,1.386703,103.764547,BUKIT PANJANG
+Segar,LRT,1.387713,103.769599,BUKIT PANJANG
+Fajar,LRT,1.384502,103.770862,BUKIT PANJANG
+Bangkit,LRT,1.380281,103.772576,BUKIT PANJANG
+Pending,LRT,1.376223,103.771277,BUKIT PANJANG
+Petir,LRT,1.377828,103.76655,BUKIT PANJANG
+Compassvale,LRT,1.394615,103.900443,SENGKANG
+Rumbia,LRT,1.391553,103.905947,SENGKANG
+Bakau,LRT,1.38804,103.905412,SENGKANG
+Kangkar,LRT,1.383957,103.90216,SENGKANG
+Ranggung,LRT,1.384116,103.897386,SENGKANG
+Cheng Lim,LRT,1.396332,103.89379,SENGKANG
+Farmway,LRT,1.397178,103.889168,SENGKANG
+Kupang,LRT,1.398271,103.881283,SENGKANG
+Thanggam,LRT,1.397378,103.87561,SENGKANG
+Fernvale,LRT,1.392033,103.876256,SENGKANG
+Layar,LRT,1.392141,103.880022,SENGKANG
+Tongkang,LRT,1.389519,103.885829,SENGKANG
+Renjong,LRT,1.386827,103.890541,SENGKANG
+Cove,LRT,1.399534,103.905792,PUNGGOL
+Meridian,LRT,1.397002,103.908884,PUNGGOL
+Coral Edge,LRT,1.39392,103.912633,PUNGGOL
+Riviera,LRT,1.39454,103.916056,PUNGGOL
+Kadaloor,LRT,1.399633,103.916536,PUNGGOL
+Oasis,LRT,1.402304,103.912736,PUNGGOL
+Damai,LRT,1.405293,103.908606,PUNGGOL
+Sam Kee,LRT,1.409808,103.90492,PUNGGOL
+Teck Lee,LRT,1.412783,103.906565,PUNGGOL
+Punggol Point,LRT,1.416932,103.90668,PUNGGOL
+Samudera,LRT,1.415955,103.902185,PUNGGOL
+Nibong,LRT,1.411865,103.900321,PUNGGOL
+Sumang,LRT,1.408501,103.898605,PUNGGOL
+Soo Teck,LRT,1.405436,103.897287,PUNGGOL
+The Pit,Gym,1.278113883,103.8442021,OUTRAM
+The Stable Mixed Martial Arts,Gym,1.334219598,103.7958982,BUKIT TIMAH
+Bishan ClubFITT Gym,Gym,1.355282628,103.8509221,BISHAN
+The Yoga Place,Gym,1.309921911,103.862091,KALLANG
+Sky Fitness - Serangoon Gardens,Gym,1.360009664,103.8595711,SERANGOON
+Slender Shapes - Serangoon Gardens Way,Gym,1.363899825,103.8648843,SERANGOON
+Woodlands ClubFITT Gym,Gym,1.434895377,103.7803066,WOODLANDS
+Yio Chu Kang ClubFITT Gym,Gym,1.382272431,103.8457679,ANG MO KIO
+Yishun ClubFITT Gym,Gym,1.412018366,103.8311774,YISHUN
+Zattva Yoga Studio,Gym,1.301257296,103.8411502,ORCHARD
+Fitness First - One Raffles Quay,Gym,1.280894789,103.8516771,DOWNTOWN CORE
+Fitness First - Paragon,Gym,1.303723224,103.8352403,ORCHARD
+True Fitness - Great World City,Gym,1.293802361,103.8317579,SINGAPORE RIVER
+California Fitness - Bugis,Gym,1.300142483,103.855787,DOWNTOWN CORE
+Fitness First - AMK Hub,Gym,1.369248907,103.8483992,ANG MO KIO
+California Fitness - Velocity@Novena Square,Gym,1.320211016,103.8436568,NOVENA
+Fitness First - Alexandra (Mapletree Business City),Gym,1.274827493,103.7990648,QUEENSTOWN
+Evolve MMA - POMO Mall,Gym,1.300108459,103.8492643,ROCHOR
+Fitness First - Captial Tower,Gym,1.277711815,103.8475227,DOWNTOWN CORE
+Yoga Connections,Gym,1.319230983,103.9140052,BEDOK
+California Fitness - Raffles,Gym,1.283483639,103.850574,DOWNTOWN CORE
+True Fitness - Suntec City,Gym,1.294879051,103.8576755,DOWNTOWN CORE
+Union Yoga Ayurveda (Kembangan Branch),Gym,1.319883839,103.9128625,BEDOK
+Union Yoga Ayurveda (Beauty World Branch),Gym,1.341742201,103.7727168,BUKIT TIMAH
+Rhythmic Yoga Works,Gym,1.298001836,103.8569348,DOWNTOWN CORE
+Neue,Gym,1.303843278,103.8727507,KALLANG
+Om Shiva Yoga - Chip Bee,Gym,1.310993163,103.7975388,BUKIT TIMAH
+Om Shiva Yoga - Horse City,Gym,1.334219598,103.7958982,BUKIT TIMAH
+OMG Yoga,Gym,1.333862464,103.7387083,JURONG EAST
+Philip Wain,Gym,1.317334643,103.8434632,NOVENA
+Pure Fitness - Knightsbridge (Asia Square),Gym,1.303105268,103.836202,ORCHARD
+Krav Maga Singapore,Gym,1.287127866,103.8470257,SINGAPORE RIVER
+Fitness First - Tampines,Gym,1.353084857,103.9435869,TAMPINES
+iPilates,Gym,1.307634926,103.8320381,ORCHARD
+California Fitness - Orchard- Ngee Ann City,Gym,1.302424179,103.8346761,ORCHARD
+True Fitness - China Square Central,Gym,1.283515224,103.8468789,OUTRAM
+Sky Pilates,Gym,1.305087233,103.8307226,ORCHARD
+Slender Shapes - Eunos,Gym,1.334071889,103.9040541,BEDOK
+Core Fitness Physiotherapy & Pilates Centre  - Forum The Shopping Mall,Gym,1.306195799,103.828509,ORCHARD
+CrossFit Fire City,Gym,1.308518174,103.86603,KALLANG
+CrossFit Singapore,Gym,1.333549435,103.8917682,GEYLANG
+Curves - Marine Parade,Gym,1.278156144,103.8295243,BUKIT MERAH
+Elements Pilates,Gym,1.3052722,103.8250789,ORCHARD
+Evolve MMA - Far East Square,Gym,1.283057726,103.8478209,OUTRAM
+Fitness First - Millenia Walk,Gym,1.292965048,103.859344,DOWNTOWN CORE
+Fitness First - One George Street,Gym,1.285545617,103.8477719,DOWNTOWN CORE
+Amore Fitness - Heartland Mall,Gym,1.359496638,103.8850799,HOUGANG
+Amore Fitness - Plaza Singapura,Gym,1.300747562,103.8450476,MUSEUM
+Amore Fitness - Thomson Plaza,Gym,1.354669019,103.8309198,BISHAN
+Bikram Yoga,Gym,1.293893588,103.8531199,DOWNTOWN CORE
+Bikram Yoga Harbourfront,Gym,1.262063365,103.8186256,BUKIT MERAH
+Brazilian Jiu Jitzu Singapore,Gym,1.301070547,103.8491763,ROCHOR
+Pilates Bodyworks - Holland,Gym,1.309182112,103.7925475,QUEENSTOWN
+Tirisula Yoga,Gym,1.301479001,103.8591883,ROCHOR
+Total Yoga - Clarke Quay,Gym,1.287902717,103.8477729,SINGAPORE RIVER
+Fitness First - Marina Bay Financial Centre,Gym,1.279105679,103.8542974,DOWNTOWN CORE
+Midview Body & Mind,Gym,1.358216566,103.8339307,BISHAN
+Pilates Inc - The Moving Body Group - Amoy Street,Gym,1.280780479,103.8467337,OUTRAM
+The Jungle,Gym,1.286255026,103.849674,SINGAPORE RIVER
+TMP Fitness - Revenue House,Gym,1.319489595,103.8419753,NOVENA
+Amore Fitness - Bugis Junction,Gym,1.299067991,103.855328,DOWNTOWN CORE
+Bukit Gombak ClubFITT Gym,Gym,1.357907047,103.7530238,BUKIT BATOK
+Choa Chu Kang ClubFITT Gym,Gym,1.390666172,103.7479207,CHOA CHU KANG
+Clementi ClubFITT Gym,Gym,1.311014985,103.7648614,CLEMENTI
+Hougang ClubFITT Gym,Gym,1.370573488,103.8880717,HOUGANG
+Jurong East ClubFITT Gym,Gym,1.346215612,103.7288352,JURONG EAST
+Jurong West ClubFITT Gym,Gym,1.338418065,103.6937689,JURONG WEST
+Pasir Ris ClubFITT Gym,Gym,1.374448456,103.9518225,PASIR RIS
+Physical ABuse,Gym,1.286728535,103.8449013,OUTRAM
+Central Pilates,Gym,1.309924504,103.8419105,NEWTON
+Gold's Gym - IBP Jurong East,Gym,1.329690478,103.7469606,JURONG EAST
+Pure Fitness - Knightsbridge,Gym,1.279007974,103.8511035,DOWNTOWN CORE
+Updog Studio,Gym,1.29747627,103.899775,MARINE PARADE
+Breathe Pilates - Novena,Gym,1.320429679,103.8438921,NOVENA
+Delta ClubFITT Gym,Gym,1.289077949,103.8197731,BUKIT MERAH
+Yogapoint Singapore,Gym,1.280655691,103.8421605,OUTRAM
+Amore Fitness - Woodlands Civic Centre,Gym,1.435077894,103.7866196,WOODLANDS
+Ananda Marga Yoga Society of Singapore - MacPherson,Gym,1.332010256,103.8810247,TOA PAYOH
+Jal Yoga,Gym,1.274419585,103.8029119,BUKIT MERAH
+One Wellness Fitness Club,Gym,1.300917993,103.8552479,ROCHOR
+The Gym Nation,Gym,1.381586794,103.7646596,BUKIT PANJANG
+The Yoga Shala,Gym,1.276525754,103.8419184,OUTRAM
+Total Yoga - Orchard Road,Gym,1.307634926,103.8320381,ORCHARD
+True Fitness - Chevron House,Gym,1.28423792,103.8519273,DOWNTOWN CORE
+True Fitness - NTUC Income Tampines Junction,Gym,1.354295104,103.9396358,TAMPINES
+True Fitness - Parkway Parade,Gym,1.301191315,103.9051136,MARINE PARADE
+True Fitness - VivoCity,Gym,1.264394682,103.8218086,BUKIT MERAH
+True Yoga - Ocean Financial Centre,Gym,1.282980726,103.8518389,DOWNTOWN CORE
+True Yoga - Pacific Plaza,Gym,1.306537224,103.8321264,ORCHARD
+Viva Fit Singapore - Beach Road,Gym,1.296959058,103.8563049,DOWNTOWN CORE
+Viva Fit Singapore - Raffles Place,Gym,1.283942291,103.8507116,DOWNTOWN CORE
+Viva Fit Singapore - Tanjong Pagar,Gym,1.275596198,103.8423932,OUTRAM
+WabiSabi Holistic Lifestyle,Gym,1.288862919,103.846556,SINGAPORE RIVER
+Yaatra,Gym,1.279179023,103.8417699,OUTRAM
+Fitness First - One Raffles Place,Gym,1.284339948,103.8509824,DOWNTOWN CORE
+Sengkang ClubFITT Gym,Gym,1.395501588,103.8857843,SENGKANG
+Tampines ClubFITT Gym,Gym,1.354295104,103.9396358,TAMPINES
+Toa Payoh ClubFITT Gym,Gym,1.330600101,103.8499868,TOA PAYOH
+Pilates Body Pilot - Biopolis,Gym,1.304511278,103.79146,QUEENSTOWN
+Pilates Bodyworks - Finlayson Green,Gym,1.282240869,103.8512866,DOWNTOWN CORE
+Pilates Fitness,Gym,1.270295992,103.8129303,BUKIT MERAH
+Pilates Flow,Gym,1.329825449,103.7994699,BUKIT TIMAH
+Pilates Inc - The Moving Body Group - East Coast,Gym,1.30438467,103.9033386,MARINE PARADE
+Platinum Yoga,Gym,1.301887339,103.905996,MARINE PARADE
+PowerMoves Pilates - Bishan Park,Gym,1.362544348,103.8474932,BISHAN
+PowerMoves Pilates - Dempsey Hill,Gym,1.304849785,103.8085659,TANGLIN
+Pure Yoga - Chevron House,Gym,1.28423792,103.8519273,DOWNTOWN CORE
+Pure Yoga - Ngee Ann City,Gym,1.302424179,103.8346761,ORCHARD
+Real Yoga,Gym,1.301978047,103.8397589,ORCHARD
+Reebok CrossFit Enduro,Gym,1.306814726,103.858169,ROCHOR
+Singapore CrossFit Hub,Gym,1.333788827,103.8877143,TOA PAYOH
+Sivananda Yoga Vedanta Centre,Gym,1.279015452,103.840532,OUTRAM
+Sky Fitness - Harbourfront,Gym,1.264486351,103.8186869,BUKIT MERAH
+Bedok ClubFITT Gym,Gym,1.325857121,103.9383282,BEDOK
+Spaboutique,Gym,1.307785752,103.8259325,TANGLIN
+The Gym At Orchard,Gym,1.305506117,103.8299848,ORCHARD
+The Pilates Place,Gym,1.277872965,103.8441337,OUTRAM
+Fitness First - Fusionopolis,Gym,1.299294067,103.7874041,QUEENSTOWN
+Amore Fitness - City Square Mall,Gym,1.311393494,103.8564871,KALLANG
+E's FITNESS PTE. LTD.,Gym,1.278709486,103.8403867,OUTRAM
+YogaDivas - Nassim Road,Gym,1.297924002,103.8145569,TANGLIN
+Absolute Yoga - River Valley,Gym,1.293017861,103.8269408,TANGLIN
+Yoga On Nassim,Gym,1.331021885,103.7962645,BUKIT TIMAH
+YogaDivas - Leonie Hill,Gym,1.307785752,103.8259325,TANGLIN
+YogaDivas - Phoenix Park,Gym,1.297924002,103.8145569,TANGLIN
+Ananda Marga Yoga Society of Singapore - Parkway Centre,Gym,1.301887339,103.905996,MARINE PARADE
+Balancing Rocks Yoga Studio,Gym,1.300977084,103.8604818,ROCHOR
+Basic Essence,Gym,1.322573176,103.8142455,TANGLIN
+Being In Yoga,Gym,1.335897289,103.7959415,BUKIT TIMAH
+Breathe Pilates - East Coast,Gym,1.307596485,103.9069337,MARINE PARADE
+Slender Shapes - Upper Bukit Timah,Gym,1.340940724,103.7762802,BUKIT TIMAH
+Absolute Yoga - Telok Ayer,Gym,1.280413695,103.8476382,OUTRAM
+Pilatique Pilates Studio,Gym,1.282464023,103.8469344,OUTRAM
+Canvass Art and Yoga Studio,Gym,1.335835645,103.7866163,BUKIT TIMAH
+COMO Shambhala Urban Escape,Gym,1.30717806,103.8284687,ORCHARD
+Fitness First - The Cathay,Gym,1.299183747,103.8477898,MUSEUM
+Focus Pilates - Orchard,Gym,1.30394638,103.8348269,ORCHARD
+Focus Pilates - Raffles Place,Gym,1.283942291,103.8507116,DOWNTOWN CORE
+Genesis Gym - CBD,Gym,1.27742661,103.8440509,OUTRAM
+Genesis Gym - Mounbatten,Gym,1.307465187,103.8812708,GEYLANG
+Gold's Gym - Bukit Merah,Gym,1.282055406,103.8180782,BUKIT MERAH
+Green Yoga,Gym,1.353069494,103.8350935,BISHAN
+H.om Yoga,Gym,1.286213257,103.8494319,SINGAPORE RIVER
+Impact Mixed Martial Arts,Gym,1.278518938,103.8500715,DOWNTOWN CORE
+Impakt Singapore,Gym,1.278169864,103.8480961,DOWNTOWN CORE
+Iyengar Yoga Centre Singapore - Goldhill Centre,Gym,1.317828683,103.8428894,NOVENA
+Iyengar Yoga Centre Singapore - Neil Road Centre,Gym,1.278287549,103.8406485,OUTRAM
+Jagsport,Gym,1.310151798,103.8624342,KALLANG
+Kapap Singapore,Gym,1.280046254,103.8416687,OUTRAM
+Kate Porter Yoga,Gym,1.310040987,103.9319883,BEDOK
+Oasis Holistic,Gym,1.303708795,103.8505372,ROCHOR
+OhmSantih Yoga,Gym,1.300504273,103.8593845,ROCHOR
+Gold's Gym - Tanjong Pagar,Gym,1.278435132,103.8436835,OUTRAM
+Masters' Yoga Sadhan,Gym,1.278396965,103.8436737,OUTRAM
+Fitness Factory -,Gym,1.288481466,103.8491446,SINGAPORE RIVER
+Active Life Center,Gym,1.305506117,103.8299848,ORCHARD
+Amore Fitness - Jurong Point 2,Gym,1.339830148,103.7064609,JURONG WEST
+Amore Fitness - Liang Court,Gym,1.291514786,103.8445863,SINGAPORE RIVER
+Amore Fitness - Tampines 1,Gym,1.354315564,103.9450195,TAMPINES
+Market Street Hawker Centre,Hawker,1.28442485,103.8501646,DOWNTOWN CORE
+Marsiling Mall Hawker Centre,Hawker,1.433538857,103.7797849,WOODLANDS
+Margaret Drive Hawker Centre,Hawker,1.297485671,103.8047152,QUEENSTOWN
+Fernvale Hawker Centre & Market,Hawker,1.391592327,103.8770605,SENGKANG
+One Punggol Hawker Centre,Hawker,1.408189969,103.9048057,PUNGGOL
+Bukit Canberra Hawker Centre,Hawker,1.449016742,103.822485,SEMBAWANG
+Senja Hawker Centre,Hawker,1.387135731,103.7610178,BUKIT PANJANG
+Buangkok Hawker Centre,Hawker,1.382387558,103.8924032,SENGKANG
+Bukit Batok West Hawker Centre,Hawker,1.355214571,103.7418258,BUKIT BATOK
+Telok Blangah Hawker Centre & Market,Hawker,1.27324864,103.8080787,BUKIT MERAH
+Bedok North Street 3 Blk 538,Hawker,1.331781251,103.9248442,BEDOK
+Bedok North Street 4 Blk 85 (85 Fengshan Centre),Hawker,1.331987069,103.9387326,BEDOK
+Adam Road Food Centre,Hawker,1.324134223,103.814165,NOVENA
+Aljunied Ave 2 Blk 117 (Blk 117 Aljunied Market and Food Centre),Hawker,1.320648292,103.887019,GEYLANG
+Amoy Street Food Centre (Telok Ayer Food Centre),Hawker,1.279218443,103.8466068,DOWNTOWN CORE
+Ang Mo Kio Ave 1 Blk 226D (Kebun Baru Market and Food Centre),Hawker,1.366787645,103.8392313,ANG MO KIO
+Ang Mo Kio Ave 1 Blk 341 (Teck Ghee Court),Hawker,1.364105171,103.8482542,ANG MO KIO
+Ang Mo Kio Ave 10 Blk 409 (Teck Ghee Square),Hawker,1.362768918,103.8553698,ANG MO KIO
+Ang Mo Kio Ave 10 Blk 453A (Chong Boon Market and Food Centre),Hawker,1.368240493,103.8563514,ANG MO KIO
+Ang Mo Kio Ave 10 Blk 527 (Cheng San Market and Cooked Food Centre),Hawker,1.372769928,103.8544828,ANG MO KIO
+Ang Mo Kio Ave 4 Blk 160/162 (Mayflower Market),Hawker,1.374489121,103.8392143,ANG MO KIO
+Ang Mo Kio Ave 4 Blk 628 (Ang Mo Kio 628 Market),Hawker,1.381024867,103.8406823,ANG MO KIO
+Ang Mo Kio Ave 6 Blk 724 (Blk 724 Ang Mo Kio Market),Hawker,1.372197433,103.8465192,ANG MO KIO
+Ang Mo Kio Street 22 Blk 226H (Kebun Baru Food Centre),Hawker,1.367230149,103.8399532,ANG MO KIO
+Bedok Food Centre,Hawker,1.320356008,103.9554742,BEDOK
+Bedok North Street 1 Blk 216,Hawker,1.327062409,103.9332215,BEDOK
+Bedok North Street 3 Blk 511 (Kaki Bukit 511 Market and Food Centre),Hawker,1.333246279,103.9306021,BEDOK
+Bedok Reservoir Road Blk 630,Hawker,1.333159248,103.9140539,BEDOK
+Bedok South Road Blk 16,Hawker,1.320552165,103.9355391,BEDOK
+Bendemeer Road Blk 29 (Bendemeer Market and Food Centre),Hawker,1.319216998,103.8630214,KALLANG
+Beo Crescent Market,Hawker,1.288822102,103.827358,BUKIT MERAH
+Berseh Food Centre,Hawker,1.307336517,103.856854,ROCHOR
+Boon Lay Place Blk 221A/B (Boon Lay Place Market and Food Village),Hawker,1.345223163,103.7127998,JURONG WEST
+Buffalo Road Blk 665 (Tekka Centre/Zhu Jiao Market),Hawker,1.306205841,103.850531,ROCHOR
+Bukit Merah Central Blk 163 (Bukit Merah Central Food Centre),Hawker,1.283692589,103.8169924,BUKIT MERAH
+Bukit Merah Lane 1 Blk 120 (Alexandra Village Food Centre),Hawker,1.286297772,103.8044893,BUKIT MERAH
+Bukit Merah View Blk 115 (Blk 115 Bukit Merah View Market and Food Centre),Hawker,1.285504783,103.8220494,BUKIT MERAH
+Bukit Panjang Hawker Centre,Hawker,1.377600535,103.7724896,BUKIT PANJANG
+Bukit Timah Market,Hawker,1.339375964,103.775995,BUKIT TIMAH
+Cambridge Road Blk 41A (Pek Kio Market and Food Centre),Hawker,1.316159914,103.8502251,KALLANG
+Changi Village Blk 2 and 3,Hawker,1.389151721,103.9882457,CHANGI
+Chomp Chomp Food Centre,Hawker,1.364228523,103.8665361,SERANGOON
+Ci Yuan Hawker Centre,Hawker,1.375428967,103.882978,HOUGANG
+Circuit Road Blk 79/79A,Hawker,1.326449922,103.8850435,GEYLANG
+Circuit Road Blk 80 (80 Circuit Road Market and Food Centre),Hawker,1.327849561,103.8871285,GEYLANG
+Circuit Road Blk 89,Hawker,1.323445253,103.8854492,GEYLANG
+Clementi Ave 2 Blk 353 (Clementi Ave 2 Market/Cooked Food Centre),Hawker,1.314367728,103.7708367,CLEMENTI
+Clementi Ave 3 Blk 448,Hawker,1.31326487,103.7645105,CLEMENTI
+Clementi West Street 2 Blk 726,Hawker,1.303781973,103.7642644,CLEMENTI
+Commonwealth Crescent Market,Hawker,1.306892276,103.8003628,QUEENSTOWN
+Commonwealth Drive Blk 1A/2A/3A (Tanglin Halt Food Centre/Commonwealth Drive Food Centre),Hawker,1.299713305,103.7978755,QUEENSTOWN
+Dunman Food Centre,Hawker,1.309414187,103.9018251,MARINE PARADE
+East Coast Lagoon Food Village,Hawker,1.306684318,103.9350167,BEDOK
+Empress Road Blk 7 (Empress Road Market and Food Centre),Hawker,1.316245731,103.8056364,BUKIT TIMAH
+Geylang Bahru Blk 69 (Blk 69 Geylang Bahru Market and Food Centre),Hawker,1.32146226,103.8700044,KALLANG
+Geylang Serai Market,Hawker,1.316728148,103.8982243,GEYLANG
+Ghim Moh Road Blk 20,Hawker,1.310996273,103.7882307,QUEENSTOWN
+Golden Mile Food Centre,Hawker,1.302875481,103.8638832,KALLANG
+Haig Road Blk 13/14 (Haig Road Market and Cooked Food Centre),Hawker,1.315142051,103.8956095,GEYLANG
+Havelock Road Blk 22A/B (Havelock Road Cooked Food Centre),Hawker,1.28797544,103.8296268,BUKIT MERAH
+Hawker Centre @ Our Tampines Hub,Hawker,1.353862118,103.9397262,TAMPINES
+Shunfu Road Blk 320 (Shunfu Mart),Hawker,1.352007442,103.8370318,BISHAN
+Sims Place Blk 49 (Sims Vista Market and Food Centre),Hawker,1.317083351,103.879417,GEYLANG
+Smith Street Blk 335 (Chinatown Complex Market),Hawker,1.282235148,103.8431776,OUTRAM
+Taman Jurong Market and Food Centre,Hawker,1.33458936,103.7215199,JURONG WEST
+Tampines Street 11 Blk 137 (Tampines Round Market and Food Centre),Hawker,1.345639521,103.9446245,TAMPINES
+Tanglin Halt Market,Hawker,1.300789315,103.7976258,QUEENSTOWN
+Tanjong Pagar Plaza Blk 6 (Blk 6 Tanjong Pagar Plaza Market and Food Centre),Hawker,1.276614611,103.843167,OUTRAM
+Teban Gardens Road Blk 37A (Teban Gardens Market and Food Centre),Hawker,1.32084835,103.7428916,JURONG EAST
+Telok Blangah Crescent Blk 11 (11 Telok Blangah Crescent Market and Food Centre),Hawker,1.277366838,103.8186417,BUKIT MERAH
+Eunos Crescent Blk 4A,Hawker,1.320331782,103.9042609,GEYLANG
+Telok Blangah Drive Blk 79 (Telok Blangah Food Centre),Hawker,1.273368283,103.8076268,BUKIT MERAH
+Zion Riverside Food Centre,Hawker,1.292342168,103.8311893,TANGLIN
+Woodleigh Village Hawker Centre,Hawker,1.339796136,103.8720902,TOA PAYOH
+Anchorvale Village Hawker Centre,Hawker,1.396914176,103.8884896,SENGKANG
+Punggol Digital District Hawker Centre,Hawker,1.414566886,103.9082528,PUNGGOL
+Holland Drive Blk 44 (Holland Drive Market and Food Centre),Hawker,1.308117759,103.7927738,QUEENSTOWN
+Holland Village Market and Food Centre,Hawker,1.310908028,103.7948629,QUEENSTOWN
+Hougang Ave 1 Blk 105 (Hougang 105 Hainanese Village Centre),Hawker,1.353837391,103.8900811,HOUGANG
+Hougang Street 21 Blk 209 (Kovan Hougang Market and Food Centre),Hawker,1.359119422,103.8859776,HOUGANG
+Jalan Batu Blk 4A (Blk 4A Jalan Batu Hawker Centre/Market),Hawker,1.302418814,103.8839406,KALLANG
+Jalan Bukit Merah Blk 112 (Blk 112 Jalan Bukit Merah Market and Food Centre),Hawker,1.280004812,103.8260133,BUKIT MERAH
+Jalan Bukit Merah Blk 6 (ABC Brickworks Market/Food Centre),Hawker,1.286952752,103.808128,BUKIT MERAH
+Jalan Kukoh Blk 1 (Kukoh 21 Food Centre),Hawker,1.288230555,103.8399459,OUTRAM
+Jurong East Ave 1 Blk 347 (Yuhua Market and Hawker Centre),Hawker,1.34531247,103.7315797,JURONG EAST
+Jurong East Street 24 Blk 254 (Yuhua Village Market and Food Centre),Hawker,1.343442138,103.7377812,JURONG EAST
+Jurong West Hawker Centre,Hawker,1.341259706,103.6974043,JURONG WEST
+Jurong West Street 52 Blk 505,Hawker,1.349642243,103.7184475,JURONG WEST
+Kallang Estate Fresh Market and Food Centre,Hawker,1.30739616,103.8841302,GEYLANG
+Redhill Lane Blk 85 (Redhill Food Centre),Hawker,1.287330767,103.8183389,BUKIT MERAH
+Kampung Admiralty Hawker Centre,Hawker,1.439932832,103.8006964,WOODLANDS
+Marine Parade Central Blk 84 (84 Marine Parade Central Market and Food Centre),Hawker,1.302285138,103.9063385,MARINE PARADE
+Marine Terrace Blk 50A (50A Marine Terrace),Hawker,1.305775148,103.915762,MARINE PARADE
+Marsiling Lane Blk 20/21,Hawker,1.443881817,103.7772032,WOODLANDS
+Maxwell Food Centre (Kim Hua Market),Hawker,1.280112235,103.8448279,DOWNTOWN CORE
+Mei Chin Road Blk 159 (Mei Chin Road Market),Hawker,1.293236221,103.8029039,QUEENSTOWN
+New Market Road Blk 32 (People's Park Food Centre),Hawker,1.284991022,103.8425788,OUTRAM
+New Upper Changi Road Blk 208B,Hawker,1.324738845,103.9305605,BEDOK
+New Upper Changi Road Blk 58,Hawker,1.324187828,103.9411324,BEDOK
+Newton Food Centre,Hawker,1.311892357,103.8395627,NEWTON
+North Bridge Road Market,Hawker,1.305765378,103.863891,KALLANG
+Old Airport Road Blk 51 (51 Old Airport Road Food Centre and Shopping Mall),Hawker,1.308251563,103.8858332,GEYLANG
+Pasir Panjang Food Centre,Hawker,1.275907525,103.7914027,QUEENSTOWN
+Pasir Ris Central Hawker Centre,Hawker,1.37343414,103.951543,PASIR RIS
+Queen Street Blk 270 (Albert Centre),Hawker,1.301001465,103.8542116,ROCHOR
+Redhill Lane Blk 79 (Redhill Market),Hawker,1.287858103,103.8184026,BUKIT MERAH
+Sembawang Hills Food Centre (Jalan Leban Food Centre),Hawker,1.37238494,103.8289942,ANG MO KIO
+Serangoon Garden Market,Hawker,1.36315712,103.8667375,SERANGOON
+Telok Blangah Drive Blk 82 (Telok Blangah Market),Hawker,1.273913799,103.8079436,BUKIT MERAH
+Telok Blangah Rise Blk 36 (Telok Blangah Rise Market),Hawker,1.272715797,103.8221173,BUKIT MERAH
+Tiong Bahru Market,Hawker,1.285088258,103.8323488,BUKIT MERAH
+Toa Payoh Lorong 1 Blk 127 (Toa Payoh West Market and Food Court),Hawker,1.338092686,103.8447316,TOA PAYOH
+Toa Payoh Lorong 4 Blk 74 (Toa Payoh Vista Market),Hawker,1.334548165,103.8519991,TOA PAYOH
+Toa Payoh Lorong 4 Blk 93,Hawker,1.338474752,103.8495135,TOA PAYOH
+Toa Payoh Lorong 5 Blk 75,Hawker,1.336038822,103.8529416,TOA PAYOH
+Toa Payoh Lorong 7 Blk 22 (Kim Keat Palm Market and Food Centre),Hawker,1.335231459,103.857036,TOA PAYOH
+Toa Payoh Lorong 8 Blk 210,Hawker,1.340260835,103.8543953,TOA PAYOH
+Upper Boon Keng Road Blk 17 (Blk 17 Upper Boon Keng Market and Food Centre),Hawker,1.315028044,103.8716203,KALLANG
+Upper Cross Street Blk 531A (Hong Lim Food Centre and Market),Hawker,1.2852464,103.8458189,OUTRAM
+West Coast Drive Blk 502 (Ayer Rajah Market),Hawker,1.311889721,103.7591661,CLEMENTI
+West Coast Drive Blk 503 (Ayer Rajah Food Centre),Hawker,1.31180301,103.7597513,CLEMENTI
+Whampoa Drive Blk 90 (Whampoa Drive Makan Place/Whampoa Food Centre),Hawker,1.322943062,103.8551377,NOVENA
+Whampoa Drive Blk 91/92 (Whampoa Drive Makan Place/Whampoa Market),Hawker,1.323421751,103.8540681,NOVENA
+Yishun Park Hawker Centre,Hawker,1.425017638,103.8447476,YISHUN
+Yishun Ring Road Blk 104/105 (Chong Pang Market and Food Centre),Hawker,1.431447688,103.8285376,YISHUN
+PCF Sparkletots Preschool @ Cheng San-Seletar Blk 435 (KN),Kindergarten,1.367703675,103.8542143,ANG MO KIO
+PCF Sparkletots Preschool @ Cheng San-Seletar Blk 533 (KN),Kindergarten,1.374169224,103.8530019,ANG MO KIO
+PCF Sparkletots Preschool @ Cheng San-Seletar Blk 556 (DS),Kindergarten,1.372032359,103.8576254,ANG MO KIO
+PCF Sparkletots Preschool @ Chong Pang Blk 107 (KN),Kindergarten,1.432218075,103.8275202,YISHUN
+PCF Sparkletots Preschool @ Chong Pang Blk 122 (KN),Kindergarten,1.434997581,103.8311248,YISHUN
+PCF Sparkletots Preschool @ Chua Chu Kang Blk 10 (KN),Kindergarten,1.380470544,103.7552111,CHOA CHU KANG
+PCF Sparkletots Preschool @ Clementi Blk 330 (DS),Kindergarten,1.313744697,103.7677818,CLEMENTI
+PCF Sparkletots Preschool @ Eunos Blk 616 (KN),Kindergarten,1.331827123,103.9149911,BEDOK
+PCF Sparkletots Preschool @ Fengshan Blk 126 (DS),Kindergarten,1.328168293,103.9389179,BEDOK
+PCF Sparkletots Preschool @ Fernvale Blk 416A (DS),Kindergarten,1.390611962,103.8799636,SENGKANG
+PCF Sparkletots Preschool @ Geylang Serai Blk 11 (KN),Kindergarten,1.321800285,103.9044244,GEYLANG
+PCF Sparkletots Preschool @ Henderson-Dawson Blk 124A (KN),Kindergarten,1.284887038,103.8227818,BUKIT MERAH
+PCF Sparkletots Preschool @ Hong Kah North Blk 319 (KN),Kindergarten,1.361395073,103.7465167,BUKIT BATOK
+PCF Sparkletots Preschool @ Hong Kah North Blk 338 (KN),Kindergarten,1.363534164,103.7506727,BUKIT BATOK
+PCF Sparkletots Preschool @ Hong Kah North Blk 446 (DS),Kindergarten,1.350173382,103.7390864,BUKIT BATOK
+PCF Sparkletots Preschool @ Hougang Blk 328 (DS),Kindergarten,1.368748244,103.8965345,HOUGANG
+PCF Sparkletots Preschool @ Jalan Kayu Blk 518 (DS),Kindergarten,1.371641726,103.8741022,SERANGOON
+PCF Sparkletots Preschool @ Jalan Kayu Blk 970 (DS),Kindergarten,1.378799789,103.8803638,HOUGANG
+PCF Sparkletots Preschool @ Jalan Kayu Blk 987C (DS),Kindergarten,1.379392244,103.8782839,HOUGANG
+PCF SPARKLETOTS PRESCHOOL @ JALAN KAYU BLK 999 (DS),Kindergarten,1.384563862,103.8799463,HOUGANG
+PCF Sparkletots Preschool @ Joo Chiat Blk 15 (DS),Kindergarten,1.312546112,103.9074306,BEDOK
+PCF Sparkletots Preschool @ Jurong Central Blk 490 (KN),Kindergarten,1.349586591,103.7272404,JURONG WEST
+PCF Sparkletots Preschool @ Jurong Spring Blk 465 (KN),Kindergarten,1.35012595,103.7232096,JURONG WEST
+PCF SPARKLETOTS PRESCHOOL @ JURONG SPRING BLK 528 (DS),Kindergarten,1.348319686,103.7169555,JURONG WEST
+PCF Sparkletots Preschool @ Kaki Bukit Blk 519 (KN),Kindergarten,1.330874641,103.9280591,BEDOK
+PCF Sparkletots Preschool @ Kaki Bukit Blk 526 (KN),Kindergarten,1.334215516,103.9291298,BEDOK
+PCF Sparkletots Preschool @ Kampong Chai Chee Blk 135 (KN),Kindergarten,1.328732009,103.9365067,BEDOK
+PCF Sparkletots Preschool @ Kampong Chai Chee Blk 775 (KN),Kindergarten,1.336550009,103.935822,BEDOK
+PCF Sparkletots Preschool @ Kampong Glam Blk 462 (DS),Kindergarten,1.304586177,103.8608408,KALLANG
+PCF Sparkletots Preschool @ Keat Hong Blk 295 (DS),Kindergarten,1.378166429,103.740968,CHOA CHU KANG
+PCF Sparkletots Preschool @ Keat Hong Blk 411 (DS),Kindergarten,1.381059792,103.7412602,CHOA CHU KANG
+PCF Sparkletots Preschool @ Kembangan Chai Chee Blk 116 (DS),Kindergarten,1.322785328,103.911863,BEDOK
+PCF Sparkletots Preschool @ Kembangan Chai Chee Blk 326 (KN),Kindergarten,1.327177432,103.9038015,GEYLANG
+PCF Sparkletots Preschool @ Kembangan Chai Chee Blk 59 (KN),Kindergarten,1.32488916,103.9202467,BEDOK
+PCF SPARKLETOTS PRESCHOOL @ KRETA AYER-KIM SENG BLK 79 (DS),Kindergarten,1.291074616,103.8286902,BUKIT MERAH
+PCF Sparkletots Preschool @ Kreta Ayer-Kim Seng Blk 8 (DS),Kindergarten,1.312984493,103.8704303,KALLANG
+PCF Sparkletots Preschool @ Macpherson Blk 108 (KN),Kindergarten,1.319012755,103.8851688,GEYLANG
+PCF Sparkletots Preschool @ Macpherson Blk 31 (KN),Kindergarten,1.329682321,103.885408,GEYLANG
+PCF Sparkletots Preschool @ Marine Parade Blk 46 (DS),Kindergarten,1.305104743,103.9126596,MARINE PARADE
+PCF Sparkletots Preschool @ Marsiling Blk 32 (KN),Kindergarten,1.443376095,103.7729181,WOODLANDS
+PCF Sparkletots Preschool @ Marymount Blk 231 (DS),Kindergarten,1.357291221,103.8458457,BISHAN
+PCF Sparkletots Preschool @ Moulmein-Cairnhill Blk 10 (DS),Kindergarten,1.313916584,103.8522098,KALLANG
+PCF Sparkletots Preschool @ Mountbatten Blk 51 (KN),Kindergarten,1.308109813,103.8857317,GEYLANG
+PCF Sparkletots Preschool @ Nanyang Blk 934 (KN),Kindergarten,1.342237942,103.6887377,JURONG WEST
+PCF Sparkletots Preschool @ Nee Soon Central Blk 646 (DS),Kindergarten,1.422112023,103.8374914,YISHUN
+PCF Sparkletots Preschool @ Nee Soon Central Blk 671 (DS),Kindergarten,1.419191163,103.8415813,YISHUN
+PCF Sparkletots Preschool @ Nee Soon Central Blk 737 (KN),Kindergarten,1.42897509,103.8324446,YISHUN
+PCF Sparkletots Preschool @ Nee Soon East Blk 223 (KN),Kindergarten,1.434367266,103.8356027,YISHUN
+PCF Sparkletots Preschool @ Nee Soon Link Blk 408 (KN),Kindergarten,1.426253597,103.8484275,YISHUN
+PCF Sparkletots Preschool @ Nee Soon South Blk 875 (DS),Kindergarten,1.414763208,103.836287,YISHUN
+PCF Sparkletots Preschool @ Pasir Ris Central Blk 426 (DS),Kindergarten,1.369958394,103.9557879,PASIR RIS
+PCF Sparkletots Preschool @ Pasir Ris East Blk 216 (KN),Kindergarten,1.369022769,103.9609132,PASIR RIS
+PCF Sparkletots Preschool @ Pasir Ris West Blk 517 (KN),Kindergarten,1.374681006,103.9438503,PASIR RIS
+PCF Sparkletots Preschool @ Paya Lebar Blk 125 (KN),Kindergarten,1.352409828,103.8864916,HOUGANG
+PCF Sparkletots Preschool @ Paya Lebar Blk 23 (KN),Kindergarten,1.364866659,103.890728,HOUGANG
+PCF Sparkletots Preschool @ Pioneer Blk 642 (KN),Kindergarten,1.340369892,103.6958398,JURONG WEST
+PCF Sparkletots Preschool @ Pioneer Blk 654B (KN),Kindergarten,1.336161148,103.6979399,JURONG WEST
+PCF Sparkletots Preschool @ Pioneer Blk 662B (KN),Kindergarten,1.337019488,103.7033883,JURONG WEST
+PCF Sparkletots Preschool @ Pioneer Blk 665A (KN),Kindergarten,1.340093191,103.7031243,JURONG WEST
+PCF Sparkletots Preschool @ Potong Pasir Blk 14 (KN),Kindergarten,1.336073643,103.8798538,TOA PAYOH
+PCF Sparkletots Preschool @ Potong Pasir Blk 143 (DS),Kindergarten,1.332907604,103.8661689,TOA PAYOH
+PCF Sparkletots Preschool @ Punggol Coast Blk 303A (DS),Kindergarten,1.403777884,103.9057622,PUNGGOL
+PCF Sparkletots Preschool @ Punggol Coast Blk 676B (DS),Kindergarten,1.404891404,103.9102098,PUNGGOL
+PCF Sparkletots Preschool @ Punggol Shore Blk 105D (KN),Kindergarten,1.3971753,103.9052296,PUNGGOL
+PCF Sparkletots Preschool @ Punggol Shore Blk 174D (KN),Kindergarten,1.397493995,103.9099874,PUNGGOL
+PCF Sparkletots Preschool @ Punggol Shore Blk 663A (DS),Kindergarten,1.400243475,103.91708,PUNGGOL
+PCF Sparkletots Preschool @ Punggol West Blk 271A (KN),Kindergarten,1.403745392,103.9003189,PUNGGOL
+PCF Sparkletots Preschool @ Punggol West Blk 308B (DS),Kindergarten,1.407766772,103.8988787,PUNGGOL
+PCF Sparkletots Preschool @ Queenstown Blk 3 (KN),Kindergarten,1.28713355,103.8070005,BUKIT MERAH
+PCF SPARKLETOTS PRESCHOOL @ RADIN MAS BLK 18 (DS),Kindergarten,1.277909842,103.8225359,BUKIT MERAH
+PCF Sparkletots Preschool @ Radin Mas Blk 70A (KN),Kindergarten,1.287006586,103.8169125,BUKIT MERAH
+PCF Sparkletots Preschool @ Sembawang Central Blk 309 (KN),Kindergarten,1.446757336,103.8215624,SEMBAWANG
+PCF Sparkletots Preschool @ Sembawang West Blk 730 (KN),Kindergarten,1.442509437,103.7977039,WOODLANDS
+PCF Sparkletots Preschool @ Sembawang West Blk 789 (KN),Kindergarten,1.443334832,103.8023784,WOODLANDS
+PCF Sparkletots Preschool @ Sengkang East Blk 143 (KN),Kindergarten,1.390065934,103.9057234,SENGKANG
+PCF Sparkletots Preschool @ Sengkang East Blk 187B (KN),Kindergarten,1.394297908,103.9058476,SENGKANG
+PCF Sparkletots Preschool @ Sengkang North Blk 231 (DS),Kindergarten,1.389143796,103.9013535,SENGKANG
+PCF Sparkletots Preschool @ Sengkang North Blk 292B (KN),Kindergarten,1.395398588,103.898745,SENGKANG
+PCF Sparkletots Preschool @ Sengkang West Blk 330A (DS),Kindergarten,1.396627228,103.8898654,SENGKANG
+PCF Sparkletots Preschool @ Serangoon Blk 125 (KN),Kindergarten,1.366450625,103.8721108,SERANGOON
+PCF Sparkletots Preschool @ Serangoon Blk 226 (KN),Kindergarten,1.356822049,103.8708558,SERANGOON
+PCF Sparkletots Preschool @ Siglap Blk 170 (KN),Kindergarten,1.320720099,103.9461111,BEDOK
+PCF Sparkletots Preschool @ Taman Jurong Blk 352 (DS),Kindergarten,1.339365783,103.7201844,JURONG WEST
+PCF Sparkletots Preschool @ Tampines Central Blk 725 (DS),Kindergarten,1.356984502,103.9353345,TAMPINES
+PCF Sparkletots Preschool @ Tampines Central Blk 856 (KN),Kindergarten,1.353443239,103.9365576,TAMPINES
+PCF Sparkletots Preschool @ Tampines Central Blk 868A (KN),Kindergarten,1.354776159,103.9339796,TAMPINES
+PCF Sparkletots Preschool @ Tampines East Blk 261 (KN),Kindergarten,1.354303483,103.9509655,TAMPINES
+PCF Sparkletots Preschool @ Tampines East Blk 262 (DS),Kindergarten,1.353756637,103.9509704,TAMPINES
+PCF Sparkletots Preschool @ Tampines North Blk 483 (KN),Kindergarten,1.361433396,103.9526859,TAMPINES
+PCF Sparkletots Preschool @ Tampines West Blk 140 (DS),Kindergarten,1.347557792,103.9438148,TAMPINES
+PCF Sparkletots Preschool @ Tampines-Changkat Blk 284 (KN),Kindergarten,1.34910384,103.9526282,TAMPINES
+PCF Sparkletots Preschool @ Tampines-Changkat Blk 318 (KN),Kindergarten,1.351460939,103.9560749,TAMPINES
+PCF Sparkletots Preschool @ Tampines-Changkat Blk 358 (KN),Kindergarten,1.354474469,103.9610042,TAMPINES
+PCF Sparkletots Preschool @ Tanjong Pagar-Tiong Bahru Blk 130 (KN),Kindergarten,1.280412542,103.8292712,BUKIT MERAH
+PCF Sparkletots Preschool @ Tanjong Pagar-Tiong Bahru Blk 1E (KN),Kindergarten,1.276621675,103.8411561,OUTRAM
+PCF Sparkletots Preschool @ Teck Ghee Blk 235 (KN),Kindergarten,1.366823603,103.8364912,ANG MO KIO
+PCF Sparkletots Preschool @ Teck Ghee Blk 301 (DS),Kindergarten,1.367421107,103.8459036,ANG MO KIO
+PCF Sparkletots Preschool @ Teck Ghee Blk 466 (KN),Kindergarten,1.365819605,103.8570616,ANG MO KIO
+PCF Sparkletots Preschool @ Telok Blangah Blk 2 (KN),Kindergarten,1.30310745,103.7829008,QUEENSTOWN
+PCF Sparkletots Preschool @ Telok Blangah Blk 78A (DS),Kindergarten,1.273382513,103.8089348,BUKIT MERAH
+PCF Sparkletots Preschool @ Toa Payoh Central Blk 157 (KN),Kindergarten,1.33220626,103.8454529,TOA PAYOH
+Little Shepherds' Schoolhouse@Blessed Sacrament Church,Kindergarten,1.295803637,103.7988024,QUEENSTOWN
+Little Shepherds' Schoolhouse@Church of St Francis of Assisi (BL),Kindergarten,1.347901738,103.7109844,JURONG WEST
+Little Shepherds' Schoolhouse@Church of St Francis Xavier,Kindergarten,1.358649496,103.86353,SERANGOON
+Little Shepherds' Schoolhouse@Church of the Holy Family,Kindergarten,1.30680767,103.9069247,MARINE PARADE
+Little Shepherds' Schoolhouse@Church of the Holy Trinity,Kindergarten,1.348841449,103.9493353,TAMPINES
+Little Shepherds' Schoolhouse@Church of the Nativity,Kindergarten,1.374158598,103.8976849,HOUGANG
+Little Shepherds' Schoolhouse@St Anneâ€™s Church,Kindergarten,1.391889387,103.9016755,SENGKANG
+Little Shepherdsâ€™ Schoolhouse@Church of St Francis of Assisi-JW,Kindergarten,1.351353674,103.7163918,JURONG WEST
+Little Skittles International Preschool,Kindergarten,1.29847422,103.8890753,MARINE PARADE
+Little Woods Montessori Preschool,Kindergarten,1.318880172,103.8384186,NOVENA
+LittleSparks Montessori Kindergarten,Kindergarten,1.315656245,103.9192457,BEDOK
+Living Sanctuary Kindergarten,Kindergarten,1.355987836,103.8914006,HOUGANG
+Lodestar Montessori Preschool Pte. Ltd.,Kindergarten,1.360619534,103.8904114,HOUGANG
+Lumiere Montessori House,Kindergarten,1.347153349,103.8698239,SERANGOON
+Mahad Al-Nasry @ Sengkang kindergarten,Kindergarten,1.391710009,103.9011211,SENGKANG
+Maplebear Gracefields Pte Ltd,Kindergarten,1.300589374,103.8244787,RIVER VALLEY
+Maris Stella Kindergarten,Kindergarten,1.308859621,103.8083085,TANGLIN
+Masterminds Montessori Kindergarten,Kindergarten,1.324085293,103.7967756,BUKIT TIMAH
+MFC Kindergarten (Broadrick Road),Kindergarten,1.299792104,103.8906723,MARINE PARADE
+MFC Kindergarten (Newton),Kindergarten,1.317987401,103.8412981,NOVENA
+Milagros de Montessori School - Queens Close,Kindergarten,1.293272638,103.7999147,QUEENSTOWN
+Modern Montessori Kindergarten,Kindergarten,1.311416032,103.9292901,BEDOK
+Monte Kidz World (Pasir Ris),Kindergarten,1.378607178,103.9419164,PASIR RIS
+Montessori Children's House Kindergarten,Kindergarten,1.33216946,103.7907145,BUKIT TIMAH
+Morning Glory Preschool,Kindergarten,1.352819981,103.7260349,JURONG WEST
+Muhammadiyah Kindergarten,Kindergarten,1.323034291,103.9154424,BEDOK
+Mujahidin Mosque Kindergarten,Kindergarten,1.298149708,103.8008664,QUEENSTOWN
+MY FIRST SKOOL (DS),Kindergarten,1.443921182,103.7960316,WOODLANDS
+Holy Grace Kindergarten,Kindergarten,1.314089138,103.9394824,BEDOK
+Hope Community Kindergarten (Choa Chu Kang),Kindergarten,1.377767713,103.7402534,CHOA CHU KANG
+Hope Community Kindergarten (Sembawang),Kindergarten,1.454755083,103.814546,SEMBAWANG
+Hope Community Kindergarten (Tampines),Kindergarten,1.361403928,103.9521535,TAMPINES
+House on the Hill Montessori Pre-School,Kindergarten,1.29153714,103.7711291,QUEENSTOWN
+Ichiban Nurtureland Kindergarten (Choa Chu Kang),Kindergarten,1.377293001,103.7457569,CHOA CHU KANG
+Idealkidz,Kindergarten,1.444772736,103.8127405,SEMBAWANG
+Iman Kindergarten (CCK),Kindergarten,1.392626919,103.7417988,CHOA CHU KANG
+Iman Kindergarten (Tenagaville),Kindergarten,1.332192424,103.9073635,BEDOK
+Iman Kindergarten (Yishun),Kindergarten,1.425763364,103.8365391,YISHUN
+Iroha Kindergarten,Kindergarten,1.308027393,103.880481,GEYLANG
+Jamiyah Kindergarten,Kindergarten,1.310379178,103.8787823,GEYLANG
+Jenius Kindergarten (Hougang),Kindergarten,1.377570287,103.8835662,HOUGANG
+Jessin Kindergarten,Kindergarten,1.336285354,103.8484286,TOA PAYOH
+Josiah Montessori Kindergarten,Kindergarten,1.354369812,103.9599065,TAMPINES
+Joyful Jenius Preschool,Kindergarten,1.373683921,103.871417,SERANGOON
+Jurong Calvary Kindergarten,Kindergarten,1.333190327,103.7234911,JURONG WEST
+Kampung Siglap Mosque Kindergarten,Kindergarten,1.309855319,103.9275551,BEDOK
+Kay Poh Road Baptist Kindergarten,Kindergarten,1.29661103,103.8290948,TANGLIN
+Khalsa Kindergarten,Kindergarten,1.314290905,103.858317,KALLANG
+Kim Keat Christian Church Kindergarten,Kindergarten,1.324418779,103.8658995,KALLANG
+Kizroo Kindergarten,Kindergarten,1.338994627,103.7931338,BUKIT TIMAH
+Little Hands Montessori Kindergarten,Kindergarten,1.301528755,103.8290901,RIVER VALLEY
+Little Leader Kindergarten,Kindergarten,1.430618289,103.828763,YISHUN
+Little Moppets Preschool @ Tampines Pte Ltd,Kindergarten,1.35825225,103.9583674,TAMPINES
+Little Oaks Montessori Kindergarten,Kindergarten,1.319736948,103.8118465,TANGLIN
+Little Ones Kindergarten,Kindergarten,1.313966233,103.7799975,BUKIT TIMAH
+Little Seeds Preshool @ PPHBC,Kindergarten,1.280352468,103.7857364,QUEENSTOWN
+My Montessori Preschool @ Bullion,Kindergarten,1.391598645,103.8366231,ANG MO KIO
+My Prep School,Kindergarten,1.307386254,103.92526,BEDOK
+3House Kindergarten (Tampines),Kindergarten,1.349225002,103.9311192,TAMPINES
+ACES Montessori Kidz Kindergarten,Kindergarten,1.368587029,103.959198,PASIR RIS
+Adventure Tree Preschool,Kindergarten,1.298514224,103.8948214,MARINE PARADE
+Agape Montessori House Kindergarten,Kindergarten,1.378379638,103.8321834,ANG MO KIO
+Al - Amin Preschool (Pasir Ris),Kindergarten,1.372769055,103.9465105,PASIR RIS
+Al - Ansar Mosque Kindergarten,Kindergarten,1.326989618,103.9263539,BEDOK
+Al - Iman Mosque Kindergarten,Kindergarten,1.378140883,103.7727329,BUKIT PANJANG
+Al - Istighfar Mosque Kindergarten,Kindergarten,1.370997803,103.9641104,PASIR RIS
+Al - Istiqamah Mosque Kindergarten,Kindergarten,1.3692017,103.8756266,SERANGOON
+Al - Khair Mosque Kindergarten,Kindergarten,1.382612851,103.7499371,CHOA CHU KANG
+Al - Mukminin Mosque Kindergarten,Kindergarten,1.339216436,103.7414219,JURONG EAST
+Al - Muttaqin Mosque Kindergarten,Kindergarten,1.370521797,103.8459048,ANG MO KIO
+Al-Amin Preschool,Kindergarten,1.363008236,103.9535476,TAMPINES
+Al-Nasry @ Jurong West Kindergarten,Kindergarten,1.347293361,103.6991937,JURONG WEST
+Al-Nasry @ Sengkang South,Kindergarten,1.378803331,103.8903736,HOUGANG
+An - Nur Mosque Kindergarten,Kindergarten,1.440727628,103.7718775,WOODLANDS
+Ang Mo Kio Methodist Church Kindergarten,Kindergarten,1.367111993,103.8353336,ANG MO KIO
+Ar - Raudhah Mosque Kindergarten,Kindergarten,1.35166029,103.7560019,BUKIT BATOK
+Assyakirin Mosque Kindergarten,Kindergarten,1.335448397,103.7195662,JURONG WEST
+Banyan Tree Education @ AMK PTE. LTD.,Kindergarten,1.377923452,103.8753898,SERANGOON
+Barker Road Methodist Church Kindergarten,Kindergarten,1.319182214,103.8344895,NOVENA
+Bedok Methodist Preschool,Kindergarten,1.323755942,103.9539452,BEDOK
+Bello Bambini Montessori Pte Ltd,Kindergarten,1.348843359,103.8409075,BISHAN
+Bethany Kindergarten,Kindergarten,1.344255575,103.8818616,SERANGOON
+Bethel Kinderlites,Kindergarten,1.321766429,103.8866728,GEYLANG
+Bethesda (Ang Mo Kio) Kindergarten,Kindergarten,1.37468314,103.837307,ANG MO KIO
+Bethesda (Bedok-Tampines) Kindergarten,Kindergarten,1.331219161,103.9347438,BEDOK
+Bethesda (Bukit Arang) Kindergarten,Kindergarten,1.349449755,103.8674342,SERANGOON
+Bethesda (Depot Walk) Kindergarten,Kindergarten,1.281887123,103.814161,BUKIT MERAH
+Bethesda (Katong) Kindergarten,Kindergarten,1.316801307,103.9184094,BEDOK
+Bethesda (Pasir Ris) Kindergarten,Kindergarten,1.367946982,103.9644442,PASIR RIS
+Bethesda Chapel Kindergarten,Kindergarten,1.32064873,103.910032,BEDOK
+Bibinogs Preschool K.A.,Kindergarten,1.323138858,103.8106762,BUKIT TIMAH
+Blue House International School,Kindergarten,1.335897287,103.7959415,BUKIT TIMAH
+Brainfit School House Pte. Ltd.,Kindergarten,1.327108132,103.8463743,NOVENA
+Brainy Bunch International Montessori,Kindergarten,1.359165741,103.8915243,HOUGANG
+BRAINY BUNCH INTERNATIONAL MONTESSORI (SEMBAWANG),Kindergarten,1.437338486,103.8275516,SEMBAWANG
+BRAINY BUNCH PASIR RIS PTE. LTD,Kindergarten,1.364846266,103.9641132,PASIR RIS
+British Council (Singapore) Pre-school,Kindergarten,1.356388696,103.9408842,TAMPINES
+Bukit Panjang Methodist Church Kindergarten,Kindergarten,1.3619036,103.7679364,BUKIT PANJANG
+Callidus Preschool,Kindergarten,1.357608451,103.8459629,BISHAN
+Calvary Pandan Kindergarten,Kindergarten,1.321212634,103.7459837,JURONG EAST
+Camelot at River Valley Pte. Ltd.,Kindergarten,1.292028965,103.834256,SINGAPORE RIVER
+Camelot Learning Centre Pte Ltd,Kindergarten,1.307602555,103.9070782,MARINE PARADE
+Catholic Kindergarten,Kindergarten,1.360105021,103.8819905,HOUGANG
+Cavenur Kindergarten Pte. Ltd.,Kindergarten,1.360011775,103.9330438,TAMPINES
+Cedan Kindergarten,Kindergarten,1.399509418,103.9063716,PUNGGOL
+CGM Kindergarten,Kindergarten,1.377311358,103.7467052,CHOA CHU KANG
+Chen Li Kindergarten,Kindergarten,1.30956661,103.8803811,GEYLANG
+Chengzhu Mandarin Kindergarten,Kindergarten,1.305351204,103.7883474,QUEENSTOWN
+Children's Vineyard Kindergarten,Kindergarten,1.312331598,103.903418,GEYLANG
+Chinese Kindergarten,Kindergarten,1.285751406,103.8359382,OUTRAM
+Clementi Woods Kindergarten LLP,Kindergarten,1.302871782,103.7658102,CLEMENTI
+Coco-Ro learning House,Kindergarten,1.298198965,103.8380246,RIVER VALLEY
+Darul Ghufran Mosque Kindergarten,Kindergarten,1.355354234,103.9399106,TAMPINES
+Darul Makmur Mosque Kindergarten,Kindergarten,1.436866141,103.8343403,YISHUN
+David & Goliath Preschool,Kindergarten,1.336484698,103.7221205,JURONG WEST
+Dayspring Kindergarten,Kindergarten,1.414949726,103.8988205,PUNGGOL
+Divinity Kindergarten,Kindergarten,1.326710175,103.895046,GEYLANG
+D'Learning Sparks Montessori,Kindergarten,1.325210878,103.9131946,BEDOK
+Dreamkids Kindergarten @ East Gate Pte Ltd,Kindergarten,1.309847159,103.907761,MARINE PARADE
+Dynamic World Montessori Preschool,Kindergarten,1.30816203,103.9093278,BEDOK
+Early Years Montessori,Kindergarten,1.325781675,103.766715,CLEMENTI
+Edelweiss Kindergarten Sembawang Presbyterian Church,Kindergarten,1.441244338,103.82562,SEMBAWANG
+Elite Learning Kindergarten Pte Ltd,Kindergarten,1.344351366,103.6974973,JURONG WEST
+En-Naeem Mosque Kindergarten,Kindergarten,1.360929313,103.8925511,HOUGANG
+Etonhouse International Research Preschool,Kindergarten,1.302779353,103.8889264,MARINE PARADE
+Evangel Kindergarten,Kindergarten,1.439496583,103.7917614,WOODLANDS
+Faith Methodist Preschool,Kindergarten,1.302614245,103.7972945,QUEENSTOWN
+Far Eastern Kindergarten,Kindergarten,1.315944895,103.8379502,NOVENA
+First Step Montessori House,Kindergarten,1.426157248,103.8274494,YISHUN
+Foochow Methodist Preschool,Kindergarten,1.308944568,103.851699,ROCHOR
+Galilee Kindergarten,Kindergarten,1.321769841,103.7462283,JURONG EAST
+Gate Junior Preschool,Kindergarten,1.322420299,103.949903,BEDOK
+Glory Kindergarten,Kindergarten,1.338288644,103.7754791,BUKIT TIMAH
+Good Shepherd Convent Kindergarten,Kindergarten,1.311217306,103.9325538,BEDOK
+Grace House @ Tanglin,Kindergarten,1.294305661,103.8163859,TANGLIN
+Grace House @ TRBK PTE LTD,Kindergarten,1.314867286,103.844295,NOVENA
+Grace House Kindergarten,Kindergarten,1.364679497,103.7474273,BUKIT BATOK
+Hanis Montessori Kindergarten (Choa Chu Kang),Kindergarten,1.390381504,103.747116,CHOA CHU KANG
+Hanis Montessori Kindergarten (Enterprise One),Kindergarten,1.332748477,103.9026164,BEDOK
+Hanis Montessori Kindergarten (Kovan),Kindergarten,1.354976861,103.8785479,HOUGANG
+Hanis Montessori Kindergarten (Pasir Ris),Kindergarten,1.37406386,103.9370496,PASIR RIS
+Hanis Montessori Kindergarten (Tampines),Kindergarten,1.356424504,103.9586093,TAMPINES
+Hanis Montessori Kindergarten (Woodlands),Kindergarten,1.427287302,103.7748594,WOODLANDS
+Heartfield Kindergarten,Kindergarten,1.317059486,103.8338933,TANGLIN
+Hebron Christian Preschool,Kindergarten,1.394471447,103.7440544,CHOA CHU KANG
+PCF Sparkletots Preschool @ Woodgrove Blk 899B (KN),Kindergarten,1.436133343,103.7952643,WOODLANDS
+PCF Sparkletots Preschool @ Woodlands Blk 652 (KN),Kindergarten,1.437898803,103.7997786,WOODLANDS
+PCF Sparkletots Preschool @ Woodlands Blk 875 (KN),Kindergarten,1.442532603,103.7896117,WOODLANDS
+PCF Sparkletots Preschool @ Yew Tee Blk 608 (DS),Kindergarten,1.398467592,103.7446458,CHOA CHU KANG
+PCF Sparkletots Preschool @ Yew Tee Blk 682 (KN),Kindergarten,1.40251053,103.7452912,CHOA CHU KANG
+PCF Sparkletots Preschool @ Yew Tee Blk 690D (KN),Kindergarten,1.401962031,103.7519872,CHOA CHU KANG
+PCF Sparkletots Preschool @ Yuhua Blk 251 (KN),Kindergarten,1.343165846,103.7396765,JURONG EAST
+PCF Sparkletots Preschool @ Yuhua Blk 317 (KN),Kindergarten,1.346549687,103.7309651,JURONG EAST
+PCF Sparkletots Preschool @ Zhenghua Blk 455A (KN),Kindergarten,1.387567355,103.7712122,BUKIT PANJANG
+PCF Sparkletots Preschool @ Zhenghua Blk 528 (KN),Kindergarten,1.385049079,103.7655435,BUKIT PANJANG
+PCF Sparkletots Preschool @ Zhenghua Blk 620 (KN),Kindergarten,1.385855577,103.7617375,BUKIT PANJANG
+Pearlbank Montessori Kindergarten,Kindergarten,1.287507455,103.7797917,QUEENSTOWN
+Pentecost Methodist Church Kindergarten,Kindergarten,1.371256622,103.9571498,PASIR RIS
+Pibos Garden Preschool,Kindergarten,1.323643848,103.8145915,NOVENA
+Pink Tower Montessori,Kindergarten,1.306465863,103.9053183,MARINE PARADE
+Primus Schoolhouse Alexandra By Invictus,Kindergarten,1.287477075,103.8052534,BUKIT MERAH
+Primus Schoolhouse Bukit Timah By Invictus,Kindergarten,1.345177878,103.7905372,BUKIT TIMAH
+Putra - Putri Kindergarten,Kindergarten,1.428852525,103.7723692,WOODLANDS
+Quayside Isle Preparatory School,Kindergarten,1.247758623,103.8419211,SOUTHERN ISLANDS
+Queenstown Good Shepherd Kindergarten,Kindergarten,1.295085001,103.8073174,QUEENSTOWN
+Raffles Montessori Kindergarten (Aljunied),Kindergarten,1.315226534,103.8814471,GEYLANG
+Ramakrishna Mission Sarada Kindergarten,Kindergarten,1.343724071,103.8794988,SERANGOON
+Ripples Montessori Kindergarten,Kindergarten,1.333542824,103.9481545,BEDOK
+Riverlife Kindergarten,Kindergarten,1.378368251,103.9577854,PASIR RIS
+Seeds D' Learning House,Kindergarten,1.306465863,103.9053183,MARINE PARADE
+Sengkang Methodist Preschool,Kindergarten,1.392220225,103.8864265,SENGKANG
+Shalom Kindergarten,Kindergarten,1.378438361,103.9581745,PASIR RIS
+Singapore Hokkien Huay Kuan Pre-School,Kindergarten,1.315636687,103.9384138,BEDOK
+SKOOL4KIDZ CENTRE (DS),Kindergarten,1.445148883,103.8339257,SEMBAWANG
+Soka Kindergarten,Kindergarten,1.344632905,103.9433494,TAMPINES
+Sri Sathya Sai Kindergarten,Kindergarten,1.383101564,103.9367326,PASIR RIS
+St. Hilda's Church Kindergarten,Kindergarten,1.307808865,103.9007856,MARINE PARADE
+St. James' Church Kindergarten,Kindergarten,1.312860966,103.7961233,BUKIT TIMAH
+St. James' Church Kindergarten (Gilstead),Kindergarten,1.31669293,103.8383237,NOVENA
+St. James' Church Kindergarten (Harding),Kindergarten,1.304449564,103.812223,TANGLIN
+St. Paul's Church Kindergarten,Kindergarten,1.35857808,103.8818543,HOUGANG
+Sunshine Kindergarten (Watten),Kindergarten,1.324156575,103.7968011,BUKIT TIMAH
+Swallows And Amazons Kindergarten,Kindergarten,1.338994627,103.7931338,BUKIT TIMAH
+The Ascension Kindergarten,Kindergarten,1.330280621,103.8664018,TOA PAYOH
+The Caterpillar Clubhouse,Kindergarten,1.350270651,103.9268935,TAMPINES
+The Grange International Preschool,Kindergarten,1.390456092,103.8539735,ANG MO KIO
+The Little House (Montessori) Kindergarten,Kindergarten,1.338994627,103.7931338,BUKIT TIMAH
+The Montessori Playroom Kindergarten,Kindergarten,1.371078389,103.8941001,HOUGANG
+Toa Payoh Methodist Preschool,Kindergarten,1.334096206,103.8464499,TOA PAYOH
+Tots Town Preschool @ Yishun,Kindergarten,1.430618289,103.828763,YISHUN
+Totsville Montessori Kindergarten (Bishan),Kindergarten,1.357945799,103.8454936,BISHAN
+Totsville Montessori Kindergarten Pte Ltd,Kindergarten,1.381785961,103.9364118,PASIR RIS
+TPBC Kindergarten,Kindergarten,1.350587357,103.8804512,HOUGANG
+True Way Presbyterian Kindergarten,Kindergarten,1.29372738,103.8056849,QUEENSTOWN
+Tung Ling Kindergarten,Kindergarten,1.304519857,103.90637,MARINE PARADE
+Wee Care Kindergarten,Kindergarten,1.297417077,103.8432012,MUSEUM
+White Lodge Bukit Timah Pte Ltd,Kindergarten,1.332389916,103.8016724,BUKIT TIMAH
+White Lodge Kindergarten (East Coast),Kindergarten,1.310012061,103.8824094,GEYLANG
+White Lodge Kindergarten (Phoenix Park),Kindergarten,1.298555646,103.8146732,TANGLIN
+White Lodge West Coast Pte Ltd,Kindergarten,1.280130292,103.7862596,QUEENSTOWN
+Workplayz Montessori,Kindergarten,1.277293277,103.8077399,BUKIT MERAH
+Zion Bishan Kindergarten,Kindergarten,1.347090663,103.8548784,BISHAN
+My Prep School (Montessori) Pte Ltd,Kindergarten,1.318343066,103.941364,BEDOK
+NAFA Arts Preschool,Kindergarten,1.309760534,103.9139353,BEDOK
+Nanyang Children School,Kindergarten,1.273634767,103.8082074,BUKIT MERAH
+Nanyang Kindergarten,Kindergarten,1.318057471,103.8055673,BUKIT TIMAH
+Nanyang Kindergarten,Kindergarten,1.321115485,103.8064681,BUKIT TIMAH
+New Life Kindergarten,Kindergarten,1.445030894,103.7773768,WOODLANDS
+Newton Kindergarten,Kindergarten,1.314100153,103.8408388,NOVENA
+P&J Montessori Kindergarten Pte Ltd,Kindergarten,1.357318064,103.8262493,BISHAN
+Paper Scissors Stone Montessori Kindergarten,Kindergarten,1.343618769,103.961427,TAMPINES
+Paper Scissors Stone Montessori Kindergarten (Bedok Reservoir Branch),Kindergarten,1.336633631,103.9257449,BEDOK
+Paya Lebar Methodist Church Covenant Kindergarten,Kindergarten,1.352663651,103.8756356,SERANGOON
+PCF Sparkletots Preschool @ Admiralty Blk 501 (KN),Kindergarten,1.432925231,103.792007,WOODLANDS
+PCF Sparkletots Preschool @ Admiralty Blk 581 (DS),Kindergarten,1.429890293,103.7964039,WOODLANDS
+PCF Sparkletots Preschool @ Admiralty Blk 687B (DS),Kindergarten,1.441885376,103.807162,WOODLANDS
+PCF Sparkletots Preschool @ Ang Mo Kio-Hougang Blk 452 (DS),Kindergarten,1.378491442,103.896308,HOUGANG
+PCF Sparkletots Preschool @ Ang Mo Kio-Hougang Blk 535 (DS),Kindergarten,1.376441739,103.8901338,HOUGANG
+PCF Sparkletots Preschool @ Ang Mo Kio-Hougang Blk 632 (DS),Kindergarten,1.370567417,103.8805919,HOUGANG
+PCF Sparkletots Preschool @ Ayer Rajah Blk 276D (KN),Kindergarten,1.35344766,103.7044112,JURONG WEST
+PCF Sparkletots Preschool @ Ayer Rajah Blk 48 (DS),Kindergarten,1.320497728,103.7399677,JURONG EAST
+PCF Sparkletots Preschool @ Ayer Rajah Blk 750 (KN),Kindergarten,1.347937106,103.6991919,JURONG WEST
+PCF Sparkletots Preschool @ Bedok Blk 30 (DS),Kindergarten,1.323526778,103.9364239,BEDOK
+PCF Sparkletots Preschool @ Bedok Reservoir Punggol Blk 414 (DS),Kindergarten,1.374904326,103.895996,HOUGANG
+PCF Sparkletots Preschool @ Bedok Reservoir Punggol Blk 475C (DS),Kindergarten,1.375218182,103.8999953,HOUGANG
+PCF Sparkletots Preschool @ Bedok Reservoir Punggol Blk 713 (DS),Kindergarten,1.336311799,103.9223922,BEDOK
+PCF Sparkletots Preschool @ Bishan East-Thomson Blk 197 (KN),Kindergarten,1.349099072,103.8506737,BISHAN
+PCF Sparkletots Preschool @ Bishan East-Thomson Blk 309 (KN),Kindergarten,1.350912961,103.8375852,BISHAN
+PCF Sparkletots Preschool @ Boon Lay Blk 207 (DS),Kindergarten,1.346586095,103.7135684,JURONG WEST
+PCF Sparkletots Preschool @ Boon Lay Blk 262 (KN),Kindergarten,1.344801394,103.7072991,JURONG WEST
+PCF Sparkletots Preschool @ Boon Lay Blk 631 (KN),Kindergarten,1.343057866,103.7001354,JURONG WEST
+PCF Sparkletots Preschool @ Braddell Heights Blk 417 (DS),Kindergarten,1.349936383,103.8750557,SERANGOON
+PCF Sparkletots Preschool @ Brickland Blk 801 (DS),Kindergarten,1.375249025,103.7434499,CHOA CHU KANG
+PCF Sparkletots Preschool @ Bukit Batok Blk 148 (KN),Kindergarten,1.34927162,103.7435909,BUKIT BATOK
+PCF Sparkletots Preschool @ Bukit Batok Blk 180 (KN),Kindergarten,1.345557918,103.742841,BUKIT BATOK
+PCF Sparkletots Preschool @ Bukit Batok East Blk 241 (KN),Kindergarten,1.350895222,103.7545445,BUKIT BATOK
+PCF Sparkletots Preschool @ Bukit Batok East Blk 285C (KN),Kindergarten,1.337888395,103.7466041,JURONG EAST
+PCF Sparkletots Preschool @ Bukit Batok East Blk 289G (KN),Kindergarten,1.345042591,103.7587841,BUKIT BATOK
+PCF Sparkletots Preschool @ Bukit Gombak Blk 535 (DS),Kindergarten,1.354970748,103.7503996,BUKIT BATOK
+PCF Sparkletots Preschool @ Bukit Panjang Blk 422 (KN),Kindergarten,1.385051473,103.7696354,BUKIT PANJANG
+PCF Sparkletots Preschool @ Bukit Timah Blk 312B (DS),Kindergarten,1.31965595,103.7644546,CLEMENTI
+PCF Sparkletots Preschool @ Buona Vista Blk 4 (DS),Kindergarten,1.307968264,103.7956465,QUEENSTOWN
+PCF Sparkletots Preschool @ Buona Vista Blk 54 (DS),Kindergarten,1.301649986,103.7967964,QUEENSTOWN
+PCF Sparkletots Preschool @ Canberra Blk 330 (DS),Kindergarten,1.446805069,103.8178116,SEMBAWANG
+PCF Sparkletots Preschool @ Canberra Blk 487 (KN),Kindergarten,1.455452411,103.8161183,SEMBAWANG
+PCF Sparkletots Preschool @ Changi-Simei Blk 119 (KN),Kindergarten,1.343757607,103.9518978,TAMPINES
+PCF Sparkletots Preschool @ Changi-Simei Blk 131 (KN),Kindergarten,1.345505161,103.9539543,TAMPINES
+Zion Bishan Kindergarten,Kindergarten,1.347090663,103.8548784,BISHAN
+Zulfa Kindergarten,Kindergarten,1.343009456,103.6974799,JURONG WEST
+Zulfa Kindergarten @ Choa Chu Kang,Kindergarten,1.381708826,103.7366626,CHOA CHU KANG
+Zulfa Kindergarten @ Pasir Ris,Kindergarten,1.379793369,103.9409188,PASIR RIS
+Zulfa Kindergarten @ Sembawang Mart PTE LTD,Kindergarten,1.453845183,103.8195433,SEMBAWANG
+Pentecost Methodist Church Kindergarten,Kindergarten,1.371256622,103.9571498,PASIR RIS
+Pibos Garden Preschool,Kindergarten,1.323643848,103.8145915,NOVENA
+Pink Tower Montessori,Kindergarten,1.306465863,103.9053183,MARINE PARADE
+Preschool Learning Academy @Temasek Polytechnic,Kindergarten,1.347939478,103.92884,TAMPINES
+Prodigy Preschool,Kindergarten,1.35825225,103.9583674,TAMPINES
+Pu Hui Kindergarten,Kindergarten,1.315913542,103.9004523,GEYLANG
+Putra - Putri Kindergarten,Kindergarten,1.428852525,103.7723692,WOODLANDS
+Quayside Isle Preparatory School,Kindergarten,1.247758623,103.8419211,SOUTHERN ISLANDS
+Queenstown Good Shepherd Kindergarten,Kindergarten,1.295085001,103.8073174,QUEENSTOWN
+Queenstown Lutheran Church Kindergarten,Kindergarten,1.306206001,103.7991325,QUEENSTOWN
+Raffles Montessori Kindergarten (Aljunied),Kindergarten,1.315226534,103.8814471,GEYLANG
+Raffles Montessori Kindergarten (Still Road),Kindergarten,1.309847159,103.907761,MARINE PARADE
+Rainbow Cove Montessori,Kindergarten,1.291303782,103.807351,QUEENSTOWN
+Ramakrishna Mission Sarada Kindergarten,Kindergarten,1.343724071,103.8794988,SERANGOON
+Ripples Montessori Kindergarten,Kindergarten,1.333542824,103.9481545,BEDOK
+Riverlife Kindergarten,Kindergarten,1.378368251,103.9577854,PASIR RIS
+Saraswathy Darma Muneeswaran Kindergarten,Kindergarten,1.416421772,103.8335598,YISHUN
+Saraswathy Kindergarten,Kindergarten,1.331733146,103.8583293,TOA PAYOH
+Seeds D' Learning House,Kindergarten,1.306465863,103.9053183,MARINE PARADE
+Sengkang Methodist Children Centre,Kindergarten,1.392220225,103.8864265,SENGKANG
+Seventh-day Adventist Kindergarten,Kindergarten,1.335574041,103.7381185,JURONG EAST
+Shalom Kindergarten,Kindergarten,1.378438361,103.9581745,PASIR RIS
+Singapore Hokkien Huay Kuan Pre-School,Kindergarten,1.315636687,103.9384138,BEDOK
+Soka Kindergarten,Kindergarten,1.344632905,103.9433494,TAMPINES
+Sri Sathya Sai Kindergarten,Kindergarten,1.383101564,103.9367326,PASIR RIS
+St. Anne's Church Kindergarten,Kindergarten,1.391889387,103.9016755,SENGKANG
+St. Francis Of Assisi Kindergarten (Boon Lay),Kindergarten,1.347901738,103.7109844,JURONG WEST
+St. Francis Of Assisi Kindergarten (Jurong West),Kindergarten,1.351353674,103.7163918,JURONG WEST
+St. Francis Xavier Kindergarten,Kindergarten,1.358649496,103.86353,SERANGOON
+St. Hilda's Church Kindergarten,Kindergarten,1.307808865,103.9007856,MARINE PARADE
+St. James' Church Kindergarten,Kindergarten,1.312860966,103.7961233,BUKIT TIMAH
+St. James' Church Kindergarten (Gilstead),Kindergarten,1.31669293,103.8383237,NOVENA
+St. James' Church Kindergarten (Harding),Kindergarten,1.304449564,103.812223,TANGLIN
+St. Joseph's Church Kindergarten,Kindergarten,1.367801733,103.7680957,BUKIT PANJANG
+St. Paul's Church Kindergarten,Kindergarten,1.35857808,103.8818543,HOUGANG
+St. Vincent De Paul Kindergarten,Kindergarten,1.373537618,103.8750907,SERANGOON
+Starland Kindergarten,Kindergarten,1.324701106,103.923852,BEDOK
+Summer Montessori,Kindergarten,1.326965534,103.7246466,JURONG WEST
+Sunshine Kindergarten (Watten),Kindergarten,1.32402562,103.7967866,BUKIT TIMAH
+Swallows And Amazons Kindergarten,Kindergarten,1.338994627,103.7931338,BUKIT TIMAH
+The Ascension Kindergarten,Kindergarten,1.330280621,103.8664018,TOA PAYOH
+The Capstone Kindergarten,Kindergarten,1.269369776,103.8146341,BUKIT MERAH
+The Little House (Montessori) Kindergarten,Kindergarten,1.330801506,103.7677621,CLEMENTI
+The Montessori Playroom Kindergarten,Kindergarten,1.371078389,103.8941001,HOUGANG
+Thomson Road Baptist Kindergarten,Kindergarten,1.314867286,103.844295,NOVENA
+Toa Payoh Methodist Church Kindergarten,Kindergarten,1.334096206,103.8464499,TOA PAYOH
+Tots Club Preschool,Kindergarten,1.345782886,103.6976587,JURONG WEST
+Totsville Montessori Kindergarten,Kindergarten,1.381785961,103.9364118,PASIR RIS
+Totsville Montessori Kindergarten (Bishan),Kindergarten,1.357945799,103.8454936,BISHAN
+Totsville Montessori Preschool,Kindergarten,1.364450489,103.849464,ANG MO KIO
+TPBC Kindergarten,Kindergarten,1.350587357,103.8804512,HOUGANG
+True Way Presbyterian Kindergarten,Kindergarten,1.29372738,103.8056849,QUEENSTOWN
+Tung Ling Kindergarten,Kindergarten,1.304519857,103.90637,MARINE PARADE
+Two By Two Schoolhouse,Kindergarten,1.311820502,103.9105572,BEDOK
+Wee Care Kindergarten,Kindergarten,1.305611663,103.8229629,TANGLIN
+White Lodge Bukit Timah Pte Ltd,Kindergarten,1.332389916,103.8016724,BUKIT TIMAH
+White Lodge Kindergarten (East Coast),Kindergarten,1.310012061,103.8824094,GEYLANG
+White Lodge Kindergarten (Phoenix Park),Kindergarten,1.298555646,103.8146732,TANGLIN
+White Lodge Kindergarten (Upper East Coast),Kindergarten,1.364957011,103.9716573,PASIR RIS
+White Lodge Upper Bukit Timah Pte Ltd,Kindergarten,1.359932923,103.7684829,BUKIT PANJANG
+White Lodge West Coast Pte Ltd,Kindergarten,1.280130292,103.7862596,QUEENSTOWN
+Yio Chu Kang Chapel Kindergarten,Kindergarten,1.367998182,103.8763596,HOUGANG
+Zion Bishan Kindergarten,Kindergarten,1.347090663,103.8548784,BISHAN
+Zion Kindergarten,Kindergarten,1.367339954,103.8621591,SERANGOON
+Zulfa Kindergarten,Kindergarten,1.343009456,103.6974799,JURONG WEST
+Zulfa Kindergarten @ Choa Chu Kang,Kindergarten,1.381708826,103.7366626,CHOA CHU KANG
+Zulfa Kindergarten @ Pasir Ris,Kindergarten,1.379793369,103.9409188,PASIR RIS
+Zulfa Kindergarten @ Sembawang Mart PTE LTD,Kindergarten,1.453845183,103.8195433,SEMBAWANG
+PCF Sparkletots Preschool @ Toa Payoh Central Blk 97 (KN),Kindergarten,1.338625535,103.8477693,TOA PAYOH
+PCF Sparkletots Preschool @ Toa Payoh East Blk 45 (DS),Kindergarten,1.335865361,103.8537512,TOA PAYOH
+PCF Sparkletots Preschool @ Toa Payoh West-Thomson Blk 131 (DS),Kindergarten,1.337961727,103.8432507,TOA PAYOH
+PCF Sparkletots Preschool @ Toa Payoh West-Thomson Blk 205 (DS),Kindergarten,1.342209482,103.8477276,TOA PAYOH
+PCF SPARKLETOTS PRESCHOOL @ ULU PANDAN BLK 24 (DS),Kindergarten,1.308967267,103.7855143,QUEENSTOWN
+PCF Sparkletots Preschool @ West Coast Blk 728 (KN),Kindergarten,1.305612722,103.7636027,CLEMENTI
+PCF Sparkletots Preschool @ Whampoa Blk 106 (DS),Kindergarten,1.321020006,103.8609978,KALLANG
+PCF Sparkletots Preschool @ Whampoa Blk 112 (KN),Kindergarten,1.326001531,103.8567322,NOVENA
+PCF Sparkletots Preschool @ Whampoa Blk 85 (DS),Kindergarten,1.322789196,103.8564445,NOVENA
+PCF Sparkletots Preschool @ Woodgrove Blk 302 (KN),Kindergarten,1.431511145,103.7744284,WOODLANDS
+PCF Sparkletots Preschool @ Woodgrove Blk 364 (KN),Kindergarten,1.434078816,103.7867434,WOODLANDS
+Zulfa Kindergarten,Kindergarten,1.343009456,103.6974799,JURONG WEST
+Zulfa Kindergarten @ Choa Chu Kang,Kindergarten,1.381708826,103.7366626,CHOA CHU KANG
+Zulfa Kindergarten @ Pasir Ris Pte Ltd,Kindergarten,1.379793369,103.9409188,PASIR RIS
+Zulfa Kindergarten @ Sembawang Mart PTE LTD,Kindergarten,1.453845183,103.8195433,SEMBAWANG
+LES OLIVIERS,Kindergarten,1.32402562,103.7967866,BUKIT TIMAH
+Bubbles Learning House @ Yishun,Kindergarten,1.434032112,103.8388242,YISHUN
+TPBC Kindergarten,Kindergarten,1.350587357,103.8804512,HOUGANG
+True Way Presbyterian Kindergarten,Kindergarten,1.29372738,103.8056849,QUEENSTOWN
+Tung Ling Kindergarten,Kindergarten,1.304519857,103.90637,MARINE PARADE
+Two By Two Schoolhouse,Kindergarten,1.311820502,103.9105572,BEDOK
+Wee Care Kindergarten,Kindergarten,1.297417077,103.8432012,MUSEUM
+White Lodge Bukit Timah Pte Ltd,Kindergarten,1.332389916,103.8016724,BUKIT TIMAH
+White Lodge Kindergarten (East Coast),Kindergarten,1.310012061,103.8824094,GEYLANG
+White Lodge Kindergarten (Phoenix Park),Kindergarten,1.298555646,103.8146732,TANGLIN
+White Lodge West Coast Pte Ltd,Kindergarten,1.280130292,103.7862596,QUEENSTOWN
+Workplayz Montessori,Kindergarten,1.277293277,103.8077399,BUKIT MERAH
+Fitness Area,Park,1.322715765,103.8266782,NOVENA
+Playground,Park,1.337180278,103.9562363,TAMPINES
+Fitness Area,Park,1.346039075,103.9604606,TAMPINES
+Playground,Park,1.346082222,103.9602055,TAMPINES
+Fitness Area,Park,1.346201586,103.9603065,TAMPINES
+Fitness Area,Park,1.295232238,103.8936194,MARINE PARADE
+Viewing Tower,Park,1.439481837,103.7700012,WOODLANDS
+Playground,Park,1.438882875,103.7700494,WOODLANDS
+Playground,Park,1.437585864,103.770337,WOODLANDS
+Fitness Area,Park,1.351618989,103.759909,BUKIT BATOK
+Fitness Area,Park,1.316318988,103.914439,BEDOK
+Playground,Park,1.296924992,103.886445,MARINE PARADE
+Playground,Park,1.296924992,103.886445,MARINE PARADE
+Fitness Area,Park,1.389664624,103.838996,ANG MO KIO
+Playground,Park,1.39003411,103.8386576,ANG MO KIO
+Playground,Park,1.313283626,103.9175299,BEDOK
+Fitness Area,Park,1.312993621,103.9177899,BEDOK
+Fitness Area,Park,1.312619635,103.8433183,NOVENA
+Sand Play Area,Park,1.312534039,103.8432957,NOVENA
+Sand Play Area,Park,1.324852387,103.8429721,NOVENA
+Playground,Park,1.281571917,103.7911041,QUEENSTOWN
+Fitness Area,Park,1.282971016,103.7903074,QUEENSTOWN
+Fitness Area,Park,1.333922083,103.7490194,JURONG EAST
+Fitness Area,Park,1.32653728,103.7499477,JURONG EAST
+Fitness Area,Park,1.337366989,103.74866,JURONG EAST
+Near Mewah Building,Park,1.32656981,103.7497975,JURONG EAST
+Opposite soon Bee Huat Building,Park,1.337366989,103.74866,JURONG EAST
+Near CJ GLS Building,Park,1.333923991,103.749046,JURONG EAST
+Campsite @ Area G,Park,1.312696545,103.9583787,BEDOK
+Fitness Area,Park,1.329344077,103.8801118,GEYLANG
+Playground,Park,1.329677519,103.8799553,GEYLANG
+Lookout Point,Park,1.297863335,103.9057758,MARINE PARADE
+Blk 259 Bukit Batok East Ave 4,Park,1.351618989,103.759909,BUKIT BATOK
+Fitness Area,Park,1.283957161,103.8395482,OUTRAM
+Fitness Area,Park,1.340534107,103.9552511,TAMPINES
+Playground,Park,1.340585862,103.9552283,TAMPINES
+Fitness Area,Park,1.339980075,103.9336825,BEDOK
+Shelters,Park,1.34655879,103.9265187,BEDOK
+Playground,Park,1.340098305,103.933888,BEDOK
+Fitness Area,Park,1.410267353,103.8328007,YISHUN
+Fitness Area,Park,1.389926934,103.8341813,ANG MO KIO
+Playground,Park,1.39011627,103.8343148,ANG MO KIO
+Playground,Park,1.389868562,103.8372191,ANG MO KIO
+Fitness Area,Park,1.389753477,103.8372915,ANG MO KIO
+Playground,Park,1.386325511,103.8384113,ANG MO KIO
+Fitness Area,Park,1.38641676,103.8382951,ANG MO KIO
+Playground,Park,1.388285291,103.8375844,ANG MO KIO
+Playground,Park,1.387241381,103.8388067,ANG MO KIO
+Sand Play Area,Park,1.437236578,103.8356971,YISHUN
+Fitness Area,Park,1.437014974,103.8357011,YISHUN
+Playground,Park,1.437199061,103.8357077,YISHUN
+Playground,Park,1.38393441,103.945448,PASIR RIS
+Playground,Park,1.383645036,103.9449953,PASIR RIS
+Fitness Area,Park,1.384134062,103.944252,PASIR RIS
+Area 1 Campsite,Park,1.381523133,103.9548068,PASIR RIS
+Area 3 Campsite,Park,1.383124527,103.9486021,PASIR RIS
+Fitness Area,Park,1.339263847,103.9228655,BEDOK
+Playground,Park,1.338929103,103.9228809,BEDOK
+Sand Play Area,Park,1.339033323,103.9229108,BEDOK
+Playground,Park,1.340117409,103.9338371,BEDOK
+Viewing Tower,Park,1.330743841,103.8475963,TOA PAYOH
+Fitness Area,Park,1.306959766,103.8682332,KALLANG
+Playground,Park,1.306237147,103.8677301,KALLANG
+Playground,Park,1.355480983,103.8860467,HOUGANG
+Fitness Area,Park,1.35507519,103.8862892,HOUGANG
+Fitness Area,Park,1.26546129,103.8021684,BUKIT MERAH
+Lookout Point,Park,1.407468673,103.9585787,NORTH-EASTERN ISLANDS
+Lookout Point,Park,1.412613025,103.9444296,NORTH-EASTERN ISLANDS
+Puaka Hilltop View Point,Park,1.408125987,103.959376,NORTH-EASTERN ISLANDS
+Ubin Quarry Viewpoint,Park,1.408179837,103.9558634,NORTH-EASTERN ISLANDS
+Ketam Hilltop Viewpoint,Park,1.41158277,103.9485328,NORTH-EASTERN ISLANDS
+Mamam Campsite,Park,1.418214472,103.976102,NORTH-EASTERN ISLANDS
+Noordin Campsite,Park,1.418426658,103.9640079,NORTH-EASTERN ISLANDS
+Balai Quarry Viewpoint,Park,1.413252004,103.982782,NORTH-EASTERN ISLANDS
+Fitness Area,Park,1.327407609,103.8659539,KALLANG
+Playground 2,Park,1.390319981,103.9935276,CHANGI
+Playground,Park,1.386196998,103.747449,CHOA CHU KANG
+Fitness Area,Park,1.388296601,103.7477101,CHOA CHU KANG
+Fitness Area,Park,1.38702397,103.747096,CHOA CHU KANG
+Jelutong Campsite,Park,1.401213627,103.9663926,NORTH-EASTERN ISLANDS
+Pekan Quarry Viewpoint,Park,1.402543013,103.966847,NORTH-EASTERN ISLANDS
+Fitness Area,Park,1.365212846,103.8378562,BISHAN
+Water Playground,Park,1.364898473,103.8383671,BISHAN
+Playground,Park,1.34952938,103.7638326,BUKIT BATOK
+Look Out Deck,Park,1.266678396,103.8016316,BUKIT MERAH
+Fitness Area,Park,1.265348175,103.802244,BUKIT MERAH
+Playground,Park,1.262704163,103.8048581,BUKIT MERAH
+Inclusive Playground,Park,1.363154162,103.8445327,BISHAN
+Waterplay Area,Park,1.321041169,103.8180635,TANGLIN
+House 1D,Park,1.317832605,103.8162331,TANGLIN
+House 1F,Park,1.318986503,103.8161466,TANGLIN
+Respite Deck,Park,1.384716298,103.7741769,BUKIT PANJANG
+Observation Tower,Park,1.378110618,103.7783961,CENTRAL WATER CATCHMENT
+Rocket Tower,Park,1.400715668,103.806607,CENTRAL WATER CATCHMENT
+Fitness Area,Park,1.359580618,103.8509125,BISHAN
+Fitness Area,Park,1.349301283,103.7635405,BUKIT BATOK
+Fitness Area,Park,1.349316963,103.7633839,BUKIT BATOK
+Fitness Area,Park,1.349424362,103.7635858,BUKIT BATOK
+Fitness Area,Park,1.265309087,103.8023507,BUKIT MERAH
+Fitness Area,Park,1.265657475,103.8020675,BUKIT MERAH
+Playground,Park,1.265296002,103.802672,BUKIT MERAH
+Adventure Playground,Park,1.366453631,103.8336538,BISHAN
+Fitness Area,Park,1.354389516,103.8344105,BISHAN
+Playground 1,Park,1.392417809,103.9884029,CHANGI
+Playground,Park,1.340495618,103.8842598,TOA PAYOH
+Fitness Area,Park,1.315679296,103.9312749,BEDOK
+Fitness Area,Park,1.315929728,103.9312444,BEDOK
+Playground,Park,1.315824806,103.9312831,BEDOK
+Snakes & Ladders,Park,1.338350462,103.7074779,JURONG WEST
+Dice Tower,Park,1.338570051,103.7072556,JURONG WEST
+Fitness Area,Park,1.29331388,103.8454148,MUSEUM
+Playground,Park,1.277133665,103.8116526,BUKIT MERAH
+Fitness Area,Park,1.428033499,103.8411388,YISHUN
+Playground,Park,1.337312847,103.6930236,JURONG WEST
+Playground,Park,1.337238162,103.6929554,JURONG WEST
+Childrenâ€™s Playground,Park,1.301569489,103.9135742,MARINE PARADE
+Fitness Corner I,Park,1.28732926,103.8249358,BUKIT MERAH
+Adventure Playground,Park,1.287724065,103.8239944,BUKIT MERAH
+Fitness Corner II,Park,1.288260297,103.8230265,BUKIT MERAH
+Raptor Tower,Park,1.416563003,103.728456,LIM CHU KANG
+Playground,Park,1.372941336,103.8412793,ANG MO KIO
+Fitness Area,Park,1.375854786,103.8436259,ANG MO KIO
+Playground,Park,1.373292084,103.8448606,ANG MO KIO
+Play Ground,Park,1.293925005,103.814075,QUEENSTOWN
+Play Ground,Park,1.295774061,103.8067025,QUEENSTOWN
+Ludo Garden,Park,1.339063678,103.708172,JURONG WEST
+Adventure Play Area,Park,1.443522029,103.7835565,WOODLANDS
+Family Play Area,Park,1.443816009,103.783081,WOODLANDS
+Junior Play Area,Park,1.442782269,103.7839759,WOODLANDS
+Fitness Area,Park,1.442554177,103.7848324,WOODLANDS
+Fitness Area,Park,1.337093827,103.7070115,JURONG WEST
+Casuarina Exploratory,Park,1.416755174,103.9161564,PUNGGOL
+Fitness Area,Park,1.276783634,103.814388,BUKIT MERAH
+Fitness Area,Park,1.276760977,103.8145763,BUKIT MERAH
+Fitness Area,Park,1.276899417,103.814324,BUKIT MERAH
+Fitness Area,Park,1.27751419,103.8142527,BUKIT MERAH
+Fitness Area,Park,1.277176942,103.8141431,BUKIT MERAH
+Fitness Area,Park,1.278269572,103.8129508,BUKIT MERAH
+Lookout Point,Park,1.273450913,103.8177256,BUKIT MERAH
+Fitness Area,Park,1.448067002,103.814889,SEMBAWANG
+Water Playground,Park,1.411345236,103.903682,PUNGGOL
+Sand Play Area,Park,1.411363189,103.9033209,PUNGGOL
+Lookout Point,Park,1.408903163,103.9083476,PUNGGOL
+Fitness Area,Park,1.379678089,103.7756547,BUKIT PANJANG
+Fitness Area,Park,1.379968366,103.77554,BUKIT PANJANG
+Playground,Park,1.380931829,103.7752518,BUKIT PANJANG
+Fitness Area,Park,1.379768419,103.7756282,BUKIT PANJANG
+Fitness Area,Park,1.362538183,103.9505955,TAMPINES
+Choa Chu Kang Mega Playground,Park,1.380956993,103.740399,CHOA CHU KANG
+Jelutong Tower,Park,1.351258005,103.806478,CENTRAL WATER CATCHMENT
+Play area,Park,1.348483747,103.7755408,BUKIT PANJANG
+Fitness Area,Park,1.388090837,103.7477839,CHOA CHU KANG
+Playground,Park,1.388574986,103.746521,CHOA CHU KANG
+Fitness Area,Park,1.387694135,103.7475865,CHOA CHU KANG
+Fitness Area,Park,1.387151272,103.7471882,CHOA CHU KANG
+Fitness Area,Park,1.367399984,103.899502,HOUGANG
+Playground,Park,1.347379749,103.9635065,TAMPINES
+Playground,Park,1.339075314,103.9583128,TAMPINES
+Fitness Area,Park,1.339094359,103.9580482,TAMPINES
+Birdwatch Platform,Park,1.400130174,103.8201222,YISHUN
+Fitness Area,Park,1.295003034,103.8100095,QUEENSTOWN
+Play Ground,Park,1.295633016,103.8071597,QUEENSTOWN
+Play Ground,Park,1.294560658,103.812352,QUEENSTOWN
+Fitness Area,Park,1.282781023,103.7899718,QUEENSTOWN
+Fitness Area,Park,1.284029418,103.7899141,QUEENSTOWN
+Fitness Area,Park,1.451951699,103.8332974,SEMBAWANG
+Fitness Area,Park,1.442846884,103.8317957,SEMBAWANG
+Campsite @ Area D,Park,1.303530002,103.92429,BEDOK
+Playground,Park,1.354303807,103.8343922,BISHAN
+Sengkang Sports & Recreation Centre,Park,1.395104014,103.885517,SENGKANG
+Fitness Area,Park,1.304708998,103.919224,BEDOK
+Lookout Point 1,Park,1.450385637,103.7737461,WOODLANDS
+Lookout Point 2,Park,1.450707048,103.7744264,WOODLANDS
+Fitness Area,Park,1.452615854,103.7795957,WOODLANDS
+Fitness Area,Park,1.450605621,103.7743197,WOODLANDS
+Sand Play Area,Park,1.278907992,103.799198,QUEENSTOWN
+Fitness Area,Park,1.298381292,103.7676633,CLEMENTI
+Fitness Area,Park,1.303045833,103.766511,CLEMENTI
+Fitness Area,Park,1.377343346,103.9531486,PASIR RIS
+Sand Play Area,Park,1.422992552,103.8416103,YISHUN
+Playground,Park,1.423837174,103.8442355,YISHUN
+Fitness Area,Park,1.4244787,103.8443207,YISHUN
+Sand Play Area,Park,1.424006311,103.8443188,YISHUN
+Playground,Park,1.278824018,103.7990679,QUEENSTOWN
+Nature Playgarden,Park,1.279966179,103.7973105,QUEENSTOWN
+Fitness Area,Park,1.318008322,103.77185,QUEENSTOWN
+Playground,Park,1.359011009,103.944298,TAMPINES
+Playground,Park,1.359828987,103.942995,TAMPINES
+Fitness Area,Park,1.378298195,103.8996668,HOUGANG
+Playground,Park,1.378026156,103.8973377,HOUGANG
+Sand Play Area,Park,1.297371635,103.7607204,QUEENSTOWN
+Adventure Playground,Park,1.297123714,103.7621564,QUEENSTOWN
+Pirate Ship Playground,Park,1.297407651,103.7625775,QUEENSTOWN
+Adventure Playground,Park,1.297928609,103.7625625,QUEENSTOWN
+Toddlers' Playground,Park,1.297182347,103.7622941,QUEENSTOWN
+Adventure Playground,Park,1.296940558,103.7624796,QUEENSTOWN
+Promenade Lookout Jetty,Park,1.296785437,103.7605955,NA
+Playground,Park,1.297078983,103.7623829,QUEENSTOWN
+Camping Site,Park,1.296117344,103.7623946,QUEENSTOWN
+Fitness Area,Park,1.320329936,103.8407528,NOVENA
+Sand Play Area,Park,1.320332789,103.8407417,NOVENA
+Playground,Park,1.322181793,103.8428198,NOVENA
+Fitness Area,Park,1.325374766,103.8179298,NOVENA
+Playground,Park,1.328311905,103.8106697,BUKIT TIMAH
+Adventure Playground,Park,1.298227998,103.762243,QUEENSTOWN
+Villa Verde Park,Park,1.392701992,103.752029,CHOA CHU KANG
+Fitness Area,Park,1.309103995,103.889455,GEYLANG
+Sand Play Area,Park,1.379342015,103.9470811,PASIR RIS
+Fitness Area,Park,1.371157388,103.850586,ANG MO KIO
+Fitness Area,Park,1.371180848,103.850903,ANG MO KIO
+Fitness Area,Park,1.292426653,103.8166509,BUKIT MERAH
+Fajar Rd Blk 404/402 Playground,Park,1.380539014,103.767993,BUKIT PANJANG
+Viewing Platform,Park,1.365411015,103.949374,TAMPINES
+Sand Play Area,Park,1.378625208,103.945374,PASIR RIS
+Fitness Area,Park,1.457520496,103.8369752,SEMBAWANG
+Playground,Park,1.388674075,103.8383991,ANG MO KIO
+Fitness Area,Park,1.388505629,103.8383616,ANG MO KIO
+Fitness Area,Park,1.386993297,103.8352111,ANG MO KIO
+Playground,Park,1.386994224,103.8350299,ANG MO KIO
+Playground,Park,1.326255671,103.8085226,BUKIT TIMAH
+Sand Play Area,Park,1.326239033,103.8085405,BUKIT TIMAH
+Fitness Area,Park,1.450367117,103.7737952,WOODLANDS
+Fitness Area,Park,1.448817378,103.7714041,WOODLANDS
+Playground,Park,1.452697967,103.7794658,WOODLANDS
+Fitness Area,Park,1.432813198,103.779898,WOODLANDS
+Fitness Area,Park,1.432515004,103.778808,WOODLANDS
+Fitness Area,Park,1.436534328,103.7784464,WOODLANDS
+Observation Tower,Park,1.3207415,103.8659936,KALLANG
+Playground,Park,1.320373777,103.8406533,NOVENA
+Playground,Park,1.456070941,103.8358463,SEMBAWANG
+Fitness Area,Park,1.456145092,103.8356667,SEMBAWANG
+Fitness Area,Park,1.456218254,103.835726,SEMBAWANG
+Playground,Park,1.308419959,103.9193556,BEDOK
+Fitness Area,Park,1.308590093,103.9193385,BEDOK
+Playground,Park,1.31101769,103.9238478,BEDOK
+Fitness Area,Park,1.311137823,103.9237294,BEDOK
+Playground,Park,1.321164898,103.9237795,BEDOK
+Fitness Area,Park,1.321464133,103.9237292,BEDOK
+Playground,Park,1.3195571,103.9278243,BEDOK
+Playground,Park,1.303746706,103.8881903,MARINE PARADE
+Fitness Area,Park,1.370895187,103.9536497,PASIR RIS
+Lookout Point,Park,1.409392609,103.8344956,YISHUN
+Sand Play Area,Park,1.328363885,103.8105359,BUKIT TIMAH
+Playground,Park,1.33169913,103.8082344,BUKIT TIMAH
+Fitness Area,Park,1.331785297,103.8086799,BUKIT TIMAH
+Sand Play Area,Park,1.331829497,103.8082407,BUKIT TIMAH
+Playground,Park,1.331806101,103.8084035,BUKIT TIMAH
+Sand Play Area,Park,1.331666029,103.8082071,BUKIT TIMAH
+Playground,Park,1.339883997,103.7609685,BUKIT BATOK
+Fitness Area,Park,1.339838962,103.7610583,BUKIT BATOK
+Playground,Park,1.351865898,103.70095,JURONG WEST
+Playground,Park,1.351649351,103.7012374,JURONG WEST
+Playground,Park,1.352818364,103.700294,JURONG WEST
+Playground,Park,1.354101133,103.6988132,JURONG WEST
+Fitness Area,Park,1.339955022,103.7173844,JURONG WEST
+Playground,Park,1.303696656,103.7911717,QUEENSTOWN
+Fitness Area,Park,1.340311247,103.9556513,TAMPINES
+Playground,Park,1.426584256,103.8411481,YISHUN
+Playground,Park,1.42363139,103.8439627,YISHUN
+Playground,Park,1.422892542,103.8415366,YISHUN
+Playground,Park,1.370542633,103.8512829,ANG MO KIO
+Play Ground,Park,1.305736993,103.887523,MARINE PARADE
+Fitness Area,Park,1.305736993,103.887523,MARINE PARADE
+Fitness Area,Park,1.383444716,103.9453678,PASIR RIS
+Children's Playground,Park,1.384075602,103.9448828,PASIR RIS
+Lookout Point,Park,1.409768341,103.9075054,PUNGGOL
+Lookout Point,Park,1.39765907,103.9218188,PUNGGOL
+Lookout Point,Park,1.409567845,103.8958488,PUNGGOL
+Lookout Point,Park,1.4098113,103.8958352,PUNGGOL
+Hort Park,Park,1.278694901,103.7977792,QUEENSTOWN
+Clementi Woods Park,Park,1.30302928,103.767066,CLEMENTI
+Punggol Park,Park,1.375325299,103.8991602,HOUGANG
+Bishan-Ang Mo Kio Park,Park,1.36621872,103.8341591,BISHAN
+Bedok Town Park,Park,1.335740559,103.9257482,BEDOK
+Pasir Ris Park,Park,1.382885403,103.9482047,PASIR RIS
+Choa Chu Kang Park,Park,1.386056589,103.7464639,CHOA CHU KANG
+Sengkang Riverside Park,Park,1.398995308,103.8840163,SENGKANG
+Yishun Park,Park,1.424043496,103.8440692,YISHUN
+Ang Mo Kio Town Garden West,Park,1.374176965,103.8408301,ANG MO KIO
+Jurong Lake Gardens,Park,1.334292693,103.7280822,JURONG EAST
+Colugo Deck,Park,1.344898347,103.782166,BUKIT PANJANG
+Waterhen Hide,Park,1.344701459,103.7813777,BUKIT PANJANG
+Bukit Gombak Park,Park,1.367270046,103.7520499,BUKIT BATOK
+Aljunied Park,Park,1.330778991,103.8798206,GEYLANG
+Punggol waterway Park,Park,1.411058326,103.9019372,PUNGGOL
+West Coast Park,Park,1.294984869,103.7648117,QUEENSTOWN
+Yishun Neighbourhood Park,Park,1.437753467,103.835664,YISHUN
+Bedok Reservoir Park,Park,1.346420646,103.9267187,BEDOK
+One North Park,Park,1.305471077,103.7893108,QUEENSTOWN
+Lower Seletar Reservoir Park Plot 1,Park,1.409531165,103.8309652,YISHUN
+Lower Seletar Reservoir Park Plot 2,Park,1.411449441,103.8346141,YISHUN
+East Coast Park Area A,Park,1.293879097,103.8687549,MARINA EAST
+East Coast Park Area B,Park,1.295368472,103.8954996,MARINE PARADE
+East Coast Park Area D,Park,1.30300118,103.9204321,BEDOK
+Jurong Central Park,Park,1.337087746,103.7075251,JURONG WEST
+Kallang Riverside Park,Park,1.411449441,103.8346141,YISHUN
+Tiong Bahru Park,Park,1.287323076,103.8240328,BUKIT MERAH
+HortPark,Park,1.279296875,103.7963257,QUEENSTOWN
+Tiong Bahru Park,Park,1.287719727,103.8225098,BUKIT MERAH
+Choa Chu Kang Park,Park,1.38671875,103.7457275,CHOA CHU KANG
+Telok Blangah Hill Park,Park,1.278320312,103.8098755,BUKIT MERAH
+Renci Nursing Home at Bukit Batok @ Bukit Batok St 52,Park,1.357910156,103.7672729,BUKIT BATOK
+NTUC Health Jurong West Nursing Home,Park,1.345092773,103.6896973,JURONG WEST
+Alexandra Hospital (AH),Park,1.286682129,103.7990723,QUEENSTOWN
+Sengkang Community Hospital,Park,1.396484375,103.8890991,SENGKANG
+Bukit Gombak Hillview Vantage Neighbourhood Committee,Park,1.356689453,103.7567139,BUKIT BATOK
+Jurong Spring Zone B RC,Park,1.350280762,103.7178955,JURONG WEST
+Hong Kah North Zone 1 RC,Park,1.359313965,103.7470703,BUKIT BATOK
+Blossom Seeds Limited (BSL),Park,1.448913574,103.8303223,SEMBAWANG
+Yishun Community Hospital (YCH),Park,1.423706055,103.8353271,YISHUN
+Khoo Teck Phuat Hospital (KTPH),Park,1.424682617,103.8361206,YISHUN
+National Kidney Foundation (NKF),Park,1.345703125,103.7144775,JURONG WEST
+Apex Harmony Lodge (AHL),Park,1.370727539,103.9620972,PASIR RIS
+Bright Vision Hospital (BVH),Park,1.372070312,103.8759155,SERANGOON
+Institute of Mental Health (IMH) MDU Project 1 ,Park,1.381896973,103.8825073,HOUGANG
+Institute of Mental Health (IMH) Sunshine Wing - Block 6,Park,1.382873536,103.8823242,HOUGANG
+Bishan Ang Mo Kio Park (AMK Park),Park,1.365112305,103.8363037,BISHAN
+Punggol Waterway Park,Park,1.412475586,103.9033203,PUNGGOL
+A0004,Carpark,1.302595216,103.8608674,ROCHOR
+A0005,Carpark,1.31062702,103.8591199,KALLANG
+A0006,Carpark,1.280924529,103.8471273,OUTRAM
+A0007,Carpark,1.305099009,103.829676,ORCHARD
+A0008,Carpark,1.28101134,103.8457724,OUTRAM
+A0010,Carpark,1.302152769,103.8582629,ROCHOR
+A0011,Carpark,1.293937285,103.8488976,MUSEUM
+A0021,Carpark,1.280814209,103.8471939,OUTRAM
+A0024,Carpark,1.324031642,103.8140852,NOVENA
+A0025,Carpark,1.324442138,103.8141566,NOVENA
+A0028,Carpark,1.32548548,103.879578,GEYLANG
+A0034,Carpark,1.330710576,103.7947009,BUKIT TIMAH
+A0035,Carpark,1.310281118,103.8368605,NEWTON
+A0036,Carpark,1.386881741,103.8452194,ANG MO KIO
+A0037,Carpark,1.38773172,103.8492143,ANG MO KIO
+A0043,Carpark,1.293103095,103.7885431,QUEENSTOWN
+A0045,Carpark,1.457114575,103.7956326,SEMBAWANG
+A0046,Carpark,1.313901862,103.8817708,GEYLANG
+A0048,Carpark,1.385543798,103.8481521,ANG MO KIO
+A0049,Carpark,1.359235671,103.8529178,BISHAN
+A0054,Carpark,1.397585175,103.8859643,SENGKANG
+A0057,Carpark,1.355028486,103.8845263,HOUGANG
+B0001,Carpark,1.314019279,103.8197845,TANGLIN
+B0002,Carpark,1.301440691,103.8601345,ROCHOR
+B0004,Carpark,1.356760471,103.7096509,JURONG WEST
+B0005,Carpark,1.281203182,103.8439121,OUTRAM
+B0008,Carpark,1.314039685,103.8585912,KALLANG
+B0011,Carpark,1.310941256,103.8539226,ROCHOR
+B0018,Carpark,1.278958204,103.8407653,OUTRAM
+B0020,Carpark,1.300929085,103.8600383,ROCHOR
+B0022,Carpark,1.312108847,103.8602357,KALLANG
+B0023,Carpark,1.323609571,103.8655659,KALLANG
+B0025,Carpark,1.30114223,103.8583966,ROCHOR
+B0028,Carpark,1.321656454,103.8531741,NOVENA
+B0029,Carpark,1.324692538,103.8496226,NOVENA
+B0031,Carpark,1.31408542,103.8596311,KALLANG
+B0032,Carpark,1.339108413,103.7762704,BUKIT TIMAH
+B0033,Carpark,1.326267806,103.8495181,NOVENA
+B0035,Carpark,1.307494197,103.8517624,ROCHOR
+B0039,Carpark,1.35913264,103.7525351,BUKIT BATOK
+B0042,Carpark,1.319453802,103.6845333,NA
+B0043,Carpark,1.320239075,103.6898604,PIONEER
+B0045,Carpark,1.27615089,103.8362081,BUKIT MERAH
+B0052,Carpark,1.281148794,103.8435433,OUTRAM
+B0062,Carpark,1.307176927,103.8506024,ROCHOR
+B0063,Carpark,1.347407762,103.7615882,BUKIT BATOK
+B0067,Carpark,1.335313271,103.885561,TOA PAYOH
+B0069,Carpark,1.320498925,103.9402635,BEDOK
+B0073,Carpark,1.281308718,103.8482485,OUTRAM
+B0081,Carpark,1.348623095,103.7368263,TENGAH
+B0082,Carpark,1.34465256,103.8577064,BISHAN
+B0084,Carpark,1.300862541,103.8607323,ROCHOR
+B0086,Carpark,1.350080063,103.7615001,BUKIT BATOK
+B0087,Carpark,1.301361422,103.8604235,ROCHOR
+B0088,Carpark,1.320740979,103.9552048,BEDOK
+B0090,Carpark,1.303020808,103.6784724,PIONEER
+B0092,Carpark,1.30869672,103.8542086,ROCHOR
+B0094,Carpark,1.273561658,103.8437557,DOWNTOWN CORE
+B0096,Carpark,1.341283295,103.7768555,BUKIT TIMAH
+B0098,Carpark,1.279727554,103.8568995,DOWNTOWN CORE
+B0099,Carpark,1.314109399,103.8609945,KALLANG
+B0100,Carpark,1.362891422,103.8711174,SERANGOON
+B0101,Carpark,1.327045694,103.7509397,CLEMENTI
+BL008,Carpark,1.286993912,103.8484388,SINGAPORE RIVER
+BL009,Carpark,1.287722119,103.8480748,SINGAPORE RIVER
+BL010,Carpark,1.286225401,103.848971,SINGAPORE RIVER
+BL011,Carpark,1.285598367,103.8484327,DOWNTOWN CORE
+BL014,Carpark,1.281935782,103.84785,OUTRAM
+BL015,Carpark,1.280951817,103.8472919,OUTRAM
+BL016,Carpark,1.282525045,103.8472132,OUTRAM
+BL019,Carpark,1.28411542,103.844654,OUTRAM
+BL021,Carpark,1.279058368,103.8442326,OUTRAM
+BL022,Carpark,1.278563642,103.8441742,OUTRAM
+BL023,Carpark,1.27740578,103.8445587,OUTRAM
+BL031,Carpark,1.278556624,103.8408257,OUTRAM
+BL032,Carpark,1.279225794,103.8413562,OUTRAM
+BL033,Carpark,1.279593679,103.8419388,OUTRAM
+BL034,Carpark,1.280794311,103.8419054,OUTRAM
+BL041,Carpark,1.288648841,103.8477142,SINGAPORE RIVER
+BL046,Carpark,1.284601723,103.8491382,DOWNTOWN CORE
+BL053,Carpark,1.280158649,103.8491659,DOWNTOWN CORE
+BL054,Carpark,1.281477999,103.848681,OUTRAM
+BL055,Carpark,1.279739956,103.8474687,OUTRAM
+BL060,Carpark,1.283304298,103.8431389,OUTRAM
+BL061,Carpark,1.283311689,103.8436606,OUTRAM
+BL062,Carpark,1.282205083,103.8448862,OUTRAM
+BL067,Carpark,1.281235912,103.8453607,OUTRAM
+BL076,Carpark,1.277730748,103.8432255,OUTRAM
+BL077,Carpark,1.280108392,103.8418226,OUTRAM
+BL092,Carpark,1.29643008,103.8545476,DOWNTOWN CORE
+BL093,Carpark,1.296439859,103.8557097,DOWNTOWN CORE
+BL094,Carpark,1.297635117,103.855902,DOWNTOWN CORE
+BL109,Carpark,1.305049883,103.8531189,ROCHOR
+BL111,Carpark,1.304143199,103.854119,ROCHOR
+BL112,Carpark,1.304432561,103.8544469,ROCHOR
+BL116,Carpark,1.306668361,103.8525557,ROCHOR
+BL118,Carpark,1.305626029,103.854232,ROCHOR
+BL120,Carpark,1.307187392,103.8538371,ROCHOR
+BL124,Carpark,1.309103143,103.8538034,ROCHOR
+BL128,Carpark,1.307379408,103.8561911,ROCHOR
+BL132,Carpark,1.309429203,103.8551687,ROCHOR
+BL137,Carpark,1.309631915,103.8569448,KALLANG
+BL138,Carpark,1.306167093,103.85612,ROCHOR
+BL141,Carpark,1.308132628,103.8578796,KALLANG
+BL144,Carpark,1.309533536,103.8583584,KALLANG
+BL151,Carpark,1.310505383,103.8612049,KALLANG
+BL172,Carpark,1.302460119,103.8584199,ROCHOR
+BL177,Carpark,1.301265754,103.8602786,ROCHOR
+BL180,Carpark,1.302436421,103.8613921,ROCHOR
+BL192,Carpark,1.364229725,103.8653581,SERANGOON
+BL193,Carpark,1.363669523,103.8653305,SERANGOON
+BL196,Carpark,1.276925188,103.8367336,BUKIT MERAH
+BL204,Carpark,1.305108506,103.8523843,ROCHOR
+BL208,Carpark,1.301657829,103.859563,ROCHOR
+BL209,Carpark,1.282138284,103.845624,OUTRAM
+BL210,Carpark,1.30328586,103.8596269,ROCHOR
+BL212,Carpark,1.309947318,103.9016241,GEYLANG
+C0004,Carpark,1.288104961,103.8478228,SINGAPORE RIVER
+C0009,Carpark,1.308029082,103.8512296,ROCHOR
+C0011,Carpark,1.343481261,103.7750408,BUKIT TIMAH
+C0018,Carpark,1.286505678,103.8491084,SINGAPORE RIVER
+C0022,Carpark,1.281950678,103.8459371,OUTRAM
+C0028,Carpark,1.306967065,103.853031,ROCHOR
+C0036,Carpark,1.307434438,103.8308147,NEWTON
+C0038,Carpark,1.30769628,103.8314818,NEWTON
+C0039,Carpark,1.323436948,103.8091634,BUKIT TIMAH
+C0041,Carpark,1.329858973,103.7126554,JURONG WEST
+C0045,Carpark,1.336144556,103.7140104,JURONG WEST
+C0053,Carpark,1.308081412,103.8371318,NEWTON
+C0055,Carpark,1.395293104,103.7418231,WESTERN WATER CATCHMENT
+C0057,Carpark,1.376999933,103.8279946,ANG MO KIO
+C0058,Carpark,1.297728096,103.8438793,MUSEUM
+C0063,Carpark,1.300120991,103.854425,ROCHOR
+C0097,Carpark,1.305231039,103.8526234,ROCHOR
+C0098,Carpark,1.305957954,103.8527171,ROCHOR
+C0104,Carpark,1.310833427,103.8614244,KALLANG
+C0110,Carpark,1.278815691,103.8443152,OUTRAM
+C0113,Carpark,1.318616556,103.9099003,BEDOK
+C0114,Carpark,1.317917313,103.9073205,BEDOK
+C0118,Carpark,1.307714596,103.9012436,MARINE PARADE
+C0119,Carpark,1.309863871,103.8994329,GEYLANG
+C0120,Carpark,1.329011803,103.7184439,BOON LAY
+C0121,Carpark,1.327520117,103.7626274,CLEMENTI
+C0122,Carpark,1.388488078,103.9872133,CHANGI
+C0126,Carpark,1.33306265,103.9705488,TAMPINES
+C0128,Carpark,1.335107941,103.9707163,TAMPINES
+C0129,Carpark,1.334838952,103.9694111,TAMPINES
+C0130,Carpark,1.3313724,103.9626676,TAMPINES
+C0132,Carpark,1.317176107,103.9025914,GEYLANG
+C0133,Carpark,1.28825184,103.8482106,SINGAPORE RIVER
+C0134,Carpark,1.324943165,103.8850835,GEYLANG
+C0135,Carpark,1.31290979,103.8995161,GEYLANG
+C0136,Carpark,1.311239437,103.9006648,GEYLANG
+C0142,Carpark,1.289218933,103.8115929,BUKIT MERAH
+C0147,Carpark,1.318627954,103.9108659,BEDOK
+C0148,Carpark,1.311071491,103.8396831,NEWTON
+C0151,Carpark,1.391549196,103.9895339,CHANGI
+C0152,Carpark,1.39110074,103.9914622,CHANGI
+C0153,Carpark,1.390626647,103.9924062,CHANGI
+C0154,Carpark,1.3901232,103.994253,CHANGI
+C0155,Carpark,1.389905018,103.9958152,CHANGI
+C0156,Carpark,1.38427758,104.0010448,CHANGI
+C0157,Carpark,1.348638812,103.9672748,CHANGI
+C0158,Carpark,1.348347302,103.9698398,CHANGI
+C0159,Carpark,1.349649978,103.9700871,CHANGI
+C0160,Carpark,1.351164598,103.9665417,CHANGI
+C0161,Carpark,1.332176922,103.9525201,TAMPINES
+C0162,Carpark,1.293950684,103.8445419,MUSEUM
+D0001,Carpark,1.298443809,103.8377923,RIVER VALLEY
+D0002,Carpark,1.298409464,103.8397166,RIVER VALLEY
+D0004,Carpark,1.305366216,103.8539922,ROCHOR
+D0005,Carpark,1.3048848,103.8536631,ROCHOR
+D0006,Carpark,1.279515475,103.8432643,OUTRAM
+D0009,Carpark,1.308769454,103.8555815,ROCHOR
+D0010,Carpark,1.27865295,103.8432481,OUTRAM
+D0011,Carpark,1.278980361,103.8427292,OUTRAM
+D0012,Carpark,1.304920473,103.8522474,ROCHOR
+D0017,Carpark,1.324954272,103.8148943,NOVENA
+D0026,Carpark,1.305870183,103.8535966,ROCHOR
+D0027,Carpark,1.309548978,103.9017228,MARINE PARADE
+D0028,Carpark,1.289553628,103.824666,BUKIT MERAH
+D0029,Carpark,1.365830501,103.7761821,BUKIT PANJANG
+E0006,Carpark,1.27413769,103.8438999,DOWNTOWN CORE
+E0009,Carpark,1.303627062,103.8393033,NEWTON
+E0010,Carpark,1.322616233,103.8930571,GEYLANG
+E0011,Carpark,1.302122678,103.8386159,NEWTON
+E0017,Carpark,1.30690133,103.907323,MARINE PARADE
+E0022,Carpark,1.276604279,103.8376665,BUKIT MERAH
+E0023,Carpark,1.308692963,103.9362633,BEDOK
+E0024,Carpark,1.307404078,103.9358486,BEDOK
+E0025,Carpark,1.30724076,103.9295911,BEDOK
+E0027,Carpark,1.306813957,103.9299335,BEDOK
+E0031,Carpark,1.304868591,103.9020184,MARINE PARADE
+E0033,Carpark,1.312023131,103.9226507,BEDOK
+E0034,Carpark,1.316469383,103.901428,GEYLANG
+E0035,Carpark,1.313153053,103.9023927,GEYLANG
+E0037,Carpark,1.312245231,103.9246137,BEDOK
+F0001,Carpark,1.296417713,103.8474891,MUSEUM
+F0002,Carpark,1.31239105,103.8600732,KALLANG
+F0006,Carpark,1.312114561,103.8574179,KALLANG
+F0013,Carpark,1.333009961,103.7181089,JURONG WEST
+F0021,Carpark,1.325371409,103.6934558,PIONEER
+F0022,Carpark,1.296370186,103.8466398,MUSEUM
+F0025,Carpark,1.326086226,103.6879419,PIONEER
+F0026,Carpark,1.325898948,103.6860822,PIONEER
+F0027,Carpark,1.296455234,103.8449027,MUSEUM
+F0029,Carpark,1.294948069,103.884326,MARINE PARADE
+F0030,Carpark,1.364711255,103.8653914,SERANGOON
+F0031,Carpark,1.364162352,103.8656859,SERANGOON
+G0002,Carpark,1.313238447,103.8827139,GEYLANG
+G0005,Carpark,1.30107681,103.8373281,ORCHARD
+G0018,Carpark,1.325436962,103.877314,GEYLANG
+G0021,Carpark,1.327929689,103.8755981,GEYLANG
+G0022,Carpark,1.32863312,103.8742799,GEYLANG
+G0026,Carpark,1.315310754,103.6704774,PIONEER
+G0027,Carpark,1.314816529,103.669407,PIONEER
+G0028,Carpark,1.316966244,103.6688024,PIONEER
+G0029,Carpark,1.312717577,103.6626271,PIONEER
+G0030,Carpark,1.312319998,103.6611271,PIONEER
+G0032,Carpark,1.317591948,103.6688073,PIONEER
+G0033,Carpark,1.318412216,103.6682658,PIONEER
+G0034,Carpark,1.318199109,103.6668797,PIONEER
+G0035,Carpark,1.318244651,103.6652644,PIONEER
+G0036,Carpark,1.316952803,103.6635768,PIONEER
+G0037,Carpark,1.32514182,103.8779054,GEYLANG
+G0038,Carpark,1.294140931,103.6719256,PIONEER
+G0039,Carpark,1.314233175,103.8935033,GEYLANG
+G0040,Carpark,1.282428583,103.8471036,OUTRAM
+G0043,Carpark,1.425844173,103.8258107,MANDAI
+H0003,Carpark,1.311640338,103.8617784,KALLANG
+H0004,Carpark,1.311970134,103.7926822,QUEENSTOWN
+H0006,Carpark,1.308413708,103.8540591,ROCHOR
+H0007,Carpark,1.303490217,103.8380584,NEWTON
+H0008,Carpark,1.289432522,103.769126,QUEENSTOWN
+H0011,Carpark,1.310692729,103.7932345,QUEENSTOWN
+H0012,Carpark,1.287369105,103.8473686,SINGAPORE RIVER
+H0015,Carpark,1.308594485,103.8540874,ROCHOR
+H0021,Carpark,1.352731178,103.7571665,BUKIT BATOK
+H0022,Carpark,1.303228642,103.8390141,NEWTON
+H0024,Carpark,1.286376347,103.8473661,SINGAPORE RIVER
+H0028,Carpark,1.311425828,103.8610248,KALLANG
+H0037,Carpark,1.309390431,103.8617076,KALLANG
+H0049,Carpark,1.333307363,103.8845077,TOA PAYOH
+H0050,Carpark,1.333949461,103.8855971,TOA PAYOH
+H0052,Carpark,1.335626646,103.8848972,TOA PAYOH
+H0055,Carpark,1.28942415,103.8300647,BUKIT MERAH
+H0056,Carpark,1.278890937,103.8375067,BUKIT MERAH
+H0057,Carpark,1.307938675,103.8544803,ROCHOR
+H0061,Carpark,1.330624167,103.8805642,GEYLANG
+I0005,Carpark,1.335544906,103.8873567,TOA PAYOH
+I0006,Carpark,1.336062987,103.8867544,TOA PAYOH
+J0001,Carpark,1.307361813,103.8573416,ROCHOR
+J0003,Carpark,1.311839891,103.8592698,KALLANG
+J0006,Carpark,1.304152305,103.859917,ROCHOR
+J0008,Carpark,1.303409344,103.859008,ROCHOR
+J0009,Carpark,1.303782566,103.8594233,ROCHOR
+J0010,Carpark,1.323646978,103.918852,BEDOK
+J0012,Carpark,1.303186464,103.8586489,ROCHOR
+J0015,Carpark,1.352123215,103.8461723,BISHAN
+J0017,Carpark,1.308926729,103.9034291,MARINE PARADE
+J0018,Carpark,1.279816107,103.8417843,OUTRAM
+J0020,Carpark,1.325580494,103.6689872,PIONEER
+J0021,Carpark,1.324951413,103.6698728,PIONEER
+J0022,Carpark,1.302739721,103.8584351,ROCHOR
+J0027,Carpark,1.32469648,103.6726614,PIONEER
+J0029,Carpark,1.302478414,103.8615972,ROCHOR
+J0030,Carpark,1.325288002,103.8630825,KALLANG
+J0033,Carpark,1.326594387,103.7143478,BOON LAY
+J0034,Carpark,1.44123281,103.8230495,SEMBAWANG
+J0035,Carpark,1.441876114,103.8235979,SEMBAWANG
+J0036,Carpark,1.441554025,103.8230882,SEMBAWANG
+J0037,Carpark,1.32879645,103.7157109,BOON LAY
+J0038,Carpark,1.312061644,103.7977939,BUKIT TIMAH
+J0039,Carpark,1.311329209,103.7976174,BUKIT TIMAH
+J0040,Carpark,1.310865684,103.7978901,BUKIT TIMAH
+J0041,Carpark,1.309269261,103.79833,BUKIT TIMAH
+J0042,Carpark,1.309681102,103.7986833,BUKIT TIMAH
+J0043,Carpark,1.309343411,103.7982273,BUKIT TIMAH
+J0047,Carpark,1.315193184,103.8626329,KALLANG
+J0049,Carpark,1.307534839,103.8617464,KALLANG
+J0050,Carpark,1.30803781,103.7638396,CLEMENTI
+J0051,Carpark,1.308324329,103.762015,CLEMENTI
+J0054,Carpark,1.313460571,103.8593112,KALLANG
+J0055,Carpark,1.341607592,103.775025,BUKIT TIMAH
+J0056,Carpark,1.340831839,103.774734,BUKIT TIMAH
+J0057,Carpark,1.327910405,103.8438725,NOVENA
+J0058,Carpark,1.326890765,103.8507654,NOVENA
+J0059,Carpark,1.327629144,103.8427213,NOVENA
+J0060,Carpark,1.327078069,103.8489994,NOVENA
+J0062,Carpark,1.326097844,103.8512937,NOVENA
+J0069,Carpark,1.315446828,103.8549567,KALLANG
+J0070,Carpark,1.329691705,103.8818689,GEYLANG
+J0075,Carpark,1.306967722,103.9080292,MARINE PARADE
+J0080,Carpark,1.319602622,103.9124597,BEDOK
+J0088,Carpark,1.338008854,103.8836703,TOA PAYOH
+J0092,Carpark,1.373318764,103.8290516,ANG MO KIO
+J0093,Carpark,1.329105741,103.6730558,PIONEER
+J0094,Carpark,1.372816357,103.8295255,ANG MO KIO
+J0095,Carpark,1.371629546,103.8290617,ANG MO KIO
+J0097,Carpark,1.304855273,103.8587854,ROCHOR
+J0098,Carpark,1.333162958,103.8833271,TOA PAYOH
+J0099,Carpark,1.347956599,103.7025742,JURONG WEST
+J0100,Carpark,1.274045798,103.7955028,QUEENSTOWN
+J0102,Carpark,1.311609021,103.9007861,GEYLANG
+J0104,Carpark,1.313684923,103.9028141,GEYLANG
+J0106,Carpark,1.312414179,103.9024292,GEYLANG
+J0109,Carpark,1.317925313,103.9003504,GEYLANG
+J0111,Carpark,1.322506066,103.9140274,BEDOK
+J0112,Carpark,1.37325312,103.8300078,ANG MO KIO
+J0117,Carpark,1.317141294,103.725923,JURONG EAST
+J0122,Carpark,1.398988227,103.8730152,SENGKANG
+J0123,Carpark,1.348853665,103.8404941,BISHAN
+J0127,Carpark,1.298474675,103.8066495,QUEENSTOWN
+J0128,Carpark,1.303581846,103.8589866,ROCHOR
+J0130,Carpark,1.314269213,103.8995545,GEYLANG
+J0132,Carpark,1.298542191,103.8070303,QUEENSTOWN
+K0005,Carpark,1.302117958,103.8598674,ROCHOR
+K0006,Carpark,1.334475007,103.9020718,BEDOK
+K0008,Carpark,1.280365107,103.8417023,OUTRAM
+K0009,Carpark,1.30716448,103.8510422,ROCHOR
+K0010,Carpark,1.298471916,103.8389936,ORCHARD
+K0011,Carpark,1.310474622,103.8530825,ROCHOR
+K0013,Carpark,1.308008481,103.859308,KALLANG
+K0016,Carpark,1.339592689,103.910209,BEDOK
+K0017,Carpark,1.342435304,103.9121056,BEDOK
+K0022,Carpark,1.339013696,103.9062805,BEDOK
+K0027,Carpark,1.308060764,103.8547794,ROCHOR
+K0032,Carpark,1.365935304,103.8664889,SERANGOON
+K0034,Carpark,1.290229105,103.8112088,BUKIT MERAH
+K0037,Carpark,1.310253552,103.8615676,KALLANG
+K0039,Carpark,1.309971319,103.8620027,KALLANG
+K0046,Carpark,1.330594221,103.6935132,JURONG WEST
+K0048,Carpark,1.307158913,103.8635649,KALLANG
+K0049,Carpark,1.305598796,103.8563831,ROCHOR
+K0051,Carpark,1.364858885,103.8661826,SERANGOON
+K0052,Carpark,1.325135042,103.8733575,GEYLANG
+K0054,Carpark,1.325737116,103.8744481,GEYLANG
+K0057,Carpark,1.311340076,103.866593,KALLANG
+K0061,Carpark,1.318689374,103.8661038,KALLANG
+K0064,Carpark,1.358949638,103.8818483,HOUGANG
+K0065,Carpark,1.321610767,103.8764279,GEYLANG
+K0069,Carpark,1.306399942,103.8566444,ROCHOR
+K0078,Carpark,1.302975544,103.8768698,KALLANG
+K0081,Carpark,1.340963412,103.8886332,HOUGANG
+K0082,Carpark,1.306115887,103.8673693,KALLANG
+K0087,Carpark,1.323677403,103.8532121,NOVENA
+K0091,Carpark,1.337801847,103.8991488,BEDOK
+K0093,Carpark,1.313264266,103.8419773,NOVENA
+K0094,Carpark,1.294362398,103.8297465,TANGLIN
+K0097,Carpark,1.334591562,103.8831302,TOA PAYOH
+K0099,Carpark,1.31814672,103.9065906,BEDOK
+K0108,Carpark,1.273081656,103.8395319,BUKIT MERAH
+K0110,Carpark,1.323589096,103.8774483,GEYLANG
+K0111,Carpark,1.309735729,103.8533519,ROCHOR
+K0113,Carpark,1.292881185,103.8400564,RIVER VALLEY
+K0114,Carpark,1.307880751,103.8659713,KALLANG
+K0115,Carpark,1.33490003,103.9041206,BEDOK
+K0118,Carpark,1.311285189,103.8450549,KALLANG
+K0120,Carpark,1.315194497,103.859927,KALLANG
+K0121,Carpark,1.306559132,103.8540507,ROCHOR
+L0002,Carpark,1.309884138,103.8546444,ROCHOR
+L0003,Carpark,1.298068056,103.8563637,DOWNTOWN CORE
+L0004,Carpark,1.310404832,103.8760155,GEYLANG
+L0005,Carpark,1.297084213,103.8399956,RIVER VALLEY
+L0008,Carpark,1.341079977,103.7734948,BUKIT TIMAH
+L0009,Carpark,1.286690858,103.8486279,SINGAPORE RIVER
+L0011,Carpark,1.327897107,103.7119265,BOON LAY
+L0013,Carpark,1.310162974,103.8766231,GEYLANG
+L0014,Carpark,1.312386964,103.8758778,GEYLANG
+L0015,Carpark,1.310750888,103.8771359,GEYLANG
+L0016,Carpark,1.312860015,103.8764121,GEYLANG
+L0018,Carpark,1.312994023,103.877007,GEYLANG
+L0019,Carpark,1.310748018,103.8784155,GEYLANG
+L0020,Carpark,1.313102308,103.8775299,GEYLANG
+L0021,Carpark,1.311119429,103.8791831,GEYLANG
+L0022,Carpark,1.313287762,103.8782541,GEYLANG
+L0023,Carpark,1.311244936,103.8799407,GEYLANG
+L0024,Carpark,1.313482685,103.8787072,GEYLANG
+L0025,Carpark,1.311588383,103.8807154,GEYLANG
+L0026,Carpark,1.313683889,103.8791737,GEYLANG
+L0027,Carpark,1.31165433,103.8812966,GEYLANG
+L0028,Carpark,1.314113902,103.8799817,GEYLANG
+L0029,Carpark,1.324609992,103.6914327,PIONEER
+L0030,Carpark,1.313956348,103.8795939,GEYLANG
+L0031,Carpark,1.312500279,103.8755891,GEYLANG
+L0032,Carpark,1.313998147,103.8813904,GEYLANG
+L0033,Carpark,1.312064263,103.8833161,GEYLANG
+L0034,Carpark,1.312431616,103.8839944,GEYLANG
+L0035,Carpark,1.314484534,103.8830474,GEYLANG
+L0036,Carpark,1.314655168,103.8830943,GEYLANG
+L0037,Carpark,1.312185574,103.884849,GEYLANG
+L0038,Carpark,1.314941874,103.883804,GEYLANG
+L0039,Carpark,1.314479347,103.8847402,GEYLANG
+L0040,Carpark,1.31270337,103.8855478,GEYLANG
+L0041,Carpark,1.31472276,103.8858316,GEYLANG
+L0042,Carpark,1.312898508,103.8862902,GEYLANG
+L0043,Carpark,1.31464194,103.8869518,GEYLANG
+L0044,Carpark,1.312633116,103.8869417,GEYLANG
+L0045,Carpark,1.315009808,103.8878398,GEYLANG
+L0046,Carpark,1.312915124,103.8878524,GEYLANG
+L0047,Carpark,1.315309878,103.8885758,GEYLANG
+L0048,Carpark,1.312615735,103.8885646,GEYLANG
+L0049,Carpark,1.315497967,103.8897145,GEYLANG
+L0050,Carpark,1.313565781,103.8889684,GEYLANG
+L0051,Carpark,1.315562102,103.8907607,GEYLANG
+L0052,Carpark,1.313947973,103.8895303,GEYLANG
+L0053,Carpark,1.315847699,103.8913205,GEYLANG
+L0056,Carpark,1.311437556,103.8860531,GEYLANG
+L0057,Carpark,1.315897249,103.8904039,GEYLANG
+L0058,Carpark,1.353833929,103.8772217,SERANGOON
+L0060,Carpark,1.326796557,103.8738985,GEYLANG
+L0061,Carpark,1.35433572,103.8764849,SERANGOON
+L0064,Carpark,1.313782294,103.8798255,GEYLANG
+L0065,Carpark,1.329335597,103.8747569,GEYLANG
+L0074,Carpark,1.315031106,103.8805583,GEYLANG
+L0076,Carpark,1.319468991,103.9106242,BEDOK
+L0077,Carpark,1.290780959,103.8117157,BUKIT MERAH
+L0078,Carpark,1.319140394,103.9119029,BEDOK
+L0079,Carpark,1.319126454,103.9095348,BEDOK
+L0081,Carpark,1.326172956,103.8529812,NOVENA
+L0082,Carpark,1.318846308,103.9078211,BEDOK
+L0083,Carpark,1.319133796,103.9089692,BEDOK
+L0085,Carpark,1.377745085,103.9724235,PASIR RIS
+L0087,Carpark,1.382741464,103.9720044,PASIR RIS
+L0088,Carpark,1.372774249,103.9683831,PASIR RIS
+L0089,Carpark,1.374632511,103.9667761,PASIR RIS
+L0092,Carpark,1.338232807,103.8850955,TOA PAYOH
+L0093,Carpark,1.297414638,103.8562565,DOWNTOWN CORE
+L0096,Carpark,1.315296508,103.8998052,GEYLANG
+L0097,Carpark,1.31580887,103.900892,GEYLANG
+L0098,Carpark,1.316525585,103.9020436,GEYLANG
+L0099,Carpark,1.315730471,103.9028043,GEYLANG
+L0100,Carpark,1.316749986,103.9032618,GEYLANG
+L0101,Carpark,1.316554148,103.9039335,GEYLANG
+L0102,Carpark,1.316725505,103.9045662,GEYLANG
+L0103,Carpark,1.31497991,103.9007719,GEYLANG
+L0104,Carpark,1.390197737,103.9872884,CHANGI
+L0107,Carpark,1.313647952,103.8794573,GEYLANG
+L0109,Carpark,1.375016751,103.9720051,PASIR RIS
+L0110,Carpark,1.374406908,103.9689307,PASIR RIS
+L0113,Carpark,1.311661592,103.8744536,KALLANG
+L0115,Carpark,1.310573113,103.8719968,KALLANG
+L0116,Carpark,1.312973559,103.8806235,GEYLANG
+L0117,Carpark,1.315468731,103.882795,GEYLANG
+L0118,Carpark,1.313237922,103.8885524,GEYLANG
+L0120,Carpark,1.31966119,103.9115763,BEDOK
+L0123,Carpark,1.313275131,103.8764806,GEYLANG
+L0124,Carpark,1.315060768,103.8894332,GEYLANG
+L0125,Carpark,1.315080102,103.8872229,GEYLANG
+M0001,Carpark,1.306358038,103.8473874,ROCHOR
+M0003,Carpark,1.312797874,103.8570584,KALLANG
+M0005,Carpark,1.304128593,103.8537174,ROCHOR
+M0006,Carpark,1.279628482,103.8473907,DOWNTOWN CORE
+M0009,Carpark,1.273833002,103.8460064,DOWNTOWN CORE
+M0011,Carpark,1.283788249,103.844803,OUTRAM
+M0015,Carpark,1.292555176,103.8408435,RIVER VALLEY
+M0017,Carpark,1.301666482,103.8506496,ROCHOR
+M0020,Carpark,1.30806413,103.8582734,KALLANG
+M0026,Carpark,1.299049536,103.8540002,ROCHOR
+M0032,Carpark,1.448209698,103.7751081,WOODLANDS
+M0038,Carpark,1.36501473,103.8656431,SERANGOON
+M0039,Carpark,1.365290454,103.865557,SERANGOON
+M0040,Carpark,1.305132241,103.8495599,ROCHOR
+M0043,Carpark,1.304170169,103.8494242,ROCHOR
+M0048,Carpark,1.323740197,103.851081,NOVENA
+M0049,Carpark,1.323539609,103.8498936,NOVENA
+M0050,Carpark,1.27975114,103.8461117,DOWNTOWN CORE
+M0055,Carpark,1.327044989,103.8664193,KALLANG
+M0058,Carpark,1.332321893,103.8838476,GEYLANG
+M0059,Carpark,1.305989316,103.8473351,NEWTON
+M0063,Carpark,1.305845062,103.8488207,ROCHOR
+M0066,Carpark,1.334556448,103.8847612,TOA PAYOH
+M0068,Carpark,1.305208027,103.8483488,NEWTON
+M0072,Carpark,1.322353204,103.8498277,NOVENA
+M0074,Carpark,1.312290739,103.8418932,NOVENA
+M0076,Carpark,1.325219861,103.8487885,NOVENA
+M0077,Carpark,1.294201799,103.8415753,RIVER VALLEY
+M0078,Carpark,1.266481931,103.8205184,BUKIT MERAH
+M0079,Carpark,1.447498514,103.7766554,WOODLANDS
+M0080,Carpark,1.305223566,103.9022576,MARINE PARADE
+M0084,Carpark,1.274578043,103.8494398,DOWNTOWN CORE
+M0085,Carpark,1.292915705,103.8381954,RIVER VALLEY
+M0088,Carpark,1.300478157,103.8029253,QUEENSTOWN
+N0003,Carpark,1.303400247,103.85952,ROCHOR
+N0005,Carpark,1.34344523,103.8857872,HOUGANG
+N0006,Carpark,1.279297395,103.8419055,OUTRAM
+N0010,Carpark,1.303563677,103.8495782,ROCHOR
+N0011,Carpark,1.308034462,103.8537293,ROCHOR
+N0012,Carpark,1.30595666,103.8636834,KALLANG
+N0013,Carpark,1.300359527,103.8565943,DOWNTOWN CORE
+N0014,Carpark,1.286398403,103.8481635,SINGAPORE RIVER
+N0016,Carpark,1.325589269,103.7008799,BOON LAY
+N0020,Carpark,1.287176276,103.8447725,SINGAPORE RIVER
+N0023,Carpark,1.391239356,103.9852685,CHANGI
+N0047,Carpark,1.279279951,103.8421431,OUTRAM
+N0053,Carpark,1.456715265,103.7936574,WOODLANDS
+O0004,Carpark,1.377257666,103.8273339,CENTRAL WATER CATCHMENT
+O0005,Carpark,1.37749666,103.8280214,ANG MO KIO
+O0007,Carpark,1.316062211,103.8507884,KALLANG
+O0008,Carpark,1.307392415,103.8847283,GEYLANG
+O0010,Carpark,1.285496551,103.8347316,BUKIT MERAH
+O0013,Carpark,1.284808314,103.8360967,OUTRAM
+O0026,Carpark,1.327790552,103.8668744,KALLANG
+O0027,Carpark,1.312905297,103.8991126,GEYLANG
+O0028,Carpark,1.28444324,103.8354809,OUTRAM
+O0029,Carpark,1.309820024,103.901498,GEYLANG
+O0031,Carpark,1.314210199,103.8985596,GEYLANG
+P0002,Carpark,1.30201586,103.861064,ROCHOR
+P0006,Carpark,1.278040575,103.8449908,DOWNTOWN CORE
+P0009,Carpark,1.297011795,103.8443927,MUSEUM
+P0010,Carpark,1.312690077,103.8555837,KALLANG
+P0011,Carpark,1.312273942,103.8581567,KALLANG
+P0012,Carpark,1.284638777,103.8497705,DOWNTOWN CORE
+P0013,Carpark,1.275105524,103.8480132,DOWNTOWN CORE
+P0015,Carpark,1.301433197,103.8510965,ROCHOR
+P0018,Carpark,1.296497674,103.8551784,DOWNTOWN CORE
+P0023,Carpark,1.309679428,103.858505,KALLANG
+P0024,Carpark,1.323396861,103.8086812,BUKIT TIMAH
+P0025,Carpark,1.323906461,103.8085121,BUKIT TIMAH
+P0028,Carpark,1.325397066,103.8495777,NOVENA
+P0031,Carpark,1.276362347,103.7937123,QUEENSTOWN
+P0033,Carpark,1.376423242,103.9565604,PASIR RIS
+P0035,Carpark,1.331887664,103.8699051,TOA PAYOH
+P0036,Carpark,1.33008265,103.8703047,TOA PAYOH
+P0038,Carpark,1.305349219,103.8538286,ROCHOR
+P0048,Carpark,1.28341587,103.8405637,OUTRAM
+P0049,Carpark,1.363784675,103.8646639,SERANGOON
+P0051,Carpark,1.309386488,103.8627792,KALLANG
+P0054,Carpark,1.27615376,103.7911975,QUEENSTOWN
+P0055,Carpark,1.3110223,103.8595285,KALLANG
+P0072,Carpark,1.309342438,103.9010322,MARINE PARADE
+P0075,Carpark,1.310056587,103.8627802,KALLANG
+P0076,Carpark,1.299709118,103.7517099,JURONG EAST
+P0077,Carpark,1.302390647,103.7496651,JURONG EAST
+P0078,Carpark,1.304480734,103.7583636,CLEMENTI
+P0081,Carpark,1.303681569,103.6563619,PIONEER
+P0082,Carpark,1.297440048,103.6651075,PIONEER
+P0083,Carpark,1.306879555,103.6620507,PIONEER
+P0084,Carpark,1.297896403,103.6668484,PIONEER
+P0086,Carpark,1.312748335,103.7512538,CLEMENTI
+P0093,Carpark,1.276717297,103.7956426,QUEENSTOWN
+P0094,Carpark,1.278875055,103.7856058,QUEENSTOWN
+P0095,Carpark,1.312788385,103.731687,JURONG EAST
+P0096,Carpark,1.299852877,103.8421207,ORCHARD
+P0099,Carpark,1.295845931,103.6673906,PIONEER
+P0102,Carpark,1.321381662,103.7482163,JURONG EAST
+P0103,Carpark,1.313213204,103.6834854,PIONEER
+P0106,Carpark,1.291622447,103.7680951,QUEENSTOWN
+P0109,Carpark,1.384626875,103.9437561,PASIR RIS
+P0111,Carpark,1.301816207,103.8610235,ROCHOR
+P0113,Carpark,1.275398793,103.7923927,QUEENSTOWN
+P0114,Carpark,1.329053197,103.6682753,WESTERN WATER CATCHMENT
+P0115,Carpark,1.374192902,103.9518112,PASIR RIS
+P0116,Carpark,1.291585014,103.8213784,BUKIT MERAH
+P0117,Carpark,1.277599326,103.8453685,DOWNTOWN CORE
+Q0001,Carpark,1.299498087,103.8534435,ROCHOR
+Q0002,Carpark,1.303163245,103.8565826,ROCHOR
+Q0004,Carpark,1.332555817,103.7104918,JURONG WEST
+Q0005,Carpark,1.333075721,103.7105084,JURONG WEST
+Q0006,Carpark,1.299948441,103.8533357,ROCHOR
+Q0007,Carpark,1.301668216,103.8558938,DOWNTOWN CORE
+Q0008,Carpark,1.304697284,103.8020941,QUEENSTOWN
+Q0009,Carpark,1.29034678,103.8003355,QUEENSTOWN
+R0001,Carpark,1.309731758,103.8529564,ROCHOR
+R0002,Carpark,1.314523063,103.8563997,KALLANG
+R0003,Carpark,1.316081895,103.8532704,KALLANG
+R0006,Carpark,1.444520874,103.7803791,WOODLANDS
+R0010,Carpark,1.294255662,103.8419594,RIVER VALLEY
+R0011,Carpark,1.310553424,103.8536277,ROCHOR
+R0015,Carpark,1.308408605,103.8551539,ROCHOR
+R0028,Carpark,1.327470378,103.8669701,KALLANG
+R0036,Carpark,1.308869778,103.851283,ROCHOR
+R0037,Carpark,1.316530989,103.8542174,KALLANG
+R0038,Carpark,1.310850738,103.8522889,KALLANG
+R0039,Carpark,1.316584673,103.8539152,KALLANG
+R0040,Carpark,1.291745632,103.8621678,DOWNTOWN CORE
+S0001,Carpark,1.309460841,103.8567684,KALLANG
+S0002,Carpark,1.295983948,103.8548228,DOWNTOWN CORE
+S0005,Carpark,1.314061259,103.8572878,KALLANG
+S0007,Carpark,1.313741576,103.8538238,KALLANG
+S0009,Carpark,1.302831555,103.8509796,ROCHOR
+S0011,Carpark,1.301779183,103.8485547,ROCHOR
+S0013,Carpark,1.302170945,103.8606786,ROCHOR
+S0015,Carpark,1.280204074,103.8479883,OUTRAM
+S0018,Carpark,1.302001148,103.8604407,ROCHOR
+S0019,Carpark,1.304967661,103.856723,ROCHOR
+S0020,Carpark,1.372336757,103.8288303,ANG MO KIO
+S0021,Carpark,1.30925464,103.8560203,KALLANG
+S0022,Carpark,1.307500549,103.8579565,KALLANG
+S0023,Carpark,1.312634851,103.8588362,KALLANG
+S0026,Carpark,1.331144997,103.7962899,BUKIT TIMAH
+S0027,Carpark,1.329887213,103.8706338,TOA PAYOH
+S0032,Carpark,1.304656314,103.8389682,NEWTON
+S0033,Carpark,1.376845335,103.7455474,CHOA CHU KANG
+S0035,Carpark,1.29909263,103.8524675,ROCHOR
+S0038,Carpark,1.297286171,103.8563048,DOWNTOWN CORE
+S0039,Carpark,1.314364311,103.87749,GEYLANG
+S0040,Carpark,1.333148312,103.714098,JURONG WEST
+S0043,Carpark,1.331033193,103.7948734,BUKIT TIMAH
+S0045,Carpark,1.315466795,103.854075,KALLANG
+S0046,Carpark,1.314898992,103.855021,KALLANG
+S0047,Carpark,1.324959392,103.8467613,NOVENA
+S0048,Carpark,1.336665885,103.8845974,TOA PAYOH
+S0049,Carpark,1.314879736,103.8585923,KALLANG
+S0050,Carpark,1.329568198,103.8717,TOA PAYOH
+S0055,Carpark,1.362961439,103.8665898,SERANGOON
+S0061,Carpark,1.441447349,103.8225324,SEMBAWANG
+S0063,Carpark,1.364451197,103.8644184,SERANGOON
+S0064,Carpark,1.363730064,103.8654786,SERANGOON
+S0065,Carpark,1.365282015,103.8648423,SERANGOON
+S0066,Carpark,1.31131007,103.8584318,KALLANG
+S0070,Carpark,1.361763389,103.8857795,HOUGANG
+S0074,Carpark,1.358532641,103.8372395,BISHAN
+S0075,Carpark,1.330663497,103.7379065,JURONG EAST
+S0076,Carpark,1.326103931,103.6915921,PIONEER
+S0078,Carpark,1.327022893,103.8794641,GEYLANG
+S0079,Carpark,1.310557841,103.8618107,KALLANG
+S0082,Carpark,1.32567623,103.6841148,PIONEER
+S0083,Carpark,1.408408762,103.7511056,SUNGEI KADUT
+S0084,Carpark,1.419814913,103.744323,SUNGEI KADUT
+S0085,Carpark,1.412277083,103.7432345,SUNGEI KADUT
+S0086,Carpark,1.423787389,103.7496393,SUNGEI KADUT
+S0087,Carpark,1.415587029,103.748246,SUNGEI KADUT
+S0088,Carpark,1.416786342,103.7478167,SUNGEI KADUT
+S0090,Carpark,1.423548127,103.7474361,SUNGEI KADUT
+S0091,Carpark,1.464608222,103.8028716,SEMBAWANG
+S0092,Carpark,1.45621049,103.8030622,SEMBAWANG
+S0094,Carpark,1.468365982,103.8122997,SEMBAWANG
+S0096,Carpark,1.463820258,103.805025,SEMBAWANG
+S0097,Carpark,1.468069049,103.8090555,SEMBAWANG
+S0098,Carpark,1.315095417,103.8832525,GEYLANG
+S0102,Carpark,1.276884069,103.8370506,BUKIT MERAH
+S0103,Carpark,1.316197218,103.8265971,TANGLIN
+S0105,Carpark,1.407007011,103.750052,SUNGEI KADUT
+S0106,Carpark,1.356665109,103.8360584,BISHAN
+S0108,Carpark,1.318557913,103.8505844,NOVENA
+S0109,Carpark,1.357200717,103.8381327,BISHAN
+S0110,Carpark,1.314492816,103.8984929,GEYLANG
+S0111,Carpark,1.392697054,103.7536344,SUNGEI KADUT
+S0112,Carpark,1.267882977,103.8179957,BUKIT MERAH
+S0115,Carpark,1.31157277,103.8616913,KALLANG
+S0118,Carpark,1.309634508,103.8625062,KALLANG
+S0119,Carpark,1.318254891,103.8486844,NOVENA
+S0120,Carpark,1.310888232,103.8593079,KALLANG
+S0127,Carpark,1.306598382,103.9045967,MARINE PARADE
+S0128,Carpark,1.323706697,103.9192708,BEDOK
+S0130,Carpark,1.323424171,103.8777195,GEYLANG
+S0132,Carpark,1.303318124,103.8607635,ROCHOR
+S0134,Carpark,1.343845613,103.8701226,SERANGOON
+S0135,Carpark,1.317987734,103.8991573,GEYLANG
+S0136,Carpark,1.293793634,103.8307602,TANGLIN
+S0139,Carpark,1.343646964,103.7755911,BUKIT TIMAH
+S0141,Carpark,1.313020123,103.9264669,BEDOK
+S0143,Carpark,1.314449518,103.8907306,GEYLANG
+S0146,Carpark,1.333928618,103.7108726,JURONG WEST
+S0148,Carpark,1.410050732,103.7449964,SUNGEI KADUT
+S0149,Carpark,1.352323941,103.8355957,BISHAN
+S0150,Carpark,1.302440009,103.8606564,ROCHOR
+S0151,Carpark,1.460980891,103.8149633,SEMBAWANG
+S0152,Carpark,1.345872891,103.8724375,SERANGOON
+S0156,Carpark,1.316169563,103.8793797,GEYLANG
+S0157,Carpark,1.319686518,103.9119543,BEDOK
+S0158,Carpark,1.329706458,103.8736979,TOA PAYOH
+S0159,Carpark,1.327018019,103.8429488,NOVENA
+S0160,Carpark,1.36526043,103.8312472,BISHAN
+S0161,Carpark,1.442588534,103.8234602,SEMBAWANG
+S0162,Carpark,1.393201304,103.9165801,PUNGGOL
+S0164,Carpark,1.411688649,103.8697219,SELETAR
+S0166,Carpark,1.453647122,103.8331782,SEMBAWANG
+S0167,Carpark,1.385674269,103.8731082,SERANGOON
+S0168,Carpark,1.383256348,103.8758114,SERANGOON
+S0170,Carpark,1.45351507,103.8324998,SEMBAWANG
+S0171,Carpark,1.275691157,103.8350539,BUKIT MERAH
+T0002,Carpark,1.278270072,103.8437555,OUTRAM
+T0003,Carpark,1.294511686,103.8435437,MUSEUM
+T0004,Carpark,1.291185009,103.8451652,SINGAPORE RIVER
+T0005,Carpark,1.298515746,103.8566882,DOWNTOWN CORE
+T0006,Carpark,1.280310556,103.84187,OUTRAM
+T0008,Carpark,1.280286554,103.8474463,OUTRAM
+T0009,Carpark,1.282895012,103.8441081,OUTRAM
+T0010,Carpark,1.279973667,103.8407093,OUTRAM
+T0014,Carpark,1.278668771,103.847283,DOWNTOWN CORE
+T0017,Carpark,1.286944727,103.8247125,BUKIT MERAH
+T0019,Carpark,1.30250664,103.7402914,JURONG EAST
+T0020,Carpark,1.304158129,103.7367656,JURONG EAST
+T0021,Carpark,1.311070371,103.8598901,KALLANG
+T0022,Carpark,1.307760548,103.8583766,KALLANG
+T0025,Carpark,1.328907012,103.8696805,TOA PAYOH
+T0031,Carpark,1.311062628,103.8780435,GEYLANG
+T0033,Carpark,1.353293099,103.8768765,SERANGOON
+T0036,Carpark,1.367325938,103.9291312,PAYA LEBAR
+T0039,Carpark,1.327535782,103.8775861,GEYLANG
+T0040,Carpark,1.334133291,103.7155723,JURONG WEST
+T0043,Carpark,1.308716502,103.7640749,CLEMENTI
+T0057,Carpark,1.314827624,103.8556805,KALLANG
+T0060,Carpark,1.333787375,103.7488666,JURONG EAST
+T0061,Carpark,1.326003464,103.6897678,PIONEER
+T0062,Carpark,1.337883663,103.8936923,HOUGANG
+T0065,Carpark,1.38372979,103.8287467,ANG MO KIO
+T0066,Carpark,1.385680585,103.8280293,ANG MO KIO
+T0067,Carpark,1.385738527,103.828564,ANG MO KIO
+T0068,Carpark,1.387630829,103.8268289,ANG MO KIO
+T0070,Carpark,1.304028936,103.7954607,QUEENSTOWN
+T0074,Carpark,1.358940483,103.9283035,PAYA LEBAR
+T0076,Carpark,1.327295363,103.654486,TUAS
+T0077,Carpark,1.322939907,103.6548923,TUAS
+T0078,Carpark,1.325299207,103.6515052,TUAS
+T0079,Carpark,1.320274788,103.6537265,TUAS
+T0080,Carpark,1.332665606,103.6446618,TUAS
+T0081,Carpark,1.328421252,103.6444089,TUAS
+T0083,Carpark,1.333024606,103.6439716,TUAS
+T0084,Carpark,1.322087979,103.6407316,TUAS
+T0088,Carpark,1.32256237,103.6370804,TUAS
+T0090,Carpark,1.32228251,103.6578622,TUAS
+T0091,Carpark,1.323712589,103.6561552,TUAS
+T0092,Carpark,1.319601306,103.6521488,TUAS
+T0094,Carpark,1.329056306,103.6422926,TUAS
+T0095,Carpark,1.334576717,103.6373456,TUAS
+T0096,Carpark,1.33263383,103.6381251,TUAS
+T0100,Carpark,1.272740362,103.8057208,BUKIT MERAH
+T0102,Carpark,1.308400273,103.6502297,TUAS
+T0103,Carpark,1.312905275,103.9005905,GEYLANG
+T0104,Carpark,1.338192019,103.8900352,HOUGANG
+T0107,Carpark,1.362766034,103.8969992,HOUGANG
+T0109,Carpark,1.274063396,103.8051772,BUKIT MERAH
+T0111,Carpark,1.336492204,103.6385877,TUAS
+T0113,Carpark,1.336548215,103.6405808,TUAS
+T0114,Carpark,1.310341067,103.9029709,MARINE PARADE
+T0115,Carpark,1.309290446,103.912061,BEDOK
+T0116,Carpark,1.324508307,103.7400167,JURONG EAST
+T0117,Carpark,1.317464319,103.6282374,TUAS
+T0120,Carpark,1.302399581,103.6277007,TUAS
+T0123,Carpark,1.307736542,103.6307962,TUAS
+T0129,Carpark,1.316607474,103.8953328,GEYLANG
+T0130,Carpark,1.335223396,103.8421448,TOA PAYOH
+T0131,Carpark,1.362211196,103.9322785,TAMPINES
+T0140,Carpark,1.306609263,103.8963916,MARINE PARADE
+T0141,Carpark,1.303911444,103.8968828,MARINE PARADE
+T0142,Carpark,1.313153299,103.6529975,TUAS
+T0144,Carpark,1.280649311,103.8408362,OUTRAM
+T0145,Carpark,1.392514729,103.9156898,PUNGGOL
+T0146,Carpark,1.336460222,103.8893282,HOUGANG
+T0147,Carpark,1.363309886,103.9263779,PAYA LEBAR
+T0148,Carpark,1.320842957,103.6303021,TUAS
+T0150,Carpark,1.292038269,103.6289224,TUAS
+T0151,Carpark,1.363616046,103.9029234,HOUGANG
+T0152,Carpark,1.275565415,103.624919,TUAS
+T0153,Carpark,1.372685851,103.9361482,TAMPINES
+U0002,Carpark,1.288770304,103.8481195,SINGAPORE RIVER
+U0003,Carpark,1.331889412,103.8942389,GEYLANG
+U0007,Carpark,1.306357998,103.8524881,ROCHOR
+U0008,Carpark,1.306013904,103.8541962,ROCHOR
+U0012,Carpark,1.346775606,103.8803949,SERANGOON
+U0013,Carpark,1.329259065,103.8922918,GEYLANG
+U0014,Carpark,1.333371175,103.8950277,GEYLANG
+U0016,Carpark,1.332908897,103.89766,GEYLANG
+U0017,Carpark,1.285509381,103.8460067,OUTRAM
+U0021,Carpark,1.334268069,103.8953721,GEYLANG
+U0023,Carpark,1.292106271,103.8420227,SINGAPORE RIVER
+U0029,Carpark,1.350891464,103.8365927,BISHAN
+U0030,Carpark,1.325021498,103.8931175,GEYLANG
+U0031,Carpark,1.362822686,103.8881505,HOUGANG
+U0035,Carpark,1.344863598,103.8711197,SERANGOON
+U0036,Carpark,1.31222058,103.9260609,BEDOK
+U0037,Carpark,1.332253249,103.8995893,GEYLANG
+U0038,Carpark,1.350015595,103.835221,BISHAN
+U0039,Carpark,1.327129279,103.895595,GEYLANG
+U0040,Carpark,1.33448449,103.8824103,TOA PAYOH
+U0042,Carpark,1.332092672,103.9465498,BEDOK
+U0043,Carpark,1.350027834,103.8359844,BISHAN
+U0044,Carpark,1.332038158,103.896798,GEYLANG
+U0045,Carpark,1.33264754,103.8932764,GEYLANG
+V0001,Carpark,1.307226599,103.8544124,ROCHOR
+V0005,Carpark,1.309793102,103.8559169,KALLANG
+V0007,Carpark,1.310293336,103.8561453,KALLANG
+W0001,Carpark,1.276894844,103.8444145,OUTRAM
+W0002,Carpark,1.298773089,103.8515784,ROCHOR
+W0004,Carpark,1.302752215,103.847764,ROCHOR
+W0005,Carpark,1.302285236,103.8862067,MARINE PARADE
+W0010,Carpark,1.31112818,103.8810524,GEYLANG
+W0013,Carpark,1.382410442,103.7590398,CHOA CHU KANG
+W0021,Carpark,1.270328946,103.8137189,BUKIT MERAH
+W0029,Carpark,1.289528996,103.7714556,QUEENSTOWN
+W0034,Carpark,1.454340505,103.805091,SEMBAWANG
+W0035,Carpark,1.452374024,103.8035693,SEMBAWANG
+W0036,Carpark,1.450394148,103.808344,SEMBAWANG
+W0037,Carpark,1.448419379,103.8081417,SEMBAWANG
+W0038,Carpark,1.451935689,103.8077342,SEMBAWANG
+W0040,Carpark,1.45299756,103.8075564,SEMBAWANG
+W0045,Carpark,1.311865464,103.7966912,BUKIT TIMAH
+W0046,Carpark,1.454463564,103.7973286,WOODLANDS
+W0047,Carpark,1.453458717,103.7964899,WOODLANDS
+W0048,Carpark,1.452758318,103.8001498,WOODLANDS
+W0049,Carpark,1.449985348,103.7988435,WOODLANDS
+W0051,Carpark,1.449438392,103.7994242,WOODLANDS
+W0055,Carpark,1.31109212,103.7962143,BUKIT TIMAH
+W0058,Carpark,1.450769734,103.793457,WOODLANDS
+Y0002,Carpark,1.276039214,103.8420149,OUTRAM
+Y0013,Carpark,1.443254871,103.8334984,YISHUN
+Y0017,Carpark,1.444377812,103.8406892,SIMPANG
+Y0019,Carpark,1.274497635,103.8414327,OUTRAM
+Y0020,Carpark,1.391025649,103.862972,SENGKANG
+Z0001,Carpark,1.292404723,103.8307292,TANGLIN
+Z0003,Carpark,1.292569038,103.830526,TANGLIN
+Z0004,Carpark,1.293083636,103.8303897,TANGLIN
+Guardian Pharmacy (Chinatown Point 4),Pharmacy,1.284998833,103.8446971,OUTRAM
+Guardian Pharmacy (City Link),Pharmacy,1.292777739,103.8541735,DOWNTOWN CORE
+Guardian Pharmacy (City Square Mall),Pharmacy,1.311393503,103.8564871,KALLANG
+Guardian Pharmacy (Clementi Mall),Pharmacy,1.314853231,103.7642482,CLEMENTI
+Guardian Pharmacy (Clifford Centre 2),Pharmacy,1.283856994,103.8521282,DOWNTOWN CORE
+Guardian Pharmacy (Compass One),Pharmacy,1.392094156,103.89498,SENGKANG
+Guardian Pharmacy (Departure Transit Lounge East),Pharmacy,1.362491001,103.9897073,CHANGI
+Guardian Pharmacy (Departure Transit West T1),Pharmacy,1.362491001,103.9897073,CHANGI
+Guardian Pharmacy (Departure/Check In Hall North),Pharmacy,1.355190945,103.988751,CHANGI
+Guardian Pharmacy (Departure/Transit Lounge North Terminal 2),Pharmacy,1.355190945,103.988751,CHANGI
+Guardian Pharmacy (Departure/Transit Lounge South),Pharmacy,1.355190945,103.988751,CHANGI
+Guardian Pharmacy (Gleneagles),Pharmacy,1.307061569,103.8201245,TANGLIN
+Guardian Pharmacy (Great World City),Pharmacy,1.293802358,103.8317579,SINGAPORE RIVER
+Guardian Pharmacy (H205),Pharmacy,1.359496647,103.8850799,HOUGANG
+Guardian Pharmacy (Harbourfront Centre),Pharmacy,1.262063372,103.8186256,BUKIT MERAH
+Guardian Pharmacy (Holland Shopping Centre),Pharmacy,1.31025542,103.7953504,QUEENSTOWN
+Guardian Pharmacy (Hougang Mall),Pharmacy,1.372311857,103.8936616,HOUGANG
+Guardian Pharmacy (IMM2),Pharmacy,1.335024302,103.7466382,JURONG EAST
+Guardian Pharmacy (ION),Pharmacy,1.304035782,103.8313951,ORCHARD
+Guardian Pharmacy (JEM),Pharmacy,1.333200216,103.7431704,JURONG EAST
+Guardian Pharmacy (Jelita),Pharmacy,1.317561968,103.7858406,BUKIT TIMAH
+Guardian Pharmacy (Jurong Point 2),Pharmacy,1.339364021,103.7053082,JURONG WEST
+Guardian Pharmacy (Jurong West Blk 503),Pharmacy,1.3499554,103.7177048,JURONG WEST
+Guardian Pharmacy (Kallang Leisure Park 2),Pharmacy,1.302221774,103.8761527,KALLANG
+Guardian Pharmacy (Katong Mall),Pharmacy,1.30523472,103.9050149,MARINE PARADE
+Guardian Pharmacy (LOT 1),Pharmacy,1.38506836,103.7449504,CHOA CHU KANG
+Guardian Pharmacy (Lavender MRT Station),Pharmacy,1.307377508,103.8627676,KALLANG
+Guardian Pharmacy (Marina Bay Sands),Pharmacy,1.283558729,103.8585058,DOWNTOWN CORE
+Guardian Pharmacy (Mount Elizabeth),Pharmacy,1.305165214,103.8354393,NEWTON
+Guardian Pharmacy (Pagoda Street),Pharmacy,1.283762312,103.8440863,OUTRAM
+Guardian Pharmacy (Paragon),Pharmacy,1.303723217,103.8352403,ORCHARD
+Guardian Pharmacy (Parkway Parade),Pharmacy,1.301191323,103.9051136,MARINE PARADE
+Guardian Pharmacy (Plaza Singapura),Pharmacy,1.300747562,103.8450476,MUSEUM
+Guardian Pharmacy (Raffles City),Pharmacy,1.293893586,103.8531199,DOWNTOWN CORE
+Guardian Pharmacy (Raffles Place MRT 3),Pharmacy,1.284333934,103.8513798,DOWNTOWN CORE
+Guardian Pharmacy (Seletar Mall),Pharmacy,1.391393059,103.8760677,SENGKANG
+Guardian Pharmacy (Serangoon Garden),Pharmacy,1.364143221,103.8654527,SERANGOON
+Guardian Pharmacy (Serangoon NEX),Pharmacy,1.350675514,103.8718616,SERANGOON
+Guardian Pharmacy (Star Vista),Pharmacy,1.306848826,103.7882145,QUEENSTOWN
+Guardian Pharmacy (Sun Plaza 2),Pharmacy,1.44822653,103.8194621,SEMBAWANG
+Guardian Pharmacy (Suntec City),Pharmacy,1.294879059,103.8576755,DOWNTOWN CORE
+Guardian Pharmacy (Tai Seng Street),Pharmacy,1.336538671,103.8887627,HOUGANG
+Guardian Pharmacy (Takashimaya S. C. ),Pharmacy,1.302424179,103.8346761,ORCHARD
+Guardian Pharmacy (Tampines MRT),Pharmacy,1.353646577,103.9448383,TAMPINES
+Guardian Pharmacy (Tampines Mall),Pharmacy,1.352672319,103.944388,TAMPINES
+Guardian Pharmacy (Tanglin Mall),Pharmacy,1.304843443,103.8238528,ORCHARD
+Guardian Pharmacy (The Centrepoint),Pharmacy,1.301978048,103.8397589,ORCHARD
+Guardian Pharmacy (Thomson Plaza 2),Pharmacy,1.354669024,103.8309198,BISHAN
+Guardian Pharmacy (Tiong Bahru Plaza),Pharmacy,1.286463461,103.8269351,BUKIT MERAH
+Guardian Pharmacy (Toa Payoh Blk 190),Pharmacy,1.332975618,103.8479654,TOA PAYOH
+Guardian Pharmacy (United Square 2),Pharmacy,1.317334637,103.8434632,NOVENA
+Guardian Pharmacy (Vivo City),Pharmacy,1.26389582,103.8215893,BUKIT MERAH
+Guardian Pharmacy (WRS),Pharmacy,1.372101699,103.9319999,TAMPINES
+Guardian Pharmacy (West Mall),Pharmacy,1.350189157,103.749022,BUKIT BATOK
+Guardian Pharmacy (Westgate),Pharmacy,1.334025289,103.742586,JURONG EAST
+Guardian Pharmacy (Yew Tee MRT),Pharmacy,1.397128856,103.7473297,CHOA CHU KANG
+Guardian Pharmacy (Zhongsan Park),Pharmacy,1.327084863,103.8464765,NOVENA
+Healing Hub @ Ang Mo Kio - Thye Hua Kwan Hospital,Pharmacy,1.384279159,103.8401721,ANG MO KIO
+Johns Hopkins Singapore International Medical Centre Pte Ltd,Pharmacy,1.321715986,103.845389,NOVENA
+Jurong Community Hospital Pharmacy,Pharmacy,1.33553382,103.7438655,JURONG EAST
+Jurong Medical Centre Pharmacy,Pharmacy,1.34046957,103.7044527,JURONG WEST
+KK Emergency Pharmacy,Pharmacy,1.310448534,103.8466501,KALLANG
+KK Outpatient Pharmacy,Pharmacy,1.310448534,103.8466501,KALLANG
+Khoo Teck Puat Hospital Pharmacy,Pharmacy,1.423877598,103.8378537,YISHUN
+MANAPHARMA,Pharmacy,1.372593133,103.8988132,HOUGANG
+MEDI-LINK PHARMACY,Pharmacy,1.308365265,103.8609128,KALLANG
+MOHAMED MUSTAFA & SAMSUDDIN CO PTE LTD (MUSTAFA CENTRE),Pharmacy,1.310531962,103.8549998,KALLANG
+MOUNT ELIZABETH NOVENA HOSPITAL PHARMACY,Pharmacy,1.322146558,103.8442263,NOVENA
+MT ALVERNIA HOSPITAL RETAIL PHARMACY,Pharmacy,1.341809696,103.8375243,TOA PAYOH
+Mount Alvernia Hospital (Main Pharmacy),Pharmacy,1.341809696,103.8375243,TOA PAYOH
+Mount Elizabeth Hospital,Pharmacy,1.305165214,103.8354393,NEWTON
+NATIONAL CANCER CENTRE PHARMACY (LEVEL 1),Pharmacy,1.2792909,103.8365316,BUKIT MERAH
+NATIONAL CANCER CENTRE PHARMACY (LEVEL 3),Pharmacy,1.2792909,103.8365316,BUKIT MERAH
+NATIONAL SKIN CENTRE (S) PTE LTD (PHARMACY),Pharmacy,1.319682906,103.8490069,NOVENA
+NATIONAL UNIVERSITY HOSPITAL (S) PTE LTD (RETAIL PHARMACY),Pharmacy,1.29395579,103.7827103,QUEENSTOWN
+NATIONAL UNIVERSITY HOSPITAL(S) PTE LTD (MEDICAL CENTRE PHARMACY),Pharmacy,1.292774322,103.784084,QUEENSTOWN
+NHG Pharmacy (CCK Polyclinic),Pharmacy,1.382341385,103.7507769,CHOA CHU KANG
+NHG Pharmacy (Yishun),Pharmacy,1.426537506,103.8383334,YISHUN
+NTUC Healthcare (BTP),Pharmacy,1.338656774,103.7785605,BUKIT TIMAH
+NTUC Healthcare - The Living Pharmacy (TSP),Pharmacy,1.354669024,103.8309198,BISHAN
+National Addiction Management Services (NAMS) Clinic Pharmacy,Pharmacy,1.381589549,103.8833488,HOUGANG
+National Healthcare Group Pharmacy (Ang Mo Kio),Pharmacy,1.374311485,103.8456084,ANG MO KIO
+National Healthcare Group Pharmacy (Ang Mo Kio),Pharmacy,1.372318598,103.847182,ANG MO KIO
+National Healthcare Group Pharmacy (Bukit Batok),Pharmacy,1.352015168,103.7478223,BUKIT BATOK
+National Healthcare Group Pharmacy (Clementi),Pharmacy,1.312482986,103.7654768,CLEMENTI
+National Healthcare Group Pharmacy (Geylang),Pharmacy,1.319493663,103.887166,GEYLANG
+National Healthcare Group Pharmacy (Hougang),Pharmacy,1.370018052,103.8889964,HOUGANG
+National Healthcare Group Pharmacy (Jurong),Pharmacy,1.349719793,103.7307179,JURONG EAST
+National Healthcare Group Pharmacy (Pioneer),Pharmacy,1.338562251,103.6989793,JURONG WEST
+National Healthcare Group Pharmacy (Queenstown),Pharmacy,1.298475482,103.8009578,QUEENSTOWN
+National Healthcare Group Pharmacy (Toa Payoh),Pharmacy,1.33448028,103.8589565,TOA PAYOH
+National Healthcare Group Pharmacy (Woodlands),Pharmacy,1.430893229,103.7752129,WOODLANDS
+National Healthcare Group Pharmacy (Yishun),Pharmacy,1.430358516,103.8391907,YISHUN
+National Heart Centre Singapore,Pharmacy,1.278632607,103.8359544,BUKIT MERAH
+National University Hosital - Kent Ridge Wing Pharmacy,Pharmacy,1.29395579,103.7827103,QUEENSTOWN
+National University Hospital (s) Pte Ltd (Pharmacy @ NCIS),Pharmacy,1.292774322,103.784084,QUEENSTOWN
+Ng Teng Fong General Hospital Outpatient & Retail Pharmacy,Pharmacy,1.33553382,103.7438655,JURONG EAST
+Nishino Pharmacy (Shaw House),Pharmacy,1.305809794,103.8315073,ORCHARD
+Nishino Pharmacy (Takashimaya),Pharmacy,1.302424179,103.8346761,ORCHARD
+P & L Pharmacy Pte Ltd,Pharmacy,1.306372751,103.8270365,ORCHARD
+PARKWAY EAST HOSPITAL PHARMACY,Pharmacy,1.31508824,103.9087569,BEDOK
+PHARMACY @ CGH MEDICAL CENTRE,Pharmacy,1.339487494,103.94928,TAMPINES
+Pacific Pharmacy Pte Ltd,Pharmacy,1.34054847,103.7736491,BUKIT TIMAH
+Pharmacy A  Changi General Hospital,Pharmacy,1.340684733,103.9492944,TAMPINES
+Pharmacy Services Centre  NHG (Blk 9),Pharmacy,1.381589549,103.8833488,HOUGANG
+Pharmacy@IB  CGH (The Integrated Building),Pharmacy,1.340684733,103.9492944,TAMPINES
+Princeton Pharmacy (S) Pte Ltd,Pharmacy,1.325181404,103.7635396,CLEMENTI
+R & D PHARMACEUTICAL PTE LTD,Pharmacy,1.352963735,103.8714722,SERANGOON
+Raffles Health Holland V,Pharmacy,1.310529786,103.7961052,BUKIT TIMAH
+SGH Retail Pharmacy (Blk 4),Pharmacy,1.279939695,103.8307218,BUKIT MERAH
+SINGAPORE NATIONAL EYE CENTRE PTE LTD,Pharmacy,1.28108026,103.8357365,BUKIT MERAH
+SINGHEALTH POLY-OUTRAM,Pharmacy,1.27933147,103.8383151,BUKIT MERAH
+SMITH PHARMACY PTE LTD,Pharmacy,1.330939343,103.8581819,TOA PAYOH
+ST ANDREW'S COMMUNITY HOSPITAL PHARMACY,Pharmacy,1.341776338,103.9487594,TAMPINES
+ST LUKE'S HOSPITAL BLOCK A,Pharmacy,1.34953607,103.7418776,BUKIT BATOK
+SUMANG FAMILY PHARMACY,Pharmacy,1.403227117,103.895387,PUNGGOL
+Sengkang Pharmacy (Main Building Blk1),Pharmacy,1.288122215,103.7994448,QUEENSTOWN
+Singapore General Hospital Pharmacy,Pharmacy,1.279939695,103.8307218,BUKIT MERAH
+Singhealth Poly - Bedok,Pharmacy,1.326997172,103.9316635,BEDOK
+Singhealth Poly - Bukit Merah,Pharmacy,1.283881216,103.8169395,BUKIT MERAH
+A.M. Pharmacy Pte Ltd,Pharmacy,1.301257296,103.8411501,ORCHARD
+ALPS PHARMACY,Pharmacy,1.375761962,104.0025137,CHANGI
+Admiralty Medical Centre Pharmacy,Pharmacy,1.439916081,103.8007012,WOODLANDS
+Airport Pharmacy,Pharmacy,1.338267339,103.983569,CHANGI
+Alchemy Pharmacy,Pharmacy,1.367000533,103.9646178,PASIR RIS
+Amber Compounding Pharmacy Pte Ltd,Pharmacy,1.282897356,103.8458731,OUTRAM
+CGH Pharmacy B,Pharmacy,1.340684733,103.9492944,TAMPINES
+Child Guidance Clinic  Health Promotion Board,Pharmacy,1.27933147,103.8383151,BUKIT MERAH
+Clinic B Pharmacy,Pharmacy,1.381589549,103.8833488,HOUGANG
+E+MED PTE LTD,Pharmacy,1.348701364,103.8485267,BISHAN
+E+MED Pte Ltd,Pharmacy,1.342392836,103.7762505,BUKIT TIMAH
+Essentials Pharmacy,Pharmacy,1.285495273,103.843852,OUTRAM
+Farrer Park Pharmacy,Pharmacy,1.312756681,103.8538422,ROCHOR
+GLENEAGLES HOSPITAL,Pharmacy,1.30736474,103.8194209,TANGLIN
+GRACE HEALTHCARE,Pharmacy,1.349739617,103.7515313,BUKIT BATOK
+Guardian Pharmacy ( Waterway Point),Pharmacy,1.406481432,103.9020733,PUNGGOL
+Guardian Pharmacy (313 @ Somerset),Pharmacy,1.301385108,103.8376844,ORCHARD
+Guardian Pharmacy (Admiralty),Pharmacy,1.440363667,103.8015374,WOODLANDS
+Guardian Pharmacy (Amara Hotel),Pharmacy,1.27458822,103.8434707,DOWNTOWN CORE
+Guardian Pharmacy (Ang Mo Kio 3),Pharmacy,1.370407115,103.8472307,ANG MO KIO
+Guardian Pharmacy (Bedok Central),Pharmacy,1.324607059,103.9318192,BEDOK
+Guardian Pharmacy (Bedok Mall),Pharmacy,1.324772081,103.9292677,BEDOK
+Guardian Pharmacy (Bishan Place),Pharmacy,1.350239421,103.8484776,BISHAN
+Guardian Pharmacy (Bugis Junction 3),Pharmacy,1.299067989,103.855328,DOWNTOWN CORE
+Guardian Pharmacy (Bugis MRT),Pharmacy,1.300264699,103.8556148,DOWNTOWN CORE
+Guardian Pharmacy (Bukit Panjang Plaza),Pharmacy,1.380542455,103.7639939,BUKIT PANJANG
+Guardian Pharmacy (Causeway Point),Pharmacy,1.436007843,103.7856887,WOODLANDS
+Guardian Pharmacy (Changi T3 Basement 2 North),Pharmacy,1.354370734,103.9851696,CHANGI
+Guardian Pharmacy (Northpoint),Pharmacy,1.429698478,103.8357765,YISHUN
+Guardian Pharmacy (Novena Hospital),Pharmacy,1.322146558,103.8442263,NOVENA
+Guardian Pharmacy (Novena Square),Pharmacy,1.320211011,103.8436568,NOVENA
+Guardian Pharmacy (Our Tampines Hub),Pharmacy,1.353496154,103.9396836,TAMPINES
+Singhealth Poly - Marine Parade,Pharmacy,1.302482036,103.9077388,MARINE PARADE
+Singhealth Poly - Pasir Ris,Pharmacy,1.368587038,103.959198,PASIR RIS
+Singhealth Poly - Punggol,Pharmacy,1.402878452,103.9131957,PUNGGOL
+Singhealth Poly - Sengkang,Pharmacy,1.39278559,103.8939061,SENGKANG
+Singhealth Poly - Tampines,Pharmacy,1.357309955,103.9458495,TAMPINES
+Specialist Compounding Pharmacy Pte Ltd,Pharmacy,1.30381616,103.7917927,QUEENSTOWN
+TAN TOCK SENG HOSPITAL PTE LTD (EMERGENCY PHARMACY),Pharmacy,1.321715986,103.845389,NOVENA
+THE DENTAL PHARM,Pharmacy,1.2755962,103.8423932,OUTRAM
+TTSH (CDC Pharmacy - Blk 810 Moulmein Road),Pharmacy,1.321715986,103.845389,NOVENA
+Tan Tock Seng Hospital (Outpatient & Retail Pharmacy),Pharmacy,1.321715986,103.845389,NOVENA
+Tan Tock Seng Hospital (Pharmacy  Level 2),Pharmacy,1.321715986,103.845389,NOVENA
+The Dental Pharm,Pharmacy,1.279759024,103.8382325,BUKIT MERAH
+The Japanese Association Clinic  Singapore,Pharmacy,1.330228687,103.8155844,NOVENA
+Thomson Medical Centre,Pharmacy,1.325364069,103.8414485,NOVENA
+UNITY (HBF),Pharmacy,1.262063372,103.8186256,BUKIT MERAH
+UNITY (HLC),Pharmacy,1.372311857,103.8936616,HOUGANG
+UNITY (JEM),Pharmacy,1.333200216,103.7431704,JURONG EAST
+UNITY (PSG),Pharmacy,1.300747562,103.8450476,MUSEUM
+UNITY (TBR) Tiong Bahru Plaza,Pharmacy,1.286463461,103.8269351,BUKIT MERAH
+UNITY (TPO),Pharmacy,1.354315562,103.9450195,TAMPINES
+UNITY (YTP),Pharmacy,1.397301907,103.7465581,CHOA CHU KANG
+UNITY By FairPrice (BN(A)),Pharmacy,1.325940699,103.93164,BEDOK
+UNITY By FairPrice (EPT),Pharmacy,1.342706186,103.9530245,TAMPINES
+UNITY By FairPrice (HAMK),Pharmacy,1.369248916,103.8483992,ANG MO KIO
+UNITY By FairPrice (HGLS),Pharmacy,1.372311857,103.8936616,HOUGANG
+UNITY By FairPrice (HGPT),Pharmacy,1.375667275,103.8794503,HOUGANG
+UNITY By FairPrice (HNEX),Pharmacy,1.350675514,103.8718616,SERANGOON
+UNITY By FairPrice (JPT),Pharmacy,1.339830153,103.7064609,JURONG WEST
+UNITY By FairPrice (LOT1),Pharmacy,1.38506836,103.7449504,CHOA CHU KANG
+UNITY By FairPrice (MP),Pharmacy,1.301419552,103.9071127,MARINE PARADE
+UNITY By FairPrice (OKM),Pharmacy,1.314692142,103.8944805,GEYLANG
+UNITY By FairPrice (PGOL),Pharmacy,1.394184089,103.9129764,PUNGGOL
+UNITY By FairPrice (PGWW),Pharmacy,1.406481432,103.9020733,PUNGGOL
+UNITY By FairPrice (PSG),Pharmacy,1.300747562,103.8450476,MUSEUM
+UNITY By FairPrice (RVAL),Pharmacy,1.384932019,103.901558,SENGKANG
+UNITY By FairPrice (SPO),Pharmacy,1.318869409,103.8947314,GEYLANG
+UNITY By FairPrice (TAML),Pharmacy,1.352672319,103.944388,TAMPINES
+UNITY By FairPrice (TBRU),Pharmacy,1.286463461,103.8269351,BUKIT MERAH
+UNITY By FairPrice (TGP),Pharmacy,1.276240527,103.8430061,OUTRAM
+UNITY By FairPrice (THDB),Pharmacy,1.332891136,103.8471283,TOA PAYOH
+UNITY By FairPrice (THPZ),Pharmacy,1.354669024,103.8309198,BISHAN
+UNITY By FairPrice (TMA),Pharmacy,1.304843443,103.8238528,ORCHARD
+UNITY By FairPrice (TPO),Pharmacy,1.354315562,103.9450195,TAMPINES
+UNITY By FairPrice (UARC),Pharmacy,1.27367658,103.801127,QUEENSTOWN
+UNITY By FairPrice (UBMC),Pharmacy,1.283119499,103.8176429,BUKIT MERAH
+UNITY By FairPrice (UBPP),Pharmacy,1.380542455,103.7639939,BUKIT PANJANG
+UNITY By FairPrice (UBTPZ),Pharmacy,1.338656774,103.7785605,BUKIT TIMAH
+UNITY By FairPrice (UGWC),Pharmacy,1.293802358,103.8317579,SINGAPORE RIVER
+UNITY By FairPrice (UHBF),Pharmacy,1.262063372,103.8186256,BUKIT MERAH
+UNITY By FairPrice (UHJPT )Hyper Jurong Point,Pharmacy,1.339364021,103.7053082,JURONG WEST
+UNITY By FairPrice (UHLM),Pharmacy,1.378349714,103.7627412,BUKIT PANJANG
+UNITY By FairPrice (UJEM),Pharmacy,1.333200216,103.7431704,JURONG EAST
+UNITY By FairPrice (UJX8),Pharmacy,1.350239421,103.8484776,BISHAN
+UNITY By FairPrice (UNPCT) North Point City,Pharmacy,1.427999956,103.836142,YISHUN
+UNITY By FairPrice (USMA),Pharmacy,1.391393059,103.8760677,SENGKANG
+UNITY By FairPrice (UYSH),Pharmacy,1.416983161,103.8352182,YISHUN
+UNITY By FairPrice (WGA),Pharmacy,1.334025289,103.742586,JURONG EAST
+UNITY By Fairprice (CIA3),Pharmacy,1.354370734,103.9851696,CHANGI
+UNITY By Fairprice (CLML),Pharmacy,1.314853231,103.7642482,CLEMENTI
+UNITY By Fairprice (YTP),Pharmacy,1.397301907,103.7465581,CHOA CHU KANG
+UNITY Waterway Point (WWP),Pharmacy,1.406481432,103.9020733,PUNGGOL
+Unity (HLM) Hillion Mall,Pharmacy,1.378349714,103.7627412,BUKIT PANJANG
+Unity By FairPrice (HSPH) Sports Hub,Pharmacy,1.303843273,103.8727507,KALLANG
+UrbanRx Compounding Pharmacy Pte Ltd,Pharmacy,1.3044858,103.8339419,ORCHARD
+VERTEX PHARMACY PTE. LTD.,Pharmacy,1.324281028,103.8654993,KALLANG
+Vivahealth Pharmacy,Pharmacy,1.288076877,103.8270813,BUKIT MERAH
+WATSON'S PERSONAL CARE STORES PTE LTD (WATERWAY POINT),Pharmacy,1.406481432,103.9020733,PUNGGOL
+WATSONS PERSONAL CARE STORES (TIONG BAHRU PLAZA),Pharmacy,1.286463461,103.8269351,BUKIT MERAH
+WESTMEAD PHARMACY PTE LTD,Pharmacy,1.375761962,104.0025137,CHANGI
+WOODS PHARMACY PTE LTD,Pharmacy,1.433512534,103.7797469,WOODLANDS
+Watson's Personal Care Store Pte Ltd (Lucky Plaza),Pharmacy,1.3044858,103.8339419,ORCHARD
+Watson's Personal Care Stores Pte Ltd (Bedok Central),Pharmacy,1.325500849,103.9319676,BEDOK
+Watson's Personal Care Stores Pte Ltd (Bedok Mall),Pharmacy,1.324772081,103.9292677,BEDOK
+Watson's Personal Care Stores Pte Ltd (Bugis Junction),Pharmacy,1.299067989,103.855328,DOWNTOWN CORE
+Watson's Personal Care Stores Pte Ltd (Bukit Panjang Plaza),Pharmacy,1.380542455,103.7639939,BUKIT PANJANG
+Watson's Personal Care Stores Pte Ltd (Causeway Point),Pharmacy,1.436007843,103.7856887,WOODLANDS
+Watson's Personal Care Stores Pte Ltd (Changi Airport T3 Basement),Pharmacy,1.354370734,103.9851696,CHANGI
+Watson's Personal Care Stores Pte Ltd (Changi Airport T3 Check in Hall),Pharmacy,1.354370734,103.9851696,CHANGI
+Watson's Personal Care Stores Pte Ltd (Changi Airport T4 Check in Hall),Pharmacy,1.338267339,103.983569,CHANGI
+Watson's Personal Care Stores Pte Ltd (Changi Airport Terminal 3 Transit North),Pharmacy,1.354370734,103.9851696,CHANGI
+Watson's Personal Care Stores Pte Ltd (Changi Airport Terminal 3 Transit),Pharmacy,1.354370734,103.9851696,CHANGI
+Watson's Personal Care Stores Pte Ltd (Clementi Mall),Pharmacy,1.314853231,103.7642482,CLEMENTI
+Watson's Personal Care Stores Pte Ltd (Compass One),Pharmacy,1.392094156,103.89498,SENGKANG
+Watson's Personal Care Stores Pte Ltd (Great World City),Pharmacy,1.293802358,103.8317579,SINGAPORE RIVER
+Watson's Personal Care Stores Pte Ltd (Heartbeat@bedok),Pharmacy,1.326997172,103.9316635,BEDOK
+Watson's Personal Care Stores Pte Ltd (Hougang Mall),Pharmacy,1.372311857,103.8936616,HOUGANG
+Watson's Personal Care Stores Pte Ltd (IMM),Pharmacy,1.335024302,103.7466382,JURONG EAST
+Watson's Personal Care Stores Pte Ltd (International Plaza),Pharmacy,1.275735691,103.8457032,DOWNTOWN CORE
+Watson's Personal Care Stores Pte Ltd (Jem),Pharmacy,1.333200216,103.7431704,JURONG EAST
+Watson's Personal Care Stores Pte Ltd (Junction 8),Pharmacy,1.350239421,103.8484776,BISHAN
+Watson's Personal Care Stores Pte Ltd (Jurong Point),Pharmacy,1.339830153,103.7064609,JURONG WEST
+Watson's Personal Care Stores Pte Ltd (Marina Bay Financial Centre),Pharmacy,1.280227686,103.8533493,DOWNTOWN CORE
+Watson's Personal Care Stores Pte Ltd (Marina Square),Pharmacy,1.291455272,103.8570073,DOWNTOWN CORE
+Watson's Personal Care Stores Pte Ltd (NEX),Pharmacy,1.350675514,103.8718616,SERANGOON
+Watson's Personal Care Stores Pte Ltd (Ngee Ann City),Pharmacy,1.302424179,103.8346761,ORCHARD
+Watson's Personal Care Stores Pte Ltd (North Point),Pharmacy,1.427999956,103.836142,YISHUN
+Watson's Personal Care Stores Pte Ltd (Novena Square),Pharmacy,1.320211011,103.8436568,NOVENA
+Watson's Personal Care Stores Pte Ltd (One@Kentridge),Pharmacy,1.292774322,103.784084,QUEENSTOWN
+Watson's Personal Care Stores Pte Ltd (Paragon),Pharmacy,1.303723217,103.8352403,ORCHARD
+Watson's Personal Care Stores Pte Ltd (Parkway Parade),Pharmacy,1.301191323,103.9051136,MARINE PARADE
+Watson's Personal Care Stores Pte Ltd (Raffles City),Pharmacy,1.293893586,103.8531199,DOWNTOWN CORE
+Watson's Personal Care Stores Pte Ltd (Resort World Sentosa),Pharmacy,1.256299734,103.8199354,SOUTHERN ISLANDS
+Watson's Personal Care Stores Pte Ltd (Royal Square),Pharmacy,1.320571568,103.8432193,NOVENA
+Watson's Personal Care Stores Pte Ltd (Tampines Mall),Pharmacy,1.352672319,103.944388,TAMPINES
+Watson's Personal Care Stores Pte Ltd (Toa Payoh HDB Hub),Pharmacy,1.332975618,103.8479654,TOA PAYOH
+Watson's Personal Care Stores Pte Ltd (United Square),Pharmacy,1.317334637,103.8434632,NOVENA
+Watson's Personal Care Stores Pte Ltd (Vivo City),Pharmacy,1.26389582,103.8215893,BUKIT MERAH
+Watson's Personal Care Stores Pte Ltd (West Mall),Pharmacy,1.350189157,103.749022,BUKIT BATOK
+Watson's Personal Care Stores Pte Ltd Ion Orchard,Pharmacy,1.304035782,103.8313951,ORCHARD
+Welcia-BHG Bugis Junction,Pharmacy,1.300142491,103.855787,DOWNTOWN CORE
+Welcia-BHG Northpoint City,Pharmacy,1.427999956,103.836142,YISHUN
+West Point Hospital Pharmacy,Pharmacy,1.331055918,103.7230016,JURONG WEST
+CONCORD HEALTHCARE RETAIL PHARMACY,Pharmacy,1.326802464,103.8133182,BUKIT TIMAH
+Guardian Pharmacy (White Sands Mall),Pharmacy,1.372449809,103.9497157,PASIR RIS
+MUSTAFA PHARMACY,Pharmacy,1.309064705,103.8565081,KALLANG
+Guardian Pharmacy (International Building),Pharmacy,1.306075169,103.8310033,ORCHARD
+UNITY By FairPrice (UWSA),Pharmacy,1.372449809,103.9497157,PASIR RIS
+LI LI CHENG SUPERMARKET (PUNGGOL) PTE. LTD.,Supermarket,1.402303006,103.9012624,PUNGGOL
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.314239371,103.870914,KALLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.373321217,103.8863655,HOUGANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.332958727,103.9149418,BEDOK
+YES SUPERMARKET PTE LTD,Supermarket,1.353453156,103.9530099,TAMPINES
+SUZYAMEER FROZEN PTE. LTD.,Supermarket,1.352262313,103.9535865,TAMPINES
+G8 MART PTE. LTD.,Supermarket,1.365384216,103.852967,ANG MO KIO
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.367549248,103.8367406,ANG MO KIO
+PRIME SUPERMARKET (1996) PTE LTD,Supermarket,1.353702969,103.8906808,HOUGANG
+TAN KWEE ENG,Supermarket,1.430071097,103.8423964,YISHUN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.370188604,103.8434132,ANG MO KIO
+KAI SOON SUPERMARKET PTE. LTD.,Supermarket,1.42213865,103.8328827,YISHUN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.323250401,103.7672601,CLEMENTI
+THE FISHWIVES PTE. LTD.,Supermarket,1.322573176,103.8142455,TANGLIN
+PRIME SUPERMARKET LIMITED,Supermarket,1.334292414,103.8787462,TOA PAYOH
+ABEDIN TRADING PTE. LTD.,Supermarket,1.314206549,103.8866998,GEYLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.302221781,103.8761527,KALLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.320211016,103.8436568,NOVENA
+SONG FISH DEALER PTE LTD,Supermarket,1.378349714,103.7627412,BUKIT PANJANG
+THE SEAFOOD MARKET PLACE (BY SONG FISH) PTE. LTD.,Supermarket,1.439916079,103.8007012,WOODLANDS
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.307785101,103.857011,ROCHOR
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.304843445,103.8238528,ORCHARD
+BLUEWATER SEAFOOD PTE. LTD.,Supermarket,1.303445974,103.8093817,TANGLIN
+WONS BUTCHERY PTE. LTD.,Supermarket,1.305709706,103.8244638,TANGLIN
+LITTLE FARMS PTE. LTD.,Supermarket,1.310643503,103.7952462,QUEENSTOWN
+B & S MINI MART PTE. LTD.,Supermarket,1.312451045,103.8796223,GEYLANG
+"CHEE MIN KUAN, SIMON",Supermarket,1.303733734,103.8964982,MARINE PARADE
+JSJ CORPORATION PTE. LTD.,Supermarket,1.318452011,103.9858694,CHANGI
+U STARS PTE. LTD.,Supermarket,1.37860238,103.9419782,PASIR RIS
+LOTTE MART PTE. LTD.,Supermarket,1.340826615,103.7742133,BUKIT TIMAH
+AJMAL TRADING GROUP PTE. LTD.,Supermarket,1.322108363,103.7274807,JURONG EAST
+MURUGAN TRADERS PTE LTD,Supermarket,1.324919804,103.7050997,BOON LAY
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.355723076,103.7393031,BUKIT BATOK
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.446804132,103.8054876,WOODLANDS
+AJMAL TRADING GROUP PTE. LTD.,Supermarket,1.461525548,103.809439,SEMBAWANG
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.420155503,103.8435589,YISHUN
+PHAN NEE TRADING LLP,Supermarket,1.444341295,103.8390302,SIMPANG
+HAO MART PTE. LTD.,Supermarket,1.399904204,103.9193528,PUNGGOL
+THE SEAFOOD MARKET PLACE (BY SONG FISH) PTE. LTD.,Supermarket,1.402878451,103.9131957,PUNGGOL
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.372645695,103.8538907,ANG MO KIO
+PAN PACIFIC INTERNATIONAL HOLDINGS PTE. LTD.,Supermarket,1.274588224,103.8434707,DOWNTOWN CORE
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.309822274,103.9022325,MARINE PARADE
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.402621965,103.9165196,PUNGGOL
+VIVA CORP SERVICES PTE. LTD.,Supermarket,1.337338624,103.9037351,BEDOK
+SWISS BUTCHERY (2013) PRIVATE LIMITED,Supermarket,1.331761099,103.8065869,BUKIT TIMAH
+ROSWELL ENTERPRISE PTE LTD,Supermarket,1.331832408,103.8064924,BUKIT TIMAH
+T S J INDUSTRIAL (S) PTE. LTD.,Supermarket,1.336830974,103.7543414,CLEMENTI
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.301191315,103.9051136,MARINE PARADE
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.30974242,103.8641017,KALLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.314692141,103.8944805,GEYLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.303582691,103.7652845,CLEMENTI
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.306848827,103.7882145,QUEENSTOWN
+FOODIE MARKET PLACE PTE. LTD.,Supermarket,1.283450773,103.8353713,BUKIT MERAH
+MUSTAFA HOLDINGS PTE LTD,Supermarket,1.309752747,103.8557016,KALLANG
+SUPERNATURE PTE LTD,Supermarket,1.306195799,103.828509,ORCHARD
+HUBER'S PTE. LTD.,Supermarket,1.306792407,103.8101858,TANGLIN
+MEAT THE BUTCHER PTE. LTD.,Supermarket,1.32437351,103.8093579,BUKIT TIMAH
+YEO KENG GUAN,Supermarket,1.316618983,103.7789473,BUKIT TIMAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.317561968,103.7858406,BUKIT TIMAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.331491472,103.8068093,BUKIT TIMAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.435760801,103.8367239,YISHUN
+CHD @ SOON LEE PTE. LTD.,Supermarket,1.332122901,103.6990703,JURONG WEST
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.325468084,103.7252215,JURONG WEST
+MD SYDUR RAHMAN,Supermarket,1.295013686,103.6267293,TUAS
+7SEVEN PTE. LTD.,Supermarket,1.456059726,103.7864369,WOODLANDS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.299294067,103.7874041,QUEENSTOWN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.448864021,103.8323929,SEMBAWANG
+U STARS PTE. LTD.,Supermarket,1.440629922,103.8061981,WOODLANDS
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.399228566,103.8896539,SENGKANG
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.391587041,103.8798725,SENGKANG
+BHANDARI INTERNATIONAL PTE. LTD.,Supermarket,1.451325053,103.7910952,WOODLANDS
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.433512534,103.7797469,WOODLANDS
+WAN SIEW YOONG,Supermarket,1.281800625,103.8429082,OUTRAM
+HAO MART PTE. LTD.,Supermarket,1.328211695,103.8598126,NOVENA
+MCP FAIRMART PTE LTD,Supermarket,1.359259407,103.7506946,BUKIT BATOK
+HAO MART PTE. LTD.,Supermarket,1.277848769,103.8308115,BUKIT MERAH
+PAN PACIFIC INTERNATIONAL HOLDINGS PTE. LTD.,Supermarket,1.300838916,103.8394347,ORCHARD
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.318675759,103.8925506,GEYLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.288614691,103.80501,QUEENSTOWN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.429698482,103.8357765,YISHUN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.359496638,103.8850799,HOUGANG
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.302464092,103.763751,CLEMENTI
+PRIME SUPERMARKET LIMITED,Supermarket,1.308365268,103.8609128,KALLANG
+PRIME SUPERMARKET LIMITED,Supermarket,1.348732841,103.9340102,TAMPINES
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.349224188,103.9349125,TAMPINES
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.436007838,103.7856887,WOODLANDS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.430840066,103.7934163,WOODLANDS
+LIN POH LING,Supermarket,1.340642933,103.8543345,TOA PAYOH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.350675514,103.8718616,SERANGOON
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.300142483,103.855787,DOWNTOWN CORE
+NAWAS GLOBAL PTE. LTD.,Supermarket,1.271642263,103.6335123,TUAS
+SADIA MINIMART PTE LTD,Supermarket,1.408529966,103.7594062,SUNGEI KADUT
+MEIDI-YA SINGAPORE CO (PTE) LTD,Supermarket,1.291514786,103.8445863,SINGAPORE RIVER
+IROHA INTERNATIONAL PTE. LTD.,Supermarket,1.300747562,103.8450476,MUSEUM
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.292259589,103.842561,SINGAPORE RIVER
+LITTLE FARMS PTE. LTD.,Supermarket,1.293017861,103.8269408,TANGLIN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.322136363,103.7382928,JURONG EAST
+PHAN NEE INVESTMENTS (S) PTE LTD,Supermarket,1.377610839,103.7184038,WESTERN WATER CATCHMENT
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.331775817,103.9462012,BEDOK
+RAW MARKET PTE. LTD.,Supermarket,1.375588308,103.9608397,PASIR RIS
+THE BUTCHER (SINGAPORE) PTE. LTD.,Supermarket,1.311921956,103.796844,BUKIT TIMAH
+HAO MART PTE. LTD.,Supermarket,1.433595142,103.8396854,YISHUN
+SEOUL BUTCHERY PTE. LTD.,Supermarket,1.342074963,103.7746328,BUKIT TIMAH
+V SURESH KUMAR,Supermarket,1.459828174,103.8200734,SEMBAWANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.338994622,103.7931338,BUKIT TIMAH
+HAO MART PTE. LTD.,Supermarket,1.313175097,103.8836467,GEYLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.303723224,103.8352403,ORCHARD
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.27737236,103.8528448,DOWNTOWN CORE
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.300747562,103.8450476,MUSEUM
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.293802361,103.8317579,SINGAPORE RIVER
+POPULAR SUPERMARKET PTE LTD,Supermarket,1.270309784,103.6341639,TUAS
+SADIA SUPERMARKET & TRADING (S) PTE. LTD.,Supermarket,1.270309784,103.6341639,TUAS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.247758619,103.8419211,SOUTHERN ISLANDS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.319436175,103.8273459,TANGLIN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.385295562,103.7661705,BUKIT PANJANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.349622344,103.8498817,BISHAN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.331661834,103.850483,TOA PAYOH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.360323317,103.953126,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.348371048,103.9481289,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.392197774,103.9044716,SENGKANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.384932017,103.901558,SENGKANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.354669019,103.8309198,BISHAN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.332965494,103.8470504,TOA PAYOH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.323976884,103.9106897,BEDOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.357222824,103.8437853,BISHAN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.379767536,103.9362076,PASIR RIS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.315539647,103.8987649,GEYLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.307827372,103.8847639,GEYLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.354370738,103.9851696,CHANGI
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.321189796,103.9032663,GEYLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.350675514,103.8718616,SERANGOON
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.33233468,103.9380513,BEDOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.314149968,103.8885449,GEYLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.334325154,103.9623893,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.334919774,103.9636539,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.324772079,103.9292677,BEDOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.32424555,103.9415687,BEDOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.355190944,103.988751,CHANGI
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.303850308,103.9028504,MARINE PARADE
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.332535908,103.8670368,TOA PAYOH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.303843278,103.8727507,KALLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.342706189,103.9530245,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.33177055,103.8792945,TOA PAYOH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.336538677,103.8887627,HOUGANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.318869412,103.8947314,GEYLANG
+JMD RETAIL PTE. LTD.,Supermarket,1.304164472,103.896327,MARINE PARADE
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.281122279,103.8100313,BUKIT MERAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.26389582,103.8215893,BUKIT MERAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.304763573,103.7816972,QUEENSTOWN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.380030578,103.7531184,CHOA CHU KANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.339315039,103.705351,JURONG WEST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.3973019,103.7465581,CHOA CHU KANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.397128857,103.7473297,CHOA CHU KANG
+LAMIAH ENTERPRISE PTE. LTD.,Supermarket,1.311467847,103.6303401,TUAS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.314853226,103.7642482,CLEMENTI
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.27338253,103.8089348,BUKIT MERAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.27367658,103.801127,QUEENSTOWN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.333268182,103.7401767,JURONG EAST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.314278609,103.7713506,CLEMENTI
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.348333349,103.7243073,JURONG WEST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.311885961,103.7590809,CLEMENTI
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.292774327,103.784084,QUEENSTOWN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.347701478,103.7570446,BUKIT BATOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.333200217,103.7431704,JURONG EAST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.366506981,103.7468471,BUKIT BATOK
+SHINVA AGRO FOODS PTE. LTD.,Supermarket,1.311002403,103.6315723,TUAS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.324606651,103.6780964,PIONEER
+SHINVA AGRO FOODS PTE. LTD.,Supermarket,1.300911466,103.6277889,TUAS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.392073879,103.7430996,CHOA CHU KANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.320520272,103.7426515,JURONG EAST
+PHAN NEE INVESTMENTS (S) PTE LTD,Supermarket,1.371932805,103.7208574,WESTERN WATER CATCHMENT
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.342591042,103.7391995,JURONG EAST
+THE QUALITYMART DEPOT PTE. LTD.,Supermarket,1.282201364,103.8030238,BUKIT MERAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.348133785,103.6854185,WESTERN WATER CATCHMENT
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.353038247,103.7439484,BUKIT BATOK
+HONESTBEE PTE. LTD.,Supermarket,1.276045195,103.7971873,QUEENSTOWN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.286463457,103.8269351,BUKIT MERAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.283119503,103.8176429,BUKIT MERAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.325126533,103.8510556,NOVENA
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.28977814,103.8267938,BUKIT MERAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.27624053,103.8430061,OUTRAM
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.29727532,103.8385339,RIVER VALLEY
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.380542441,103.763994,BUKIT PANJANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.44822653,103.8194621,SEMBAWANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.432626029,103.7740512,WOODLANDS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.437556564,103.7951364,WOODLANDS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.424528481,103.8465956,YISHUN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.429194683,103.7811369,WOODLANDS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.429525221,103.8349951,YISHUN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.416983156,103.8352182,YISHUN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.385096015,103.7602184,BUKIT PANJANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.366558299,103.8416241,ANG MO KIO
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.411035981,103.8440399,YISHUN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.323835127,103.8099996,BUKIT TIMAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.312482993,103.7654768,CLEMENTI
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.338656771,103.7785605,BUKIT TIMAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.333753433,103.7393714,JURONG EAST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.339830148,103.7064609,JURONG WEST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.332059376,103.7224529,JURONG WEST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.335042019,103.720268,JURONG WEST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.347162359,103.7428079,BUKIT BATOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.348710801,103.7493345,BUKIT BATOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.3455121,103.7312191,JURONG EAST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.292703398,103.810959,QUEENSTOWN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.375635002,103.8719964,SERANGOON
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.32099295,103.87039,KALLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.286453544,103.8082424,BUKIT MERAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.293017861,103.8269408,TANGLIN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.320429679,103.8438921,NOVENA
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.369248907,103.8483992,ANG MO KIO
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.315363034,103.8494345,KALLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.312654501,103.8725418,KALLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.284807346,103.829298,BUKIT MERAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.323796079,103.8556706,NOVENA
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.311393494,103.8564871,KALLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.277077076,103.8314259,BUKIT MERAH
+"JEWISH WELFARE BOARD, SINGAPORE, THE",Supermarket,1.298273289,103.8505995,ROCHOR
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.305855835,103.8329844,ORCHARD
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.371409205,103.8470829,ANG MO KIO
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.274588224,103.8434707,DOWNTOWN CORE
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.327084859,103.8464765,NOVENA
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.392138284,103.8724906,SENGKANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.294879051,103.8576755,DOWNTOWN CORE
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.308806095,103.861312,KALLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.274617942,103.8443196,DOWNTOWN CORE
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.391393057,103.8760677,SENGKANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.386218353,103.8929955,SENGKANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.286680272,103.8137663,BUKIT MERAH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.370894561,103.8563965,ANG MO KIO
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.363215861,103.8354454,BISHAN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.319093442,103.8639053,KALLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.33889072,103.8489933,TOA PAYOH
+SF (313) PTE. LTD.,Supermarket,1.294879051,103.8576755,DOWNTOWN CORE
+YOUR GROCER PRIVATE LIMITED,Supermarket,1.288076883,103.8270813,BUKIT MERAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.280227686,103.8533493,DOWNTOWN CORE
+PAN PACIFIC INTERNATIONAL HOLDINGS PTE. LTD.,Supermarket,1.311393494,103.8564871,KALLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.321766446,103.8866728,GEYLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.325940697,103.93164,BEDOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.369799402,103.8730358,SERANGOON
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.301419557,103.9071127,MARINE PARADE
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.312307528,103.9252345,BEDOK
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.328556569,103.8853499,GEYLANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.308361652,103.9079888,MARINE PARADE
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.346348193,103.7124293,JURONG WEST
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.385068363,103.7449504,CHOA CHU KANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.345281442,103.9453443,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.394184095,103.9129764,PUNGGOL
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.355421763,103.9343152,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.377140734,103.9535991,PASIR RIS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.38233698,103.8936078,SENGKANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.354315564,103.9450195,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.371779957,103.8941654,HOUGANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.36516071,103.8650419,SERANGOON
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.404610028,103.9086656,PUNGGOL
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.377430064,103.9037129,HOUGANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.35349616,103.9396836,TAMPINES
+U STARS SUPERMARKET PTE. LTD.,Supermarket,1.351264107,103.9293638,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.355242899,103.9316236,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.402878451,103.9131957,PUNGGOL
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.435077894,103.7866196,WOODLANDS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.453845188,103.8195433,SEMBAWANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.449566476,103.8186411,SEMBAWANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.309182112,103.7925475,QUEENSTOWN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.380605116,103.7600416,CHOA CHU KANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.43106395,103.7904541,WOODLANDS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.378349714,103.7627412,BUKIT PANJANG
+CUTECH GREEN VENTURES PTE. LTD.,Supermarket,1.453343622,103.7956824,WOODLANDS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.427999957,103.836142,YISHUN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.439916079,103.8007012,WOODLANDS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.308492885,103.7845981,QUEENSTOWN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.417999257,103.8412365,YISHUN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.431098071,103.7985076,WOODLANDS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.348888439,103.849692,BISHAN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.350239427,103.8484776,BISHAN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.372311865,103.8936616,HOUGANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.3736183,103.8857489,HOUGANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.357575581,103.8840385,HOUGANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.375667281,103.8794503,HOUGANG
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.372449809,103.9497157,PASIR RIS
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.35267232,103.944388,TAMPINES
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.337404713,103.9217747,BEDOK
+SONG FISH DEALER PTE LTD,Supermarket,1.323651731,103.922103,BEDOK
+U STARS PTE. LTD.,Supermarket,1.415176338,103.8398304,YISHUN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.302038029,103.7980217,QUEENSTOWN
+L M MEAT PTE. LTD.,Supermarket,1.323651731,103.922103,BEDOK
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.367000535,103.9646178,PASIR RIS
+OH BENG GUAN,Supermarket,1.363938215,103.751896,BUKIT BATOK
+IROHA INTERNATIONAL PTE. LTD.,Supermarket,1.284998839,103.8446971,OUTRAM
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.3646254,103.847677,ANG MO KIO
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.387395374,103.869136,SERANGOON
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.30523472,103.9050149,MARINE PARADE
+CULINA PTE LTD,Supermarket,1.304175119,103.8095261,TANGLIN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.33362232,103.8509779,TOA PAYOH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.286920064,103.8186736,BUKIT MERAH
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.324635732,103.9310688,BEDOK
+PRIME SUPERMARKET LIMITED,Supermarket,1.439983654,103.8012931,WOODLANDS
+NG TOH TET,Supermarket,1.351518472,103.7194965,JURONG WEST
+HAO MART PTE. LTD.,Supermarket,1.335453527,103.863388,TOA PAYOH
+CHUA & NG PTE. LTD.,Supermarket,1.332050946,103.9141451,BEDOK
+LOCH GROCER PTE. LTD.,Supermarket,1.34995541,103.7177048,JURONG WEST
+TANESEI TRADING PTE. LTD.,Supermarket,1.306848827,103.7882145,QUEENSTOWN
+ARCHANA SUPERMARKET PTE. LTD.,Supermarket,1.320484261,103.7267228,JURONG EAST
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.450008612,103.8141109,SEMBAWANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.342392845,103.7762505,BUKIT TIMAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.336675729,103.7837092,BUKIT TIMAH
+ISETAN (SINGAPORE) LIMITED?,Supermarket,1.334025295,103.742586,JURONG EAST
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.341591083,103.6970201,JURONG WEST
+PRIME SUPERMARKET LIMITED,Supermarket,1.348726433,103.698292,JURONG WEST
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.3473718,103.7436981,BUKIT BATOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.350189159,103.749022,BUKIT BATOK
+TANESEI RETAILING PTE. LTD.,Supermarket,1.35236113,103.9437848,TAMPINES
+LITTLE FARMS PTE. LTD.,Supermarket,1.276724932,103.8451554,DOWNTOWN CORE
+MAHOTA FOOD PTE. LTD.,Supermarket,1.35236113,103.9437848,TAMPINES
+SONG FISH DEALER PTE LTD,Supermarket,1.35236113,103.9437848,TAMPINES
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.30811887,103.7860494,QUEENSTOWN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.377892031,103.856412,ANG MO KIO
+ISYMI PTE LTD,Supermarket,1.355309033,103.8878572,HOUGANG
+THE SEAFOOD MARKET PLACE (BY SONG FISH) PTE. LTD.,Supermarket,1.314692141,103.8944805,GEYLANG
+TOH GUAN MINI MART PTE LTD,Supermarket,1.338326579,103.7535361,CLEMENTI
+KADER HASNA MARICAN,Supermarket,1.333145775,103.6952481,JURONG WEST
+"TANG KER AN, TIMOTHY",Supermarket,1.320625059,103.9347342,BEDOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.379047756,103.7729375,BUKIT PANJANG
+MM SUNDRY SHOP PTE.LTD.,Supermarket,1.454646548,103.8044767,SEMBAWANG
+AL MARCHE PTE LTD,Supermarket,1.280769443,103.8526586,DOWNTOWN CORE
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.330817402,103.7956924,BUKIT TIMAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.310255422,103.7953504,QUEENSTOWN
+THE ALASKA GUYS PTE. LTD.,Supermarket,1.312122477,103.911186,BEDOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.440538149,103.8009776,WOODLANDS
+SONG FISH DEALER PTE LTD,Supermarket,1.429698482,103.8357765,YISHUN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.388240215,103.7695754,BUKIT PANJANG
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.39779874,103.8816988,SENGKANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.400531143,103.9105369,PUNGGOL
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.282634377,103.8255958,BUKIT MERAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.362674503,103.7641729,BUKIT BATOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.316544678,103.8942894,GEYLANG
+TANESEI RETAILING PTE. LTD.,Supermarket,1.30523472,103.9050149,MARINE PARADE
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.384005819,103.7710296,BUKIT PANJANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.378056138,103.7389318,CHOA CHU KANG
+U STARS PTE. LTD.,Supermarket,1.374057967,103.7461601,CHOA CHU KANG
+FORTUNE SUPERMARKET PTE. LTD.,Supermarket,1.448341542,103.8010572,WOODLANDS
+HAO MART PTE. LTD.,Supermarket,1.450262017,103.8225347,SEMBAWANG
+U STARS SUPERMARKET PTE. LTD.,Supermarket,1.40322712,103.895387,PUNGGOL
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.403719394,103.906138,PUNGGOL
+ANG MO SUPERMARKET PTE LTD,Supermarket,1.399461173,103.9160545,PUNGGOL
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.405660475,103.9119913,PUNGGOL
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.307785101,103.857011,ROCHOR
+SWISS BUTCHERY PTE LTD,Supermarket,1.305611671,103.8229629,TANGLIN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.322573176,103.8142455,TANGLIN
+CP MANAGEMENT SERVICES PRIVATE LIMITED,Supermarket,1.326743945,104.0035785,CHANGI
+VINAYAK TRADERS PTE. LTD.,Supermarket,1.319238114,103.7328825,JURONG EAST
+TASTE (SINGAPORE) PRIVATE LIMITED,Supermarket,1.310529787,103.7961052,BUKIT TIMAH
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.433031981,103.8416008,YISHUN
+PRIME SUPERMARKET (1996) PTE LTD,Supermarket,1.377439626,103.7443832,CHOA CHU KANG
+CAVEMEN PTE. LTD.,Supermarket,1.326965409,103.8436742,NOVENA
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.307668615,103.8281644,ORCHARD
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.301978047,103.8397589,ORCHARD
+PRIME SUPERMARKET (1996) PTE LTD,Supermarket,1.346764655,103.6788181,WESTERN WATER CATCHMENT
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.312753299,103.9236579,BEDOK
+MOHAMAD DAMAR HULAN BIN OSMAN,Supermarket,1.317149736,103.9039652,GEYLANG
+THE FOODSPREE PTE LTD,Supermarket,1.31290446,103.8997113,GEYLANG
+HAO MART PTE. LTD.,Supermarket,1.307060675,103.9237697,BEDOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.331426856,103.9482571,BEDOK
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.338242025,103.9233039,BEDOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.368998006,103.9586476,PASIR RIS
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.369686248,103.9479224,PASIR RIS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.380850347,103.8793091,HOUGANG
+L M MEAT PTE. LTD.,Supermarket,1.320429679,103.8438921,NOVENA
+FISHOP PTE. LTD.,Supermarket,1.288614691,103.80501,QUEENSTOWN
+HONG HENG SENG,Supermarket,1.281197378,103.8434373,OUTRAM
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.335024304,103.7466382,JURONG EAST
+U STARS SUPERMARKET PTE. LTD.,Supermarket,1.317702819,103.7690767,CLEMENTI
+KEK HONG HENG,Supermarket,1.318009813,103.7319489,JURONG EAST
+LIM KING CHEW,Supermarket,1.362714462,103.8939805,HOUGANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.301191315,103.9051136,MARINE PARADE
+PRIME SUPERMARKET (1996) PTE LTD,Supermarket,1.320625059,103.9347342,BEDOK
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.378297682,103.7540714,CHOA CHU KANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.320000409,103.8873631,GEYLANG
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.339044798,103.8555411,TOA PAYOH
+MCP FAIRMART PTE LTD,Supermarket,1.33233468,103.9380513,BEDOK
+ONE EIGHT SHOP PTE. LTD.,Supermarket,1.336584653,103.7376233,JURONG EAST
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.358317047,103.7495799,BUKIT BATOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.333066482,103.9310914,BEDOK
+HAO MART PTE. LTD.,Supermarket,1.35998567,103.9582477,TAMPINES
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.430618285,103.828763,YISHUN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.277795394,103.8193413,BUKIT MERAH
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.310081186,103.7885329,QUEENSTOWN
+PRIME SUPERMARKET LIMITED,Supermarket,1.348575367,103.7427086,BUKIT BATOK
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.416018798,103.8350008,YISHUN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.329872197,103.9019297,GEYLANG
+ANG MO SUPERMARKET PTE LTD,Supermarket,1.371703425,103.879939,HOUGANG
+EN FROZEN PTE LTD,Supermarket,1.316725152,103.8979774,GEYLANG
+LAURELS FOODS SUPPLIERS PTE LTD,Supermarket,1.320441712,103.7789725,BUKIT TIMAH
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.427505479,103.8371253,YISHUN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.431505269,103.7735157,WOODLANDS
+TEO BOBBY,Supermarket,1.353671028,103.8707568,SERANGOON
+SHAHUL HAMEED S/O ABDUSALAM,Supermarket,1.34753519,103.9517028,TAMPINES
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.34669905,103.7572767,BUKIT BATOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.353231638,103.8714729,SERANGOON
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.305605703,103.9153761,MARINE PARADE
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.329181056,103.8882484,GEYLANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.436114248,103.8376052,YISHUN
+PRIME SUPERMARKET (1996) PTE LTD,Supermarket,1.380790492,103.7519544,CHOA CHU KANG
+TAN CHUAN BOON,Supermarket,1.366209428,103.8951449,HOUGANG
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.321619041,103.8593827,KALLANG
+PRIME SUPERMARKET LIMITED,Supermarket,1.342017834,103.6914831,JURONG WEST
+MCP FAIRMART PTE LTD,Supermarket,1.333753433,103.7393714,JURONG EAST
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.331433688,103.9368654,BEDOK
+HAO MART PTE. LTD.,Supermarket,1.324715806,103.8577529,NOVENA
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.247150406,103.839555,SOUTHERN ISLANDS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.262063365,103.8186256,BUKIT MERAH
+L M MEAT PTE. LTD.,Supermarket,1.303582691,103.7652845,CLEMENTI
+U STARS PTE. LTD.,Supermarket,1.377543843,103.7497,CHOA CHU KANG
+GURU'S MARKETING PTE. LTD.,Supermarket,1.319238114,103.7328825,JURONG EAST
+ISETAN (SINGAPORE) LIMITED?,Supermarket,1.305809792,103.8315073,ORCHARD
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.309733314,103.7686373,CLEMENTI
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.301761307,103.7693694,CLEMENTI
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.295319669,103.8097586,QUEENSTOWN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.293893588,103.8531199,DOWNTOWN CORE
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.302424179,103.8346761,ORCHARD
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.332112774,103.8573781,TOA PAYOH
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.290909183,103.8031076,QUEENSTOWN
+NTUC FAIRPRICE CO-OPERATIVE LTD,Supermarket,1.284998839,103.8446971,OUTRAM
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.317334643,103.8434632,NOVENA
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.379245288,103.887832,HOUGANG
+TEO BOBBY,Supermarket,1.324760407,103.9243702,BEDOK
+LOH NYEN YIU,Supermarket,1.302751218,103.8651636,DOWNTOWN CORE
+ARCHANA PROVISION STORES PTE. LTD,Supermarket,1.319238114,103.7328825,JURONG EAST
+KINGSMART PTE. LTD.,Supermarket,1.316210423,103.7325272,JURONG EAST
+AP HOUSE PTE. LTD.,Supermarket,1.278307303,103.8507952,DOWNTOWN CORE
+HAO MART PTE. LTD.,Supermarket,1.31179545,103.9368945,BEDOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.321447691,103.9554195,BEDOK
+U STARS SUPERMARKET PTE. LTD.,Supermarket,1.396849794,103.8892468,SENGKANG
+U STARS SUPERMARKET PTE. LTD.,Supermarket,1.389770254,103.8927872,SENGKANG
+PRIME SUPERMARKET (1996) PTE LTD,Supermarket,1.373683929,103.871417,SERANGOON
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.351844982,103.8360537,BISHAN
+PHAN NEE INVESTMENTS (S) PTE LTD,Supermarket,1.44518329,103.8379632,SIMPANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.417383367,103.8329799,YISHUN
+GW TRADER PTE. LTD.,Supermarket,1.418331379,103.8964479,SELETAR
+PHANG NEE ENTERPRISE PTE. LTD.,Supermarket,1.320787913,103.7297513,JURONG EAST
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.410819263,103.9003717,PUNGGOL
+FOUR SEASONS ORGANIC MARKET PTE. LTD.,Supermarket,1.301191315,103.9051136,MARINE PARADE
+THE BUTCHER (SINGAPORE) PTE. LTD.,Supermarket,1.301191315,103.9051136,MARINE PARADE
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.314278609,103.7713506,CLEMENTI
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.352393576,103.7157595,JURONG WEST
+THNG SAIK MONG,Supermarket,1.322123938,103.7702659,CLEMENTI
+HAO MART PTE. LTD.,Supermarket,1.358035243,103.8482085,BISHAN
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.354364936,103.9600422,TAMPINES
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.45074973,103.7968465,WOODLANDS
+MAHOTA FOOD PTE. LTD.,Supermarket,1.30832701,103.8620059,KALLANG
+GURU'S MARKETING PTE. LTD.,Supermarket,1.320484261,103.7267228,JURONG EAST
+VINAYAK TRADERS PTE. LTD.,Supermarket,1.320484261,103.7267228,JURONG EAST
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.445622899,103.798141,WOODLANDS
+CHENNAI TRADING & SUPERMART PTE. LTD.,Supermarket,1.320484261,103.7267228,JURONG EAST
+AJMAL TRADE MART PTE. LTD.,Supermarket,1.406312045,103.7605617,SUNGEI KADUT
+L M MEAT PTE. LTD.,Supermarket,1.334325154,103.9623893,TAMPINES
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.319238114,103.7328825,JURONG EAST
+SUN TRG & CON PTE LTD,Supermarket,1.451325053,103.7910952,WOODLANDS
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.287082788,103.8415801,OUTRAM
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.392094149,103.89498,SENGKANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.441767147,103.8244951,SEMBAWANG
+SONG FISH DEALER PTE LTD,Supermarket,1.284998839,103.8446971,OUTRAM
+SONG FISH DEALER PTE LTD,Supermarket,1.339830148,103.7064609,JURONG WEST
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.366453633,103.9645985,PASIR RIS
+NG CHAI SENG,Supermarket,1.273929408,103.8253108,BUKIT MERAH
+PRIME SUPERMARKET LIMITED,Supermarket,1.358946367,103.7503658,BUKIT BATOK
+ANG KEN CHUA,Supermarket,1.380627985,103.7415201,CHOA CHU KANG
+HAO MART PTE. LTD.,Supermarket,1.331773017,103.9242365,BEDOK
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.372101695,103.9319999,TAMPINES
+SARATHI STORES PTE LTD,Supermarket,1.337484921,103.8870042,TOA PAYOH
+SIVAMANI MINIMART PTE LTD,Supermarket,1.338882304,103.8861093,TOA PAYOH
+HAO MART PTE. LTD.,Supermarket,1.373079467,103.8296309,ANG MO KIO
+ALTERNATIVE SELECTION PTE. LTD.,Supermarket,1.336614749,103.7869692,BUKIT TIMAH
+TUAS SOUTH MINIMART PTE. LTD.,Supermarket,1.270677123,103.6361448,TUAS
+NPS IMPEX PTE. LTD,Supermarket,1.298951467,103.6275179,TUAS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.35011243,103.7245987,JURONG WEST
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.348784895,103.7034157,JURONG WEST
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.360123706,103.7675424,BUKIT PANJANG
+GOWRI'S GLOBAL MARKETING PTE. LTD.,Supermarket,1.410722194,103.768396,SUNGEI KADUT
+BALASUBRAMANIYAN KANNADASAN,Supermarket,1.435945359,103.7540084,SUNGEI KADUT
+AJMAL TRADE MART PTE. LTD.,Supermarket,1.430693589,103.7592373,SUNGEI KADUT
+DE ESPERTO MINIMART PTE. LTD.,Supermarket,1.451220636,103.7978534,WOODLANDS
+PHAN NEE TRADING LLP,Supermarket,1.461388538,103.8181113,SEMBAWANG
+BANGLADESH SUPER MARKET PTE. LTD.,Supermarket,1.453436934,103.8325264,SEMBAWANG
+LABIBA ENTERPRISE PTE. LTD.,Supermarket,1.396574156,103.8728516,SENGKANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.381997031,103.8970311,SENGKANG
+SHAFEN SUPERMARKET & TRADING (S) PTE. LTD.,Supermarket,1.336417981,103.7518074,CLEMENTI
+YS LOGISTICS (S) PTE. LTD.,Supermarket,1.308593461,103.7223168,JURONG EAST
+MALAR MARKETING PTE. LTD.,Supermarket,1.313358097,103.627437,TUAS
+SADIA SUPERMARKET & TRADING (S) PTE. LTD.,Supermarket,1.310694285,103.63019,TUAS
+GOWRI'S GLOBAL MARKETING PTE. LTD.,Supermarket,1.328886006,103.67713,PIONEER
+KAVI TRADERS PTE. LTD.,Supermarket,1.313322351,103.627917,TUAS
+BISMILLAH MINIMART PTE. LTD.,Supermarket,1.407543241,103.758095,SUNGEI KADUT
+FORTUNE SUPERMARKET PTE. LTD.,Supermarket,1.455512083,103.8145403,SEMBAWANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.452736234,103.8172493,SEMBAWANG
+PRIME SUPERMARKET LIMITED,Supermarket,1.396526176,103.9088508,PUNGGOL
+U STARS SUPERMARKET PTE. LTD.,Supermarket,1.405413536,103.8968239,PUNGGOL
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.383580444,103.7707683,BUKIT PANJANG
+HAO MART PTE. LTD.,Supermarket,1.373430253,103.7739241,BUKIT PANJANG
+PRIME SUPERMARKET (1996) PTE LTD,Supermarket,1.425398421,103.833259,YISHUN
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.355902185,103.9459122,TAMPINES
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.374549287,103.9370882,PASIR RIS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.424899318,103.8472498,YISHUN
+PRIME SUPERMARKET LIMITED,Supermarket,1.323289602,103.9241496,BEDOK
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.332402302,103.9255006,BEDOK
+HAO MART PTE. LTD.,Supermarket,1.319350273,103.9436324,BEDOK
+PRIME SUPERMARKET (1996) PTE LTD,Supermarket,1.352090599,103.8793146,HOUGANG
+PRIME SUPERMARKET LIMITED,Supermarket,1.394848156,103.8960423,SENGKANG
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.442753322,103.790548,WOODLANDS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.374239507,103.8394892,ANG MO KIO
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.345607714,103.8826959,HOUGANG
+D-RON INVESTMENTS PTE. LTD.,Supermarket,1.416907801,103.8960188,SELETAR
+AJMAL SUPER MART PTE. LTD.,Supermarket,1.31396452,103.6257647,TUAS
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.307562373,103.8293522,ORCHARD
+SONG FISH DEALER PTE LTD,Supermarket,1.333200217,103.7431704,JURONG EAST
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.316177425,103.837815,NOVENA
+COLD STORAGE SINGAPORE (1983) PTE LTD,Supermarket,1.283558725,103.8585057,DOWNTOWN CORE
+NG LIAN TEE,Supermarket,1.331664776,103.8070338,BUKIT TIMAH
+TAN PAK NANG,Supermarket,1.33312324,103.8788419,TOA PAYOH
+HAO MART PTE. LTD.,Supermarket,1.313469039,103.8770048,GEYLANG
+PRB TRADING PTE. LTD.,Supermarket,1.312088771,103.8773893,GEYLANG
+SHENG SIONG SUPERMARKET PTE LTD,Supermarket,1.312720553,103.8786415,GEYLANG
+I-TEC SUPERMART PTE LTD,Supermarket,1.313288615,103.8851532,GEYLANG
+YEO HOCK HENG,Supermarket,1.313576054,103.8818778,GEYLANG
+AZ SUPERMART PTE. LTD.,Supermarket,1.338096739,103.9099467,BEDOK
+FOODIE MARKET PLACE PTE. LTD.,Supermarket,1.306086368,103.8961496,MARINE PARADE
+ZAC MEAT & POULTRY PTE LTD,Supermarket,1.315749333,103.925857,BEDOK
