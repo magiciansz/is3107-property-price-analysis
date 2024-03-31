@@ -272,7 +272,7 @@ class EtlHelper:
     
     def load_district_df(self, district_filepath):
       with open(district_filepath, 'r') as file:
-         district_dict = json.load(file)
+         district_dict = json.load(file)['Result']
       district_dict['coord_list'] = {key: str(val) for key, val in district_dict['coord_list'].items()}
       district_df = pd.DataFrame(district_dict).rename(columns={"pln_area_n": "district_name", "coord_list": "coordinates"})
       return district_df
