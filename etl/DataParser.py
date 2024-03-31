@@ -204,6 +204,8 @@ class DataParser:
         # Combine all amenities into one dataframe and save
         common_cols = ["amenity_name", "amenity_type", "lat", "long", "district_name"]
         combined_df = self._combine_dict_to_df(amenity_dict, common_cols)
+        # TODO: remove
+        combined_df = combined_df.head(10)
         print(f"Outside func before: {combined_df.shape[0]}")
         combined_df = self._remove_na_rows(combined_df)
         print(f"Outside func after na_func: {combined_df.shape[0]}")
