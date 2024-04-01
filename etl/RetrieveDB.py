@@ -166,9 +166,8 @@ class RetrieveDB:
         return df.to_dict('records')
     
     def get_price_per_sqft_dashboard(self):
-        tx = self.get_merged_transactions()
         query = sqlalchemy.text(f"""
-            SELECT proj.district_id, proj.long, proj.lat, 
+            SELECT proj.project_name, proj.address, proj.long, proj.lat, 
                     tx.transaction_year, tx.transaction_month, tx.type_of_sale, tx.price,
                     prop.property_type, prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end, prop.floor_area,
                     (tx.price / prop.floor_area) AS price_per_sqft
@@ -180,6 +179,15 @@ class RetrieveDB:
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
     
+    def get_proj_from_selection(self, district_ids):
+        district_ids_str = ', '.join(map(str, district_ids))
+        query = sqlalchemy.text(f"""
+            SELECT id, project_name, address, `long`, `lat`
+            FROM Project
+            WHERE district_id IN ({district_ids_str});
+        """)
+        df = pd.read_sql(query, self.conn)
+        return df.to_dict('records')
     
 if __name__ == "__main__":
     db = RetrieveDB(db_connect_type="IAM")

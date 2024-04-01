@@ -9,13 +9,12 @@ from pathlib import Path
 current_script_path = Path(__file__).resolve()
 parent_directory = current_script_path.parent.parent
 
-# Add the parent directory to the Python module search path if not already present
 if str(parent_directory) not in sys.path:
     sys.path.append(str(parent_directory))
 from etl.RetrieveDB import RetrieveDB
 
 #in dashboard directory, run cmd
-#py -m streamlit run Dashboard/Main.py
+#py -m streamlit run Main.py
 
 st.set_page_config(
     page_title="Company_Selection",
@@ -23,6 +22,7 @@ st.set_page_config(
 
 try:
     st.session_state.cursor = RetrieveDB(db_connect_type = 'LOCAL')
+    # st.session_state.cursor = RetrieveDB(db_connect_type = 'IAM')
 except Exception as e:
     st.warning("Cursor is not established")
     st.write(e)
@@ -77,11 +77,12 @@ if "transaction_month" not in st.session_state:
 
 if "district_list" not in st.session_state:
     districts = pd.DataFrame(st.session_state.cursor.get_districts())
-    st.session_state['district_list'] = districts['district_name'].unique()
+    st.session_state['district_ids'] = districts['id']
+    st.session_state['district_list'] = districts[['district_name', 'coordinates']]
     
 if "amenities_list" not in st.session_state:
     amenities = pd.DataFrame(st.session_state.cursor.get_amenities())
-    st.session_state['amenities_list'] = amenities[['amenity_type', 'amenity_name']].drop_duplicates()
+    st.session_state['amenities_list'] = amenities[['amenity_type', 'amenity_name', 'long', 'lat']].drop_duplicates()
 
 if "price_per_sqft_min" not in st.session_state:
     st.session_state['price_per_sqft_min'] = st.session_state.all_transactions['price_per_sqft'].tolist()[0]
@@ -113,8 +114,6 @@ st.write(st.session_state.price_per_sqft_min)
 st.write(st.session_state.transaction_month)
 st.write(st.session_state.transaction_year)
 st.write(st.session_state.room_type)
-
-
 
 # # Function for Page 2 - Folium Map
 # def show_folium_map():
