@@ -48,12 +48,26 @@ class EtlHelper:
       json_data = json.loads(response.text)
       return json_data['SearchResults']
 
-    def extract_ura_data(self, batch_no, ura_access_key, ura_access_token):
+    def extract_ura_data(self, batch_no, ura_access_key, ura_access_token, current_month_year = None):
       url = 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=PMI_Resi_Transaction'
       headers = {'AccessKey': ura_access_key, 'Token': ura_access_token, 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36', "Upgrade-Insecure-Requests": "1","DNT": "1","Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Accept-Language": "en-US,en;q=0.5","Accept-Encoding": "gzip, deflate"}
       params = {'batch': batch_no}
       data = requests.get(url, headers=headers, params=params)
-      return data.json()
+      if not current_month_year:
+        return data.json()
+      valid_data = {'Result': []}
+      data = data.json()['Result']
+      for project in data:
+        transactions = []
+        for transaction in project['transaction']:
+          if transaction['contractDate'] == current_month_year:
+            transactions.append(transaction)
+        if transactions:
+          project['transaction'] = transactions
+          valid_data['Result'].append(project)
+      print(len(valid_data['Result']))
+      return valid_data
+      
 
     #this function takes in two string, start date and end date, in format of %Y-%m
     #returns a list of months inbetween the two dates (inclusive)
@@ -256,18 +270,24 @@ class EtlHelper:
       
     def _get_projects_helper(self, df):
       # NOT NULL columns
+      if df.empty:
+        return df
       project_cols = ['project_name', 'district_name', 'long', 'lat', 'address']
       df.drop_duplicates(subset = ['address', 'lat', 'long', 'project_name'], inplace=True)
       df = df.reset_index()[project_cols]
       return df
 
     def _get_property_helper(self, df):
+      if df.empty:
+        return df
       property_cols = ['property_type', 'lease_year', 'lease_duration', 'floor_range_start', 'floor_range_end', 'floor_area']
       project_cols = ['project_name', 'long', 'lat', 'address']
       df = df[property_cols + project_cols]
       return df
 
     def _get_transaction_helper(self, df):
+      if df.empty:
+        return df
       tx_cols = ['transaction_year', 'transaction_month', 'type_of_sale', 'price']
       df = df[tx_cols]
       return df
@@ -281,25 +301,49 @@ class EtlHelper:
 
     # if you see code blurred out by Pylance, it actually still reaches it. Pylance is blurring it by mistake
     def load_hdb_ura_to_project(self, hdb_filepath, ura_filepath):
-      dbretrieve = RetrieveDB("LOCAL")
-      # cleaned datasets
-      hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
-      ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
-      # prepare data for Project table
-      project_df = pd.concat([self._get_projects_helper(ura), self._get_projects_helper(hdb)]).reset_index(drop=True)
-      # replace pd.NA with None for inserting into SQL + comparisons to get district ID
-      project_df = project_df.replace({np.nan: None})
-      district_name_to_id_mapping = dbretrieve.get_district_name_to_id_mapping()
-      project_df['district_id'] = project_df['district_name'].map(district_name_to_id_mapping)
-      # drop column used to map district ID
-      project_df = project_df.drop('district_name', axis=1)
-      return project_df
+        dbretrieve = RetrieveDB("LOCAL")
+        # cleaned datasets
+        try:
+          hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+        except pd.errors.EmptyDataError:
+          hdb = pd.DataFrame()
+        try:
+          ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+        except:
+          ura = pd.DataFrame()
+        # prepare data for Project table
+        project_df = pd.concat([self._get_projects_helper(ura), self._get_projects_helper(hdb)]).reset_index(drop=True)
+        # replace pd.NA with None for inserting into SQL + comparisons to get district ID
+        if project_df.empty:
+          return project_df
+        project_df = project_df.replace({np.nan: None})
+        # UPDATES: remove duplicates
+        project_db_records = dbretrieve.get_project_details_to_id_mapping()
+        for project in project_db_records.keys():
+          project_name, address, long, lat = project
+          duplicate_mask = (project_df['project_name'] == project_name) & (project_df['address'] == address) & (project_df['long'] == long) & (project_df['lat'] == lat)
+          project_df = project_df[~duplicate_mask]
+
+        district_name_to_id_mapping = dbretrieve.get_district_name_to_id_mapping()
+        project_df['district_id'] = project_df['district_name'].map(district_name_to_id_mapping)
+        # drop column used to map district ID
+        project_df = project_df.drop('district_name', axis=1)
+        return project_df
+        
 
     def load_hdb_ura_to_property(self, hdb_filepath, ura_filepath):
       dbretrieve = RetrieveDB("LOCAL")
-      hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
-      ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      try:
+          hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      except pd.errors.EmptyDataError:
+        hdb = pd.DataFrame()
+      try:
+        ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      except:
+        ura = pd.DataFrame()
       property_df = pd.concat([self._get_property_helper(ura), self._get_property_helper(hdb)]).reset_index(drop=True)
+      if property_df.empty:
+          return property_df
       # replace pd.NA with None for inserting into SQL + comparisons to get project ID
       property_df = property_df.replace({np.nan: None})
       project_details_to_id_mapping = dbretrieve.get_project_details_to_id_mapping()
@@ -313,9 +357,17 @@ class EtlHelper:
 
     def load_hdb_ura_to_transaction(self, hdb_filepath, ura_filepath):
       dbretrieve = RetrieveDB("LOCAL")
-      hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
-      ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      try:
+        hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      except pd.errors.EmptyDataError:
+        hdb = pd.DataFrame()
+      try:
+        ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      except:
+        ura = pd.DataFrame()
       transaction_df = pd.concat([self._get_transaction_helper(ura), self._get_transaction_helper(hdb)]).reset_index(drop=True)
+      if transaction_df.empty:
+          return transaction_df
       # replace pd.NA with None for inserting into SQL
       transaction_df = transaction_df.replace({np.nan: None})
       transaction_df['property_id'] = dbretrieve.get_next_transaction_id() + transaction_df.index
@@ -323,10 +375,21 @@ class EtlHelper:
     
     def load_amenities_df(self, amenities_filepath):
       dbretrieve = RetrieveDB("LOCAL")
-      amenities_df = pd.read_csv(amenities_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      try:
+        amenities_df = pd.read_csv(amenities_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
+      except pd.errors.EmptyDataError:
+        amenities_df = pd.DataFrame()
+        return amenities_df
       amenities_df.drop_duplicates(subset = ['lat', 'long', 'amenity_type', 'amenity_name'], inplace=True)
+      # UPDATES: remove duplicates
+      amenity_db_records = dbretrieve.get_amenity_details_to_id_mapping()
+      for amenity in amenity_db_records.keys():
+        amenity_type, amenity_name, long, lat = amenity
+        duplicate_mask = (amenities_df['amenity_type'] == amenity_type) & (amenities_df['amenity_name'] == amenity_name) & (amenities_df['long'] == long) & (amenities_df['lat'] == lat)
+        amenities_df = amenities_df[~duplicate_mask]
       district_name_to_id_mapping = dbretrieve.get_district_name_to_id_mapping()
       amenities_df['district_id'] = amenities_df['district_name'].map(district_name_to_id_mapping)
+      
       # drop column used to map district ID
       amenities_df = amenities_df.drop('district_name', axis=1)
       return amenities_df

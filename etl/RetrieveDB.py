@@ -116,6 +116,17 @@ class RetrieveDB:
             return 1
         return id + 1
     
+    def get_amenity_details_to_id_mapping(self):
+        query = sqlalchemy.text("""
+                                SELECT id, amenity_type, amenity_name, `long`, lat
+                                FROM Amenity
+                               """)
+        results = self.conn.execute(query)
+        amenity_details_to_id_mapping = {}
+        for id, amenity_type, amenity_name, long, lat in results:
+            amenity_details_to_id_mapping[(amenity_type, amenity_name, long, lat)] = id
+        return amenity_details_to_id_mapping
+    
     def get_merged_transactions(self):
         query = sqlalchemy.text(f"""
             SELECT proj.district_id, proj.long, proj.lat, 

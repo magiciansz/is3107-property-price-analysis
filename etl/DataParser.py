@@ -222,7 +222,7 @@ class DataParser:
             
         def replace_and_download(amenity_file_name, amenity_file_type, amenity_url, output_folder):
             amenity_file_path = os.path.join(output_folder, amenity_file_name)
-            archive_amenity_file_path = "..{sub_path}_old.{amenity_file_type}".format(sub_path = amenity_file_path.split('.')[-2], amenity_file_type = amenity_file_type)
+            archive_amenity_file_path = "{sub_path}_old.{amenity_file_type}".format(sub_path = amenity_file_path.split('.')[-2], amenity_file_type = amenity_file_type)
             if Path(amenity_file_path).exists():
                 print(f"Current Data set to old - {archive_amenity_file_path}")
                 os.replace(amenity_file_path, archive_amenity_file_path)
@@ -326,7 +326,7 @@ class DataParser:
             amenity_file_name, amenity_url = amenity_details['file_name'], amenity_details['url']
             amenity_file_type = amenity_file_name.split('.')[-1]
             amenity_file_path = os.path.join(output_folder, amenity_file_name)
-            archive_amenity_file_path = "..{sub_path}_old.{amenity_file_type}".format(sub_path = amenity_file_path.split('.')[-2], amenity_file_type = amenity_file_type)
+            archive_amenity_file_path = "{sub_path}_old.{amenity_file_type}".format(sub_path = amenity_file_path.split('.')[-2], amenity_file_type = amenity_file_type)
             
             amenity_df, amenity_df_old = self._get_data(amenity_name, amenity_file_path, amenity_file_type), self._get_data(amenity_name, archive_amenity_file_path, amenity_file_type)
             df_to_add, df_to_remove = self._get_differences(amenity_df, amenity_df_old)
@@ -349,6 +349,8 @@ class DataParser:
         with open(file_path) as file:
             hdb_dict = json.load(file)['Result']
         hdb_df = pd.json_normalize(hdb_dict)
+        if hdb_df.empty:
+            return hdb_df
          # drop rows with NA long / lat / planning_area
         hdb_df = hdb_df[~hdb_df.long.str.contains("NA")]
         hdb_df = hdb_df[~hdb_df.lat.str.contains("NA")]
@@ -509,6 +511,8 @@ class DataParser:
                 data = json.load(data)
             ura_df_final.extend(data)            
         ura_df_final = pd.DataFrame(ura_df_final)
+        if ura_df_final.empty:
+            return ura_df_final
         # drop rows with NA long / lat / planning_area
         ura_df_final = ura_df_final[~ura_df_final.long.str.contains("NA")]
         ura_df_final = ura_df_final[~ura_df_final.lat.str.contains("NA")]

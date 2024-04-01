@@ -64,7 +64,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10)
 }
 
-@dag(dag_id='is3107_project_etl', default_args=default_args, schedule=None, catchup=False, tags=['final_project'])
+@dag(dag_id='is3107_project_initial_etl', default_args=default_args, schedule=None, catchup=False, tags=['final_project'])
 def property_prices_initial_etl():
 
     @task
@@ -140,7 +140,7 @@ def property_prices_initial_etl():
         # open private property files, convert them into dictionaries from JSON
         ura_prices_dataset_final_path = "{DATA_FOLDER}/ura_prices_added.json".format(DATA_FOLDER = DATA_FOLDER)
         with open(ura_prices_dataset_path, 'r') as f:
-            dataset = json.load(f)['Result'][:5]
+            dataset = json.load(f)['Result']
             dataset = etl_helper.assign_long_lat_to_ura_dataset(dataset, onemap_access_token)
             dataset = etl_helper.assign_planning_area_to_ura_dataset(dataset, onemap_access_token)
             
@@ -158,7 +158,7 @@ def property_prices_initial_etl():
     def transform_hdb(upstream_task_flag, hdb_prices_dataset_path, onemap_access_token):
         hdb_prices_dataset_final_path = "{DATA_FOLDER}/hdb_prices_added.json".format(DATA_FOLDER = DATA_FOLDER)
         with open(hdb_prices_dataset_path, 'r') as f:
-            dataset = json.load(f)['Result'][:5]
+            dataset = json.load(f)['Result']
             dataset = etl_helper.assign_long_lat_to_hdb_dataset(dataset)
             dataset = etl_helper.assign_planning_area_to_hdb_dataset(dataset, onemap_access_token)
             
