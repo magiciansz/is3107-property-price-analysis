@@ -13,7 +13,6 @@
 *.db
 *.yaml
 webserver_config.py
-*.ipynb
 *.pid
 *.txt
 *.json
