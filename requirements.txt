@@ -1,5 +1,6 @@
 bs4==0.0.2
 pymysql==1.1.0
 python-dotenv==1.0.1
-pyarrow=15.0.2
+pyarrow==15.0.2
 cloud-sql-python-connector[pymysql]==1.8.0
+lxml==5.2.0
