@@ -4,6 +4,15 @@ import numpy as np
 from streamlit_folium import folium_static
 from st_pages import show_pages, Page
 import visualizations as v
+import sys
+from pathlib import Path
+current_script_path = Path(__file__).resolve()
+parent_directory = current_script_path.parent.parent
+
+# Add the parent directory to the Python module search path if not already present
+if str(parent_directory) not in sys.path:
+    sys.path.append(str(parent_directory))
+from etl.RetrieveDB import RetrieveDB
 
 #in dashboard directory, run cmd
 #py -m streamlit run Dashboard/Main.py
@@ -12,10 +21,17 @@ st.set_page_config(
     page_title="Company_Selection",
 )
 
+try:
+    st.session_state.cursor = RetrieveDB(db_connect_type = 'LOCAL')
+except Exception as e:
+    st.warning("Cursor is not established")
+    st.write(e)
+    st.stop()
+
 # Multipage configration from the toml file, contains the sider bar name and icons
 show_pages(
     [
-        Page("Main.py", "Overall Statistic"), #
+        Page("Main.py", "Overall Statistics"), 
         Page("Pages/District_Map.py", "District Level"),
         Page("Pages/Project_Map.py", "Project Level"),
     ]
@@ -29,37 +45,76 @@ show_pages(
 #retreive [property, lat, long, name] from pd.dataframe
 # fileter later
 
-if "room_type" not in st.session_state: # HDB-2 ROOM - HDB 3ROOM
-    st.session_state['room_type'] = None #TODO: filter from DF
 
-if "transaction_year" not in st.session_state: # Year-Month datetime, 2 drop down list
-    st.session_state['transaction_year'] = None #TODO: filter from DF
+if "all_transactions" not in st.session_state:
+    st.session_state['all_transactions'] = pd.DataFrame(st.session_state.cursor.get_price_per_sqft_dashboard())
+
+if "room_type" not in st.session_state: # HDB-2 ROOM - HDB 3ROOM
+    st.session_state['room_type'] = st.session_state.all_transactions['property_type'].unique()
+    # Semi-detached
+    # Terrace
+    # Strata Terrace
+    # Condominium
+    # Apartment
+    # Detached
+    # Strata Semi-detached
+    # Strata Detached
+    # Executive Condominium
+    # 2 ROOM
+    # 3 ROOM
+    # 4 ROOM
+    # 5 ROOM
+    # EXECUTIVE
+    # 1 ROOM
+    # MULTI-GENERATION
+    # TODO consider using this or type_of_sale from transaction table
+
+if "transaction_year" not in st.session_state:
+    st.session_state['transaction_year'] = st.session_state.all_transactions['transaction_year'].unique()
     
 if "transaction_month" not in st.session_state: 
-    st.session_state['transaction_month'] = None #TODO: filter from DF
+    st.session_state['transaction_month'] = st.session_state.all_transactions['transaction_month'].unique()
 
-if "district_list" not in st.session_state: 
-    st.session_state['district_list'] = None #TODO: filter from DF
+if "district_list" not in st.session_state:
+    districts = pd.DataFrame(st.session_state.cursor.get_districts())
+    st.session_state['district_list'] = districts['district_name'].unique()
     
-if "amentity_list" not in st.session_state:
-    st.session_state['amentity_list'] = None #TODO: retreive from DB
+if "amenities_list" not in st.session_state:
+    amenities = pd.DataFrame(st.session_state.cursor.get_amenities())
+    st.session_state['amenities_list'] = amenities[['amenity_type', 'amenity_name']].drop_duplicates()
 
 if "price_per_sqft_min" not in st.session_state:
-    st.session_state['price_per_sqft_min'] = None #TODO: retreive from DB
+    st.session_state['price_per_sqft_min'] = st.session_state.all_transactions['price_per_sqft'].tolist()[0]
 
 if "price_per_sqft_max" not in st.session_state:
-    st.session_state['price_per_sqft_max'] = None #TODO: retreive from DB
+    st.session_state['price_per_sqft_max'] = st.session_state.all_transactions['price_per_sqft'].tolist()[-1]
 
 if "floor_range_min" not in st.session_state:
-    st.session_state['floor_range_min'] = None #TODO: retreive from DB
+    st.session_state['floor_range_min'] = st.session_state.all_transactions['floor_range_start'].min()
 
 if "floor_range_max" not in st.session_state:
-    st.session_state['floor_range_max'] = None #TODO: retreive from DB
+    st.session_state['floor_range_max'] = st.session_state.all_transactions['floor_range_end'].max()
 
     
 ############################################################################
 st.title("Singapore Property Trend Chart")
 st.pyplot(v.plot_price_over_time())
+
+
+
+# ################################## TESTING ###########################
+# values to be put into filter
+st.write(st.session_state.district_list)
+st.write(st.session_state.amenities_list)
+st.write(st.session_state.floor_range_max)
+st.write(st.session_state.floor_range_min)
+st.write(st.session_state.price_per_sqft_max)
+st.write(st.session_state.price_per_sqft_min)
+st.write(st.session_state.transaction_month)
+st.write(st.session_state.transaction_year)
+st.write(st.session_state.room_type)
+
+
 
 # # Function for Page 2 - Folium Map
 # def show_folium_map():

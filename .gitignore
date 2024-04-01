@@ -19,3 +19,4 @@ webserver_config.py
 *.docx
 /Data/*.kml
 /Data/*.csv
+*.pyc
