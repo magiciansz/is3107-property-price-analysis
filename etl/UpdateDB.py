@@ -51,6 +51,7 @@ class UpdateDB:
                     MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_HOST, MYSQL_PORT, MYSQL_DATABASE_NAME
                 )
             )
+            self.engine = engine
             try:
                 # GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
                 conn = engine.connect()
@@ -77,6 +78,7 @@ class UpdateDB:
                 creator=get_conn,
                 future=True
             )
+            self.engine = engine
             try:
                 # GET THE CONNECTION OBJECT (ENGINE) FOR THE DATABASE
                 conn = engine.connect()

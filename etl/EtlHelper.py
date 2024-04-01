@@ -281,7 +281,7 @@ class EtlHelper:
 
     # if you see code blurred out by Pylance, it actually still reaches it. Pylance is blurring it by mistake
     def load_hdb_ura_to_project(self, hdb_filepath, ura_filepath):
-      dbretrieve = RetrieveDB()
+      dbretrieve = RetrieveDB("LOCAL")
       # cleaned datasets
       hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
@@ -296,7 +296,7 @@ class EtlHelper:
       return project_df
 
     def load_hdb_ura_to_property(self, hdb_filepath, ura_filepath):
-      dbretrieve = RetrieveDB()
+      dbretrieve = RetrieveDB("LOCAL")
       hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       property_df = pd.concat([self._get_property_helper(ura), self._get_property_helper(hdb)]).reset_index(drop=True)
@@ -312,7 +312,7 @@ class EtlHelper:
       return property_df
 
     def load_hdb_ura_to_transaction(self, hdb_filepath, ura_filepath):
-      dbretrieve = RetrieveDB()
+      dbretrieve = RetrieveDB("LOCAL")
       hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       ura = pd.read_csv(ura_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       transaction_df = pd.concat([self._get_transaction_helper(ura), self._get_transaction_helper(hdb)]).reset_index(drop=True)
@@ -322,7 +322,7 @@ class EtlHelper:
       return transaction_df
     
     def load_amenities_df(self, amenities_filepath):
-      dbretrieve = RetrieveDB()
+      dbretrieve = RetrieveDB("LOCAL")
       amenities_df = pd.read_csv(amenities_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       amenities_df.drop_duplicates(subset = ['lat', 'long', 'amenity_type', 'amenity_name'], inplace=True)
       district_name_to_id_mapping = dbretrieve.get_district_name_to_id_mapping()
