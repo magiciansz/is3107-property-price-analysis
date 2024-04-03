@@ -301,7 +301,7 @@ class EtlHelper:
 
     # if you see code blurred out by Pylance, it actually still reaches it. Pylance is blurring it by mistake
     def load_hdb_ura_to_project(self, hdb_filepath, ura_filepath):
-        dbretrieve = RetrieveDB("LOCAL")
+        dbretrieve = RetrieveDB("IAM")
         # cleaned datasets
         try:
           hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
@@ -332,7 +332,7 @@ class EtlHelper:
         
 
     def load_hdb_ura_to_property(self, hdb_filepath, ura_filepath):
-      dbretrieve = RetrieveDB("LOCAL")
+      dbretrieve = RetrieveDB("IAM")
       try:
           hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       except pd.errors.EmptyDataError:
@@ -356,7 +356,7 @@ class EtlHelper:
       return property_df
 
     def load_hdb_ura_to_transaction(self, hdb_filepath, ura_filepath):
-      dbretrieve = RetrieveDB("LOCAL")
+      dbretrieve = RetrieveDB("IAM")
       try:
         hdb = pd.read_csv(hdb_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       except pd.errors.EmptyDataError:
@@ -374,7 +374,7 @@ class EtlHelper:
       return transaction_df
     
     def load_amenities_df(self, amenities_filepath):
-      dbretrieve = RetrieveDB("LOCAL")
+      dbretrieve = RetrieveDB("IAM")
       try:
         amenities_df = pd.read_csv(amenities_filepath).drop("Unnamed: 0", axis=1, errors='ignore')
       except pd.errors.EmptyDataError:

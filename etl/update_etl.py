@@ -19,8 +19,8 @@ from DataParser import DataParser
 from UpdateDB import UpdateDB
 from RetrieveDB import RetrieveDB
 
-dbupdate = UpdateDB("LOCAL")
-dbretrieve = RetrieveDB("LOCAL")
+dbupdate = UpdateDB("IAM")
+dbretrieve = RetrieveDB("IAM")
 etl_helper = EtlHelper()
 
 kml = DataParser()

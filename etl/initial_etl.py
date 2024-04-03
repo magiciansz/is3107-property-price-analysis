@@ -22,8 +22,8 @@ from DataParser import DataParser
 from UpdateDB import UpdateDB
 from RetrieveDB import RetrieveDB
 
-dbupdate = UpdateDB("LOCAL")
-dbretrieve = RetrieveDB("LOCAL")
+dbupdate = UpdateDB("IAM")
+dbretrieve = RetrieveDB("IAM")
 etl_helper = EtlHelper()
 
 kml = DataParser()
@@ -232,7 +232,7 @@ def property_prices_initial_etl():
     
     # create tables + load
     tables_created_flag = create_tables_db(districts_final_dataset_path, CREATE_TABLES_SQL_PATH)
-
+    
     districts_loaded_flag = load_districts(tables_created_flag, districts_final_dataset_path)
     projects_loaded_flag = load_projects(districts_loaded_flag, hdb_combined_df_path, ura_combined_df_path)
     properties_loaded_flag = load_properties(projects_loaded_flag, hdb_combined_df_path, ura_combined_df_path)

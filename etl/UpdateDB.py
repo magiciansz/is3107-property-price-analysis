@@ -21,9 +21,6 @@ MYSQL_PORT = os.environ['MYSQL_PORT']
 MYSQL_DATABASE_NAME=os.environ['MYSQL_DATABASE_NAME']
 
 # cloud connection credentials
-GOOGLE_APPLICATION_CREDENTIALS_NAME = os.environ['GOOGLE_APPLICATION_CREDENTIALS_NAME']
-GOOGLE_APPLICATION_CREDENTIALS = Path(__file__).parent.parent / GOOGLE_APPLICATION_CREDENTIALS_NAME
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(GOOGLE_APPLICATION_CREDENTIALS)
 INSTANCE_CONNECTION_NAME = os.environ['INSTANCE_CONNECTION_NAME']
 DB_IAM_USER = os.environ['DB_IAM_USER']
 DB_NAME = os.environ['DB_NAME']
@@ -76,7 +73,6 @@ class UpdateDB:
             engine = sqlalchemy.create_engine(
                 "mysql+pymysql://",
                 creator=get_conn,
-                future=True
             )
             self.engine = engine
             try:
