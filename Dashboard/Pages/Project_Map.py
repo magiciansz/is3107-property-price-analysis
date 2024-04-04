@@ -7,6 +7,16 @@ import datetime
 
 st.set_page_config(page_title = "Project_Map")
 st.title("Project Map")
+
+if 'project_info' not in st.session_state:
+    projects = pd.DataFrame(st.session_state.cursor.get_project_info())
+    st.session_state['project_info']  = projects
+# showing project information columns
+st.write(st.session_state.project_info)
+
+# retrieve function for project click pop-up 
+st.write(st.session_state.cursor.get_tx_under_proj(3095))
+
 ################################FILTER############################################
 on = st.toggle('Show Filter')
 

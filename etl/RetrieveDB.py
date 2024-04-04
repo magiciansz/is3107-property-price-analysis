@@ -164,18 +164,45 @@ class RetrieveDB:
     
     def get_price_per_sqft_dashboard(self):
         query = sqlalchemy.text(f"""
-            SELECT proj.project_name, proj.address, proj.long, proj.lat, 
+            SELECT dist.district_name,
+                    proj.project_name,
+                    prop.property_type, prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end, prop.floor_area,                                
                     tx.transaction_year, tx.transaction_month, tx.type_of_sale, tx.price,
-                    prop.property_type, prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end, prop.floor_area,
                     (tx.price / prop.floor_area) AS price_per_sqft
-            FROM Project proj
-            LEFT JOIN Property prop ON proj.id = prop.project_id
-            LEFT JOIN Transaction tx ON prop.id = tx.property_id
+            FROM District dist
+            INNER JOIN Project proj on dist.id = proj.district_id
+            INNER JOIN Property prop ON proj.id = prop.project_id
+            INNER JOIN Transaction tx ON prop.id = tx.property_id
             ORDER BY price_per_sqft
         """)
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
     
+    def get_project_info(self):
+        query = sqlalchemy.text(f"""
+            SELECT d.id AS district_id, d.district_name, p.id AS project_id, p.project_name, p.address, p.`long`, p.lat,
+                AVG(t.price / pr.floor_area) AS proj_avg_price_per_sqft
+            FROM District d
+            INNER JOIN Project p on d.id = p.district_id
+            INNER JOIN Property pr ON p.id = pr.project_id
+            INNER JOIN Transaction t ON pr.id = t.property_id
+            GROUP BY p.id
+            ORDER BY proj_avg_price_per_sqft
+        """)
+        df = pd.read_sql(query, self.conn)
+        return df.to_dict('records')  
+
+    def get_tx_under_proj(self, project_id):
+        query = sqlalchemy.text(f"""
+            SELECT proj.project_name, CONCAT(t.transaction_year, "-", t.transaction_month) AS transaction_date, t.type_of_sale, t.price
+            FROM Project proj
+            INNER JOIN Property prop ON proj.id = prop.project_id
+            INNER JOIN Transaction t ON prop.id = t.property_id
+            WHERE proj.id = {project_id};
+        """)
+        df = pd.read_sql(query, self.conn)
+        return df.to_dict('records')
+
     def get_proj_from_selection(self, district_ids):
         district_ids_str = ', '.join(map(str, district_ids))
         query = sqlalchemy.text(f"""
@@ -184,7 +211,7 @@ class RetrieveDB:
             WHERE district_id IN ({district_ids_str});
         """)
         df = pd.read_sql(query, self.conn)
-        return df.to_dict('records')
+        return df.to_dict('records')        
     
 if __name__ == "__main__":
     db = RetrieveDB(db_connect_type="IAM")
