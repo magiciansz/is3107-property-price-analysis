@@ -103,8 +103,8 @@ if "district_list" not in st.session_state:
 if "amenities_list" not in st.session_state:
     amenities = pd.DataFrame(st.session_state.cursor.get_amenities())
     st.session_state.amenities = amenities
-    st.session_state['amenities_list'] = set(amenities['amenity_type'])
-    st.session_state.filter.amenities_list = st.session_state['amenities_list']
+    st.session_state['amenities_list'] = ['MRT','Park']
+    st.session_state.filter.amenities_list = set(amenities['amenity_type'])
     
 if "price_per_sqft_range" not in st.session_state:
     st.session_state['price_per_sqft_range'] = (st.session_state.all_transactions['price_per_sqft'].tolist()[0],st.session_state.all_transactions['price_per_sqft'].tolist()[-1])
