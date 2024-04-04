@@ -44,11 +44,6 @@ show_pages(
 ############################################################################
 ############### Add different parts to the session state ###################
 ############################################################################
-
-#TODO: retreive from DB
-#retreive [property, lat, long, name] from pd.dataframe
-# fileter later
-
 if "filter" not in st.session_state:
     filter = Filter()
     st.session_state['filter'] = filter
@@ -56,26 +51,9 @@ if "filter" not in st.session_state:
 if "all_transactions" not in st.session_state:
     st.session_state['all_transactions'] = pd.DataFrame(st.session_state.cursor.get_price_per_sqft_dashboard())
 
-if "room_type" not in st.session_state: # HDB-2 ROOM - HDB 3ROOM
+if "room_type" not in st.session_state:
     st.session_state['room_type']  = sorted(st.session_state.all_transactions['property_type'].unique())
     st.session_state.filter.room_type = st.session_state['room_type']
-    
-    # Semi-detached
-    # Terrace
-    # Strata Terrace
-    # Condominium
-    # Apartment
-    # Detached
-    # Strata Semi-detached
-    # Strata Detached
-    # Executive Condominium
-    # 2 ROOM
-    # 3 ROOM
-    # 4 ROOM
-    # 5 ROOM
-    # EXECUTIVE
-    # 1 ROOM
-    # MULTI-GENERATION
     # TODO consider using this or type_of_sale from transaction table
 
 # if "transaction_year" not in st.session_state:
@@ -94,20 +72,16 @@ if "transaction_date_end" not in st.session_state:
 
 
 if "district_list" not in st.session_state:
-    districts = pd.DataFrame(st.session_state.cursor.get_districts())
-    # st.session_state['district_ids'] = districts['id']
-    st.session_state.districts = districts 
-    st.session_state['district_list'] = districts['district_name']
-    st.session_state.filter.district_list = districts['district_name']
-    
+    st.session_state.district_list = sorted(st.session_state.all_transactions['district_name'].unique())
+    st.session_state.filter.district_list = st.session_state.district_list
+
 if "amenities_list" not in st.session_state:
     amenities = pd.DataFrame(st.session_state.cursor.get_amenities())
-    st.session_state.amenities = amenities
     st.session_state['amenities_list'] = ['MRT','Park']
     st.session_state.filter.amenities_list = set(amenities['amenity_type'])
     
 if "price_per_sqft_range" not in st.session_state:
-    st.session_state['price_per_sqft_range'] = (st.session_state.all_transactions['price_per_sqft'].tolist()[0],st.session_state.all_transactions['price_per_sqft'].tolist()[-1])
+    st.session_state['price_per_sqft_range'] = (st.session_state.all_transactions['price_per_sqft'].tolist()[0], st.session_state.all_transactions['price_per_sqft'].tolist()[-1])
     st.session_state.filter.price_per_sqft_range = st.session_state['price_per_sqft_range']
     
 # if "floor_range" not in st.session_state:
@@ -119,14 +93,14 @@ if "price_per_sqft_range" not in st.session_state:
 
 ############################################################################
 
-st.title("Singapore Property Trend Chart")
+st.title("Singapore Property Price Trend")
 
-on = st.toggle('Show Filter')
+on = st.toggle('Show Filters')
 
 if on:
     #date selector
     d = st.date_input(
-        "Select Transaction Time range",
+        "Select Transaction Time Range",
         (st.session_state['transaction_date_start'], st.session_state['transaction_date_end']),
         datetime.date(2019,1,1),
         datetime.datetime.now(),
@@ -169,7 +143,9 @@ try:
                                     st.session_state['transaction_date_end'],
                                     st.session_state['room_type'],
                                     st.session_state['district_list'],
-                                    st.session_state['price_per_sqft_range']))
+                                    st.session_state['price_per_sqft_range']),
+            # use_container_width=False
+            )
 except: #avoid error during user selection
     st.pyplot(v.plot_price_over_time(st.session_state['all_transactions'],
                                     datetime.date(2019,1,1),
