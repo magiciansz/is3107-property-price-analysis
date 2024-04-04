@@ -1,28 +1,24 @@
 import folium
-import json
+import ast
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from branca.colormap import linear
 
-def get_geojson_district():
-    #TODO: change input to database
-    f = open('districts_final.json') 
-    districts = json.load(f)
+def get_geojson_district(districts):
+    #TODO: add price features 
+
     features = []
-    count = 1
-    for district_id, coords in districts['coord_list'].items():
-        count += 1
-        district_name = districts['pln_area_n'][district_id]
+    for index, row in districts.iterrows():
         feature = {
             "type": "Feature",
             "properties": {
-                "name": district_name,
-                'average_price': count
+                "name": row['district_name'],
+                'average_price': 0
             },
             "geometry": {
                 "type": "Polygon",
-                "coordinates": [coords]
+                "coordinates": [ast.literal_eval(row['coordinates'])]
             }
         }
         features.append(feature)
@@ -31,12 +27,12 @@ def get_geojson_district():
         "type": "FeatureCollection",
         "features": features
     }
-    
+
     return geojson_district
 
-def plot_price_per_district():
+def plot_price_per_district(data):
     #TODO colormap with average price 
-    districts = get_geojson_district()
+    districts = get_geojson_district(data)
     
     # colormap = linear.YlGn_09.scale(
     #     320000, 900000000

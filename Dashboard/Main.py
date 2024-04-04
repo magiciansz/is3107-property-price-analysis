@@ -57,7 +57,6 @@ if "all_transactions" not in st.session_state:
     st.session_state['all_transactions'] = pd.DataFrame(st.session_state.cursor.get_price_per_sqft_dashboard())
 
 if "room_type" not in st.session_state: # HDB-2 ROOM - HDB 3ROOM
-    
     st.session_state['room_type']  = sorted(st.session_state.all_transactions['property_type'].unique())
     st.session_state.filter.room_type = st.session_state['room_type']
     
@@ -97,6 +96,7 @@ if "transaction_date_end" not in st.session_state:
 if "district_list" not in st.session_state:
     districts = pd.DataFrame(st.session_state.cursor.get_districts())
     # st.session_state['district_ids'] = districts['id']
+    st.session_state.districts = districts 
     st.session_state['district_list'] = districts['district_name']
     st.session_state.filter.district_list = districts['district_name']
     
