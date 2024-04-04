@@ -62,20 +62,37 @@ def plot_price_per_district():
 
     return m
 
-def plot_price_over_time():
+def plot_price_over_time(data, start_date, end_date, room_type_list, district_list, price_per_sqft_range):
     #TODO: can provide district_list to add price line
-    ura_data = pd.read_csv('ura_data.csv')
-    ura_data['contractDate'] = ura_data['contractDate'].astype(str)
-    ura_data['Year'], ura_data['Month'] = ura_data['contractDate'].str[-2:], ura_data['contractDate'].str[:-2]
-    ura_data['YearMonth'] = pd.to_datetime(ura_data['Year'] + ura_data['Month'], format='%y%m')
-    ura_data['YearMonth_str'] = ura_data['Year'] + '-' + ura_data['Month'].str.zfill(2)
-    monthly_median = ura_data.groupby('YearMonth')['price'].median().reset_index()
+    
+    start_date,end_date = pd.Timestamp(start_date), pd.Timestamp(end_date)
+    
+    #filter with timerange
+    data['transaction_year']= data['transaction_year'].astype(str)
+    data['transaction_month'] = data['transaction_month'].astype(str)
+    data['YearMonth'] = pd.to_datetime(data['transaction_year']+ data['transaction_month'], format='%Y%m')
+    data = data[(data['YearMonth'] >= start_date) & (data['YearMonth'] <= end_date)]
+    
+    # filter with disctrict 
+    #TODO
+    
+    #filter with room type
+    data = data[data['property_type'].isin(room_type_list)]
+    
+    #filter with price_per_sqft_range
+    data = data[(data['price_per_sqft'] >= price_per_sqft_range[0]) & (data['price_per_sqft'] <= price_per_sqft_range[1])]
+    
+    
+    data['YearMonth_str'] = data['transaction_year'] + '-' + data['transaction_month'].str.zfill(2)
+    monthly_median = data.groupby('YearMonth')['price'].median().reset_index()
 
-    ura_data.sort_values('YearMonth', inplace=True)
+
+    data.sort_values('YearMonth', inplace=True)
     fig, ax = plt.subplots(figsize=(15, 10))
     
-    sns.lineplot(data=ura_data, x='YearMonth', y='price',ax=ax)
+    sns.lineplot(data=data, x='YearMonth', y='price',ax=ax)
     sns.lineplot(data=monthly_median, x='YearMonth', y='price',ax=ax)
     ax.tick_params(axis='x', labelrotation=45)
     
     return fig
+
