@@ -204,7 +204,7 @@ class RetrieveDB:
     
     def get_district_tx_info(self):
         query = sqlalchemy.text(f"""
-            SELECT dist.id, dist.district_name, dist.coordinates,
+            SELECT dist.id, dist.district_name,
             proj.project_name, prop.property_type, prop.floor_range_start, prop.floor_range_end,
             tx.transaction_year, tx.transaction_month,
             AVG(tx.price / prop.floor_area) OVER (PARTITION BY dist.id) AS dist_price_per_sqft
