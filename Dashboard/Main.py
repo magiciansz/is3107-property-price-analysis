@@ -21,7 +21,7 @@ from etl.RetrieveDB import RetrieveDB
 #py -m streamlit run Main.py
 
 st.set_page_config(
-    page_title="Company_Selection",
+    page_title="Overall_Statistics",
 )
 
 try:
@@ -158,6 +158,7 @@ except: #avoid error during user selection
 
 # ################################## TESTING ###########################
 # values to be put into filter
+st.write("TESTING")
 st.write(st.session_state['all_transactions'])
 # st.write(st.session_state.district_list)
 # st.write(st.session_state.amenities_list)
@@ -165,4 +166,4 @@ st.write(st.session_state['all_transactions'])
 # st.write(st.session_state.floor_range_min)
 # st.write(st.session_state.price_per_sqft_max)
 # st.write(st.session_state.price_per_sqft_min)
-st.write(sorted(st.session_state.room_type))
+# st.write(sorted(st.session_state.room_type))

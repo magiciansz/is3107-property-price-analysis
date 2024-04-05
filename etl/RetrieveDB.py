@@ -165,8 +165,7 @@ class RetrieveDB:
     def get_price_per_sqft_dashboard(self):
         query = sqlalchemy.text(f"""
             SELECT dist.district_name,
-                    proj.project_name,
-                    prop.property_type, prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end, prop.floor_area,                                
+                    prop.property_type, prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end,
                     tx.transaction_year, tx.transaction_month, tx.type_of_sale, tx.price,
                     (tx.price / prop.floor_area) AS price_per_sqft
             FROM District dist
@@ -202,7 +201,35 @@ class RetrieveDB:
         """)
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
+    
+    def get_district_tx_info(self):
+        query = sqlalchemy.text(f"""
+            SELECT dist.id, dist.district_name,
+            proj.project_name, prop.property_type, prop.floor_range_start, prop.floor_range_end,
+            tx.transaction_year, tx.transaction_month,
+            AVG(tx.price / prop.floor_area) OVER (PARTITION BY dist.id) AS dist_price_per_sqft
+            FROM District dist
+            INNER JOIN Project proj on dist.id = proj.district_id
+            INNER JOIN Property prop ON proj.id = prop.project_id
+            INNER JOIN Transaction tx ON prop.id = tx.property_id
+        """)
+        df = pd.read_sql(query, self.conn)
+        return df.to_dict('records')
 
+    def get_district_popup(self):
+        query = sqlalchemy.text(f"""
+            SELECT dist.district_name, dist.coordinates,
+                IFNULL(COUNT(DISTINCT proj.id), 0) AS no_of_projects,
+                IFNULL(AVG(tx.price / prop.floor_area), 0) AS avg_dist_price_per_sqft
+            FROM District dist
+            LEFT JOIN Project proj ON dist.id = proj.district_id
+            LEFT JOIN Property prop ON proj.id = prop.project_id
+            LEFT JOIN Transaction tx ON prop.id = tx.property_id
+            GROUP BY dist.id
+        """)
+        df = pd.read_sql(query, self.conn)
+        return df.to_dict('records')
+        
     def get_proj_from_selection(self, district_ids):
         district_ids_str = ', '.join(map(str, district_ids))
         query = sqlalchemy.text(f"""

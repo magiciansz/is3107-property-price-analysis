@@ -6,15 +6,14 @@ import matplotlib.pyplot as plt
 from branca.colormap import linear
 
 def get_geojson_district(districts):
-    #TODO: add price features 
-
     features = []
-    for index, row in districts.iterrows():
+    for idx, row in districts.iterrows():
         feature = {
             "type": "Feature",
             "properties": {
                 "name": row['district_name'],
-                'average_price': 0
+                'number of projects': row['no_of_projects'],
+                'average price': row['avg_dist_price_per_sqft']
             },
             "geometry": {
                 "type": "Polygon",
@@ -52,7 +51,7 @@ def plot_price_per_district(data):
             "color": "black",
             "weight": 1,
         },
-        popup= folium.GeoJsonPopup(fields=["name",'average_price']),
+        popup= folium.GeoJsonPopup(fields=["name",'number of projects', 'average price']),
         popup_keep_highlighted=True,
     ).add_to(m)
 
