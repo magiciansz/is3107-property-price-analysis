@@ -25,6 +25,13 @@ st.set_page_config(
     page_title="Overall_Statistics",
 )
 
+
+if 'cursor' not in st.session_state:
+    cursor = RetrieveDB(db_connect_type = 'LOCAL')
+    st.session_state.cursor = cursor
+    init_session_state()
+    
+
 try:
     st.session_state.cursor = RetrieveDB(db_connect_type = 'LOCAL')
     # st.session_state.cursor = RetrieveDB(db_connect_type = 'IAM')
@@ -49,7 +56,8 @@ show_pages(
 
 
 ############################################################################
-init_session_state()
+
+    
 st.title("Singapore Property Price Trend")
 
 on = st.toggle('Show Filters')
