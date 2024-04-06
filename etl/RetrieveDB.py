@@ -18,6 +18,9 @@ MYSQL_PORT = os.environ['MYSQL_PORT']
 MYSQL_DATABASE_NAME=os.environ['MYSQL_DATABASE_NAME']
 
 # cloud connection credentials
+GOOGLE_APPLICATION_CREDENTIALS_NAME = os.environ['GOOGLE_APPLICATION_CREDENTIALS_NAME']
+GOOGLE_APPLICATION_CREDENTIALS = Path(__file__).parent.parent / GOOGLE_APPLICATION_CREDENTIALS_NAME
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(GOOGLE_APPLICATION_CREDENTIALS)
 
 INSTANCE_CONNECTION_NAME = os.environ['INSTANCE_CONNECTION_NAME']
 DB_IAM_USER = os.environ['DB_IAM_USER']
@@ -180,7 +183,7 @@ class RetrieveDB:
     def get_project_info(self):
         query = sqlalchemy.text(f"""
             SELECT d.id AS district_id, d.district_name, p.id AS project_id, p.project_name, p.address, p.`long`, p.lat,
-                AVG(t.price / pr.floor_area) AS proj_avg_price_per_sqft
+                ROUND(AVG(t.price / pr.floor_area),2) AS proj_avg_price_per_sqft
             FROM District d
             INNER JOIN Project p on d.id = p.district_id
             INNER JOIN Property pr ON p.id = pr.project_id
@@ -207,7 +210,7 @@ class RetrieveDB:
             SELECT dist.id, dist.district_name,
             proj.project_name, prop.property_type, prop.floor_range_start, prop.floor_range_end,
             tx.transaction_year, tx.transaction_month,
-            AVG(tx.price / prop.floor_area) OVER (PARTITION BY dist.id) AS dist_price_per_sqft
+            ROUND(AVG(tx.price / prop.floor_area),2) OVER (PARTITION BY dist.id) AS dist_price_per_sqft
             FROM District dist
             INNER JOIN Project proj on dist.id = proj.district_id
             INNER JOIN Property prop ON proj.id = prop.project_id
@@ -220,7 +223,7 @@ class RetrieveDB:
         query = sqlalchemy.text(f"""
             SELECT dist.district_name, dist.coordinates,
                 IFNULL(COUNT(DISTINCT proj.id), 0) AS no_of_projects,
-                IFNULL(AVG(tx.price / prop.floor_area), 0) AS avg_dist_price_per_sqft
+                IFNULL(ROUND(AVG(tx.price / prop.floor_area),2), 0) AS avg_dist_price_per_sqft
             FROM District dist
             LEFT JOIN Project proj ON dist.id = proj.district_id
             LEFT JOIN Property prop ON proj.id = prop.project_id
