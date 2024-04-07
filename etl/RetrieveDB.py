@@ -210,7 +210,7 @@ class RetrieveDB:
             SELECT dist.id, dist.district_name,
             proj.project_name, prop.property_type, prop.floor_range_start, prop.floor_range_end,
             tx.transaction_year, tx.transaction_month,
-            ROUND(AVG(tx.price / prop.floor_area),2) OVER (PARTITION BY dist.id) AS dist_price_per_sqft
+            ROUND(AVG(tx.price / prop.floor_area) OVER (PARTITION BY dist.id), 2) AS dist_price_per_sqft
             FROM District dist
             INNER JOIN Project proj on dist.id = proj.district_id
             INNER JOIN Property prop ON proj.id = prop.project_id
