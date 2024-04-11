@@ -28,8 +28,8 @@ st.set_page_config(
 
 if 'cursor' not in st.session_state:
     try:
-        cursor = RetrieveDB(db_connect_type = 'LOCAL')
-        # cursor = RetrieveDB(db_connect_type = 'IAM')
+        # cursor = RetrieveDB(db_connect_type = 'LOCAL')
+        cursor = RetrieveDB(db_connect_type = 'IAM')
         st.session_state.cursor = cursor
         init_session_state()
     except Exception as e:
@@ -52,27 +52,12 @@ show_pages(
     
 st.title("Singapore Property Price Trend")
 
-    # #price list 
-    # st.session_state.price_per_sqft_range  = st.slider(
-    #     "Price per Sqft:",
-    #     st.session_state.filter.price_per_sqft_range[0],
-    #     st.session_state.filter.price_per_sqft_range[1],
-    #     value=st.session_state.price_per_sqft_range)
-    
-    # #floor range
-    # st.session_state.floor_range  = st.slider(
-    #     "Floor Range:",
-    #     st.session_state.filter.floor_range[0],
-    #     st.session_state.filter.floor_range[1],
-    #     value=st.session_state.floor_range)
-
-
-def set_session_states(room_types_selected, district_list_selected, d):
-    # TODO add on more session states from user selection
+def set_session_states(room_types_selected, district_list_selected, d, floor_range_selected):
     # set session states from user selections
     st.session_state.room_type = room_types_selected
     st.session_state.district_list = district_list_selected
     st.session_state['transaction_date_start'], st.session_state['transaction_date_end'] = d[0],d[1]
+    st.session_state.floor_range = floor_range_selected
     
 
 def reset_room_types():
@@ -81,26 +66,38 @@ def reset_room_types():
 def reset_districts():
     st.session_state.district_list = []
 
+def reset_floor_range():
+    st.session_state.floor_range = st.session_state.filter.floor_range
+
 
 #plot the graph
 def plot_graph():
     # plotting graph with selections
     try:
-        st.pyplot(v.plot_price_over_time(st.session_state['all_transactions'],
-                                        st.session_state['transaction_date_start'],
-                                        st.session_state['transaction_date_end'],
-                                        st.session_state['room_type'],
-                                        st.session_state['district_list'],
-                                        st.session_state['price_per_sqm_range']),
-                # use_container_width=False
-                )
+        if v.plot_price_over_time(st.session_state['all_transactions'],
+                                st.session_state['transaction_date_start'],
+                                st.session_state['transaction_date_end'],
+                                st.session_state['room_type'],
+                                st.session_state['district_list'],
+                                st.session_state['floor_range'])[0]:
+                                        
+            st.pyplot(v.plot_price_over_time(st.session_state['all_transactions'],
+                                            st.session_state['transaction_date_start'],
+                                            st.session_state['transaction_date_end'],
+                                            st.session_state['room_type'],
+                                            st.session_state['district_list'],
+                                            st.session_state['floor_range'])[1],
+                    # use_container_width=False
+                    )
     except: #avoid error during user selection
+        st.write("No available transactions with the seleted filters. Showing all transactions.")
         st.pyplot(v.plot_price_over_time(st.session_state['all_transactions'],
                                         datetime.date(2019,1,1),
                                         datetime.datetime.now(),
                                         st.session_state.filter.room_type,
                                         st.session_state.filter.district_list,
-                                        st.session_state.filter.price_per_sqm_range))
+                                        st.session_state.filter.floor_range)[1])
+
 
 
 with st.expander(label="Filter values", expanded=False):
@@ -148,21 +145,20 @@ with st.expander(label="Filter values", expanded=False):
             format="MM.DD.YYYY",
         )
             
-        # TODO price filters
         with pre_filter2:
-            if True:
-                o_threshold = st.slider("Slider 2:", 0, 100, (20,100), help="Drag sliders to desired values")
-            
-        with confirm:
-            
-            submitted = st.form_submit_button('Submit')
+            #floor range
+            floor_range_selected  = st.slider(
+                "Floor Range:",
+                st.session_state.filter.floor_range[0],
+                st.session_state.filter.floor_range[1],
+                value=st.session_state.floor_range,
+                step=1,
+                on_change=reset_floor_range())            
+        
+        with confirm:    
+            submitted = st.form_submit_button('Confirm')
             if submitted:
-                set_session_states(room_types_selected, district_list_selected, d)
-
-            
-            # TODO how to only refresh graph when users click confirm selection
-            # plot_graph()
-
+                set_session_states(room_types_selected, district_list_selected, d, floor_range_selected)
 
 
 plot_graph()

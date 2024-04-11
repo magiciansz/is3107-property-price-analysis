@@ -168,7 +168,7 @@ class RetrieveDB:
     def get_price_per_sqm_dashboard(self):
         query = sqlalchemy.text(f"""
             SELECT dist.district_name,
-                    prop.property_type, prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end,
+                    prop.property_type, prop.lease_year, prop.lease_duration, IFNULL(prop.floor_range_start, 0) AS floor_range_start, IFNULL(prop.floor_range_end, 0) AS floor_range_end,
                     tx.transaction_year, tx.transaction_month, tx.type_of_sale, tx.price,
                     (tx.price / prop.floor_area) AS price_per_sqm
             FROM District dist
@@ -177,7 +177,7 @@ class RetrieveDB:
             INNER JOIN Transaction tx ON prop.id = tx.property_id
             ORDER BY price_per_sqm
         """)
-        df = pd.read_sql(query, self.conn)
+        df = pd.read_sql(query, self.conn, dtype={'floor_range_start': int, 'floor_range_end': int})
         return df.to_dict('records')
     
     def get_project_info(self):
@@ -243,8 +243,8 @@ class RetrieveDB:
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')        
     
-if __name__ == "__main__":
-    db = RetrieveDB(db_connect_type="IAM")
+# if __name__ == "__main__":
+    # db = RetrieveDB(db_connect_type="IAM")
     # db = RetrieveDB(db_connect_type="LOCAL")
     # test = db.get_records_for_ml()
     # # test= db.get_amenity_of_type_for_ml("Kindergarten")

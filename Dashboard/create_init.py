@@ -27,20 +27,23 @@ def init_session_state():
         district_project_record = pd.DataFrame(st.session_state.cursor.get_district_popup())
         district_project_record = sorted(district_project_record[district_project_record['no_of_projects'] > 0]['district_name'])
         # st.session_state.district_list=[]
-        st.session_state.district_list=district_project_record
         st.session_state.filter.district_list = district_project_record
+        st.session_state.district_list=st.session_state.filter.district_list
+        # print("IN INIT")
+        # print(st.session_state.filter.district_list)
+        # print(st.session_state.district_list)
 
     if "amenities_list" not in st.session_state:
         amenities = pd.DataFrame(st.session_state.cursor.get_amenities())
-        st.session_state.amenities = amenities
-        st.session_state['amenities_list'] = ['MRT']
+        # st.session_state.amenities = amenities
         st.session_state.filter.amenities_list = set(amenities['amenity_type'])
+        st.session_state['amenities_list'] = ['MRT']
         
     if "price_per_sqm_range" not in st.session_state:
-        st.session_state['price_per_sqm_range'] = (st.session_state.all_transactions['price_per_sqm'].tolist()[0], st.session_state.all_transactions['price_per_sqm'].tolist()[-1])
-        st.session_state.filter.price_per_sqm_range = st.session_state['price_per_sqm_range']
+        st.session_state.filter.price_per_sqm_range = (st.session_state.all_transactions['price_per_sqm'].tolist()[0], st.session_state.all_transactions['price_per_sqm'].tolist()[-1])
+        st.session_state['price_per_sqm_range'] = st.session_state.filter.price_per_sqm_range
         
-    # if "floor_range" not in st.session_state:
-    #     st.session_state['floor_range'] = (st.session_state.all_transactions['floor_range_start'].min(),st.session_state.all_transactions['floor_range_start'].max())
-    #     st.session_state.filter.floor_range = st.session_state['floor_range']
+    if "floor_range" not in st.session_state:
+        st.session_state.filter.floor_range = (st.session_state.all_transactions['floor_range_start'].min(),st.session_state.all_transactions['floor_range_start'].max())
+        st.session_state['floor_range'] = st.session_state.filter.floor_range 
 
