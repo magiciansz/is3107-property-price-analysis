@@ -35,7 +35,7 @@ def init_session_state():
 
     if "amenities_list" not in st.session_state:
         amenities = pd.DataFrame(st.session_state.cursor.get_amenities())
-        # st.session_state.amenities = amenities
+        st.session_state.amenities = amenities
         st.session_state.filter.amenities_list = set(amenities['amenity_type'])
         st.session_state['amenities_list'] = ['MRT']
         

@@ -12,6 +12,9 @@ parent_directory = current_script_path.parent.parent
 if str(parent_directory) not in sys.path:
     sys.path.append(str(parent_directory))
 from etl.RetrieveDB import RetrieveDB
+import numpy as np
+import altair as alt
+
 
 if 'cursor' not in st.session_state:
     try:
@@ -27,6 +30,8 @@ if 'cursor' not in st.session_state:
 
 st.set_page_config(page_title = "District_Map")
 st.session_state.district_list = st.session_state.filter.district_list
+district_tx_info = pd.DataFrame(st.session_state.cursor.get_district_tx_info())
+
 # if 'district_info' not in st.session_state:
 #     districts = pd.DataFrame(st.session_state.cursor.get_districts())
 #     # format: ['id','district_name', 'coordinates']
@@ -36,6 +41,33 @@ if 'district_popup' not in st.session_state:
     district_pop = pd.DataFrame(st.session_state.cursor.get_district_popup())
     st.session_state.district_popup = district_pop
 
+def district_avg_price_over_time(district_name):
+    focal_district = district_tx_info.loc[district_tx_info['district_name'] ==  str(district_name)][['district_name', 'transaction_year', 'transaction_month', 'dist_price_per_sqm']]
+    focal_district['transaction_year']= focal_district['transaction_year'].astype(str)
+    focal_district['transaction_month'] = focal_district['transaction_month'].astype(str)
+    focal_district['YearMonth'] = pd.to_datetime(focal_district['transaction_year']+ focal_district['transaction_month'], format='%Y%m')
+    # print(focal_district)
+    
+    focal_district = focal_district.to_dict("records")    
+    YearMonth = [record['YearMonth'] for record in focal_district]
+    avg_prices = [record['dist_price_per_sqm'] for record in focal_district]
+    # print(YearMonth)
+    # print(avg_prices)
+    x = YearMonth
+
+    to_plot = pd.DataFrame({
+                        'Time': x,
+                        'Average Price per Sqm': avg_prices}
+                        )
+    a = alt.Chart(to_plot,title= f'Average Transaction Price of {district_name}').mark_line().encode( alt.X('Time:T'),
+                    y= 'Average Price per Sqm'
+                ).properties(width = 300, height = 260)
+    return a
+
+# TESTING
+# st.write(district_avg_price_over_time('BEDOK'))
+
+
 def get_geojson_district(districts):
     features = []
     for idx, row in districts.iterrows():
@@ -44,7 +76,7 @@ def get_geojson_district(districts):
         feature = {
             "type": "Feature",
             "properties": {
-                "name": row['district_name'],
+                "name": current_district,
                 'number of projects': row['no_of_projects'],
                 'average price': row['avg_dist_price_per_sqm']
             },
@@ -68,12 +100,9 @@ def plot_price_per_district(data):
     colormap = linear.YlGn_09.scale(
     data.avg_dist_price_per_sqm.min(), data.avg_dist_price_per_sqm.max())
 
-
-
     m = folium.Map(location=[1.3521,103.8198], #center of singapore
                zoom_start = 11) #initialize the map in singapore
     
-
     folium.GeoJson(
         districts,
         style_function= lambda feature: {
@@ -91,14 +120,44 @@ def plot_price_per_district(data):
         popup_keep_highlighted= True,
     ).add_to(m)
 
+    # markers(m)
+
     return m
+
+
+def markers():
+    m = folium.Map(location=[1.3521, 103.8198], zoom_start=11)  # Centered around Singapore
+    
+    for index, row in district_tx_info.iterrows():
+        # Get the district name and coordinates for the current row
+        district_name = row['district_name']
+        coordinates = ast.literal_eval(row['coordinates'])
+        
+        # Convert coordinates to the required format (list of tuples)
+        coordinates = [(coord[1], coord[0]) for coord in coordinates]
+        
+        popup = folium.Popup(max_width = 400)
+        chart = district_avg_price_over_time(district_name)
+        vega_lite_json = chart.to_json()
+
+        popup.add_child(folium.VegaLite(vega_lite_json, width=900, height=300))
+        
+        # Create marker and add it to the map
+        marker = folium.Marker(location=coordinates[0], popup=popup, tooltip='Click to check out price trend')
+        marker.add_to(m)
+        folium.TileLayer('cartodbpositron').add_to(m)
+
+    return m
+
+test = markers()
+folium_static(test)
 
 
 st.title('Singapore District Map')
 m = plot_price_per_district(st.session_state.district_popup)
 # Display the map
 folium_static(m)
-    
+
 
 colormap = linear.YlGn_09.scale(
     st.session_state.district_popup.avg_dist_price_per_sqm.min(), st.session_state.district_popup.avg_dist_price_per_sqm.max())

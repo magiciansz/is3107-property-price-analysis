@@ -206,15 +206,16 @@ class RetrieveDB:
         return df.to_dict('records')
     
     def get_district_tx_info(self):
+        #             proj.project_name, prop.property_type, prop.floor_range_start, prop.floor_range_end,
         query = sqlalchemy.text(f"""
-            SELECT dist.id, dist.district_name,
-            proj.project_name, prop.property_type, prop.floor_range_start, prop.floor_range_end,
-            tx.transaction_year, tx.transaction_month,
-            ROUND(AVG(tx.price / prop.floor_area) OVER (PARTITION BY dist.id), 2) AS dist_price_per_sqm
+            SELECT dist.district_name AS district_name, dist.coordinates,
+            tx.transaction_year AS transaction_year, tx.transaction_month AS transaction_month,
+            ROUND(AVG(tx.price / prop.floor_area), 2) AS dist_price_per_sqm
             FROM District dist
             INNER JOIN Project proj on dist.id = proj.district_id
             INNER JOIN Property prop ON proj.id = prop.project_id
             INNER JOIN Transaction tx ON prop.id = tx.property_id
+            GROUP BY district_name, transaction_year, transaction_month
         """)
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
