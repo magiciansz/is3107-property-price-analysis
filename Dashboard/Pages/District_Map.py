@@ -12,7 +12,6 @@ parent_directory = current_script_path.parent.parent
 if str(parent_directory) not in sys.path:
     sys.path.append(str(parent_directory))
 from etl.RetrieveDB import RetrieveDB
-import numpy as np
 import altair as alt
 
 
@@ -32,10 +31,6 @@ st.set_page_config(page_title = "District_Map")
 st.session_state.district_list = st.session_state.filter.district_list
 district_tx_info = pd.DataFrame(st.session_state.cursor.get_district_tx_info())
 
-# if 'district_info' not in st.session_state:
-#     districts = pd.DataFrame(st.session_state.cursor.get_districts())
-#     # format: ['id','district_name', 'coordinates']
-#     st.session_state['district_info']  = districts
 
 if 'district_popup' not in st.session_state:
     district_pop = pd.DataFrame(st.session_state.cursor.get_district_popup())
@@ -78,7 +73,8 @@ def get_geojson_district(districts):
             "properties": {
                 "name": current_district,
                 'number of projects': row['no_of_projects'],
-                'average price': row['avg_dist_price_per_sqm']
+                'average price': row['avg_dist_price_per_sqm'],
+                'vega_lite_json': district_avg_price_over_time(current_district).to_json()
             },
             "geometry": {
                 "type": "Polygon",
@@ -103,29 +99,37 @@ def plot_price_per_district(data):
     m = folium.Map(location=[1.3521,103.8198], #center of singapore
                zoom_start = 11) #initialize the map in singapore
     
-    folium.GeoJson(
-        districts,
-        style_function= lambda feature: {
-            'fillColor' :(
-                colormap(feature['properties']['average price']) if feature['properties']['name'] in st.session_state.district_list else 'white'),
-            "color": "black",
-            "fillOpacity": 0.5,
-            "weight": 1,
-        },
-        highlight_function=lambda feature: {
-            "fillColor": (
-                "green" if feature['properties']['name'] in st.session_state.district_list else 'white'
-        ),},
-        popup= folium.GeoJsonPopup(fields=["name",'number of projects', 'average price']),
-        popup_keep_highlighted= True,
-    ).add_to(m)
+    
+    for feature in districts['features']:
+        # popup_html = folium.Popup(max_width=400)
+        popup = folium.Popup(max_width = 400)
+        # popup_html.add_child(folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300))
 
-    # markers(m)
+        folium.GeoJson(
+            feature,
+            style_function= lambda feature: {
+                'fillColor' :(
+                    colormap(feature['properties']['average price']) if feature['properties']['name'] in st.session_state.district_list else 'white'),
+                "color": "black",
+                "fillOpacity": 0.5,
+                "weight": 1,
+            },
+            highlight_function=lambda feature: {
+                "fillColor": (
+                    "green" if feature['properties']['name'] in st.session_state.district_list else 'white'
+            ),},
+            popup= folium.Popup(fields=["name",'number of projects', 'average price'], max_width = 400)
+                        .add_child(folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300)),
+            popup_keep_highlighted= True,
+            # zoom_on_click = True
+        ).add_to(m)
 
     return m
 
 
-def markers():
+
+def markers(data):
+    districts = get_geojson_district(data)
     m = folium.Map(location=[1.3521, 103.8198], zoom_start=11)  # Centered around Singapore
     
     for index, row in district_tx_info.iterrows():
@@ -149,8 +153,8 @@ def markers():
 
     return m
 
-test = markers()
-folium_static(test)
+# test = markers()
+# folium_static(test)
 
 
 st.title('Singapore District Map')
@@ -169,7 +173,7 @@ st.write('TESTING')
 st.write(st.session_state.district_popup.head(2))
 
 # # example showing overall district transaction info for filters
-st.write(pd.DataFrame(st.session_state.cursor.get_district_tx_info()).head())
+# st.write(pd.DataFrame(st.session_state.cursor.get_district_tx_info()).head())
 
 # # example showing district df
 # st.write(st.session_state.district_info)
