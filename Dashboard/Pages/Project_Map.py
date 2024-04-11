@@ -45,11 +45,11 @@ if on:
 
     
     #price list 
-    st.session_state.price_per_sqft_range  = st.slider(
-        "Price per Sqft:",
-        st.session_state.filter.price_per_sqft_range[0],
-        st.session_state.filter.price_per_sqft_range[1],
-        value=st.session_state.price_per_sqft_range)
+    st.session_state.price_per_sqm_range  = st.slider(
+        "Price per Sqm:",
+        st.session_state.filter.price_per_sqm_range[0],
+        st.session_state.filter.price_per_sqm_range[1],
+        value=st.session_state.price_per_sqm_range)
 
 
 ####################################set_icon########################################

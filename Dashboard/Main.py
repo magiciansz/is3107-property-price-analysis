@@ -120,7 +120,6 @@ with st.expander(label="Filter values", expanded=False):
 
 
         with disctrict_selector:
-            # use_default_normal = st.button('Action 2', on_click=None, help="Preset sliders to default thresholds")
             all = st.checkbox("Select All Districts", on_change=reset_districts())
             if all:
                 district_list_selected = st.multiselect(
@@ -170,8 +169,8 @@ st.write("TESTING")
 st.write(st.session_state['all_transactions'])
 st.write(st.session_state.district_list)
 # st.write(st.session_state.amenities_list)
-# st.write(st.session_state.floor_range_max)
+st.write(st.session_state.floor_range)
 # st.write(st.session_state.floor_range_min)
 # st.write(st.session_state.price_per_sqft_max)
 # st.write(st.session_state.price_per_sqft_min)
-# st.write(sorted(st.session_state.room_type))
+st.write(sorted(st.session_state.room_type))

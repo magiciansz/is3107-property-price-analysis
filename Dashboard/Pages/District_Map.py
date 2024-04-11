@@ -5,17 +5,33 @@ import folium
 import ast
 from create_init import init_session_state
 from branca.colormap import linear
+import sys
+from pathlib import Path
+current_script_path = Path(__file__).resolve()
+parent_directory = current_script_path.parent.parent
+if str(parent_directory) not in sys.path:
+    sys.path.append(str(parent_directory))
+from etl.RetrieveDB import RetrieveDB
+
+if 'cursor' not in st.session_state:
+    try:
+        # cursor = RetrieveDB(db_connect_type = 'LOCAL')
+        cursor = RetrieveDB(db_connect_type = 'IAM')
+        st.session_state.cursor = cursor
+        init_session_state()
+    except Exception as e:
+        st.warning("Cursor is not established")
+        st.write(e)
+        st.stop()
+    
 
 st.set_page_config(page_title = "District_Map")
-
+st.session_state.district_list = st.session_state.filter.district_list
 # if 'district_info' not in st.session_state:
 #     districts = pd.DataFrame(st.session_state.cursor.get_districts())
 #     # format: ['id','district_name', 'coordinates']
 #     st.session_state['district_info']  = districts
 
-if 'cursor' not in st.session_state:
-    init_session_state()
-    
 if 'district_popup' not in st.session_state:
     district_pop = pd.DataFrame(st.session_state.cursor.get_district_popup())
     st.session_state.district_popup = district_pop
@@ -30,7 +46,7 @@ def get_geojson_district(districts):
             "properties": {
                 "name": row['district_name'],
                 'number of projects': row['no_of_projects'],
-                'average price': row['avg_dist_price_per_sqft']
+                'average price': row['avg_dist_price_per_sqm']
             },
             "geometry": {
                 "type": "Polygon",
@@ -47,11 +63,10 @@ def get_geojson_district(districts):
     return geojson_district
 
 def plot_price_per_district(data):
-    #TODO colormap with average price 
     districts = get_geojson_district(data)
     
     colormap = linear.YlGn_09.scale(
-    data.avg_dist_price_per_sqft.min(), data.avg_dist_price_per_sqft.max())
+    data.avg_dist_price_per_sqm.min(), data.avg_dist_price_per_sqm.max())
 
 
 
@@ -85,11 +100,12 @@ m = plot_price_per_district(st.session_state.district_popup)
 folium_static(m)
     
 
+colormap = linear.YlGn_09.scale(
+    st.session_state.district_popup.avg_dist_price_per_sqm.min(), st.session_state.district_popup.avg_dist_price_per_sqm.max())
+st.write(colormap)
+
 
 st.write('TESTING')
-colormap = linear.YlGn_09.scale(
-    st.session_state.district_popup.avg_dist_price_per_sqft.min(), st.session_state.district_popup.avg_dist_price_per_sqft.max())
-st.write(colormap)
 # example showing info to be shown on district popup
 st.write(st.session_state.district_popup.head(2))
 
