@@ -73,6 +73,7 @@ def set_session_states(room_types_selected, district_list_selected, d):
     st.session_state.room_type = room_types_selected
     st.session_state.district_list = district_list_selected
     st.session_state['transaction_date_start'], st.session_state['transaction_date_end'] = d[0],d[1]
+    
 
 def reset_room_types():
     st.session_state.room_type = []
@@ -103,11 +104,10 @@ def plot_graph():
 
 
 with st.expander(label="Filter values", expanded=False):
-    filter_toggle, room_type_selector, disctrict_selector = st.columns([0.2, 0.4, 0.4])
-    with filter_toggle:
-        pre_filter_on = st.toggle('Filter', on_change=None, help="Turn on filtering feature")
-    with room_type_selector:
-        if pre_filter_on:
+    with st.form('test'):
+        room_type_selector, disctrict_selector = st.columns([ 0.5, 0.5])
+        with room_type_selector:
+
             all = st.checkbox("Select All Room Types", on_change=reset_room_types())
             
             if all:
@@ -120,11 +120,9 @@ with st.expander(label="Filter values", expanded=False):
                     'Room Type: ',
                     st.session_state.filter.room_type,
                     st.session_state['room_type'])
-        else:
-            use_default_room_type = st.button('Select Room Type', disabled=True)
 
-    with disctrict_selector:
-        if pre_filter_on:
+
+        with disctrict_selector:
             # use_default_normal = st.button('Action 2', on_click=None, help="Preset sliders to default thresholds")
             all = st.checkbox("Select All Districts", on_change=reset_districts())
             if all:
@@ -137,40 +135,34 @@ with st.expander(label="Filter values", expanded=False):
                     'Districts: ',
                     st.session_state.filter.district_list,
                     st.session_state['district_list'])
-        else:
-            use_default_districts = st.button('Select District', disabled=True)
 
-    date_filter, pre_filter2, confirm = st.columns([0.4, 0.4, 0.15])
-    # st.columns([0.25, 0.3, 0.3, 0.15])
-    with date_filter:
-        if pre_filter_on:
-                d = st.date_input(
-                "Select Transaction Time Range",
-                (st.session_state['transaction_date_start'], st.session_state['transaction_date_end']),
-                datetime.date(2019,1,1),
-                datetime.datetime.now(),
-                format="MM.DD.YYYY",
-            )
-                
-    # TODO price filters
-    with pre_filter2:
-        if pre_filter_on:
+
+        date_filter, pre_filter2, confirm = st.columns([0.4, 0.4, 0.15])
+        # st.columns([0.25, 0.3, 0.3, 0.15])
+        with date_filter:
+            d = st.date_input(
+            "Select Transaction Time Range",
+            (st.session_state['transaction_date_start'], st.session_state['transaction_date_end']),
+            datetime.date(2019,1,1),
+            datetime.datetime.now(),
+            format="MM.DD.YYYY",
+        )
+            
+        # TODO price filters
+        with pre_filter2:
             if True:
                 o_threshold = st.slider("Slider 2:", 0, 100, (20,100), help="Drag sliders to desired values")
             
-        else:
-                o_threshold = st.slider("Label 2:", 0, 100, (0,100), disabled=True)
+        with confirm:
+            
+            submitted = st.form_submit_button('Submit')
+            if submitted:
+                set_session_states(room_types_selected, district_list_selected, d)
 
-    with confirm:
-        if pre_filter_on:
-            confirm_sel = st.button('Confirm Selection', 
-                                    on_click=set_session_states(room_types_selected, district_list_selected, d), 
-                                    type="primary")
-        else:
-            confirm_sel = st.button('Filter results', type="primary", disabled=True)
-        
-        # TODO how to only refresh graph when users click confirm selection
-        # plot_graph()
+            
+            # TODO how to only refresh graph when users click confirm selection
+            # plot_graph()
+
 
 
 plot_graph()
