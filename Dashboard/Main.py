@@ -91,7 +91,7 @@ def plot_graph():
                                         st.session_state['transaction_date_end'],
                                         st.session_state['room_type'],
                                         st.session_state['district_list'],
-                                        st.session_state['price_per_sqft_range']),
+                                        st.session_state['price_per_sqm_range']),
                 # use_container_width=False
                 )
     except: #avoid error during user selection
@@ -100,7 +100,7 @@ def plot_graph():
                                         datetime.datetime.now(),
                                         st.session_state.filter.room_type,
                                         st.session_state.filter.district_list,
-                                        st.session_state.filter.price_per_sqft_range))
+                                        st.session_state.filter.price_per_sqm_range))
 
 
 with st.expander(label="Filter values", expanded=False):

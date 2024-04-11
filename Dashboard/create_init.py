@@ -9,14 +9,13 @@ def init_session_state():
         st.session_state['filter'] = filter
 
     if "all_transactions" not in st.session_state:
-        st.session_state['all_transactions'] = pd.DataFrame(st.session_state.cursor.get_price_per_sqft_dashboard())
+        st.session_state['all_transactions'] = pd.DataFrame(st.session_state.cursor.get_price_per_sqm_dashboard())
 
     if "room_type" not in st.session_state:
         # st.session_state['room_type']  = sorted(st.session_state.all_transactions['property_type'].unique())
         st.session_state.filter.room_type = sorted(st.session_state.all_transactions['property_type'].unique())
         # st.session_state['room_type'] = []
         st.session_state['room_type'] = st.session_state.filter.room_type        
-        # TODO consider using this or type_of_sale from transaction table
 
     if "transaction_date_start" not in st.session_state:
         st.session_state['transaction_date_start'] = datetime.date(2019,1,1)
@@ -37,9 +36,9 @@ def init_session_state():
         st.session_state['amenities_list'] = ['MRT']
         st.session_state.filter.amenities_list = set(amenities['amenity_type'])
         
-    if "price_per_sqft_range" not in st.session_state:
-        st.session_state['price_per_sqft_range'] = (st.session_state.all_transactions['price_per_sqft'].tolist()[0], st.session_state.all_transactions['price_per_sqft'].tolist()[-1])
-        st.session_state.filter.price_per_sqft_range = st.session_state['price_per_sqft_range']
+    if "price_per_sqm_range" not in st.session_state:
+        st.session_state['price_per_sqm_range'] = (st.session_state.all_transactions['price_per_sqm'].tolist()[0], st.session_state.all_transactions['price_per_sqm'].tolist()[-1])
+        st.session_state.filter.price_per_sqm_range = st.session_state['price_per_sqm_range']
         
     # if "floor_range" not in st.session_state:
     #     st.session_state['floor_range'] = (st.session_state.all_transactions['floor_range_start'].min(),st.session_state.all_transactions['floor_range_start'].max())
