@@ -37,7 +37,7 @@ if 'district_popup' not in st.session_state:
     district_pop = pd.DataFrame(st.session_state.cursor.get_district_popup())
     st.session_state.district_popup = district_pop
 
-def district_avg_price_over_time(district_name):
+def district_avg_price_over_time(district_name, num_projects, avg_price):
     focal_district = district_tx_info.loc[district_tx_info['district_name'] ==  str(district_name)][['district_name', 'transaction_year', 'transaction_month', 'dist_price_per_sqm']]
     focal_district['transaction_year']= focal_district['transaction_year'].astype(str)
     focal_district['transaction_month'] = focal_district['transaction_month'].astype(str)
@@ -55,10 +55,13 @@ def district_avg_price_over_time(district_name):
                         'Time': x,
                         'Average Price per Sqm': avg_prices}
                         )
-    a = alt.Chart(to_plot,title= f'Average Transaction Price of {district_name}').mark_line().encode( alt.X('Time:T'),
+
+    title_str = f'{district_name}: {num_projects} Projects, Average Price per sqm: {avg_price:.2f}'
+    
+    chart = alt.Chart(to_plot,title= title_str).mark_line().encode( alt.X('Time:T'),
                     y= 'Average Price per Sqm'
-                ).properties(width = 300, height = 260)
-    return a
+                ).properties(width = 300, height = 250)
+    return chart
 
 # TESTING
 # st.write(district_avg_price_over_time('BEDOK'))
@@ -75,7 +78,7 @@ def get_geojson_district(districts):
                 "name": current_district,
                 'number of projects': row['no_of_projects'],
                 'average price': row['avg_dist_price_per_sqm'],
-                'vega_lite_json': district_avg_price_over_time(current_district).to_json()
+                'vega_lite_json': district_avg_price_over_time(current_district, row['no_of_projects'], row['avg_dist_price_per_sqm']).to_json()
             },
             "geometry": {
                 "type": "Polygon",
@@ -91,61 +94,6 @@ def get_geojson_district(districts):
 
     return geojson_district
 
-# def plot_price_per_district(data):
-#     districts = get_geojson_district(data)
-    
-#     colormap = linear.YlGn_09.scale(
-#     data.avg_dist_price_per_sqm.min(), data.avg_dist_price_per_sqm.max())
-
-#     m = folium.Map(location=[1.3521,103.8198], #center of singapore
-#                zoom_start = 11) #initialize the map in singapore
-    
-    
-#     for feature in districts['features']:
-#         # popup_content = f"""
-#         #     <b>Name:</b> {feature['properties']['name']}<br>
-#         #     <b>Number of Projects:</b> {feature['properties']['number of projects']}<br>
-#         #     <b>Average Price:</b> {feature['properties']['average price']}<br>
-#         #     <br>
-#         #     <div id="vega-chart">{feature['properties']['vega_lite_json']}</div>
-#         # """
-#         # popup_html.add_child(folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300))
-
-#         folium.GeoJson(
-#             feature,
-#             style_function= lambda feature: {
-#                 'fillColor' :(
-#                     colormap(feature['properties']['average price']) if feature['properties']['name'] in st.session_state.district_list else 'white'),
-#                 "color": "black",
-#                 "fillOpacity": 0.5,
-#                 "weight": 1,
-#             },
-#             highlight_function=lambda feature: {
-#                 "fillColor": (
-#                     "green" if feature['properties']['name'] in st.session_state.district_list else 'white'
-#             ),},
-#             # popup=folium.Popup(popup_content, max_width=400),
-#             popup= folium.GeoJsonPopup(fields=["name",'number of projects', 'average price']),
-#             #             .add_child(folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300)),
-#             popup_keep_highlighted= True,
-#             # zoom_on_click = True
-#         ).add_to(m)
-
-#         vega_lite_json = folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300)
-#         pop_chart = folium.Popup(max_width = 400)
-#         vega_lite_json.add_to(pop_chart)
-#         pop_chart.add_to(m)
-#         folium.LayerControl().add_to(m)
-
-#         # folium.GeoJson(
-#         #     feature,         
-#         #     popup = folium.Popup(max_width = 400),
-#         #     folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300),
-#         #     popup_keep_highlighted= True,
-#         # ).add_to(m)
-#         # folium.LayerControl().add_to(m)
-
-#     return m
 
 def plot_price_per_district(data):
     districts = get_geojson_district(data)
@@ -184,8 +132,6 @@ def plot_price_per_district(data):
             popup_keep_highlighted=True,
         ).add_to(m)
 
-    # folium.LayerControl().add_to(m)
-
     return m
 
 
@@ -200,12 +146,12 @@ colormap = linear.YlGn_09.scale(
 st.write(colormap)
 
 
-st.write('TESTING')
-# example showing info to be shown on district popup
-st.write(st.session_state.district_popup.head(2))
+# st.write('TESTING')
+# # example showing info to be shown on district popup
+# st.write(st.session_state.district_popup.head(2))
 
-# # example showing overall district transaction info for filters
-st.write(pd.DataFrame(st.session_state.cursor.get_district_tx_info()).head())
+# # # example showing overall district transaction info for filters
+# st.write(pd.DataFrame(st.session_state.cursor.get_district_tx_info()).head())
 
 # # example showing district df
 # st.write(st.session_state.district_info)
