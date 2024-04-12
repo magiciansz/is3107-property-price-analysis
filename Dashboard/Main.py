@@ -90,7 +90,7 @@ def plot_graph():
                     # use_container_width=False
                     )
     except: #avoid error during user selection
-        st.write("No available transactions with the seleted filters. Showing all transactions.")
+        st.write("No filters selected or No available transactions with the seleted filters. Showing all transactions.")
         st.pyplot(v.plot_price_over_time(st.session_state['all_transactions'],
                                         datetime.date(2019,1,1),
                                         datetime.datetime.now(),

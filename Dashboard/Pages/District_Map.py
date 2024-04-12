@@ -13,6 +13,7 @@ if str(parent_directory) not in sys.path:
     sys.path.append(str(parent_directory))
 from etl.RetrieveDB import RetrieveDB
 import altair as alt
+import json
 
 
 if 'cursor' not in st.session_state:
@@ -65,7 +66,7 @@ def district_avg_price_over_time(district_name):
 
 def get_geojson_district(districts):
     features = []
-    for idx, row in districts.iterrows():
+    for _, row in districts.iterrows():
         current_district = row['district_name']
 
         feature = {
@@ -90,71 +91,102 @@ def get_geojson_district(districts):
 
     return geojson_district
 
+# def plot_price_per_district(data):
+#     districts = get_geojson_district(data)
+    
+#     colormap = linear.YlGn_09.scale(
+#     data.avg_dist_price_per_sqm.min(), data.avg_dist_price_per_sqm.max())
+
+#     m = folium.Map(location=[1.3521,103.8198], #center of singapore
+#                zoom_start = 11) #initialize the map in singapore
+    
+    
+#     for feature in districts['features']:
+#         # popup_content = f"""
+#         #     <b>Name:</b> {feature['properties']['name']}<br>
+#         #     <b>Number of Projects:</b> {feature['properties']['number of projects']}<br>
+#         #     <b>Average Price:</b> {feature['properties']['average price']}<br>
+#         #     <br>
+#         #     <div id="vega-chart">{feature['properties']['vega_lite_json']}</div>
+#         # """
+#         # popup_html.add_child(folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300))
+
+#         folium.GeoJson(
+#             feature,
+#             style_function= lambda feature: {
+#                 'fillColor' :(
+#                     colormap(feature['properties']['average price']) if feature['properties']['name'] in st.session_state.district_list else 'white'),
+#                 "color": "black",
+#                 "fillOpacity": 0.5,
+#                 "weight": 1,
+#             },
+#             highlight_function=lambda feature: {
+#                 "fillColor": (
+#                     "green" if feature['properties']['name'] in st.session_state.district_list else 'white'
+#             ),},
+#             # popup=folium.Popup(popup_content, max_width=400),
+#             popup= folium.GeoJsonPopup(fields=["name",'number of projects', 'average price']),
+#             #             .add_child(folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300)),
+#             popup_keep_highlighted= True,
+#             # zoom_on_click = True
+#         ).add_to(m)
+
+#         vega_lite_json = folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300)
+#         pop_chart = folium.Popup(max_width = 400)
+#         vega_lite_json.add_to(pop_chart)
+#         pop_chart.add_to(m)
+#         folium.LayerControl().add_to(m)
+
+#         # folium.GeoJson(
+#         #     feature,         
+#         #     popup = folium.Popup(max_width = 400),
+#         #     folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300),
+#         #     popup_keep_highlighted= True,
+#         # ).add_to(m)
+#         # folium.LayerControl().add_to(m)
+
+#     return m
+
 def plot_price_per_district(data):
     districts = get_geojson_district(data)
     
-    colormap = linear.YlGn_09.scale(
-    data.avg_dist_price_per_sqm.min(), data.avg_dist_price_per_sqm.max())
+    colormap = linear.YlGn_09.scale(data.avg_dist_price_per_sqm.min(), data.avg_dist_price_per_sqm.max())
 
-    m = folium.Map(location=[1.3521,103.8198], #center of singapore
-               zoom_start = 11) #initialize the map in singapore
-    
+    m = folium.Map(location=[1.3521, 103.8198], zoom_start=11)  # Center of Singapore
     
     for feature in districts['features']:
-        # popup_html = folium.Popup(max_width=400)
-        popup = folium.Popup(max_width = 400)
-        # popup_html.add_child(folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300))
+        popup_content = f"""
+            <b>Name:</b> {feature['properties']['name']}<br>
+            <b>Number of Projects:</b> {feature['properties']['number of projects']}<br>
+            <b>Average Price:</b> {feature['properties']['average price']}<br>
+            <br>
+            <div id='chart'></div>
+        """
+        popup = folium.Popup(popup_content, max_width=400)
 
+        # Add VegaLite chart to the popup
+        vega_lite_spec = json.loads(feature['properties']['vega_lite_json'])
+        folium.VegaLite(vega_lite_spec, width=900, height=300).add_to(popup)
+
+        # Add GeoJson layer to the map
         folium.GeoJson(
             feature,
-            style_function= lambda feature: {
-                'fillColor' :(
-                    colormap(feature['properties']['average price']) if feature['properties']['name'] in st.session_state.district_list else 'white'),
+            style_function=lambda feature: {
+                'fillColor': colormap(feature['properties']['average price']) if feature['properties']['name'] in st.session_state.district_list else 'white',
                 "color": "black",
                 "fillOpacity": 0.5,
                 "weight": 1,
             },
             highlight_function=lambda feature: {
-                "fillColor": (
-                    "green" if feature['properties']['name'] in st.session_state.district_list else 'white'
-            ),},
-            popup= folium.Popup(fields=["name",'number of projects', 'average price'], max_width = 400)
-                        .add_child(folium.VegaLite(feature['properties']['vega_lite_json'], width=900, height=300)),
-            popup_keep_highlighted= True,
-            # zoom_on_click = True
+                "fillColor": "green" if feature['properties']['name'] in st.session_state.district_list else 'white'
+            },
+            popup=popup,
+            popup_keep_highlighted=True,
         ).add_to(m)
 
-    return m
-
-
-
-def markers(data):
-    districts = get_geojson_district(data)
-    m = folium.Map(location=[1.3521, 103.8198], zoom_start=11)  # Centered around Singapore
-    
-    for index, row in district_tx_info.iterrows():
-        # Get the district name and coordinates for the current row
-        district_name = row['district_name']
-        coordinates = ast.literal_eval(row['coordinates'])
-        
-        # Convert coordinates to the required format (list of tuples)
-        coordinates = [(coord[1], coord[0]) for coord in coordinates]
-        
-        popup = folium.Popup(max_width = 400)
-        chart = district_avg_price_over_time(district_name)
-        vega_lite_json = chart.to_json()
-
-        popup.add_child(folium.VegaLite(vega_lite_json, width=900, height=300))
-        
-        # Create marker and add it to the map
-        marker = folium.Marker(location=coordinates[0], popup=popup, tooltip='Click to check out price trend')
-        marker.add_to(m)
-        folium.TileLayer('cartodbpositron').add_to(m)
+    # folium.LayerControl().add_to(m)
 
     return m
-
-# test = markers()
-# folium_static(test)
 
 
 st.title('Singapore District Map')
@@ -173,7 +205,7 @@ st.write('TESTING')
 st.write(st.session_state.district_popup.head(2))
 
 # # example showing overall district transaction info for filters
-# st.write(pd.DataFrame(st.session_state.cursor.get_district_tx_info()).head())
+st.write(pd.DataFrame(st.session_state.cursor.get_district_tx_info()).head())
 
 # # example showing district df
 # st.write(st.session_state.district_info)
