@@ -93,7 +93,32 @@ amenity_kw_ref = {
 
 Project_kw = {'prefix':'fa',"color": "green", "icon":"house"}
 
-#####################################filter_data#######################################
+#####################################popup#######################################
+def get_popup(proj_id):
+    transaction = st.session_state.cursor.get_tx_under_proj(proj_id)
+    html = f'''
+            <body>
+            <b>Name:</b> {row['project_name']}<br>
+            <b>Number of transaction:</b> {len(transaction)}<br>
+            <b>Average Price:</b> {row['proj_avg_price_per_sqm']}<br>
+            <br>
+            <div class="scrollable-list">
+            <ul>
+        '''
+        
+    for trx in transaction:
+        html += f"""
+        <li class="project-item">
+        <strong>Transaction Date:</strong> {trx['transaction_date']}<br>
+        <strong>Type of Sale:</strong> {trx['type_of_sale']}<br>
+        <strong>Price:</strong> {trx['price']}
+    </li>
+        """
+    
+    html += """</ul></div></body>
+    """
+    iframe = branca.element.IFrame(html=html, width=500, height=300)
+    return folium.Popup(iframe, max_width=500)
 
 ############################################################################
 
@@ -111,36 +136,9 @@ for _,row in st.session_state.amenities.iterrows():
 for _,row in st.session_state.project_info.iterrows():
     district = row['district_name']
     if district in st.session_state['district_list_map']:
-        transaction = st.session_state.cursor.get_tx_under_proj(row['project_id'])
-    
-    
-        html = f'''
-            <body>
-            <b>Name:</b> {row['project_name']}<br>
-            <b>Number of transaction:</b> {len(transaction)}<br>
-            <b>Average Price:</b> {row['proj_avg_price_per_sqm']}<br>
-            <br>
-            <div class="scrollable-list">
-            <ul>
-        '''
-        
-        for trx in transaction:
-            html += f"""
-            <li class="project-item">
-            <strong>Transaction Date:</strong> {trx['transaction_date']}<br>
-            <strong>Type of Sale:</strong> {trx['type_of_sale']}<br>
-            <strong>Price:</strong> {trx['price']}
-        </li>
-            """
-        
-        html += """</ul></div></body>
-        """
-        iframe = branca.element.IFrame(html=html, width=500, height=300)
-        popup = folium.Popup(iframe, max_width=500)
-
         icon = folium.Icon(**Project_kw)
 
-        folium.Marker(location=[row['lat'], row['long']], icon=icon, tooltip=row['project_name'],popup=popup).add_to(m)
+        folium.Marker(location=[row['lat'], row['long']], icon=icon, tooltip=row['project_name'],popup=get_popup(row['project_id']), lazy = True).add_to(m)
 
 
 
