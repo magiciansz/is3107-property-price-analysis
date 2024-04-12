@@ -30,7 +30,7 @@ with st.expander(label="Filter values", expanded=True):
         amenity_list_selected = []
         
         #----------------------------------------------------------------------------------------------
-        st.write('Show Project for District:')
+        st.write('Show Projects for District:')
         cols = st.columns(4)
         district_list_value = []
         for d in st.session_state.filter.district_list:
@@ -45,7 +45,7 @@ with st.expander(label="Filter values", expanded=True):
             if district_list_value[i]:
                 district_list_selected.append(st.session_state.filter.district_list[i])
         #----------------------------------------------------------------------------------------------
-        st.write('Amenities:')
+        st.write('Show Amenities for Selected Districts:')
         cols = st.columns(4)
     
         amenitiy_list_value = []

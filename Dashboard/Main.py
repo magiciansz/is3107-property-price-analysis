@@ -29,8 +29,8 @@ st.set_page_config(
 
 if 'cursor' not in st.session_state:
     try:
-        cursor = RetrieveDB(db_connect_type = 'LOCAL')
-        # cursor = RetrieveDB(db_connect_type = 'IAM')
+        # cursor = RetrieveDB(db_connect_type = 'LOCAL')
+        cursor = RetrieveDB(db_connect_type = 'IAM')
         st.session_state.cursor = cursor
         init_session_state()
     except Exception as e:
@@ -42,8 +42,8 @@ if 'cursor' not in st.session_state:
 show_pages(
     [
         Page("Main.py", "Overall Price Trend"), 
-        Page("Pages/District_Map.py", "District Level"),
-        Page("Pages/Project_Map.py", "Project Level"),
+        Page("Pages/District_Map.py", "Price Breakdown by District"),
+        Page("Pages/Project_Map.py", "Housing Projects and Amenities Map"),
     ]
 )
 
@@ -160,10 +160,6 @@ with st.expander(label="Filter values", expanded=False):
             if submitted:
                 set_session_states(room_types_selected, district_list_selected, d, floor_range_selected)
 
-
-plot_graph()
-
-
 # ################################## TESTING ###########################
 # values to be put into filter
 st.write("TESTING")
@@ -175,3 +171,17 @@ st.write(st.session_state.floor_range)
 # st.write(st.session_state.price_per_sqft_max)
 # st.write(st.session_state.price_per_sqft_min)
 st.write(sorted(st.session_state.room_type))
+plot_graph()
+
+
+# # ################################## TESTING ###########################
+# # values to be put into filter
+# st.write("TESTING")
+# st.write(st.session_state['all_transactions'])
+# st.write(st.session_state.district_list)
+# # st.write(st.session_state.amenities_list)
+# st.write(st.session_state.floor_range)
+# # st.write(st.session_state.floor_range_min)
+# # st.write(st.session_state.price_per_sqft_max)
+# # st.write(st.session_state.price_per_sqft_min)
+# st.write(sorted(st.session_state.room_type))
