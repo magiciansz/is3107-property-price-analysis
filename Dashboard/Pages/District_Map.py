@@ -1,7 +1,7 @@
-from streamlit_folium import folium_static
 import streamlit as st
 import pandas as pd
 import folium
+from streamlit_folium import folium_static
 import ast
 from create_init import init_session_state
 from branca.colormap import linear
@@ -15,6 +15,7 @@ from etl.RetrieveDB import RetrieveDB
 import altair as alt
 import json
 
+st.set_page_config(page_title = "District_Map", layout='wide')
 
 if 'cursor' not in st.session_state:
     try:
@@ -28,7 +29,6 @@ if 'cursor' not in st.session_state:
         st.stop()
     
 
-st.set_page_config(page_title = "District_Map",    layout='wide')
 st.session_state.district_list = st.session_state.filter.district_list
 district_tx_info = pd.DataFrame(st.session_state.cursor.get_district_tx_info())
 
@@ -137,7 +137,7 @@ def plot_price_per_district(data):
     return m
 
 
-st.title('Singapore District Map')
+st.title('Housing Price Breakdown by District')
 st.write("This page provide information on the price trend per district.")
 st.write("")
 st.write("Average price per sqm scale:")

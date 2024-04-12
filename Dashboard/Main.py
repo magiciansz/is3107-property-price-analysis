@@ -160,17 +160,6 @@ with st.expander(label="Filter values", expanded=False):
             if submitted:
                 set_session_states(room_types_selected, district_list_selected, d, floor_range_selected)
 
-# ################################## TESTING ###########################
-# values to be put into filter
-st.write("TESTING")
-st.write(st.session_state['all_transactions'])
-st.write(st.session_state.district_list)
-# st.write(st.session_state.amenities_list)
-st.write(st.session_state.floor_range)
-# st.write(st.session_state.floor_range_min)
-# st.write(st.session_state.price_per_sqft_max)
-# st.write(st.session_state.price_per_sqft_min)
-st.write(sorted(st.session_state.room_type))
 plot_graph()
 
 
