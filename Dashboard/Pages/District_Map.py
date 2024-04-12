@@ -18,8 +18,8 @@ import json
 
 if 'cursor' not in st.session_state:
     try:
-        # cursor = RetrieveDB(db_connect_type = 'LOCAL')
-        cursor = RetrieveDB(db_connect_type = 'IAM')
+        cursor = RetrieveDB(db_connect_type = 'LOCAL')
+        # cursor = RetrieveDB(db_connect_type = 'IAM')
         st.session_state.cursor = cursor
         init_session_state()
     except Exception as e:
@@ -28,7 +28,7 @@ if 'cursor' not in st.session_state:
         st.stop()
     
 
-st.set_page_config(page_title = "District_Map")
+st.set_page_config(page_title = "District_Map",    layout='wide')
 st.session_state.district_list = st.session_state.filter.district_list
 district_tx_info = pd.DataFrame(st.session_state.cursor.get_district_tx_info())
 
