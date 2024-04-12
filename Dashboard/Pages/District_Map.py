@@ -56,7 +56,7 @@ def district_avg_price_over_time(district_name, num_projects, avg_price):
                         'Average Price per Sqm': avg_prices}
                         )
 
-    title_str = f'{district_name}: {num_projects} Projects, Average Price per sqm: {avg_price:.2f}'
+    title_str = f'{district_name}: {num_projects} Projects,    Average Price per sqm: {avg_price:.2f}'
     
     chart = alt.Chart(to_plot,title= title_str).mark_line().encode( alt.X('Time:T'),
                     y= 'Average Price per Sqm'
@@ -104,12 +104,13 @@ def plot_price_per_district(data):
     
     for feature in districts['features']:
         popup_content = f"""
-            <b>Name:</b> {feature['properties']['name']}<br>
-            <b>Number of Projects:</b> {feature['properties']['number of projects']}<br>
-            <b>Average Price:</b> {feature['properties']['average price']}<br>
+            <b>Name:</b> {feature['properties']['name']}  <br>
+            <b>Number of Projects:</b> {feature['properties']['number of projects']}   <br>
+            <b>Average Price:</b> {feature['properties']['average price']}   <br>
             <br>
             <div id='chart'></div>
         """
+        
         popup = folium.Popup(popup_content, max_width=400)
 
         # Add VegaLite chart to the popup
@@ -129,6 +130,7 @@ def plot_price_per_district(data):
                 "fillColor": "green" if feature['properties']['name'] in st.session_state.district_list else 'white'
             },
             popup=popup,
+            tooltip= feature['properties']['name'],
             popup_keep_highlighted=True,
         ).add_to(m)
 
@@ -136,14 +138,18 @@ def plot_price_per_district(data):
 
 
 st.title('Singapore District Map')
+st.write("This page provide information on the price trend per district.")
+st.write("")
+st.write("Average price per sqm scale:")
+colormap = linear.YlGn_09.scale(
+    st.session_state.district_popup.avg_dist_price_per_sqm.min(), st.session_state.district_popup.avg_dist_price_per_sqm.max())
+st.write(colormap)
 m = plot_price_per_district(st.session_state.district_popup)
 # Display the map
 folium_static(m)
 
 
-colormap = linear.YlGn_09.scale(
-    st.session_state.district_popup.avg_dist_price_per_sqm.min(), st.session_state.district_popup.avg_dist_price_per_sqm.max())
-st.write(colormap)
+
 
 
 # st.write('TESTING')

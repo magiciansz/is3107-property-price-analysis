@@ -7,7 +7,8 @@ import datetime
 import branca
 
 st.set_page_config(page_title = "Project_Map",    layout='wide')
-st.title("Project Map")
+st.title("Project Transaction Map")
+st.write("This page provide information on the project and the amenities in the same district. Please select the district and amenities in interest.")
 
 if 'project_info' not in st.session_state:
     projects = pd.DataFrame(st.session_state.cursor.get_project_info())
@@ -25,14 +26,9 @@ def reset_districts():
 with st.expander(label="Filter values", expanded=True):
     with st.form('test'):
         #Room type filter is removed as we are showing proj
-        submitted = st.form_submit_button('Confirm')
         district_list_selected = []
         amenity_list_selected = []
         
-        if submitted:
-            st.session_state['district_list_map'] = district_list_selected
-            st.session_state['amenities_list'] = amenity_list_selected
-            
         #----------------------------------------------------------------------------------------------
         st.write('Show Project for District:')
         cols = st.columns(4)
@@ -64,8 +60,15 @@ with st.expander(label="Filter values", expanded=True):
         for i in range(len(amenitiy_list_value)):
             if amenitiy_list_value[i]:
                 amenity_list_selected.append(st.session_state.filter.amenities_list[i])
-
         
+        #----------------------------------------------------------------------------------------------
+        _, submit_button = st.columns([0.8,0.2])
+        with submit_button:
+            submitted = st.form_submit_button('Confirm')
+            if submitted:
+                st.session_state['district_list_map'] = district_list_selected
+                st.session_state['amenities_list'] = amenity_list_selected
+            
 
 
 ####################################set_icon########################################
@@ -102,6 +105,7 @@ def get_popup(proj_id):
             <b>Number of transaction:</b> {len(transaction)}<br>
             <b>Average Price:</b> {row['proj_avg_price_per_sqm']}<br>
             <br>
+            <strong>Transaction History:</strong>
             <div class="scrollable-list">
             <ul>
         '''
@@ -111,8 +115,9 @@ def get_popup(proj_id):
         <li class="project-item">
         <strong>Transaction Date:</strong> {trx['transaction_date']}<br>
         <strong>Type of Sale:</strong> {trx['type_of_sale']}<br>
-        <strong>Price:</strong> {trx['price']}
-    </li>
+        <strong>Foor Area (sqm):</strong> {trx['floor_area']}<br>
+        <strong>Price:</strong> {trx['price']}<br>
+    </li><br>
         """
     
     html += """</ul></div></body>
@@ -125,12 +130,6 @@ def get_popup(proj_id):
 m = folium.Map(location=[1.3521,103.8198], #center of singapore
         zoom_start = 11) #initialize the map in singapore
 
-#plot amenities 
-for _,row in st.session_state.amenities.iterrows():
-    type = row['amenity_type']
-    if type in st.session_state.amenities_list:
-        icon = folium.Icon(**amenity_kw_ref[type])
-        folium.Marker(location=[row['lat'], row['long']], icon=icon, tooltip=row['amenity_name']).add_to(m)
 
 #plot project    
 for _,row in st.session_state.project_info.iterrows():
@@ -140,7 +139,13 @@ for _,row in st.session_state.project_info.iterrows():
 
         folium.Marker(location=[row['lat'], row['long']], icon=icon, tooltip=row['project_name'],popup=get_popup(row['project_id']), lazy = True).add_to(m)
 
-
+#plot amenities 
+for _,row in st.session_state.amenities.iterrows():
+    type = row['amenity_type']
+    district = row['district_name']
+    if type in st.session_state.amenities_list and district in st.session_state['district_list_map']:
+        icon = folium.Icon(**amenity_kw_ref[type])
+        folium.Marker(location=[row['lat'], row['long']], icon=icon, tooltip=row['amenity_name']).add_to(m)
 
 #TODO add project lat long when data is available
 folium_static(m)
@@ -148,10 +153,10 @@ folium_static(m)
 
         
         
-st.write('TESTING')
-# showing project information columns
-st.write(st.session_state.project_info)
+# st.write('TESTING')
+# # showing project information columns
+# st.write(st.session_state.project_info)
 
-st.write(st.session_state.amenities)
-# retrieve function for project click pop-up 
-st.write(st.session_state.cursor.get_tx_under_proj(3095))
+# st.write(st.session_state.amenities)
+# # retrieve function for project click pop-up 
+# st.write(st.session_state.cursor.get_tx_under_proj(3095))
