@@ -18,8 +18,8 @@ import json
 
 if 'cursor' not in st.session_state:
     try:
-        cursor = RetrieveDB(db_connect_type = 'LOCAL')
-        # cursor = RetrieveDB(db_connect_type = 'IAM')
+        # cursor = RetrieveDB(db_connect_type = 'LOCAL')
+        cursor = RetrieveDB(db_connect_type = 'IAM')
         st.session_state.cursor = cursor
         init_session_state()
     except Exception as e:

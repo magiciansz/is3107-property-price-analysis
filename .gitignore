@@ -20,3 +20,4 @@ webserver_config.py
 /Data/*.kml
 /Data/*.csv
 *.pyc
+/Dashboard/__pycache__

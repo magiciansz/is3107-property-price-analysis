@@ -142,8 +142,10 @@ class RetrieveDB:
     
     def get_amenities(self):
         query = sqlalchemy.text(f"""
-            SELECT *
-            FROM Amenity
+            SELECT d.district_name, a.id, a.amenity_type, a.amenity_name, a.`long`, a.lat
+            FROM Amenity a
+            LEFT JOIN District d
+            ON a.district_id = d.id
         """)
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
@@ -177,7 +179,8 @@ class RetrieveDB:
             INNER JOIN Transaction tx ON prop.id = tx.property_id
             ORDER BY price_per_sqm
         """)
-        df = pd.read_sql(query, self.conn, dtype={'floor_range_start': int, 'floor_range_end': int})
+        df = pd.read_sql(query, self.conn)
+                        #  , dtype={'floor_range_start': int, 'floor_range_end': int})
         return df.to_dict('records')
     
     def get_project_info(self):
@@ -196,7 +199,7 @@ class RetrieveDB:
 
     def get_tx_under_proj(self, project_id):
         query = sqlalchemy.text(f"""
-            SELECT proj.project_name, CONCAT(t.transaction_year, "-", t.transaction_month) AS transaction_date, t.type_of_sale, t.price
+            SELECT proj.project_name, CONCAT(t.transaction_year, "-", t.transaction_month) AS transaction_date, t.type_of_sale, t.price, prop.floor_area
             FROM Project proj
             INNER JOIN Property prop ON proj.id = prop.project_id
             INNER JOIN Transaction t ON prop.id = t.property_id

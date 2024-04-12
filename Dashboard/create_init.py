@@ -10,6 +10,8 @@ def init_session_state():
 
     if "all_transactions" not in st.session_state:
         st.session_state['all_transactions'] = pd.DataFrame(st.session_state.cursor.get_price_per_sqm_dashboard())
+        st.session_state['all_transactions']['floor_range_start'] = st.session_state['all_transactions']['floor_range_start'].astype(int)
+        st.session_state['all_transactions']['floor_range_end'] = st.session_state['all_transactions']['floor_range_end'].astype(int)
 
     if "room_type" not in st.session_state:
         # st.session_state['room_type']  = sorted(st.session_state.all_transactions['property_type'].unique())
