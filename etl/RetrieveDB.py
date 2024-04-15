@@ -142,8 +142,10 @@ class RetrieveDB:
     
     def get_amenities(self):
         query = sqlalchemy.text(f"""
-            SELECT *
-            FROM Amenity
+            SELECT d.district_name, a.id, a.amenity_type, a.amenity_name, a.`long`, a.lat
+            FROM Amenity a
+            LEFT JOIN District d
+            ON a.district_id = d.id
         """)
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
@@ -165,38 +167,39 @@ class RetrieveDB:
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
     
-    def get_price_per_sqft_dashboard(self):
+    def get_price_per_sqm_dashboard(self):
         query = sqlalchemy.text(f"""
             SELECT dist.district_name,
-                    prop.property_type, prop.lease_year, prop.lease_duration, prop.floor_range_start, prop.floor_range_end,
+                    prop.property_type, prop.lease_year, prop.lease_duration, IFNULL(prop.floor_range_start, 0) AS floor_range_start, IFNULL(prop.floor_range_end, 0) AS floor_range_end,
                     tx.transaction_year, tx.transaction_month, tx.type_of_sale, tx.price,
-                    (tx.price / prop.floor_area) AS price_per_sqft
+                    (tx.price / prop.floor_area) AS price_per_sqm
             FROM District dist
             INNER JOIN Project proj on dist.id = proj.district_id
             INNER JOIN Property prop ON proj.id = prop.project_id
             INNER JOIN Transaction tx ON prop.id = tx.property_id
-            ORDER BY price_per_sqft
+            ORDER BY price_per_sqm
         """)
         df = pd.read_sql(query, self.conn)
+                        #  , dtype={'floor_range_start': int, 'floor_range_end': int})
         return df.to_dict('records')
     
     def get_project_info(self):
         query = sqlalchemy.text(f"""
             SELECT d.id AS district_id, d.district_name, p.id AS project_id, p.project_name, p.address, p.`long`, p.lat,
-                ROUND(AVG(t.price / pr.floor_area),2) AS proj_avg_price_per_sqft
+                ROUND(AVG(t.price / pr.floor_area),2) AS proj_avg_price_per_sqm
             FROM District d
             INNER JOIN Project p on d.id = p.district_id
             INNER JOIN Property pr ON p.id = pr.project_id
             INNER JOIN Transaction t ON pr.id = t.property_id
             GROUP BY p.id
-            ORDER BY proj_avg_price_per_sqft
+            ORDER BY proj_avg_price_per_sqm
         """)
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')  
 
     def get_tx_under_proj(self, project_id):
         query = sqlalchemy.text(f"""
-            SELECT proj.project_name, CONCAT(t.transaction_year, "-", t.transaction_month) AS transaction_date, t.type_of_sale, t.price
+            SELECT proj.project_name, CONCAT(t.transaction_year, "-", t.transaction_month) AS transaction_date, t.type_of_sale, t.price, prop.floor_area
             FROM Project proj
             INNER JOIN Property prop ON proj.id = prop.project_id
             INNER JOIN Transaction t ON prop.id = t.property_id
@@ -206,15 +209,16 @@ class RetrieveDB:
         return df.to_dict('records')
     
     def get_district_tx_info(self):
+        #             proj.project_name, prop.property_type, prop.floor_range_start, prop.floor_range_end,
         query = sqlalchemy.text(f"""
-            SELECT dist.id, dist.district_name,
-            proj.project_name, prop.property_type, prop.floor_range_start, prop.floor_range_end,
-            tx.transaction_year, tx.transaction_month,
-            ROUND(AVG(tx.price / prop.floor_area) OVER (PARTITION BY dist.id), 2) AS dist_price_per_sqft
+            SELECT dist.district_name AS district_name, dist.coordinates,
+            tx.transaction_year AS transaction_year, tx.transaction_month AS transaction_month,
+            ROUND(AVG(tx.price / prop.floor_area), 2) AS dist_price_per_sqm
             FROM District dist
             INNER JOIN Project proj on dist.id = proj.district_id
             INNER JOIN Property prop ON proj.id = prop.project_id
             INNER JOIN Transaction tx ON prop.id = tx.property_id
+            GROUP BY district_name, transaction_year, transaction_month
         """)
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')
@@ -223,7 +227,7 @@ class RetrieveDB:
         query = sqlalchemy.text(f"""
             SELECT dist.district_name, dist.coordinates,
                 IFNULL(COUNT(DISTINCT proj.id), 0) AS no_of_projects,
-                IFNULL(ROUND(AVG(tx.price / prop.floor_area),2), 0) AS avg_dist_price_per_sqft
+                IFNULL(ROUND(AVG(tx.price / prop.floor_area),2), 0) AS avg_dist_price_per_sqm
             FROM District dist
             LEFT JOIN Project proj ON dist.id = proj.district_id
             LEFT JOIN Property prop ON proj.id = prop.project_id
@@ -243,8 +247,8 @@ class RetrieveDB:
         df = pd.read_sql(query, self.conn)
         return df.to_dict('records')        
     
-if __name__ == "__main__":
-    db = RetrieveDB(db_connect_type="IAM")
+# if __name__ == "__main__":
+    # db = RetrieveDB(db_connect_type="IAM")
     # db = RetrieveDB(db_connect_type="LOCAL")
     # test = db.get_records_for_ml()
     # # test= db.get_amenity_of_type_for_ml("Kindergarten")

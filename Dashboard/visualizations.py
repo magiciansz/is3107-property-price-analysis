@@ -4,10 +4,11 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from branca.colormap import linear
+import streamlit as st
 
 
 
-def plot_price_over_time(data, start_date, end_date, room_type_list, district_list, price_per_sqft_range):
+def plot_price_over_time(data, start_date, end_date, room_type_list, district_list, floor_range):
     #TODO: can provide district_list to add price line
     
     start_date,end_date = pd.Timestamp(start_date), pd.Timestamp(end_date)
@@ -25,11 +26,14 @@ def plot_price_over_time(data, start_date, end_date, room_type_list, district_li
     data = data[data['property_type'].isin(room_type_list)]
     
     #filter with price_per_sqft_range
-    data = data[(data['price_per_sqft'] >= price_per_sqft_range[0]) & (data['price_per_sqft'] <= price_per_sqft_range[1])] 
+    data = data[(data['floor_range_start'] >= floor_range[0]) & (data['floor_range_end'] <= floor_range[1])] 
     
     data['YearMonth_str'] = data['transaction_year'] + '-' + data['transaction_month'].str.zfill(2)
     monthly_median = data.groupby('YearMonth')['price'].median().reset_index()
     data.sort_values('YearMonth', inplace=True)
+
+    if not data.empty:
+        has_data = True
 
     fig, ax = plt.subplots(figsize=(15, 10))
     sns.lineplot(data=data, x='YearMonth', y='price',ax=ax, label = 'Monthly Prices')
@@ -39,6 +43,5 @@ def plot_price_over_time(data, start_date, end_date, room_type_list, district_li
     ax.set_title('Singapore Property Price Over Time', fontsize='xx-large')
     ax.tick_params(axis='x', labelrotation=45)
     ax.legend(fontsize='large')
+    return has_data, fig
     
-    return fig
-

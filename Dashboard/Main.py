@@ -23,13 +23,14 @@ from etl.RetrieveDB import RetrieveDB
 
 st.set_page_config(
     page_title="Overall_Trend",
+    layout='wide'
 )
 
 
 if 'cursor' not in st.session_state:
     try:
-        cursor = RetrieveDB(db_connect_type = 'LOCAL')
-        # cursor = RetrieveDB(db_connect_type = 'IAM')
+        # cursor = RetrieveDB(db_connect_type = 'LOCAL')
+        cursor = RetrieveDB(db_connect_type = 'IAM')
         st.session_state.cursor = cursor
         init_session_state()
     except Exception as e:
@@ -41,8 +42,8 @@ if 'cursor' not in st.session_state:
 show_pages(
     [
         Page("Main.py", "Overall Price Trend"), 
-        Page("Pages/District_Map.py", "District Level"),
-        Page("Pages/Project_Map.py", "Project Level"),
+        Page("Pages/District_Map.py", "Price Breakdown by District"),
+        Page("Pages/Project_Map.py", "Housing Projects and Amenities Map"),
     ]
 )
 
@@ -52,27 +53,13 @@ show_pages(
     
 st.title("Singapore Property Price Trend")
 
-    # #price list 
-    # st.session_state.price_per_sqft_range  = st.slider(
-    #     "Price per Sqft:",
-    #     st.session_state.filter.price_per_sqft_range[0],
-    #     st.session_state.filter.price_per_sqft_range[1],
-    #     value=st.session_state.price_per_sqft_range)
-    
-    # #floor range
-    # st.session_state.floor_range  = st.slider(
-    #     "Floor Range:",
-    #     st.session_state.filter.floor_range[0],
-    #     st.session_state.filter.floor_range[1],
-    #     value=st.session_state.floor_range)
-
-
-def set_session_states(room_types_selected, district_list_selected, d):
-    # TODO add on more session states from user selection
+def set_session_states(room_types_selected, district_list_selected, d, floor_range_selected):
     # set session states from user selections
     st.session_state.room_type = room_types_selected
     st.session_state.district_list = district_list_selected
     st.session_state['transaction_date_start'], st.session_state['transaction_date_end'] = d[0],d[1]
+    st.session_state.floor_range = floor_range_selected
+    
 
 def reset_room_types():
     st.session_state.room_type = []
@@ -80,34 +67,45 @@ def reset_room_types():
 def reset_districts():
     st.session_state.district_list = []
 
+def reset_floor_range():
+    st.session_state.floor_range = st.session_state.filter.floor_range
+
 
 #plot the graph
 def plot_graph():
     # plotting graph with selections
     try:
-        st.pyplot(v.plot_price_over_time(st.session_state['all_transactions'],
-                                        st.session_state['transaction_date_start'],
-                                        st.session_state['transaction_date_end'],
-                                        st.session_state['room_type'],
-                                        st.session_state['district_list'],
-                                        st.session_state['price_per_sqft_range']),
-                # use_container_width=False
-                )
+        if v.plot_price_over_time(st.session_state['all_transactions'],
+                                st.session_state['transaction_date_start'],
+                                st.session_state['transaction_date_end'],
+                                st.session_state['room_type'],
+                                st.session_state['district_list'],
+                                st.session_state['floor_range'])[0]:
+                                        
+            st.pyplot(v.plot_price_over_time(st.session_state['all_transactions'],
+                                            st.session_state['transaction_date_start'],
+                                            st.session_state['transaction_date_end'],
+                                            st.session_state['room_type'],
+                                            st.session_state['district_list'],
+                                            st.session_state['floor_range'])[1],
+                    # use_container_width=False
+                    )
     except: #avoid error during user selection
+        st.write("No filters selected or No available transactions with the seleted filters. Showing all transactions.")
         st.pyplot(v.plot_price_over_time(st.session_state['all_transactions'],
                                         datetime.date(2019,1,1),
                                         datetime.datetime.now(),
                                         st.session_state.filter.room_type,
                                         st.session_state.filter.district_list,
-                                        st.session_state.filter.price_per_sqft_range))
+                                        st.session_state.filter.floor_range)[1])
+
 
 
 with st.expander(label="Filter values", expanded=False):
-    filter_toggle, room_type_selector, disctrict_selector = st.columns([0.2, 0.4, 0.4])
-    with filter_toggle:
-        pre_filter_on = st.toggle('Filter', on_change=None, help="Turn on filtering feature")
-    with room_type_selector:
-        if pre_filter_on:
+    with st.form('test'):
+        room_type_selector, disctrict_selector = st.columns([ 0.5, 0.5])
+        with room_type_selector:
+
             all = st.checkbox("Select All Room Types", on_change=reset_room_types())
             
             if all:
@@ -120,12 +118,9 @@ with st.expander(label="Filter values", expanded=False):
                     'Room Type: ',
                     st.session_state.filter.room_type,
                     st.session_state['room_type'])
-        else:
-            use_default_room_type = st.button('Select Room Type', disabled=True)
 
-    with disctrict_selector:
-        if pre_filter_on:
-            # use_default_normal = st.button('Action 2', on_click=None, help="Preset sliders to default thresholds")
+
+        with disctrict_selector:
             all = st.checkbox("Select All Districts", on_change=reset_districts())
             if all:
                 district_list_selected = st.multiselect(
@@ -137,53 +132,45 @@ with st.expander(label="Filter values", expanded=False):
                     'Districts: ',
                     st.session_state.filter.district_list,
                     st.session_state['district_list'])
-        else:
-            use_default_districts = st.button('Select District', disabled=True)
 
-    date_filter, pre_filter2, confirm = st.columns([0.4, 0.4, 0.15])
-    # st.columns([0.25, 0.3, 0.3, 0.15])
-    with date_filter:
-        if pre_filter_on:
-                d = st.date_input(
-                "Select Transaction Time Range",
-                (st.session_state['transaction_date_start'], st.session_state['transaction_date_end']),
-                datetime.date(2019,1,1),
-                datetime.datetime.now(),
-                format="MM.DD.YYYY",
-            )
-                
-    # TODO price filters
-    with pre_filter2:
-        if pre_filter_on:
-            if True:
-                o_threshold = st.slider("Slider 2:", 0, 100, (20,100), help="Drag sliders to desired values")
+
+        date_filter, pre_filter2, confirm = st.columns([0.4, 0.4, 0.15])
+        # st.columns([0.25, 0.3, 0.3, 0.15])
+        with date_filter:
+            d = st.date_input(
+            "Select Transaction Time Range",
+            (st.session_state['transaction_date_start'], st.session_state['transaction_date_end']),
+            datetime.date(2019,1,1),
+            datetime.datetime.now(),
+            format="MM.DD.YYYY",
+        )
             
-        else:
-                o_threshold = st.slider("Label 2:", 0, 100, (0,100), disabled=True)
-
-    with confirm:
-        if pre_filter_on:
-            confirm_sel = st.button('Confirm Selection', 
-                                    on_click=set_session_states(room_types_selected, district_list_selected, d), 
-                                    type="primary")
-        else:
-            confirm_sel = st.button('Filter results', type="primary", disabled=True)
+        with pre_filter2:
+            #floor range
+            floor_range_selected  = st.slider(
+                "Floor Range:",
+                st.session_state.filter.floor_range[0],
+                st.session_state.filter.floor_range[1],
+                value=st.session_state.floor_range,
+                step=1,
+                on_change=reset_floor_range())            
         
-        # TODO how to only refresh graph when users click confirm selection
-        # plot_graph()
-
+        with confirm:    
+            submitted = st.form_submit_button('Confirm')
+            if submitted:
+                set_session_states(room_types_selected, district_list_selected, d, floor_range_selected)
 
 plot_graph()
 
 
-# ################################## TESTING ###########################
-# values to be put into filter
-st.write("TESTING")
-st.write(st.session_state['all_transactions'])
-st.write(st.session_state.district_list)
-# st.write(st.session_state.amenities_list)
-# st.write(st.session_state.floor_range_max)
-# st.write(st.session_state.floor_range_min)
-# st.write(st.session_state.price_per_sqft_max)
-# st.write(st.session_state.price_per_sqft_min)
+# # ################################## TESTING ###########################
+# # values to be put into filter
+# st.write("TESTING")
+# st.write(st.session_state['all_transactions'])
+# st.write(st.session_state.district_list)
+# # st.write(st.session_state.amenities_list)
+# st.write(st.session_state.floor_range)
+# # st.write(st.session_state.floor_range_min)
+# # st.write(st.session_state.price_per_sqft_max)
+# # st.write(st.session_state.price_per_sqft_min)
 # st.write(sorted(st.session_state.room_type))
