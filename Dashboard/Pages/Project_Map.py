@@ -100,10 +100,10 @@ Project_kw = {'prefix':'fa',"color": "green", "icon":"house"}
 def get_popup(proj_id):
     transaction = st.session_state.cursor.get_tx_under_proj(proj_id)
     html = f'''
-            <body>
+            <body style="font-family: sans-serif;">
             <b>Name:</b> {row['project_name']}<br>
             <b>Number of transaction:</b> {len(transaction)}<br>
-            <b>Average Price:</b> {row['proj_avg_price_per_sqm']}<br>
+            <b>Average Price / sqm :</b> {row['proj_avg_price_per_sqm']}<br>
             <br>
             <strong>Transaction History:</strong>
             <div class="scrollable-list">

@@ -19,8 +19,8 @@ st.set_page_config(page_title = "District_Map", layout='wide')
 
 if 'cursor' not in st.session_state:
     try:
-        # cursor = RetrieveDB(db_connect_type = 'LOCAL')
-        cursor = RetrieveDB(db_connect_type = 'IAM')
+        cursor = RetrieveDB(db_connect_type = 'LOCAL')
+        # cursor = RetrieveDB(db_connect_type = 'IAM')
         st.session_state.cursor = cursor
         init_session_state()
     except Exception as e:
@@ -98,7 +98,7 @@ def get_geojson_district(districts):
 def plot_price_per_district(data):
     districts = get_geojson_district(data)
     
-    colormap = linear.YlGn_09.scale(data.avg_dist_price_per_sqm.min(), data.avg_dist_price_per_sqm.max())
+    colormap = linear.YlOrRd_06.scale(data.avg_dist_price_per_sqm.min(), data.avg_dist_price_per_sqm.max())
 
     m = folium.Map(location=[1.3521, 103.8198], zoom_start=11)  # Center of Singapore
     
@@ -141,7 +141,8 @@ st.title('Housing Price Breakdown by District')
 st.write("This page provide information on the price trend per district.")
 st.write("")
 st.write("Average price per sqm scale:")
-colormap = linear.YlGn_09.scale(
+
+colormap = linear.YlOrRd_06.scale(
     st.session_state.district_popup.avg_dist_price_per_sqm.min(), st.session_state.district_popup.avg_dist_price_per_sqm.max())
 st.write(colormap)
 m = plot_price_per_district(st.session_state.district_popup)
