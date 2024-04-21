@@ -6,7 +6,7 @@ from st_pages import show_pages, Page
 import datetime
 import branca
 
-st.set_page_config(page_title = "Project_Map",    layout='wide')
+st.set_page_config(page_title = "Project_Map",  layout='wide')
 st.title("Project Transaction Map")
 st.write("This page provide information on the project and the amenities in the same district. Please select the district and amenities in interest.")
 
@@ -34,7 +34,7 @@ with st.expander(label="Filter values", expanded=True):
         cols = st.columns(4)
         district_list_value = []
         for d in st.session_state.filter.district_list:
-            district_list_value.append(d in st.session_state['district_list_map'] )
+            district_list_value.append(d in st.session_state['district_list_map'])
         
         for i in range(len(district_list_value)):
             with cols[i%4]:
@@ -44,6 +44,7 @@ with st.expander(label="Filter values", expanded=True):
         for i in range(len(district_list_value)):
             if district_list_value[i]:
                 district_list_selected.append(st.session_state.filter.district_list[i])
+                
         #----------------------------------------------------------------------------------------------
         st.write('Show Amenities for Selected Districts:')
         cols = st.columns(4)
@@ -102,7 +103,7 @@ def get_popup(proj_id):
     html = f'''
             <body style="font-family: sans-serif;">
             <b>Name:</b> {row['project_name']}<br>
-            <b>Number of transaction:</b> {len(transaction)}<br>
+            <b>Number of transactions:</b> {len(transaction)}<br>
             <b>Average Price / sqm :</b> {row['proj_avg_price_per_sqm']}<br>
             <br>
             <strong>Transaction History:</strong>
@@ -115,7 +116,7 @@ def get_popup(proj_id):
         <li class="project-item">
         <strong>Transaction Date:</strong> {trx['transaction_date']}<br>
         <strong>Type of Sale:</strong> {trx['type_of_sale']}<br>
-        <strong>Foor Area (sqm):</strong> {trx['floor_area']}<br>
+        <strong>Floor Area (sqm):</strong> {trx['floor_area']}<br>
         <strong>Price:</strong> {trx['price']}<br>
     </li><br>
         """
@@ -136,7 +137,6 @@ for _,row in st.session_state.project_info.iterrows():
     district = row['district_name']
     if district in st.session_state['district_list_map']:
         icon = folium.Icon(**Project_kw)
-
         folium.Marker(location=[row['lat'], row['long']], icon=icon, tooltip=row['project_name'],popup=get_popup(row['project_id']), lazy = True).add_to(m)
 
 #plot amenities 

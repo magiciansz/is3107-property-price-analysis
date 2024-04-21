@@ -127,7 +127,9 @@ def plot_price_per_district(data):
                 "weight": 1,
             },
             highlight_function=lambda feature: {
-                "fillColor": "green" if feature['properties']['name'] in st.session_state.district_list else 'white'
+                "fillColor": colormap(feature['properties']['average price']) if feature['properties']['name'] in st.session_state.district_list else 'white',
+                "fillOpacity": 0.8,
+                "weight": 0,
             },
             popup=popup,
             tooltip= feature['properties']['name'],
