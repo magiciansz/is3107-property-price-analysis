@@ -41,7 +41,7 @@ if 'cursor' not in st.session_state:
 # Multipage configration from the toml file, contains the sider bar name and icons
 show_pages(
     [
-        Page("Main.py", "Overall Price Trend"), 
+        Page("Main.py", "Property Price Trend"), 
         Page("Pages/District_Map.py", "Price Breakdown by District"),
         Page("Pages/Project_Map.py", "Housing Projects and Amenities Map"),
     ]
