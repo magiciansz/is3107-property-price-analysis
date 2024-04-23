@@ -35,7 +35,8 @@ A high-level view of property prices for home buyers to understand price trends 
 ## Dashboard 3: Displaying of Projects and Amenities
 A visualisation of amenities in a district, allowing home buyers to choose properties according to lifestyle needs
 
-![image](https://github.com/magiciansz/is3107-property-price-analysis/assets/77622894/7eddb759-795c-498d-8942-d369eeb1bb67)
+![image](https://github.com/magiciansz/is3107-property-price-analysis/assets/77622894/445e104d-4384-479f-9c0a-f970e78d3e4f)
+
 
 # Downstream Application 2: Price Prediction Regression Model
 Summary of Results
